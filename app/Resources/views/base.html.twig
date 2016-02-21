@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}hidraulica{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
-    <body data-spy="scroll" data-target="#menu">
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-            <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        {% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}hidraulica{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body data-spy="scroll" data-target="#menu">
+{% block body %}{% endblock %}
+{#<!-- Footer -->#}
+{% block footer %}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <li class="text-left col-md-4">
+                    <a href="mailto:hola@hidraulicadisseny.com">hola@hidraulicadisseny.com</a>
+                </li>
+                <li class="col-md-8">
+                    <a target="facebook" href="https://www.facebook.com"></a>
+                    <i class="fa fa-facebook-official fa-2x"></i></a>
+                </li>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+{% block javascripts %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
+</body>
 </html>
