@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+# Menus
+#    app.frontend_social_networks:
+#        class: Knp\Menu\MenuItem
+#        factory: [ "@app.frontend_menu_builder", createSocialNetworksMenu ]
+#        arguments: [ "@request_stack" ]
+#        tags:
+#            - { name: knp_menu.menu, alias: socialnetworks }
+
