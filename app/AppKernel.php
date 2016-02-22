@@ -9,18 +9,32 @@ class AppKernel extends Kernel
     {
         $bundles = array(
             // Symfony
+//            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             // Doctrine
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             // Sensio
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            // Sonata
+//            new Sonata\AdminBundle\SonataAdminBundle(),
+//            new Sonata\BlockBundle\SonataBlockBundle(),
+//            new Sonata\CoreBundle\SonataCoreBundle(),
+//            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+//            new Sonata\SeoBundle\SonataSeoBundle(),
+//            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             // Vendors
+//            new FOS\UserBundle\FOSUserBundle(),
+//            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+//            new Liip\ImagineBundle\LiipImagineBundle(),
+//            new Presta\SitemapBundle\PrestaSitemapBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+//            new Vich\UploaderBundle\VichUploaderBundle(),
             // App
             new AppBundle\AppBundle(),
         );
