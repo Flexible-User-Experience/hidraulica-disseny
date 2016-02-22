@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -31,6 +30,12 @@ class Work extends AbstractBase
      * @ORM\Column(type="string", length=255)
      */
     private $mainImage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="WorkCategory", inversedBy="works")
+     * @ORM\JoinColumn(name="workCategory_id", referencedColumnName="id")
+     */
+    private $workCategory;
 
     /**
      *
@@ -59,4 +64,22 @@ class Work extends AbstractBase
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getWorkCategory()
+    {
+        return $this->workCategory;
+    }
+
+    /**
+     * @param mixed $workCategory
+     * @return Work
+     */
+    public function setWorkCategory($workCategory)
+    {
+        $this->workCategory = $workCategory;
+
+        return $this;
+    }
 }
