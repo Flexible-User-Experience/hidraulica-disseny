@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -36,6 +37,15 @@ class Work extends AbstractBase
      * @ORM\JoinColumn(name="workCategory_id", referencedColumnName="id")
      */
     private $workCategory;
+
+    /**
+     * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work")
+     */
+    private $workImages;
+
+    public function __construct() {
+        $this->workImages = new ArrayCollection();
+    }
 
     /**
      *
@@ -80,6 +90,24 @@ class Work extends AbstractBase
     {
         $this->workCategory = $workCategory;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWorkImages()
+    {
+        return $this->workImages;
+    }
+
+    /**
+     * @param mixed $workImages
+     * @return Work
+     */
+    public function setWorkImages($workImages)
+    {
+        $this->workImages = $workImages;
         return $this;
     }
 }
