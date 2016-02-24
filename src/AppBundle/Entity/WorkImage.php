@@ -40,6 +40,8 @@ class WorkImage extends AbstractBase
 
 
     /**
+     * @var Work
+     *
      * @ORM\ManyToOne(targetEntity="Work", inversedBy="workImages")
      * @ORM\JoinColumn(name="work_id", referencedColumnName="id")
      */
@@ -73,7 +75,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAlt()
     {
@@ -81,7 +83,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @param mixed $alt
+     * @param string $alt
      * @return WorkImage
      */
     public function setAlt($alt)
@@ -92,7 +94,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPosition()
     {
@@ -100,7 +102,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @param mixed $position
+     * @param string $position
      * @return WorkImage
      */
     public function setPosition($position)
@@ -111,7 +113,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return Work
      */
     public function getWork()
     {
@@ -119,10 +121,10 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @param mixed $work
+     * @param $work
      * @return WorkImage
      */
-    public function setWork($work)
+    public function setWork(Work $work)
     {
         $this->work = $work;
 
