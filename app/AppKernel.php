@@ -21,10 +21,10 @@ class AppKernel extends Kernel
             // Sensio
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             // Sonata
-//            new Sonata\AdminBundle\SonataAdminBundle(),
-//            new Sonata\BlockBundle\SonataBlockBundle(),
-//            new Sonata\CoreBundle\SonataCoreBundle(),
-//            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 //            new Sonata\SeoBundle\SonataSeoBundle(),
 //            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             // Vendors
