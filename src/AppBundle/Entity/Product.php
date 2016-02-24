@@ -67,7 +67,7 @@ class Product extends AbstractBase
 
     /**
      * @param string $mainImage
-     * @return Work
+     * @return Product
      */
     public function setMainImage($mainImage)
     {

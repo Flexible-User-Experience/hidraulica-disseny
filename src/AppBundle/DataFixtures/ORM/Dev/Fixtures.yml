@@ -27,7 +27,7 @@ AppBundle\Entity\WorkCategory:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
 
 
-## Works Image
+## Work Images
 AppBundle\Entity\WorkImage:
   workImage{1..100}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
