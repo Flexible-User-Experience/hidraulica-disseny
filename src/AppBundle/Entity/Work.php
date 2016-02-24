@@ -33,6 +33,8 @@ class Work extends AbstractBase
     private $mainImage;
 
     /**
+     * @var WorkCategory
+     *
      * @ORM\ManyToOne(targetEntity="WorkCategory", inversedBy="works")
      * @ORM\JoinColumn(name="workCategory_id", referencedColumnName="id")
      */

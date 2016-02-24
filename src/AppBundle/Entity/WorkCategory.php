@@ -24,13 +24,11 @@ class WorkCategory extends AbstractBase
     use SlugTrait;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Work", mappedBy="workCategory")
      */
     private $works;
 
-    public function __construct() {
-        $this->works = new ArrayCollection();
-    }
 
     /**
      *
@@ -40,8 +38,12 @@ class WorkCategory extends AbstractBase
      *
      */
 
+    public function __construct() {
+        $this->works = new ArrayCollection();
+    }
+
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getWorks()
     {
@@ -49,10 +51,10 @@ class WorkCategory extends AbstractBase
     }
 
     /**
-     * @param mixed $works
+     * @param ArrayCollection $works
      * @return WorkCategory
      */
-    public function setWorks($works)
+    public function setWorks(ArrayCollection $works)
     {
         $this->works = $works;
 
