@@ -39,13 +39,10 @@ class Work extends AbstractBase
     private $workCategory;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work")
      */
     private $workImages;
-
-    public function __construct() {
-        $this->workImages = new ArrayCollection();
-    }
 
     /**
      *
@@ -54,6 +51,10 @@ class Work extends AbstractBase
      *
      *
      */
+
+    public function __construct() {
+        $this->workImages = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -75,7 +76,7 @@ class Work extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getWorkCategory()
     {
@@ -83,7 +84,7 @@ class Work extends AbstractBase
     }
 
     /**
-     * @param mixed $workCategory
+     * @param string $workCategory
      * @return Work
      */
     public function setWorkCategory($workCategory)
@@ -94,7 +95,7 @@ class Work extends AbstractBase
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getWorkImages()
     {
@@ -102,10 +103,10 @@ class Work extends AbstractBase
     }
 
     /**
-     * @param mixed $workImages
+     * @param ArrayCollection $workImages
      * @return Work
      */
-    public function setWorkImages($workImages)
+    public function setWorkImages(ArrayCollection $workImages)
     {
         $this->workImages = $workImages;
         return $this;
