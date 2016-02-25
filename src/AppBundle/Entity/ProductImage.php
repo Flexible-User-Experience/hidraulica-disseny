@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Traits\ImageTrait;
 
 /**
  * Class ProductImage
@@ -17,26 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class ProductImage extends AbstractBase
 {
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $imageName;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $alt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $position = 1;
+    use ImageTrait;
 
     /**
      * @var Product
@@ -53,63 +35,6 @@ class ProductImage extends AbstractBase
      *
      *
      */
-
-    /**
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
-    }
-
-    /**
-     * @param string $imageName
-     * @return ProductImage
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAlt()
-    {
-        return $this->alt;
-    }
-
-    /**
-     * @param string $alt
-     * @return ProductImage
-     */
-    public function setAlt($alt)
-    {
-        $this->alt = $alt;
-
-        return $this;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param integer $position
-     * @return ProductImage
-     */
-    public function setPosition($position)
-    {
-        $this->position = $position;
-
-        return $this;
-    }
 
     /**
      * @return Product
