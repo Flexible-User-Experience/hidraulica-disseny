@@ -38,7 +38,6 @@ class ProductImage extends AbstractBase
      */
     private $position = 1;
 
-
     /**
      * @var Product
      *
@@ -94,7 +93,7 @@ class ProductImage extends AbstractBase
     }
 
     /**
-     * @return string
+     * @return integer
      */
     public function getPosition()
     {
@@ -102,7 +101,7 @@ class ProductImage extends AbstractBase
     }
 
     /**
-     * @param string $position
+     * @param integer $position
      * @return ProductImage
      */
     public function setPosition($position)
@@ -121,7 +120,7 @@ class ProductImage extends AbstractBase
     }
 
     /**
-     * @param $product
+     * @param Product $product
      * @return ProductImage
      */
     public function setProduct(Product $product)

@@ -38,7 +38,6 @@ class WorkImage extends AbstractBase
      */
     private $position = 1;
 
-
     /**
      * @var Work
      *
@@ -94,7 +93,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @return string
+     * @return integer
      */
     public function getPosition()
     {
@@ -102,7 +101,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @param string $position
+     * @param integer $position
      * @return WorkImage
      */
     public function setPosition($position)
@@ -121,7 +120,7 @@ class WorkImage extends AbstractBase
     }
 
     /**
-     * @param $work
+     * @param Work $work
      * @return WorkImage
      */
     public function setWork(Work $work)
