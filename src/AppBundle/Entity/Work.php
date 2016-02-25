@@ -111,6 +111,29 @@ class Work extends AbstractBase
     public function setWorkImages(ArrayCollection $workImages)
     {
         $this->workImages = $workImages;
+
+        return $this;
+    }
+
+    /**
+     * @param WorkImage $workImage
+     * @return $this
+     */
+    public function addWorkImage(WorkImage $workImage)
+    {
+        $this->workImages->add($workImage);
+
+        return $this;
+    }
+
+    /**
+     * @param WorkImage $workImage
+     * @return $this
+     */
+    public function removeWorkImage(WorkImage $workImage)
+    {
+        $this->workImages->removeElement($workImage);
+
         return $this;
     }
 }
