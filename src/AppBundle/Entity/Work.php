@@ -136,4 +136,14 @@ class Work extends AbstractBase
 
         return $this;
     }
+
+    /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString() {
+
+        return $this->title ? $this->getTitle() : '---';
+    }
 }
