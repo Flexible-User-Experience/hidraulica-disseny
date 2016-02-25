@@ -20,12 +20,21 @@ AppBundle\Entity\Work:
     enabled: <boolean(70)>
     workCategory: @workCategory<numberBetween(1, 10)>
 
+## Products
+AppBundle\Entity\Product:
+  product{1..50}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    title: <sentence()>
+    description: <paragraph()>
+    mainImage: <word()>
+    price: <randomFloat(2, 0, 10)>
+    enabled: <boolean(70)>
+
 ## Work Category
 AppBundle\Entity\WorkCategory:
   workCategory{1..10}:
     title: <sentence()>
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-
 
 ## Work Images
 AppBundle\Entity\WorkImage:
@@ -35,3 +44,12 @@ AppBundle\Entity\WorkImage:
     alt: <word()>
     position: <numberBetween(1, 5)>
     work: @work<numberBetween(1, 50)>
+
+## Product Images
+AppBundle\Entity\ProductImage:
+  productImage{1..100}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    imageName: <word()>
+    alt: <word()>
+    position: <numberBetween(1, 5)>
+    product: @product<numberBetween(1, 50)>
