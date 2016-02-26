@@ -2,6 +2,6 @@ services:
 # Sonata Admins
     admin.work:
         class: AppBundle\Admin\WorkAdmin
-        arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, ~ ]
+        arguments: [ ~, AppBundle\Entity\Work, ~ ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Work", group: "Web" }
+            - { name: sonata.admin, manager_type: orm, label: "Work", group: "Works" }

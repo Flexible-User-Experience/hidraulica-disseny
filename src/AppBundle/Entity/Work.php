@@ -144,6 +144,6 @@ class Work extends AbstractBase
      */
     public function __toString() {
 
-        return $this->title ? $this->getTitle() : '---';
+        return $this->id ? '#' . $this->getId() . ' · ' . $this->getTitle() :  '---';
     }
 }

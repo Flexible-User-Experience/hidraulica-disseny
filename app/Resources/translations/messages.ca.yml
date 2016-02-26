@@ -1,0 +1,7 @@
+backend:
+    admin:
+        title: Títol
+        description: Descripció
+        main_image: Imatge principal
+        created_date: Data de creació
+        enabled: Actiu

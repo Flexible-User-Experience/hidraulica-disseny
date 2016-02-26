@@ -18,10 +18,10 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class WorkAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Content';
-    protected $baseRoutePattern = 'web/content';
+    protected $classnameLabel = 'Work';
+    protected $baseRoutePattern = 'works/work';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
+        '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
 
@@ -35,7 +35,23 @@ class WorkAdmin extends AbstractBaseAdmin
             ->add(
                 'title',
                 null,
-                array()
+                array(
+                    'label'    => 'backend.admin.title',
+                )
+            )
+            ->add(
+                'description',
+                null,
+                array(
+                    'label'    => 'backend.admin.description',
+                )
+            )
+            ->add(
+                'mainImage',
+                null,
+                array(
+                    'label'    => 'backend.admin.main_image',
+                )
             );
     }
 
@@ -46,24 +62,40 @@ class WorkAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
-                'title',
+                'createdAt',
                 null,
-                array()
+                array(
+                    'label'    => 'backend.admin.created_date',
+                )
             )
             ->add(
-                'workImages',
+                'title',
                 null,
-                array()
+                array(
+                    'label'    => 'backend.admin.title',
+                )
             )
             ->add(
                 'description',
                 null,
-                array()
+                array(
+                    'label'    => 'backend.admin.description',
+                )
+            )
+            ->add(
+                'mainImage',
+                null,
+                array(
+                    'label'    => 'backend.admin.main_image',
+                )
             )
             ->add(
                 'enabled',
                 null,
-                array()
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'editable' => true,
+                )
             );
     }
 
@@ -75,16 +107,40 @@ class WorkAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
+                'createdAt',
+                null,
+                array(
+                    'label'    => 'backend.admin.created_date',
+                )
+            )
+            ->add(
                 'title',
                 null,
                 array(
+                    'label'    => 'backend.admin.title',
                     'editable' => true,
+                )
+            )
+            ->add(
+                'description',
+                null,
+                array(
+                    'label'    => 'backend.admin.description',
+                )
+            )
+            ->add(
+                'mainImage',
+                null,
+                array(
+                    'label'    => 'backend.admin.main_image',
+
                 )
             )
             ->add(
                 'enabled',
                 null,
                 array(
+                    'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
