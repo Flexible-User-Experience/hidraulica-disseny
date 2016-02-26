@@ -5,3 +5,4 @@ backend:
         main_image: Imatge principal
         created_date: Data de creació
         enabled: Actiu
+        controls: Controls

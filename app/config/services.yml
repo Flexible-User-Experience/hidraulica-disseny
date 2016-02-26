@@ -5,3 +5,8 @@ services:
         arguments: [ ~, AppBundle\Entity\Work, ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Work", group: "Works" }
+    admin.workcategory:
+        class: AppBundle\Admin\WorkCategoryAdmin
+        arguments: [ ~, AppBundle\Entity\WorkCategory, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Category", group: "Works" }
