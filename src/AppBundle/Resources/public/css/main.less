@@ -1,0 +1,39 @@
+// Imports
+@import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
+@import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
+
+// Variables
+@magenta: #CD5599;
+@gap-big: @gap-normal * 2;
+@gap-normal: 20px;
+@gap-small: @gap-normal / 2;
+
+// Fonts
+@icon-font-path: "/bundles/app/fonts/";
+@fa-font-path: "/bundles/app/fonts";
+
+// Textarea
+textarea { resize: vertical; }
+
+// Gaps
+.no-m { margin: 0; }
+.no-m-top { margin-top: 0; }
+.no-m-bottom { margin-bottom: 0; }
+.no-m-left { margin-left: 0; }
+.no-m-right { margin-right: 0; }
+.extra-m-top { margin-top: @gap-big; }
+.extra-m-bottom { margin-bottom: @gap-big; }
+.no-p-left { padding-left: 0; }
+.no-p-right { padding-right: 0; }
+.no-h-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Clean ups
+.d-block { display: block; }
+.no-overflow { overflow: hidden; }
+.no-underline {
+  text-decoration: none;
+  &:hover { text-decoration: none; }
+}

@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends ':Frontend:layout.html.twig' %}
 
 {% block body %}
     <div class="container-fluid">
         <div class="text-center row">
             <div class="col-md-4">
                 <div class="title">
-                    <h3>hidraulica</h3>
+                    <h3>{{ project_title }}</h3>
                 </div>
             </div>
             <div class="col-md-8">
@@ -52,5 +52,3 @@
     </a>
     </div>
 {% endblock %}
-            {% block stylesheets %}
-            {% endblock %}

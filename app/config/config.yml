@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+# Framework
 framework:
     translator:      { fallbacks: [ "%locale%" ] }
     secret:          "%secret%"
@@ -25,15 +26,41 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
+# Twig
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     form_themes:
         - "bootstrap_3_layout.html.twig"
         - "SonataCoreBundle:Form:datepicker.html.twig"
+    globals:
+        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_account: "%google_analytics_account%"
+        project_title:            "%project_web_title%"
+        admin_tag_version:        "v0.0.1"
 
-# Doctrine Configuration
+# Assetic
+assetic:
+    debug:          "%kernel.debug%"
+    java:           "%assetic_path_java%"
+    node:           "%assetic_path_node%"
+    use_controller: false
+    filters:
+        cssrewrite: ~
+        less:
+            node:       "%assetic_path_node%"
+            node_paths: [ "%assetic_path_node_modules%" ]
+    assets:
+        mycss:
+            inputs:
+                - "@AppBundle/Resources/public/css/main.less"    # comment this line to avoid double included CSS
+#                - "@AppBundle/Resources/public/css/icomoon.less"
+        myjs:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
+                - "%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js"
+
+# Doctrine
 doctrine:
     dbal:
         driver:   "%database_driver%"
@@ -50,7 +77,7 @@ doctrine:
 
 # Stof Doctrine Extensions
 stof_doctrine_extensions:
-    default_locale:       "%locale%"
+    default_locale: "%locale%"
     orm:
         default:
             softdeleteable: true
@@ -60,7 +87,7 @@ stof_doctrine_extensions:
             sortable:       false
             tree:           false
 
-# Swiftmailer Configuration
+# Swiftmailer
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
@@ -68,7 +95,7 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-# Sonata configs
+# Sonata
 sonata_block:
     default_contexts: [ cms ]
     blocks:
@@ -77,7 +104,7 @@ sonata_block:
         sonata.block.service.text:      ~
 
 sonata_admin:
-    title: "Hidraulica Disseny"
+    title: "%project_web_title%"
 #    title_logo: "/bundles/app/images/backend-favicon.png"
     options:
         html5_validate: true
@@ -85,7 +112,6 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
-
     dashboard:
         groups:
             Works:
