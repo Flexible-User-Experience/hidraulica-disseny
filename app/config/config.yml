@@ -3,14 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
-parameters:
-    locale: en
-
+# Framework
 framework:
-    #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: [ "%locale%" ] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -20,7 +15,7 @@ framework:
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: [ "twig" ]
         #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
@@ -31,37 +26,123 @@ framework:
     fragments:       ~
     http_method_override: true
 
-# Twig Configuration
+# Twig
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - "bootstrap_3_layout.html.twig"
+        - "SonataCoreBundle:Form:datepicker.html.twig"
+    globals:
+        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_account: "%google_analytics_account%"
+        project_title:            "%project_web_title%"
+        admin_tag_version:        "v0.0.1"
 
-# Doctrine Configuration
+# Assetic
+assetic:
+    debug:          "%kernel.debug%"
+    java:           "%assetic_path_java%"
+    node:           "%assetic_path_node%"
+    use_controller: false
+    filters:
+        cssrewrite: ~
+        less:
+            node:       "%assetic_path_node%"
+            node_paths: [ "%assetic_path_node_modules%" ]
+    assets:
+        mycss:
+            inputs:
+                - "@AppBundle/Resources/public/css/main.less"    # comment this line to avoid double included CSS
+#                - "@AppBundle/Resources/public/css/icomoon.less"
+        myjs:
+            inputs:
+                - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
+                - "%kernel.root_dir%/../vendor/twbs/bootstrap/dist/js/bootstrap.js"
+
+# Doctrine
 doctrine:
     dbal:
-        driver:   pdo_mysql
+        driver:   "%database_driver%"
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
 
-# Swiftmailer Configuration
+# Stof Doctrine Extensions
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            softdeleteable: true
+            timestampable:  true
+            sluggable:      true
+            translatable:   false
+            sortable:       false
+            tree:           false
+
+# Swiftmailer
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Sonata
+sonata_block:
+    default_contexts: [ cms ]
+    blocks:
+        sonata.admin.block.admin_list:  ~
+        sonata.user.block.menu:         ~
+        sonata.block.service.text:      ~
+
+sonata_admin:
+    title: "%project_web_title%"
+#    title_logo: "/bundles/app/images/backend-favicon.png"
+    options:
+        html5_validate: true
+        confirm_exit:   true
+        use_select2:    true
+        pager_links:    10
+    persist_filters: true
+    dashboard:
+        groups:
+            Works:
+#                icon: "<i class='fa fa-chrome'></i>"
+            Products:
+#                icon: "<i class='fa fa-cog'></i>"
+            Contacts:
+#                icon: "<i class='fa fa-cog'></i>"
+        blocks:
+            -
+                position: top
+                type: sonata.block.service.text
+                class: col-md-12
+                settings:
+                    content: >
+                        <h1 style="margin-top:0">Content Management System</h1>
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Works ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Products ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Contacts ]
