@@ -33,8 +33,10 @@ twig:
         - "bootstrap_3_layout.html.twig"
         - "SonataCoreBundle:Form:datepicker.html.twig"
     globals:
-        project_title: "Hidràulica Disseny"
-        admin_tag_version: "v0.0.1"
+        google_analytics_enabled: %google_analytics_enabled%
+        google_analytics_account: "%google_analytics_account%"
+        project_title:            "%project_web_title%"
+        admin_tag_version:        "v0.0.1"
 
 # Doctrine Configuration
 doctrine:
@@ -80,7 +82,7 @@ sonata_block:
         sonata.block.service.text:      ~
 
 sonata_admin:
-    title: "Hidraulica Disseny"
+    title: "%project_web_title%"
 #    title_logo: "/bundles/app/images/backend-favicon.png"
     options:
         html5_validate: true
