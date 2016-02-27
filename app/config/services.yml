@@ -15,3 +15,8 @@ services:
         arguments: [ ~, AppBundle\Entity\WorkImage, ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works" }
+    admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [ ~, AppBundle\Entity\Product, ~ ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Product", group: "Products" }

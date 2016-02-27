@@ -104,7 +104,7 @@ sonata_admin:
         groups:
             Works:
 #                icon: "<i class='fa fa-chrome'></i>"
-#            Admin:
+            Products:
 #                icon: "<i class='fa fa-cog'></i>"
         blocks:
             -
@@ -120,3 +120,9 @@ sonata_admin:
                 class: col-md-6
                 settings:
                     groups: [ Works ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Products ]

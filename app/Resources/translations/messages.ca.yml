@@ -1,12 +1,14 @@
 backend:
     admin:
-        title: Títol
-        description: Descripció
-        main_image: Imatge principal
-        image_name: Nom imatge
-        image: Imatge
-        created_date: Data de creació
-        enabled: Actiu
-        controls: Controls
-        position: Ordre
         alt: alt
+        created_date: Data de creació
+        controls: Controls
+        description: Descripció
+        enabled: Actiu
+        image: Imatge
+        image_name: Nom imatge
+        main_image: Imatge principal
+        position: Ordre
+        price: Preu
+        product: Producte
+        title: Títol
