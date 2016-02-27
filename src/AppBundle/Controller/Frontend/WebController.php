@@ -12,6 +12,6 @@ class WebController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('default/index.html.twig');
+        return $this->render(':Frontend:homepage.html.twig');
     }
 }
