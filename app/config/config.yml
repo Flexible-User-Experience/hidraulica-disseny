@@ -32,6 +32,9 @@ twig:
     form_themes:
         - "bootstrap_3_layout.html.twig"
         - "SonataCoreBundle:Form:datepicker.html.twig"
+    globals:
+        project_title: "Hidràulica Disseny"
+        admin_tag_version: "v0.0.1"
 
 # Doctrine Configuration
 doctrine:
