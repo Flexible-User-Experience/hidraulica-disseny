@@ -3,6 +3,10 @@ backend:
         title: Títol
         description: Descripció
         main_image: Imatge principal
+        image_name: Nom imatge
+        image: Imatge
         created_date: Data de creació
         enabled: Actiu
         controls: Controls
+        position: Ordre
+        alt: alt
