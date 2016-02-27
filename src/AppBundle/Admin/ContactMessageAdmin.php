@@ -23,20 +23,20 @@ class ContactMessageAdmin extends AbstractBaseAdmin
         '_sort_order' => 'desc',
     );
 
-//    /**
-//     * Configure route collection
-//     *
-//     * @param RouteCollection $collection
-//     */
-//    protected function configureRoutes(RouteCollection $collection)
-//    {
-//        $collection
-//            ->remove('create')
-//            ->remove('edit')
-//            ->remove('delete')
-//            ->remove('batch')
-//            ->add('answer', $this->getRouterIdParameter() . '/answer');
-//    }
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection
+            ->remove('create')
+            ->remove('edit')
+            ->remove('delete')
+            ->remove('batch')
+            ->add('answer', $this->getRouterIdParameter() . '/answer');
+    }
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -47,7 +47,9 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->add(
                 'checked',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.checked',
+                )
             )
 //            ->add(
 //                'createdAt',
@@ -60,23 +62,29 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->add(
                 'email',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.email',
+                )
             )
             ->add(
                 'message',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.message',
+                )
             )
             ->add(
                 'answered',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.answered',
+                )
             )
             ->add(
                 'description',
                 null,
                 array(
-                    'label' => 'backend.admin.answer',
+                    'label' => 'backend.admin.description',
                 )
             );
     }
@@ -98,22 +106,30 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->add(
                 'checked',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.checked',
+                )
             )
             ->add(
                 'email',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.email',
+                )
             )
             ->add(
                 'message',
                 'textarea',
-                array()
+                array(
+                    'label' => 'backend.admin.message',
+                )
             )
             ->add(
                 'answered',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.answered',
+                )
             );
         if ($this->getSubject()->getAnswered()) {
             $showMapper
@@ -121,7 +137,7 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     'description',
                     'textarea',
                     array(
-                        'label' => 'backend.admin.answer',
+                        'label' => 'backend.admin.description',
                     )
                 );
         }
@@ -137,7 +153,9 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->add(
                 'checked',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.checked',
+                )
             )
 //            ->add(
 //                'createdAt',
@@ -150,12 +168,16 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->add(
                 'email',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.email',
+                )
             )
             ->add(
                 'answered',
                 null,
-                array()
+                array(
+                    'label' => 'backend.admin.answered',
+                )
             )
             ->add(
                 '_action',
@@ -163,9 +185,9 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 array(
                     'actions' => array(
                         'show' => array(),
-//                        'answer' => array(
-//                            'template' => '::Admin/Cells/list__action_answer.html.twig'
-//                        )
+                        'answer' => array(
+                            'template' => '::Admin/Cells/list__action_answer.html.twig'
+                        )
                     ),
                 )
             );

@@ -1,13 +1,18 @@
 backend:
     admin:
         alt: alt
+        answer_action: Answer
+        answered: Respost
+        checked: Vàlida
         created_date: Data de creació
         controls: Controls
         description: Descripció
+        email: Correu electrònic
         enabled: Actiu
         image: Imatge
         image_name: Nom imatge
         main_image: Imatge principal
+        message: Missatge
         position: Ordre
         price: Preu
         product: Producte
