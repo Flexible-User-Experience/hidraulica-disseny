@@ -115,11 +115,11 @@ sonata_admin:
     dashboard:
         groups:
             Works:
-#                icon: "<i class='fa fa-chrome'></i>"
+                icon: "<i class='fa fa-briefcase'></i>"
             Products:
-#                icon: "<i class='fa fa-cog'></i>"
+                icon: "<i class='fa fa-table'></i>"
             Contacts:
-#                icon: "<i class='fa fa-cog'></i>"
+                icon: "<i class='fa fa-envelope'></i>"
         blocks:
             -
                 position: top
