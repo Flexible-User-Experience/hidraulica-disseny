@@ -3,7 +3,12 @@
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
 
 // Variables
-@magenta: #CD5599;
+@blue-dark:   #08122F;
+@blue-light:  #2D7477;
+@cream-dark:  #B5AE7F;
+@cream-light: #D2CCA9;
+@white:       #FFFFFF;
+@black:       #222222;
 @gap-big: @gap-normal * 2;
 @gap-normal: 20px;
 @gap-small: @gap-normal / 2;
@@ -11,6 +16,20 @@
 // Fonts
 @icon-font-path: "/bundles/app/fonts/";
 @fa-font-path: "/bundles/app/fonts";
+
+// Colors
+.c-dblue    { color: @blue-dark }
+.c-lblue    { color: @blue-light }
+.c-dcream   { color: @cream-dark }
+.c-lcream   { color: @cream-light }
+.c-white    { color: @white }
+.c-black    { color: @black }
+.bc-dblue   { background-color: @blue-dark }
+.bc-lblue   { background-color: @blue-light }
+.bc-dcream  { background-color: @cream-dark }
+.bc-lcream  { background-color: @cream-light }
+.bc-white   { background-color: @white }
+.bc-black   { background-color: @black }
 
 // Textarea
 textarea { resize: vertical; }
