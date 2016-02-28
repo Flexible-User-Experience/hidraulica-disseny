@@ -41,9 +41,10 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                null,
+                'sonata_type_date_picker',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
                 )
             )
             ->add(
@@ -81,9 +82,11 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                null,
+                'doctrine_orm_date',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'      => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format'     => 'd-m-Y',
                 )
             )
             ->add(
@@ -127,9 +130,11 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                null,
+                'date',
                 array(
                     'label'    => 'backend.admin.created_date',
+                    'format'   => 'd/m/Y',
+                    'editable' => true,
                 )
             )
             ->add(
