@@ -95,6 +95,17 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# FOS User
+fos_user:
+    db_driver:      orm
+    firewall_name:  admin
+    user_class:     AppBundle\Entity\User
+    group:
+        group_class:   AppBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
+
 # Sonata
 sonata_block:
     default_contexts: [ cms ]
@@ -154,3 +165,7 @@ sonata_doctrine_orm_admin:
     templates:
         form:
             - "::Admin/Forms/custom_checkbox_form_template_hack.html.twig"
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
