@@ -6,9 +6,11 @@ backend:
         checked: Vàlida
         created_date: Data de creació
         controls: Controls
+        date: Data
         description: Descripció
         email: Correu electrònic
         enabled: Actiu
+        general: General
         image: Imatge
         image_name: Nom imatge
         main_image: Imatge principal

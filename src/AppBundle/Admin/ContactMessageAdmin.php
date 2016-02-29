@@ -157,14 +157,14 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     'label' => 'backend.admin.checked',
                 )
             )
-//            ->add(
-//                'createdAt',
-//                'date',
-//                array(
-//                    'label'  => 'backend.admin.date',
-//                    'format' => 'd/m/Y'
-//                )
-//            )
+            ->add(
+                'createdAt',
+                'date',
+                array(
+                    'label'  => 'backend.admin.date',
+                    'format' => 'd/m/Y'
+                )
+            )
             ->add(
                 'email',
                 null,

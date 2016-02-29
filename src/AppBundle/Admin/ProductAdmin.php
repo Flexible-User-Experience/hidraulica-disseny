@@ -31,15 +31,15 @@ class ProductAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.product', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'createdAt',
-                null,
+                'sonata_type_date_picker',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
                 )
             )
-
             ->add(
                 'title',
                 null,
@@ -89,9 +89,11 @@ class ProductAdmin extends AbstractBaseAdmin
         $datagridMapper
             ->add(
                 'createdAt',
-                null,
+                'doctrine_orm_date',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'      => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format'     => 'd-m-Y',
                 )
             )
             ->add(
@@ -141,9 +143,11 @@ class ProductAdmin extends AbstractBaseAdmin
         $listMapper
             ->add(
                 'createdAt',
-                null,
+                'date',
                 array(
                     'label'    => 'backend.admin.created_date',
+                    'format'   => 'd/m/Y',
+                    'editable' => true,
                 )
             )
             ->add(

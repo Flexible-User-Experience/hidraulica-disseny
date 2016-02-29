@@ -30,3 +30,11 @@ services:
         arguments: [ ~, AppBundle\Entity\ContactMessage, ~ ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Contact Message", group: "Contacts" }
+# Messaging
+    app.courier:
+        class: AppBundle\Service\CourierService
+        arguments: [ "@swiftmailer.mailer" ]
+    app.notification:
+        class: AppBundle\Service\NotificationService
+        arguments: [ "@app.courier", "@twig", "%mailer_destination%" ]
+
