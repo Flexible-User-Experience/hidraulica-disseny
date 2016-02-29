@@ -22,6 +22,9 @@ class NotificationService
     /** @var string */
     private $amd;
 
+    /** @var string */
+    private $urlBase;
+
     /**
      * NotificationService constructor
      *
@@ -29,11 +32,12 @@ class NotificationService
      * @param \Twig_Environment $twig
      * @param string            $amd
      */
-    public function __construct(CourierService $messenger, \Twig_Environment $twig, $amd)
+    public function __construct(CourierService $messenger, \Twig_Environment $twig, $amd, $urlBase)
     {
         $this->messenger = $messenger;
         $this->twig = $twig;
         $this->amd = $amd;
+        $this->urlBase = $urlBase;
     }
 
     /**
@@ -46,7 +50,7 @@ class NotificationService
         $this->messenger->sendEmail(
             $contactMessage->getEmail(),
             $this->amd,
-            'www.asbelesteve.com contact form received',
+            $this->urlBase . ' contact form received',
             $this->twig->render(':Mails:contact_form_admin_notification.html.twig', array(
                 'contact' => $contactMessage,
             ))
@@ -63,7 +67,7 @@ class NotificationService
         $this->messenger->sendEmail(
             $this->amd,
             $contactMessage->getEmail(),
-            'www.asbelesteve.com question received',
+            $this->urlBase . ' question received',
             $this->twig->render(':Mails:contact_form_user_notification.html.twig', array(
                 'contact' => $contactMessage,
             ))
@@ -80,7 +84,7 @@ class NotificationService
         $this->messenger->sendEmail(
             $this->amd,
             $contactMessage->getEmail(),
-            'www.asbelesteve.com contact form answer',
+            $this->urlBase . ' contact form answer',
             $this->twig->render(':Mails:contact_form_user_backend_notification.html.twig', array(
                 'contact' => $contactMessage,
             ))
