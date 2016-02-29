@@ -21,29 +21,34 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#menu">
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-{% block body %}{% endblock %}
-{#<!-- Footer -->#}
-{% block footer %}
-    <footer>
-        <div class="container">
-            <div class="row">
-                <li class="text-left col-md-4">
-                    <a href="mailto:hola@hidraulicadisseny.com">hola@hidraulicadisseny.com</a>
-                </li>
-                <li class="col-md-8">
-                    {#{{ knp_menu_render('socialnetworks') }}#}
-                </li>
-            </div>
-        </div>
-    </footer>
-{% endblock %}
-{% block javascripts %}
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-{% endblock %}
+<body>
+    {#<!-- Main content -->#}
+    {% block main %}{% endblock %}
+    {#<!-- Scroll-Top effect -->#}
+    {#<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-2x fa-arrow-circle-up"></i></span></div>#}
+    {#<!-- Footer -->#}
+    {% block footer %}{% endblock %}
+    {#<!-- Javascripts -->#}
+    {% block javascripts %}
+        {% javascripts '@myjs' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+    {% block scroll_top %}
+        {#<!-- Scroll-Top effect JS -->#}
+        {% include ':Frontend/includes:scroll-to-top-js.html.twig' %}
+    {% endblock %}
+    {% block analytics %}
+        {#<!-- Google Analytics -->#}
+        {% if google_analytics_enabled %}
+            <script type="text/javascript">
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                ga('create', '{{ google_analytics_account }}', 'auto'); ga('send', 'pageview');
+            </script>
+        {% endif %}
+    {% endblock %}
 </body>
 </html>
