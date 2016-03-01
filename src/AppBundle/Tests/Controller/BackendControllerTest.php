@@ -52,7 +52,6 @@ class BackendTest extends AbstractBaseTest
             array('/admin/contact/message/1/answer'),
             array('/admin/works/category/list'),
             array('/admin/works/category/create'),
-            array('/admin/works/category/1/edit'),
             array('/admin/works/category/1/delete'),
             array('/admin/works/work/list'),
             array('/admin/works/work/create'),
@@ -92,6 +91,7 @@ class BackendTest extends AbstractBaseTest
             array('/admin/contact/message/1/delete'),
             array('/admin/contact/message/batch'),
             array('/admin/works/category/batch'),
+            array('/admin/works/category/1/edit'),
             array('/admin/users/show'),
             array('/admin/users/batch'),
         );

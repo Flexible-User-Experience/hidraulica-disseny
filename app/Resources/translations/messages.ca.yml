@@ -1,21 +1,35 @@
 backend:
     admin:
+        admin: Administrador
+        actions: Accions
         alt: alt
         answer_action: Answer
+        answer: Resposta
         answered: Respost
+        category: Categoria
         checked: Llegit
         created_date: Data de creació
         controls: Controls
         date: Data
         description: Descripció
+        editor: Editor
         email: Correu electrònic
         enabled: Actiu
+        firstname: Nom
         general: General
         image: Imatge
         image_name: Nom imatge
         main_image: Imatge principal
         message: Missatge
+        plain_password: Contrasenya
         position: Ordre
         price: Preu
         product: Producte
+        roles: Rols
+        submit: Enviar
+        superadmin: Superadministrador
         title: Títol
+        user: Usuari
+        username: Usuari
+        user_question: Pregunta del usuari
+        your_answer: La teva resposta
