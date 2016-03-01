@@ -37,6 +37,7 @@ class ContactMessageAnswerType extends ContactMessageType
                 'send',
                 SubmitType::class,
                 array(
+                    'label'    => 'backend.admin.submit',
                     'attr'  => array(
                         'class' => 'btn-primary',
                     ),

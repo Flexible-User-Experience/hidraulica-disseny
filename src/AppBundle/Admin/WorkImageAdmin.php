@@ -164,6 +164,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),

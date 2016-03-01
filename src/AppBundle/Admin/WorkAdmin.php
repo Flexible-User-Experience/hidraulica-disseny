@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class WorkAdmin
@@ -60,7 +61,18 @@ class WorkAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.main_image',
                 )
-            );
+            )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'required' => false,
+                )
+            )
+            ->end();
     }
 
     /**
@@ -160,6 +172,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),
