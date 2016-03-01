@@ -137,7 +137,7 @@ sonata_admin:
             Contacts:
                 icon: "<i class='fa fa-envelope'></i>"
             Admin:
-                icon: "<i class='fa fa-envelope'></i>"
+                icon: "<i class='fa fa-user'></i>"
         blocks:
             -
                 position: top

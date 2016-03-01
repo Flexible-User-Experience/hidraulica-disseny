@@ -21,6 +21,4 @@
 !/web/uploads/.gitkeep
 /.idea
 /Capfile
-/dbreset.sh
-/test.sh
 /backups/
