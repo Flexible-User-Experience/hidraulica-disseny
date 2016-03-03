@@ -32,7 +32,7 @@ class WorkAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
             ->add(
                 'createdAt',
                 'sonata_type_date_picker',
@@ -50,8 +50,9 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                null,
+                'ckeditor',
                 array(
+                    'config_name' => 'my_config',
                     'label'    => 'backend.admin.description',
                 )
             )
@@ -63,7 +64,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'enabled',
                 'checkbox',
