@@ -39,7 +39,7 @@ class Work extends AbstractBase
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work")
+     * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $workImages;
 
@@ -99,6 +99,7 @@ class Work extends AbstractBase
      */
     public function addWorkImage(WorkImage $workImage)
     {
+        $workImage->setWork($this);
         $this->workImages->add($workImage);
 
         return $this;

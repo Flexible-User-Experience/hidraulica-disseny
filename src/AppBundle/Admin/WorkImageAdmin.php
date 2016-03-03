@@ -2,8 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -33,10 +31,22 @@ class WorkImageAdmin extends AbstractBaseAdmin
         $formMapper
             ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'imageName',
+                'work',
                 null,
                 array(
+                    'attr'     => array(
+                        'hidden' => true,
+                    ),
+                )
+            )
+            ->add(
+                'imageName',
+                'file',
+                array(
                     'label'    => 'backend.admin.image_name',
+                    'required'    => false,
+                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
             ->add(

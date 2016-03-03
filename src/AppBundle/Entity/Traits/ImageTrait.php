@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\File\File;
@@ -58,7 +59,7 @@ Trait ImageTrait
      */
 
     /**
-     * @return File
+     * @return File|UploadedFile
      */
     public function getImageFile()
     {
@@ -66,10 +67,10 @@ Trait ImageTrait
     }
 
     /**
-     * @param File $imageFile
+     * @param File|UploadedFile $imageFile
      * @return $this
      */
-    public function setImageFile($imageFile)
+    public function setImageFile(File $imageFile = null)
     {
         $this->imageFile = $imageFile;
         if ($imageFile) {
