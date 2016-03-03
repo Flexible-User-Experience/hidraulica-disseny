@@ -24,7 +24,7 @@ services:
         class: AppBundle\Admin\ProductImageAdmin
         arguments: [ ~, AppBundle\Entity\ProductImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Products" }
+            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Products", show_in_dashboard: false }
     admin.contactmessage:
         class: AppBundle\Admin\ContactMessageAdmin
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]

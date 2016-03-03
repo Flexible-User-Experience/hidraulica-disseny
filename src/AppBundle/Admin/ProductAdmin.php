@@ -30,7 +30,16 @@ class ProductAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
+            ->add(
+                'imageFile',
+                'file',
+                array(
+                    'label'    => 'backend.admin.image',
+                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                )
+            )
             ->add(
                 'createdAt',
                 'sonata_type_date_picker',
@@ -48,16 +57,10 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                null,
+                'ckeditor',
                 array(
+                    'config_name' => 'my_config',
                     'label'    => 'backend.admin.description',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
                 )
             )
             ->add(
@@ -68,7 +71,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'enabled',
                 'checkbox',
@@ -78,6 +81,28 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->end();
+        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
+            $formMapper
+                ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
+                ->add(
+                    'productImages',
+                    'sonata_type_collection',
+                    array(
+                        'label'              => ' ',
+                        'required'           => false,
+                        'cascade_validation' => true,
+                    ),
+                    array(
+                        'edit'     => 'inline',
+                        'inline'   => 'table',
+                        'sortable' => 'position',
+                    )
+                )
+                ->end()
+                ->setHelps(
+                    array('productImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
+                );
+        }
     }
 
     /**
@@ -110,13 +135,6 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
-                )
-            )
-            ->add(
                 'price',
                 null,
                 array(
@@ -141,6 +159,14 @@ class ProductAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
+                'imageFile',
+                null,
+                array(
+                    'label'    => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
+            ->add(
                 'createdAt',
                 'date',
                 array(
@@ -155,21 +181,6 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.title',
                     'editable' => true,
-                )
-            )
-            ->add(
-                'description',
-                null,
-                array(
-                    'label'    => 'backend.admin.description',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
-
                 )
             )
             ->add(
