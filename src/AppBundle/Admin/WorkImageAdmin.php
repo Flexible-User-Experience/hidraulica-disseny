@@ -40,7 +40,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'imageName',
+                'imageFile',
                 'file',
                 array(
                     'label'    => 'backend.admin.image_name',
