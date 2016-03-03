@@ -46,7 +46,6 @@ AppBundle\Entity\Product:
 AppBundle\Entity\ProductImage:
   productImage{1..25}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
     product: @product<numberBetween(1, 10)>

@@ -2,8 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -33,25 +31,29 @@ class ProductImageAdmin extends AbstractBaseAdmin
         $formMapper
             ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'imageName',
+                'product',
                 null,
+                array(
+                    'attr'     => array(
+                        'hidden' => true,
+                    ),
+                )
+            )
+            ->add(
+                'imageFile',
+                'file',
                 array(
                     'label'    => 'backend.admin.image_name',
+                    'required'    => false,
+                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
             ->add(
-                'createdAt',
-                'sonata_type_date_picker',
-                array(
-                    'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
-                )
-            )
-            ->add(
-                'alt',
+                'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.alt',
+                    'label'    => 'backend.admin.position',
                 )
             )
             ->end()
