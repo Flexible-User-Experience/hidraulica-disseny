@@ -40,18 +40,10 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'sonata_type_date_picker',
-                array(
-                    'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
-                )
-            )
-            ->add(
-                'alt',
+                'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.alt',
+                    'label'    => 'backend.admin.position',
                 )
             )
             ->end()

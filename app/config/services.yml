@@ -14,7 +14,7 @@ services:
         class: AppBundle\Admin\WorkImageAdmin
         arguments: [ ~, AppBundle\Entity\WorkImage, ~ ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works" }
+            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works", show_in_dashboard: false }
     admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [ ~, AppBundle\Entity\Product, ~ ]
