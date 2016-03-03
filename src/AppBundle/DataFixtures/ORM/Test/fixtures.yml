@@ -16,7 +16,6 @@ AppBundle\Entity\Work:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     enabled: <boolean(70)>
     workCategory: @workCategory<numberBetween(1, 3)>
 
@@ -26,7 +25,6 @@ AppBundle\Entity\Product:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     price: <randomFloat(2, 0, 10)>
     enabled: <boolean(70)>
 
@@ -40,7 +38,6 @@ AppBundle\Entity\WorkCategory:
 AppBundle\Entity\WorkImage:
   workImage{1..20}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
     work: @work<numberBetween(1, 10)>

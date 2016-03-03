@@ -34,6 +34,15 @@ class WorkAdmin extends AbstractBaseAdmin
         $formMapper
             ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
             ->add(
+                'imageFile',
+                'file',
+                array(
+                    'label'    => 'backend.admin.image',
+                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                )
+            )
+            ->add(
                 'createdAt',
                 'sonata_type_date_picker',
                 array(
@@ -61,13 +70,6 @@ class WorkAdmin extends AbstractBaseAdmin
                 array(
                     'config_name' => 'my_config',
                     'label'    => 'backend.admin.description',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
                 )
             )
             ->end()

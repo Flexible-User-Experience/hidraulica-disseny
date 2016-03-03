@@ -2,12 +2,14 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Class Work
@@ -18,19 +20,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkRepository")
+ * @Vich\Uploadable
  */
 class Work extends AbstractBase
 {
+    use ImageTrait;
     use TitleTrait;
     use SlugTrait;
     use DescriptionTrait;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255)
-     */
-    private $mainImage;
 
     /**
      * @var WorkCategory
@@ -56,25 +53,6 @@ class Work extends AbstractBase
 
     public function __construct() {
         $this->workImages = new ArrayCollection();
-    }
-
-    /**
-     * @return string
-     */
-    public function getMainImage()
-    {
-        return $this->mainImage;
-    }
-
-    /**
-     * @param string $mainImage
-     * @return Work
-     */
-    public function setMainImage($mainImage)
-    {
-        $this->mainImage = $mainImage;
-
-        return $this;
     }
 
     /**
