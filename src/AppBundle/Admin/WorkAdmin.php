@@ -49,6 +49,13 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'workCategory',
+                null,
+                array(
+                    'label'    => 'backend.admin.category',
+                )
+            )
+            ->add(
                 'description',
                 'ckeditor',
                 array(
@@ -96,6 +103,13 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.title',
+                )
+            )
+            ->add(
+                'workCategory',
+                null,
+                array(
+                    'label'    => 'backend.admin.category',
                 )
             )
             ->add(
@@ -147,10 +161,10 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'description',
+                'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.description',
+                    'label'    => 'backend.admin.category',
                 )
             )
             ->add(

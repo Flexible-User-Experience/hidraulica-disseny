@@ -86,10 +86,10 @@ class Work extends AbstractBase
     }
 
     /**
-     * @param WorkCategory $workCategory
+     * @param WorkCategory|null $workCategory
      * @return Work
      */
-    public function setWorkCategory(WorkCategory $workCategory)
+    public function setWorkCategory($workCategory)
     {
         $this->workCategory = $workCategory;
 
