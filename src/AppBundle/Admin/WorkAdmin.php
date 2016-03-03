@@ -144,13 +144,6 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
-                )
-            )
-            ->add(
                 'enabled',
                 null,
                 array(
@@ -167,6 +160,14 @@ class WorkAdmin extends AbstractBaseAdmin
     {
         unset($this->listModes['mosaic']);
         $listMapper
+            ->add(
+                'imageFile',
+                null,
+                array(
+                    'label'    => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
             ->add(
                 'createdAt',
                 'date',
@@ -189,14 +190,6 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.category',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
-
                 )
             )
             ->add(

@@ -2,32 +2,32 @@ services:
 # Sonata Admins
     admin.work:
         class: AppBundle\Admin\WorkAdmin
-        arguments: [ ~, AppBundle\Entity\Work, ~ ]
+        arguments: [ ~, AppBundle\Entity\Work, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Work", group: "Works" }
     admin.workcategory:
         class: AppBundle\Admin\WorkCategoryAdmin
-        arguments: [ ~, AppBundle\Entity\WorkCategory, ~ ]
+        arguments: [ ~, AppBundle\Entity\WorkCategory, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Category", group: "Works" }
     admin.workimage:
         class: AppBundle\Admin\WorkImageAdmin
-        arguments: [ ~, AppBundle\Entity\WorkImage, ~ ]
+        arguments: [ ~, AppBundle\Entity\WorkImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works", show_in_dashboard: false }
     admin.product:
         class: AppBundle\Admin\ProductAdmin
-        arguments: [ ~, AppBundle\Entity\Product, ~ ]
+        arguments: [ ~, AppBundle\Entity\Product, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Product", group: "Products" }
     admin.productimage:
         class: AppBundle\Admin\ProductImageAdmin
-        arguments: [ ~, AppBundle\Entity\ProductImage, ~ ]
+        arguments: [ ~, AppBundle\Entity\ProductImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Image", group: "Products" }
     admin.contactmessage:
         class: AppBundle\Admin\ContactMessageAdmin
-        arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin ]
+        arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Contact Message", group: "Contacts" }
     admin.user:

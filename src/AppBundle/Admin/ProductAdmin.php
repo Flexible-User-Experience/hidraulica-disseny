@@ -2,7 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
 use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
