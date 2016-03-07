@@ -7,7 +7,6 @@ use AppBundle\Entity\Product;
 use AppBundle\Entity\Cart\Cart;
 use AppBundle\Entity\Cart\CartItem;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\SecurityContext;
 
 /**
  * Class CartService
@@ -29,11 +28,6 @@ class CartService
     private $em = null;
 
     /**
-     * @var SecurityContext|null
-     */
-    private $securityContext = null;
-
-    /**
      *
      *
      * Methods
@@ -44,13 +38,11 @@ class CartService
     /**
      * @param Session         $session
      * @param EntityManager   $em
-     * @param SecurityContext $securityContext
      */
-    public function __construct(Session $session, EntityManager $em, SecurityContext $securityContext)
+    public function __construct(Session $session, EntityManager $em)
     {
         $this->session = $session;
         $this->em = $em;
-        $this->securityContext = $securityContext;
     }
 
     /**
@@ -61,19 +53,11 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
-                if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
-                    $cart->setUser($this->securityContext->getToken()->getUser());
-                    $this->em->persist($cart);
-                    $this->em->flush();
-                }
 
                 return $cart;
             }
         }
         $cart = new Cart();
-        if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $cart->setUser($this->securityContext->getToken()->getUser());
-        }
 
         return $cart;
     }
@@ -153,14 +137,12 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
+
                 return $cart;
             }
         }
 
         $cart = new Cart();
-        if ($this->securityContext->isGranted('IS_AUTHENTICATED_FULLY')) {
-            $cart->setUser($this->securityContext->getToken()->getUser());
-        }
         $this->em->persist($cart);
         $this->em->flush();
         $this->session->set('cart', $cart->getId());
@@ -195,6 +177,6 @@ class CartService
      */
     private function getCartById($cartId)
     {
-        return $this->em->getRepository('ECVulcoAppBundle:Cart\Cart')->findOneBy(array('id' => $cartId));
+        return $this->em->getRepository('AppBundle:Cart\Cart')->findOneBy(array('id' => $cartId));
     }
 }
