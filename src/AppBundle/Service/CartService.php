@@ -53,6 +53,8 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
+                $this->em->persist($cart);
+                $this->em->flush();
 
                 return $cart;
             }
@@ -61,7 +63,6 @@ class CartService
 
         return $cart;
     }
-
 
     /**
      * @param int $itemId
