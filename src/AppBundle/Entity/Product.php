@@ -38,7 +38,8 @@ class Product extends AbstractBase
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $productImages;
 
@@ -87,6 +88,29 @@ class Product extends AbstractBase
     public function setProductImages(ArrayCollection $productImages)
     {
         $this->productImages = $productImages;
+        return $this;
+    }
+
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
+    public function addProductImage(ProductImage $productImage)
+    {
+        $productImage->setProduct($this);
+        $this->productImages->add($productImage);
+
+        return $this;
+    }
+
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
+    public function removeProductImage(ProductImage $productImage)
+    {
+        $this->productImages->removeElement($productImage);
+
         return $this;
     }
 }

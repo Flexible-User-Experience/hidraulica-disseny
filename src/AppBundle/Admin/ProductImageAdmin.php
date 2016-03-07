@@ -43,7 +43,7 @@ class ProductImageAdmin extends AbstractBaseAdmin
                 'imageFile',
                 'file',
                 array(
-                    'label'    => 'backend.admin.image_name',
+                    'label'    => 'backend.admin.image',
                     'required'    => false,
                     'help'        => $this->getImageHelperFormMapperWithThumbnail(),
                     'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),

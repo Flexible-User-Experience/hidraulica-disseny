@@ -41,14 +41,6 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'sonata_type_date_picker',
-                array(
-                    'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
-                )
-            )
-            ->add(
                 'title',
                 null,
                 array(
@@ -63,6 +55,16 @@ class ProductAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.description',
                 )
             )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
+            ->add(
+                'createdAt',
+                'sonata_type_date_picker',
+                array(
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
+                )
+            )
             ->add(
                 'price',
                 null,
@@ -70,8 +72,6 @@ class ProductAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.price',
                 )
             )
-            ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'enabled',
                 'checkbox',

@@ -40,6 +40,7 @@ class Work extends AbstractBase
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $workImages;
 

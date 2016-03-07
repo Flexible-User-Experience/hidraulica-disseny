@@ -43,25 +43,10 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'sonata_type_date_picker',
-                array(
-                    'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
-                )
-            )
-            ->add(
                 'title',
                 null,
                 array(
                     'label'    => 'backend.admin.title',
-                )
-            )
-            ->add(
-                'workCategory',
-                null,
-                array(
-                    'label'    => 'backend.admin.category',
                 )
             )
             ->add(
@@ -74,6 +59,21 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
+            ->add(
+                'createdAt',
+                'sonata_type_date_picker',
+                array(
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
+                )
+            )
+            ->add(
+                'workCategory',
+                null,
+                array(
+                    'label'    => 'backend.admin.category',
+                )
+            )
             ->add(
                 'enabled',
                 'checkbox',
