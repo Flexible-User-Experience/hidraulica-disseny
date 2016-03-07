@@ -1,20 +1,20 @@
 <?php
 
-namespace ECVulco\AppBundle\Entity\Cart;
+namespace AppBundle\Entity\Cart;
 
 use Doctrine\ORM\Mapping as ORM;
-use ECVulco\AppBundle\Entity\AbstractBase;
-use ECVulco\AppBundle\Entity\AbstractProduct as Product;
+use AppBundle\Entity\AbstractBase;
+use AppBundle\Entity\Product;
 
 /**
  * Class CartItem
  *
  * @category Entity
- * @package  ECVulco\AppBundle\Entity\Cart
+ * @package  AppBundle\Entity\Cart
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Table(name="ec_vulco_cart_item")
- * @ORM\Entity(repositoryClass="ECVulco\AppBundle\Repository\Cart\CartItemRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CartItemRepository")
  */
 class CartItem extends AbstractBase
 {
@@ -26,13 +26,13 @@ class CartItem extends AbstractBase
 
     /**
      * @var Cart
-     * @ORM\ManyToOne(targetEntity="ECVulco\AppBundle\Entity\Cart\Cart", cascade={"persist"}, inversedBy="items")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart\Cart", cascade={"persist"})
      */
     private $cart;
 
     /**
      * @var Product
-     * @ORM\ManyToOne(targetEntity="ECVulco\AppBundle\Entity\AbstractProduct", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product", cascade={"persist"})
      */
     private $product;
 

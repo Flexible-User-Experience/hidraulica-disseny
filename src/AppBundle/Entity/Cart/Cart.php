@@ -1,23 +1,22 @@
 <?php
 
-namespace ECVulco\AppBundle\Entity\Cart;
+namespace AppBundle\Entity\Cart;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ECVulco\AppBundle\Entity\AbstractBase;
-use ECVulco\AppBundle\Entity\AbstractProduct as Product;
-use ECVulco\UserBundle\Entity\User;
+use AppBundle\Entity\AbstractBase;
+use AppBundle\Entity\Product;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Cart
  *
  * @category Entity
- * @package  ECVulco\AppBundle\Entity\Cart
+ * @package  AppBundle\Entity\Cart
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Table(name="ec_vulco_cart")
- * @ORM\Entity(repositoryClass="ECVulco\AppBundle\Repository\Cart\CartRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CartRepository")
  */
 class Cart extends AbstractBase
 {
@@ -26,11 +25,6 @@ class Cart extends AbstractBase
      * @ORM\OneToMany(targetEntity="CartItem", mappedBy="cart")
      */
     private $items;
-
-    /**
-     * @var User
-     */
-    private $user;
 
     /**
      *
@@ -130,26 +124,6 @@ class Cart extends AbstractBase
         }
 
         return null;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return $this
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     /**

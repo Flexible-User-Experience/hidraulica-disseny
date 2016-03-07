@@ -1,11 +1,11 @@
 <?php
 
-namespace ECVulco\AppBundle\Service;
+namespace AppBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-use ECVulco\AppBundle\Entity\AbstractProduct as Product;
-use ECVulco\AppBundle\Entity\Cart\Cart;
-use ECVulco\AppBundle\Entity\Cart\CartItem;
+use AppBundle\Entity\Product;
+use AppBundle\Entity\Cart\Cart;
+use AppBundle\Entity\Cart\CartItem;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\SecurityContext;
 
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\SecurityContext;
  * Class CartService
  *
  * @category Service
- * @package  ECVulco\AppBundle\Service
+ * @package  AppBundle\Service
  * @author   David Romaní <david@flux.cat>
  */
 class CartService
