@@ -16,19 +16,8 @@ AppBundle\Entity\Work:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     enabled: <boolean(70)>
     workCategory: @workCategory<numberBetween(1, 10)>
-
-## Products
-AppBundle\Entity\Product:
-  product{1..50}:
-    createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    title: <sentence()>
-    description: <paragraph()>
-    mainImage: <word()>
-    price: <randomFloat(2, 0, 10)>
-    enabled: <boolean(70)>
 
 ## Work Category
 AppBundle\Entity\WorkCategory:
@@ -38,21 +27,28 @@ AppBundle\Entity\WorkCategory:
 
 ## Work Images
 AppBundle\Entity\WorkImage:
-  workImage{1..100}:
+  workImage{1..25}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    work: @work<numberBetween(1, 50)>
+    work: @work<numberBetween(1, 10)>
+
+## Products
+AppBundle\Entity\Product:
+  product{1..50}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    title: <sentence()>
+    description: <paragraph()>
+    price: <randomFloat(2, 0, 10)>
+    enabled: <boolean(70)>
 
 ## Product Images
 AppBundle\Entity\ProductImage:
-  productImage{1..100}:
+  productImage{1..25}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    product: @product<numberBetween(1, 50)>
+    product: @product<numberBetween(1, 10)>
 
 ## Users
 AppBundle\Entity\User:

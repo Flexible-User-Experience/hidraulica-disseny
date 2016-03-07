@@ -18,6 +18,7 @@ backend:
         firstname: Nom
         general: General
         image: Imatge
+        images: Imatges
         image_name: Nom imatge
         main_image: Imatge principal
         message: Missatge
