@@ -214,6 +214,8 @@ sonata_admin:
                 icon: "<i class='fa fa-envelope'></i>"
             Admin:
                 icon: "<i class='fa fa-user'></i>"
+            Cart:
+                icon: "<i class='fa fa-shopping-cart'></i>"
         blocks:
             -
                 position: top
@@ -246,6 +248,12 @@ sonata_admin:
                 class: col-md-6
                 settings:
                     groups: [ Admin ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
+                settings:
+                    groups: [ Cart ]
 
 sonata_doctrine_orm_admin:
     templates:
