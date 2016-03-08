@@ -38,7 +38,7 @@ services:
 
     admin.cart:
         class: AppBundle\Admin\CartAdmin
-        arguments: [ ~, AppBundle\Entity\Cart\Cart, ~]
+        arguments: [ ~, AppBundle\Entity\Cart\Cart, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Cart", group: "Cart" }
 # Messaging

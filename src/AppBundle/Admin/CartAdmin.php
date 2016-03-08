@@ -107,11 +107,10 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'sonata_type_date_picker',
+                'product',
+                null,
                 array(
-                    'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
+                    'label'    => 'backend.admin.product',
                 )
             )
             ->add(
