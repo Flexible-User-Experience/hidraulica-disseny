@@ -33,6 +33,12 @@ class Cart extends AbstractBase
     private $customer;
 
     /**
+     * @var integer
+     * @ORM\Column(type="integer")
+     */
+    private $status;
+
+    /**
      *
      *
      * Methods
@@ -189,5 +195,21 @@ class Cart extends AbstractBase
         return $this;
     }
 
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
+    /**
+     * @param int $status
+     * @return Cart
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
 }

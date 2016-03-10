@@ -136,6 +136,7 @@ class CartAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.status',
+                    'template' => '::Admin/Cells/list__cell_cart_status.html.twig',
                 )
             )
             ->add(
