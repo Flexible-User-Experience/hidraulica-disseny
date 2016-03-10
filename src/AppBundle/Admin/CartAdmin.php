@@ -17,11 +17,22 @@ use Sonata\AdminBundle\Route\RouteCollection;
 class CartAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Cart';
-    protected $baseRoutePattern = '/cart';
+    protected $baseRoutePattern = 'carts/cart';
     protected $datagridValues = array(
         '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
+
+    /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection
+            ->remove('batch');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -103,22 +114,14 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.created_date',
                     'format'   => 'd/m/Y',
-                    'editable' => true,
+                    'editable' => false,
                 )
             )
             ->add(
-                'product',
+                'items',
                 null,
                 array(
-                    'label'    => 'backend.admin.product',
-                )
-            )
-            ->add(
-                'enabled',
-                'checkbox',
-                array(
-                    'label'    => 'backend.admin.enabled',
-                    'required' => false,
+                    'label'    => 'backend.admin.items',
                 )
             )
             ->add(

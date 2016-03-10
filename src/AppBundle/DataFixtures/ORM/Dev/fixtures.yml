@@ -95,6 +95,7 @@ AppBundle\Entity\Cart\CartItem:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     quantity: <numberBetween(1, 5)>
     product: @product<numberBetween(1, 10)>
+    cart: @cart1
 
 ## Cart
 AppBundle\Entity\Cart\Cart:

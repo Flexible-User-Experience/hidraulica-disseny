@@ -70,3 +70,16 @@ AppBundle\Entity\User:
         enabled: true
         roles:
             - ROLE_CMS
+
+## Cart Items
+AppBundle\Entity\Cart\CartItem:
+  cartitem{1..25}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    quantity: <numberBetween(1, 5)>
+    product: @product<numberBetween(1, 10)>
+    cart: @cart1
+
+## Cart
+AppBundle\Entity\Cart\Cart:
+  cart{1}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
