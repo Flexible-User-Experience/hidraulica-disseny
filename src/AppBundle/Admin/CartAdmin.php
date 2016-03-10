@@ -118,10 +118,24 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'items',
+                'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.items',
+                    'label'    => 'backend.admin.customer',
+                )
+            )
+            ->add(
+                'nitems',
+                null,
+                array(
+                    'label'    => 'backend.admin.nitems',
+                )
+            )
+            ->add(
+                'status',
+                null,
+                array(
+                    'label'    => 'backend.admin.status',
                 )
             )
             ->add(

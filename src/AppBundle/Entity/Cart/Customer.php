@@ -277,4 +277,14 @@ class Customer extends AbstractBase
         return $this;
     }
 
+    /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString() {
+
+        return $this->id ? '#' . $this->getId() . ' · ' . $this->getName() :  '---';
+    }
+
 }
