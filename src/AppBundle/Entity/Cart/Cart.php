@@ -27,6 +27,12 @@ class Cart extends AbstractBase
     private $items;
 
     /**
+     * @var Customer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart\Customer", inversedBy="carts", cascade={"persist"})
+     */
+    private $customer;
+
+    /**
      *
      *
      * Methods
@@ -164,4 +170,24 @@ class Cart extends AbstractBase
 
         return json_encode($result);
     }
+
+    /**
+     * @return Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return Cart
+     */
+    public function setCustomer(Customer $customer)
+    {
+        $this->customer = $customer;
+        return $this;
+    }
+
+
 }
