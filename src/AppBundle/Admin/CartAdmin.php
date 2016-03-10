@@ -45,7 +45,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'items',
                 null,
                 array(
-                    'label'    => 'backend.admin.items',
+                    'label'    => 'backend.admin.cart.items',
                 )
             )
             ->end()
@@ -88,7 +88,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'items',
                 null,
                 array(
-                    'label'    => 'backend.admin.items',
+                    'label'    => 'backend.admin.cart.items',
                 )
             )
             ->add(
@@ -121,21 +121,21 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.customer',
+                    'label'    => 'backend.admin.cart.customer',
                 )
             )
             ->add(
                 'nitems',
                 null,
                 array(
-                    'label'    => 'backend.admin.nitems',
+                    'label'    => 'backend.admin.cart.nitems',
                 )
             )
             ->add(
                 'status',
                 null,
                 array(
-                    'label'    => 'backend.admin.status',
+                    'label'    => 'backend.admin.cart.status.status',
                     'template' => '::Admin/Cells/list__cell_cart_status.html.twig',
                 )
             )

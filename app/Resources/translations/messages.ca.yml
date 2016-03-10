@@ -34,3 +34,13 @@ backend:
         username: Usuari
         user_question: Pregunta del usuari
         your_answer: La teva resposta
+        cart:
+            items: Ítems
+            nitems: Ítems
+            customer: Client
+            status:
+                status: Estat comanda
+                new: Nou
+                pending: Pendent
+                sent: Enviat
+                invoiced: Cobrat
