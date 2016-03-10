@@ -129,6 +129,7 @@ class CartAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.cart.nitems',
+                    'template' => '::Admin/Cells/list__cell_cart_nitems.html.twig',
                 )
             )
             ->add(
