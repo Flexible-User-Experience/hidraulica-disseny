@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use AppBundle\Enum\CartStatusEnum;
 
 /**
  * Class CartAdmin
@@ -85,18 +86,21 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'items',
+                'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.items',
+                    'label'    => 'backend.admin.cart.customer',
                 )
             )
             ->add(
-                'enabled',
+                'status',
                 null,
+                array('label' => 'backend.admin.cart.status.status'),
+                'choice',
                 array(
-                    'label'    => 'backend.admin.enabled',
-                    'editable' => true,
+                    'expanded' => false,
+                    'multiple' => false,
+                    'choices' => CartStatusEnum::getEnumArray(),
                 )
             );
     }
