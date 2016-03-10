@@ -99,5 +99,18 @@ AppBundle\Entity\Cart\CartItem:
 
 ## Cart
 AppBundle\Entity\Cart\Cart:
-  cart{1}:
+  cart{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    customer: @customer<numberBetween(1, 10)>
+
+## Customers
+AppBundle\Entity\Cart\Customer:
+  customer{1..10}:
+    name: <firstName()>
+    address: <streetName()>
+    city: <city()>
+    state: <state()>
+    country: <country()>
+    postalCode: <postcode()>
+    email: <safeEmail()>
+    phone: <phoneNumber()>
