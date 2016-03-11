@@ -2,11 +2,13 @@
 
 namespace AppBundle\Admin;
 
+use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use AppBundle\Enum\CartStatusEnum;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class CartAdmin
@@ -33,6 +35,114 @@ class CartAdmin extends AbstractBaseAdmin
     {
         $collection
             ->remove('batch');
+    }
+
+    /**
+     * Override query list to reduce queries amount on list view (apply join strategy)
+     *
+     * @param string $context context
+     *
+     * @return QueryBuilder
+     */
+    public function createQuery($context = 'list')
+    {
+        /** @var QueryBuilder $query */
+        $query = parent::createQuery($context);
+        $query
+            ->select($query->getRootAliases()[0] . ', i')
+            ->leftJoin($query->getRootAliases()[0] . '.items', 'i');
+
+        return $query;
+    }
+
+    protected function configureShowFields(ShowMapper $showMapper)
+    {
+        // Here we set the fields of the ShowMapper variable, $showMapper (but this can be called anything)
+        $showMapper
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'customer.name',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.name',
+                )
+            )
+            ->add(
+                'customer.address',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.address',
+                )
+            )
+            ->add(
+                'customer.postalCode',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.postal_code',
+                )
+            )
+            ->add(
+                'city',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.city',
+                )
+            )
+            ->add(
+                'state',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.state',
+                )
+            )
+            ->add(
+                'country',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.country',
+                )
+            )
+            ->add(
+                'phone',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.phone',
+                )
+            )
+            ->add(
+                'email',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.customer.email',
+                )
+            )
+            ->end()
+            ->with('backend.admin.status.status', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'createdAt',
+                null,
+                array(
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
+                )
+            )
+            ->add(
+                'status',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.status.status',
+                )
+            )
+            ->end()
+            ->with('backend.admin.items', $this->getFormMdSuccessBoxArray(12))
+            ->add(
+                'items',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.items',
+                )
+            )
+            ->end();
     }
 
     /**
@@ -89,7 +199,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer',
+                    'label'    => 'backend.admin.cart..customer.customer',
                 )
             )
             ->add(
@@ -125,7 +235,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer',
+                    'label'    => 'backend.admin.cart.customer.customer',
                 )
             )
             ->add(

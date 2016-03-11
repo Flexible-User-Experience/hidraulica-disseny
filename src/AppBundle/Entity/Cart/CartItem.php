@@ -26,7 +26,7 @@ class CartItem extends AbstractBase
 
     /**
      * @var Cart
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart\Cart", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart\Cart", cascade={"persist"}, inversedBy="items")
      */
     private $cart;
 
@@ -106,5 +106,10 @@ class CartItem extends AbstractBase
     public function getProduct()
     {
         return $this->product;
+    }
+
+    public function __toString()
+    {
+        return $this->quantity . ' # ' . $this->getProduct();
     }
 }

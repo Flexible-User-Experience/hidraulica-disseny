@@ -62,7 +62,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'postalCode',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.postalCode',
+                    'label'    => 'backend.admin.cart.customer.postal_code',
                 )
             )
             ->add(
@@ -127,7 +127,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'postalCode',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.postalCode',
+                    'label'    => 'backend.admin.cart.customer.postal_code',
                 )
             )
             ->add(

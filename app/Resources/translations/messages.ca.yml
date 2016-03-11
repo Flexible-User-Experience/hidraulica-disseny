@@ -37,7 +37,16 @@ backend:
         cart:
             items: Ítems
             nitems: Ítems
-            customer: Client
+            customer:
+                customer: Client
+                name: Nom
+                address: Direcció
+                postal_code: Codi Postal
+                city: Població
+                state: Província
+                country: País
+                email: Correu Electrònic
+                phone: Telèfon
             status:
                 status: Estat comanda
                 new: Nou
