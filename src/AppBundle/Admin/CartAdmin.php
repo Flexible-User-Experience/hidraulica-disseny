@@ -127,7 +127,7 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'status',
+                'statusHumanFriendly',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.status.status',

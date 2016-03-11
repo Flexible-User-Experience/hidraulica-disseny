@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Cart;
 
+use AppBundle\Enum\CartStatusEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\AbstractBase;
@@ -201,6 +202,14 @@ class Cart extends AbstractBase
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusHumanFriendly()
+    {
+        return CartStatusEnum::getEnumArray()[$this->getStatus()];
     }
 
     /**
