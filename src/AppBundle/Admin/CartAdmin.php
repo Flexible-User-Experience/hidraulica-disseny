@@ -59,7 +59,7 @@ class CartAdmin extends AbstractBaseAdmin
     {
         // Here we set the fields of the ShowMapper variable, $showMapper (but this can be called anything)
         $showMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.cart.customer.customer', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'customer.name',
                 null,
@@ -82,42 +82,42 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'city',
+                'customer.city',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.customer.city',
                 )
             )
             ->add(
-                'state',
+                'customer.state',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.customer.state',
                 )
             )
             ->add(
-                'country',
+                'customer.country',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.customer.country',
                 )
             )
             ->add(
-                'phone',
+                'customer.phone',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.customer.phone',
                 )
             )
             ->add(
-                'email',
+                'customer.email',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.customer.email',
                 )
             )
             ->end()
-            ->with('backend.admin.status.status', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.cart.status.status', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'createdAt',
                 null,
@@ -131,15 +131,23 @@ class CartAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.cart.status.status',
+                    'choices' => CartStatusEnum::getEnumArray(),
                 )
             )
             ->end()
-            ->with('backend.admin.items', $this->getFormMdSuccessBoxArray(12))
+            ->with('backend.admin.cart.items', $this->getFormMdSuccessBoxArray(12))
             ->add(
                 'items',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.items',
+                )
+            )
+            ->add(
+                'totalAmount',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.total_amount',
                 )
             )
             ->end();
@@ -199,7 +207,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart..customer.customer',
+                    'label'    => 'backend.admin.cart.customer.customer',
                 )
             )
             ->add(
@@ -244,6 +252,14 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.cart.nitems',
                     'template' => '::Admin/Cells/list__cell_cart_nitems.html.twig',
+                )
+            )
+            ->add(
+                'totalAmount',
+                null,
+                array(
+                    'label'    => 'backend.admin.cart.total_amount',
+                    'template' => '::Admin/Cells/list__cell_cart_total_amount.html.twig',
                 )
             )
             ->add(

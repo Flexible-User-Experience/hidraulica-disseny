@@ -161,10 +161,10 @@ class Cart extends AbstractBase
         $amount = 0;
         /** @var CartItem $item */
         foreach ($this->getItems() as $item) {
-            $amount += $item->getQuantity() * $item->getProduct()->getPriceAmount();
+            $amount += $item->getQuantity() * $item->getProduct()->getPrice();
         }
 
-        return $amount;
+        return $amount . ' €';
     }
 
     /**
