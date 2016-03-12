@@ -5,12 +5,13 @@ namespace AppBundle\Repository\Cart;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class CartItemRepository
+ * Class CustomerRepository
  *
  * @category Repository
  * @package  AppBundle\Repository\Cart
- * @author   David Romaní <david@flux.cat>
+ * @author   Anton Serra <aserratorta@gmail.com>
+
  */
-class CartItemRepository extends EntityRepository
+class CustomerRepository extends EntityRepository
 {
 }

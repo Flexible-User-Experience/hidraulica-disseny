@@ -1,23 +1,23 @@
 <?php
 
-namespace ECVulco\AppBundle\Entity\Cart;
+namespace AppBundle\Entity\Cart;
 
+use AppBundle\Enum\CartStatusEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ECVulco\AppBundle\Entity\AbstractBase;
-use ECVulco\AppBundle\Entity\AbstractProduct as Product;
-use ECVulco\UserBundle\Entity\User;
+use AppBundle\Entity\AbstractBase;
+use AppBundle\Entity\Product;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Cart
  *
  * @category Entity
- * @package  ECVulco\AppBundle\Entity\Cart
+ * @package  AppBundle\Entity\Cart
  * @author   David Romaní <david@flux.cat>
  *
- * @ORM\Table(name="ec_vulco_cart")
- * @ORM\Entity(repositoryClass="ECVulco\AppBundle\Repository\Cart\CartRepository")
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CartRepository")
  */
 class Cart extends AbstractBase
 {
@@ -28,9 +28,16 @@ class Cart extends AbstractBase
     private $items;
 
     /**
-     * @var User
+     * @var Customer
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cart\Customer", inversedBy="carts", cascade={"persist"})
      */
-    private $user;
+    private $customer;
+
+    /**
+     * @var integer
+     * @ORM\Column(type="integer")
+     */
+    private $status;
 
     /**
      *
@@ -133,26 +140,6 @@ class Cart extends AbstractBase
     }
 
     /**
-     * @param User $user
-     *
-     * @return $this
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * @return int
      */
     public function getTotalQuantity()
@@ -174,10 +161,10 @@ class Cart extends AbstractBase
         $amount = 0;
         /** @var CartItem $item */
         foreach ($this->getItems() as $item) {
-            $amount += $item->getQuantity() * $item->getProduct()->getPriceAmount();
+            $amount += $item->getQuantity() * $item->getProduct()->getPrice();
         }
 
-        return $amount;
+        return $amount . ' €';
     }
 
     /**
@@ -189,5 +176,49 @@ class Cart extends AbstractBase
         $result['totalQuantity'] = $this->getTotalQuantity();
 
         return json_encode($result);
+    }
+
+    /**
+     * @return Customer
+     */
+    public function getCustomer()
+    {
+        return $this->customer;
+    }
+
+    /**
+     * @param Customer $customer
+     * @return Cart
+     */
+    public function setCustomer(Customer $customer)
+    {
+        $this->customer = $customer;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusHumanFriendly()
+    {
+        return CartStatusEnum::getEnumArray()[$this->getStatus()];
+    }
+
+    /**
+     * @param int $status
+     * @return Cart
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
     }
 }

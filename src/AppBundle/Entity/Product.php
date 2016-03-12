@@ -113,4 +113,9 @@ class Product extends AbstractBase
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle() . ' # ' . $this->getPrice() . ' €';
+    }
 }

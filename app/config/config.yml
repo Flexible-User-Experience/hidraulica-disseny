@@ -210,10 +210,13 @@ sonata_admin:
                 icon: "<i class='fa fa-briefcase'></i>"
             Products:
                 icon: "<i class='fa fa-table'></i>"
+            Cart:
+                icon: "<i class='fa fa-shopping-cart'></i>"
             Contacts:
                 icon: "<i class='fa fa-envelope'></i>"
             Admin:
                 icon: "<i class='fa fa-user'></i>"
+
         blocks:
             -
                 position: top
@@ -234,6 +237,12 @@ sonata_admin:
                 class: col-md-6
                 settings:
                     groups: [ Products ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-12
+                settings:
+                    groups: [ Cart ]
             -
                 position: top
                 type: sonata.admin.block.admin_list
