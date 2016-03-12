@@ -6,31 +6,31 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class WorkController
+ * Class ProductController
  *
  * @category Controller
  * @package  AppBundle\Controller\Frontend
  * @author   Anton Serra <aserratorta@gmail.com>
  *
  */
-class WorkController extends Controller
+class ProductController extends Controller
 {
     /**
-     * @Route("/work", name="work")
+     * @Route("/product", name="product")
      */
-    public function workListAction()
+    public function productListAction()
     {
-        return $this->render('Frontend/Work/work.html.twig');
+        return $this->render('Frontend/Product/product.html.twig');
     }
 
     /**
-     * @Route("/work/{slug}", name="work_detail")
+     * @Route("/product/{slug}", name="product_detail")
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function workDetailAction()
+    public function productDetailAction()
     {
-        return $this->render('Frontend/Work/work_detail.html.twig');
+        return $this->render('Frontend/Product/product_detail.html.twig');
     }
 }
