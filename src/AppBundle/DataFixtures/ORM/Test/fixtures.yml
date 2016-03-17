@@ -16,7 +16,6 @@ AppBundle\Entity\Work:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     enabled: <boolean(70)>
     workCategory: @workCategory<numberBetween(1, 3)>
 
@@ -26,7 +25,6 @@ AppBundle\Entity\Product:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     price: <randomFloat(2, 0, 10)>
     enabled: <boolean(70)>
 
@@ -40,7 +38,6 @@ AppBundle\Entity\WorkCategory:
 AppBundle\Entity\WorkImage:
   workImage{1..20}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
     work: @work<numberBetween(1, 10)>
@@ -49,7 +46,54 @@ AppBundle\Entity\WorkImage:
 AppBundle\Entity\ProductImage:
   productImage{1..20}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
     product: @product<numberBetween(1, 10)>
+
+## Users
+AppBundle\Entity\User:
+    admin:
+        username: <{private_admin_test_user}>
+        plainPassword: <{private_admin_test_pass}>
+        email: <safeEmail()>
+        firstname: <name()>
+        lastname: <lastname()>
+        enabled: true
+        roles:
+            - ROLE_SUPER_ADMIN
+    editor:
+        username: <{private_editor_test_user}>
+        plainPassword: <{private_editor_test_pass}>
+        email: <safeEmail()>
+        firstname: <name()>
+        lastname: <lastname()>
+        enabled: true
+        roles:
+            - ROLE_CMS
+
+## Cart Items
+AppBundle\Entity\Cart\CartItem:
+  cartitem{1..25}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    quantity: <numberBetween(1, 5)>
+    product: @product<numberBetween(1, 10)>
+    cart: @cart<numberBetween(1, 5)>
+
+## Cart
+AppBundle\Entity\Cart\Cart:
+  cart{1..5}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    customer: @customer<numberBetween(1, 10)>
+    status: <numberBetween(0, 3)>
+
+## Customers
+AppBundle\Entity\Cart\Customer:
+  customer{1..10}:
+    name: <firstName()>
+    address: <streetName()>
+    city: <city()>
+    state: <state()>
+    country: <country()>
+    postalCode: <postcode()>
+    email: <safeEmail()>
+    phone: <phoneNumber()>

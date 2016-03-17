@@ -8,6 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class WorkAdmin
@@ -31,7 +32,16 @@ class WorkAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
+            ->add(
+                'imageFile',
+                'file',
+                array(
+                    'label'    => 'backend.admin.image',
+                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                )
+            )
             ->add(
                 'title',
                 null,
@@ -41,18 +51,60 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                null,
+                'ckeditor',
                 array(
+                    'config_name' => 'my_config',
                     'label'    => 'backend.admin.description',
                 )
             )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
-                'mainImage',
+                'createdAt',
+                'sonata_type_date_picker',
+                array(
+                    'label'  => 'backend.admin.created_date',
+                    'format' => 'd/M/y',
+                )
+            )
+            ->add(
+                'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.main_image',
+                    'label'    => 'backend.admin.category',
                 )
+            )
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'required' => false,
+                )
+            )
+            ->end();
+        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
+            $formMapper
+                ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
+                ->add(
+                    'workImages',
+                    'sonata_type_collection',
+                    array(
+                        'label'              => ' ',
+                        'required'           => false,
+                        'cascade_validation' => true,
+                    ),
+                    array(
+                        'edit'     => 'inline',
+                        'inline'   => 'table',
+                        'sortable' => 'position',
+                    )
+                )
+                ->end()
+                ->setHelps(
+                    array('workImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
             );
+        }
     }
 
     /**
@@ -63,9 +115,11 @@ class WorkAdmin extends AbstractBaseAdmin
         $datagridMapper
             ->add(
                 'createdAt',
-                null,
+                'doctrine_orm_date',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'      => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format'     => 'd-m-Y',
                 )
             )
             ->add(
@@ -76,17 +130,17 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'workCategory',
+                null,
+                array(
+                    'label'    => 'backend.admin.category',
+                )
+            )
+            ->add(
                 'description',
                 null,
                 array(
                     'label'    => 'backend.admin.description',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
                 )
             )
             ->add(
@@ -107,10 +161,20 @@ class WorkAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'createdAt',
+                'imageFile',
                 null,
                 array(
+                    'label'    => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
+            ->add(
+                'createdAt',
+                'date',
+                array(
                     'label'    => 'backend.admin.created_date',
+                    'format'   => 'd/m/Y',
+                    'editable' => true,
                 )
             )
             ->add(
@@ -122,18 +186,10 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'description',
+                'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.description',
-                )
-            )
-            ->add(
-                'mainImage',
-                null,
-                array(
-                    'label'    => 'backend.admin.main_image',
-
+                    'label'    => 'backend.admin.category',
                 )
             )
             ->add(
@@ -148,6 +204,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),

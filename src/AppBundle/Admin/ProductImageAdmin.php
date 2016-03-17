@@ -2,8 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -33,24 +31,29 @@ class ProductImageAdmin extends AbstractBaseAdmin
         $formMapper
             ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(6))
             ->add(
-                'imageName',
+                'product',
                 null,
                 array(
-                    'label'    => 'backend.admin.image_name',
+                    'attr'     => array(
+                        'hidden' => true,
+                    ),
                 )
             )
             ->add(
-                'createdAt',
-                null,
+                'imageFile',
+                'file',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'    => 'backend.admin.image',
+                    'required'    => false,
+                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
             ->add(
-                'alt',
+                'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.alt',
+                    'label'    => 'backend.admin.position',
                 )
             )
             ->end()
@@ -81,9 +84,11 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                null,
+                'doctrine_orm_date',
                 array(
-                    'label'    => 'backend.admin.created_date',
+                    'label'      => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format'     => 'd-m-Y',
                 )
             )
             ->add(
@@ -127,9 +132,11 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                null,
+                'date',
                 array(
                     'label'    => 'backend.admin.created_date',
+                    'format'   => 'd/m/Y',
+                    'editable' => true,
                 )
             )
             ->add(
@@ -159,6 +166,7 @@ class ProductImageAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),
