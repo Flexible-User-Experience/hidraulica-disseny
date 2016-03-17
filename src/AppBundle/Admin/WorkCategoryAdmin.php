@@ -33,6 +33,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
+            ->remove('batch')
             ->remove('edit')
             ->remove('show');
     }
