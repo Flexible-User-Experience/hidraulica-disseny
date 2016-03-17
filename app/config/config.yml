@@ -8,20 +8,17 @@ framework:
     translator:      { fallbacks: [ "%locale%" ] }
     secret:          "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource:            "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
     templating:
         engines: [ "twig" ]
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
-        # handler_id set to null will use default session handler from php.ini
         handler_id:  ~
     fragments:       ~
     http_method_override: true
@@ -107,6 +104,13 @@ fos_user:
         group_manager: sonata.user.orm.group_manager
     service:
         user_manager: sonata.user.orm.user_manager
+
+# A2lix Translations
+a2lix_translation_form:
+    locales:          [ en ]
+    default_required: true
+    manager_registry: doctrine
+    templating:       "::A2lix/i18n_form_template.html.twig"
 
 # CKEditor
 ivory_ck_editor:
