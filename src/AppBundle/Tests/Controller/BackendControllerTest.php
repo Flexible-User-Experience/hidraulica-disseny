@@ -5,13 +5,13 @@ namespace AppBundle\Tests\Controller;
 use AppBundle\Tests\AbstractBaseTest;
 
 /**
- * Class BackendTest
+ * Class BackendControllerTest
  *
  * @category Test
- * @package  AppBundle\Tests\Admin
+ * @package  AppBundle\Tests\Controller
  * @author   David Romaní <david@flux.cat>
  */
-class BackendTest extends AbstractBaseTest
+class BackendControllerTest extends AbstractBaseTest
 {
     /**
      * Test admin login request is successful
