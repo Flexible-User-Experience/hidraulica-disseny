@@ -35,6 +35,7 @@ class AppKernel extends Kernel
 //            new Presta\SitemapBundle\PrestaSitemapBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(), // leave here
             // App
             new AppBundle\AppBundle(),
         );
