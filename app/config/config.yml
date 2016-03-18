@@ -84,7 +84,7 @@ stof_doctrine_extensions:
             softdeleteable: true
             timestampable:  true
             sluggable:      true
-            translatable:   false
+            translatable:   true
             sortable:       false
             tree:           false
 
