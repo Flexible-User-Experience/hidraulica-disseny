@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
-use AppBundle\Entity\Traits\DescriptionTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -27,7 +26,6 @@ class Work extends AbstractBase
     use ImageTrait;
     use TitleTrait;
     use SlugTrait;
-    use DescriptionTrait;
 
     /**
      * @var WorkCategory
