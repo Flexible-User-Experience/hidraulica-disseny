@@ -90,7 +90,10 @@ class ProductAdmin extends AbstractBaseAdmin
                     'label'              => ' ',
                     'translatable_class' => 'AppBundle\Entity\Translation\ProductTranslation',
                     'fields'             => array(
-                        'title'       => array('label' => 'backend.admin.title', 'required' => false),
+                        'title'       => array(
+                            'label' => 'backend.admin.title',
+                            'required' => false
+                        ),
                         'description' => array(
                             'label'    => 'backend.admin.description',
                             'attr'     => array('rows' => 8),
