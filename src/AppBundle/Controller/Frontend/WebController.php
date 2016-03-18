@@ -5,6 +5,14 @@ namespace AppBundle\Controller\Frontend;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class WebController
+ *
+ * @category Controller
+ * @package  AppBundle\Controller\Frontend
+ * @author   Anton Serra <aserratorta@gmail.com>
+ *
+ */
 class WebController extends Controller
 {
     /**

@@ -44,7 +44,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
@@ -52,7 +52,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'ckeditor',
                 array(
                     'config_name' => 'my_config',
-                    'label'    => 'backend.admin.description',
+                    'label'       => 'backend.admin.description',
                 )
             )
             ->end()
@@ -69,7 +69,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.price',
+                    'label' => 'backend.admin.price',
                 )
             )
             ->add(
@@ -78,6 +78,28 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
+                )
+            )
+            ->end()
+            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
+            ->add(
+                'translations',
+                'a2lix_translations_gedmo',
+                array(
+                    'required'           => false,
+                    'label'              => ' ',
+                    'translatable_class' => 'AppBundle\Entity\Translation\ProductTranslation',
+                    'fields'             => array(
+                        'title'       => array(
+                            'label' => 'backend.admin.title',
+                            'required' => false
+                        ),
+                        'description' => array(
+                            'label'    => 'backend.admin.description',
+                            'attr'     => array('rows' => 8),
+                            'required' => false,
+                        ),
+                    ),
                 )
             )
             ->end();
@@ -124,21 +146,21 @@ class ProductAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
                 'description',
                 null,
                 array(
-                    'label'    => 'backend.admin.description',
+                    'label' => 'backend.admin.description',
                 )
             )
             ->add(
                 'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.price',
+                    'label' => 'backend.admin.price',
                 )
             )
             ->add(
@@ -187,7 +209,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.price',
+                    'label' => 'backend.admin.price',
 
                 )
             )
@@ -203,7 +225,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),

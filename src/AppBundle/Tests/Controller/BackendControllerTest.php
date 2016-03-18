@@ -5,13 +5,13 @@ namespace AppBundle\Tests\Controller;
 use AppBundle\Tests\AbstractBaseTest;
 
 /**
- * Class BackendTest
+ * Class BackendControllerTest
  *
  * @category Test
- * @package  AppBundle\Tests\Admin
+ * @package  AppBundle\Tests\Controller
  * @author   David Romaní <david@flux.cat>
  */
-class BackendTest extends AbstractBaseTest
+class BackendControllerTest extends AbstractBaseTest
 {
     /**
      * Test admin login request is successful
@@ -57,6 +57,25 @@ class BackendTest extends AbstractBaseTest
             array('/admin/works/work/create'),
             array('/admin/works/work/1/edit'),
             array('/admin/works/work/1/delete'),
+            array('/admin/works/image/list'),
+            array('/admin/works/image/create'),
+            array('/admin/works/image/1/edit'),
+            array('/admin/works/image/1/delete'),
+            array('/admin/products/product/list'),
+            array('/admin/products/product/create'),
+            array('/admin/products/product/1/edit'),
+            array('/admin/products/product/1/delete'),
+            array('/admin/products/image/list'),
+            array('/admin/products/image/create'),
+            array('/admin/products/image/1/edit'),
+            array('/admin/products/image/1/delete'),
+            array('/admin/carts/cart/list'),
+            array('/admin/carts/cart/create'),
+            array('/admin/carts/cart/1/edit'),
+            array('/admin/carts/cart/1/delete'),
+            array('/admin/carts/cart/1/show'),
+            array('/admin/carts/customer/list'),
+            array('/admin/carts/customer/1/show'),
             array('/admin/users/list'),
             array('/admin/users/create'),
             array('/admin/users/1/edit'),
@@ -92,6 +111,10 @@ class BackendTest extends AbstractBaseTest
             array('/admin/contact/message/batch'),
             array('/admin/works/category/batch'),
             array('/admin/works/category/1/edit'),
+            array('/admin/works/work/batch'),
+            array('/admin/works/image/batch'),
+            array('/admin/products/product/batch'),
+            array('/admin/products/image/batch'),
             array('/admin/users/show'),
             array('/admin/users/batch'),
         );

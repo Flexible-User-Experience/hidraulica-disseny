@@ -23,6 +23,13 @@ class ContactMessage extends AbstractBase
     /**
      * @var string
      *
+     * @ORM\Column(type="text", length=4000, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(strict = true, checkMX = true, checkHost = true)
      */
