@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
@@ -28,6 +29,15 @@ class Work extends AbstractBase
     use ImageTrait;
     use TitleTrait;
     use SlugTrait;
+    use DescriptionTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", length=4000, nullable=true)
+     * @Gedmo\Translatable
+     */
+    private $description;
 
     /**
      * @var WorkCategory
