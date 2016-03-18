@@ -3,6 +3,7 @@
 namespace AppBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Description trait
@@ -17,6 +18,7 @@ Trait DescriptionTrait
      * @var string
      *
      * @ORM\Column(type="text", length=4000, nullable=true)
+     * @Gedmo\Translatable
      */
     private $description;
 

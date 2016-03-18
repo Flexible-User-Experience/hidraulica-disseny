@@ -6,10 +6,12 @@ use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Product
@@ -20,6 +22,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\ProductTranslation")
  * @Vich\Uploadable
  */
 class Product extends AbstractBase
@@ -28,6 +31,7 @@ class Product extends AbstractBase
     use TitleTrait;
     use SlugTrait;
     use DescriptionTrait;
+    use TranslationsTrait;
 
     /**
      * @var float
@@ -44,6 +48,17 @@ class Product extends AbstractBase
     private $productImages;
 
     /**
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Translation\ProductTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    /**
      *
      *
      * Methods
@@ -53,6 +68,7 @@ class Product extends AbstractBase
 
     public function __construct() {
         $this->productImages = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
