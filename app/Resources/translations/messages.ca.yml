@@ -30,6 +30,7 @@ backend:
         submit: Enviar
         superadmin: Superadministrador
         title: Títol
+        translations: Traduccions
         user: Usuari
         username: Usuari
         user_question: Pregunta del usuari

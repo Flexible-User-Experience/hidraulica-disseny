@@ -82,6 +82,28 @@ class WorkAdmin extends AbstractBaseAdmin
                     'required' => false,
                 )
             )
+            ->end()
+            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
+            ->add(
+                'translations',
+                'a2lix_translations_gedmo',
+                array(
+                    'required'           => false,
+                    'label'              => ' ',
+                    'translatable_class' => 'AppBundle\Entity\Translation\WorkTranslation',
+                    'fields'             => array(
+                        'title'       => array(
+                            'label' => 'backend.admin.title',
+                            'required' => false
+                        ),
+                        'description' => array(
+                            'label'    => 'backend.admin.description',
+                            'attr'     => array('rows' => 8),
+                            'required' => false,
+                        ),
+                    ),
+                )
+            )
             ->end();
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
             $formMapper
