@@ -15,6 +15,11 @@ services:
         arguments: [ ~, AppBundle\Entity\WorkImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works", show_in_dashboard: false }
+    admin.sliderimage:
+        class: AppBundle\Admin\SliderImageAdmin
+        arguments: [ ~, AppBundle\Entity\SliderImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "Slider", group: "Slider", show_in_dashboard: true }
     admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [ ~, AppBundle\Entity\Product, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
