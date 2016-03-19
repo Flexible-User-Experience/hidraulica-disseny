@@ -37,7 +37,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.image',
                     'required'    => false,
                     'help'        => $this->getImageHelperFormMapperWithThumbnail(),
-                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
+//                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
             ->end()
@@ -58,28 +58,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->end();
-        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
-            $formMapper
-                ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
-                ->add(
-                    'sliderImage',
-                    'sonata_type_collection',
-                    array(
-                        'label'              => ' ',
-                        'required'           => false,
-                        'cascade_validation' => true,
-                    ),
-                    array(
-                        'edit'     => 'inline',
-                        'inline'   => 'table',
-                        'sortable' => 'position',
-                    )
-                )
-                ->end()
-                ->setHelps(
-                    array('productImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
-                );
-        }
     }
 
     /**
