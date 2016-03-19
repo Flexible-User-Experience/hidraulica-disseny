@@ -29,16 +29,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(6))
-            ->add(
-                'product',
-                null,
-                array(
-                    'attr'     => array(
-                        'hidden' => true,
-                    ),
-                )
-            )
+            ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(9))
             ->add(
                 'imageFile',
                 'file',
@@ -49,6 +40,8 @@ class SliderImageAdmin extends AbstractBaseAdmin
                     'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'position',
                 null,
@@ -56,8 +49,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.position',
                 )
             )
-            ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'enabled',
                 'checkbox',
@@ -67,6 +58,28 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->end();
+        if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
+            $formMapper
+                ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
+                ->add(
+                    'sliderImage',
+                    'sonata_type_collection',
+                    array(
+                        'label'              => ' ',
+                        'required'           => false,
+                        'cascade_validation' => true,
+                    ),
+                    array(
+                        'edit'     => 'inline',
+                        'inline'   => 'table',
+                        'sortable' => 'position',
+                    )
+                )
+                ->end()
+                ->setHelps(
+                    array('productImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
+                );
+        }
     }
 
     /**
@@ -92,21 +105,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'imageName',
-                null,
-                array(
-                    'label'    => 'backend.admin.image_name',
-                )
-            )
-            ->add(
-                'alt',
-                null,
-                array(
-                    'label'    => 'backend.admin.alt',
-                    'editable' => true,
-                )
-            )
-            ->add(
                 'enabled',
                 null,
                 array(
@@ -124,6 +122,14 @@ class SliderImageAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
+                'imageFile',
+                null,
+                array(
+                    'label'    => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
+            ->add(
                 'position',
                 null,
                 array(
@@ -136,21 +142,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.created_date',
                     'format'   => 'd/m/Y',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'imageName',
-                null,
-                array(
-                    'label'    => 'backend.admin.image_name',
-                )
-            )
-            ->add(
-                'alt',
-                null,
-                array(
-                    'label'    => 'backend.admin.alt',
                     'editable' => true,
                 )
             )

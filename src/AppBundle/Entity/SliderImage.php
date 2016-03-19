@@ -21,4 +21,5 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class SliderImage extends AbstractBase
 {
     use ImageTrait;
+
 }
