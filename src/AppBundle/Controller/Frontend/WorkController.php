@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WorkController extends Controller
 {
     /**
-     * @Route("/work", name="work")
+     * @Route("/works/", name="app_work_list")
      */
     public function workListAction()
     {
@@ -24,12 +24,12 @@ class WorkController extends Controller
     }
 
     /**
-     * @Route("/work/{slug}", name="work_detail")
+     * @Route("/work/{slug}/", name="app_work_detail")
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function workDetailAction()
+    public function workDetailAction($slug)
     {
         return $this->render('Frontend/Work/work_detail.html.twig');
     }
