@@ -52,17 +52,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
-            ->add(
-                'enabled',
-                'checkbox',
-                array(
-                    'label'    => 'backend.admin.enabled',
-                    'required' => false,
-                )
-            )
-            ->end()
-            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
+            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'translations',
                 'a2lix_translations_gedmo',
@@ -75,12 +65,17 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                             'label' => 'backend.admin.title',
                             'required' => false
                         ),
-                        'description' => array(
-                            'label'    => 'backend.admin.description',
-                            'attr'     => array('rows' => 8),
-                            'required' => false,
-                        ),
                     ),
+                )
+            )
+            ->end()
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'enabled',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.enabled',
+                    'required' => false,
                 )
             )
             ->end();
