@@ -79,12 +79,6 @@ sonata_admin:
                 settings:
                     groups: [ Users ]
 
-# ORM
-sonata_doctrine_orm_admin:
-    templates:
-        form:
-            - "::Admin/Forms/custom_checkbox_form_template_hack.html.twig"
-
 # User
 sonata_user:
     security_acl: true
