@@ -1,0 +1,5 @@
+app_homepage: '/'
+app_work_list: '/treballs/'
+app_work_detail: '/treball/{slug}/'
+app_product_list: '/productes/'
+app_product_detail: '/producte/{slug}/'

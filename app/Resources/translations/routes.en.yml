@@ -1,0 +1,5 @@
+app_homepage: '/'
+app_work_list: '/works/'
+app_work_detail: '/work/{slug}/'
+app_product_list: '/products/'
+app_product_detail: '/product/{slug}/'
