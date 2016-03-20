@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProductController extends Controller
 {
     /**
-     * @Route("/product", name="product")
+     * @Route("/products/", name="app_product_list")
      */
     public function productListAction()
     {
@@ -28,12 +28,12 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}", name="product_detail")
+     * @Route("/product/{slug}/", name="app_product_detail")
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function productDetailAction()
+    public function productDetailAction($slug)
     {
         return $this->render('Frontend/Product/product_detail.html.twig');
     }
