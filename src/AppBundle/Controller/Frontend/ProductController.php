@@ -20,10 +20,10 @@ class ProductController extends Controller
      */
     public function productListAction()
     {
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product');
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
 
         return $this->render('Frontend/Product/product.html.twig', array(
-            $products = 'products'
+            'products' => $products,
         ));
     }
 
