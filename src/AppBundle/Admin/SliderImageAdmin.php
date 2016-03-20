@@ -74,15 +74,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'doctrine_orm_date',
-                array(
-                    'label'      => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
-                    'format'     => 'd-m-Y',
-                )
-            )
-            ->add(
                 'enabled',
                 null,
                 array(
@@ -115,15 +106,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'createdAt',
-                'date',
-                array(
-                    'label'    => 'backend.admin.created_date',
-                    'format'   => 'd/m/Y',
-                    'editable' => true,
-                )
-            )
-            ->add(
                 'enabled',
                 null,
                 array(
@@ -137,7 +119,6 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
                         'edit'   => array(),
                         'delete' => array(),
                     ),
