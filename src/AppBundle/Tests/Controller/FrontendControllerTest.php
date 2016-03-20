@@ -35,7 +35,15 @@ class FrontendControllerTest extends AbstractBaseTest
     public function provideSuccessfulUrls()
     {
         return array(
-            array('/'),
+            array('/ca/'),
+            array('/ca/treballs/'),
+            array('/ca/productes/'),
+            array('/es/'),
+            array('/es/trabajos/'),
+            array('/es/productos/'),
+            array('/en/'),
+            array('/en/works/'),
+            array('/en/products/'),
         );
     }
 
