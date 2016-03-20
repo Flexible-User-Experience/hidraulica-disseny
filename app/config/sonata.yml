@@ -25,6 +25,8 @@ sonata_admin:
                 icon: "<i class='fa fa-briefcase'></i>"
             Products:
                 icon: "<i class='fa fa-table'></i>"
+            Slider:
+                icon: "<i class='fa fa-picture-o'></i>"
             Cart:
                 icon: "<i class='fa fa-shopping-cart'></i>"
             Contacts:
@@ -55,7 +57,13 @@ sonata_admin:
             -
                 position: top
                 type: sonata.admin.block.admin_list
-                class: col-md-12
+                class: col-md-6
+                settings:
+                    groups: [ Slider ]
+            -
+                position: top
+                type: sonata.admin.block.admin_list
+                class: col-md-6
                 settings:
                     groups: [ Cart ]
             -

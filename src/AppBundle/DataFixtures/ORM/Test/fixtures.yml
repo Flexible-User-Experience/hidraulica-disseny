@@ -50,6 +50,13 @@ AppBundle\Entity\ProductImage:
     position: <numberBetween(1, 5)>
     product: @product<numberBetween(1, 10)>
 
+## Slider Images
+AppBundle\Entity\SliderImage:
+  sliderImage{1..25}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    alt: <word()>
+    position: <numberBetween(1, 5)>
+
 ## Users
 AppBundle\Entity\User:
     admin:

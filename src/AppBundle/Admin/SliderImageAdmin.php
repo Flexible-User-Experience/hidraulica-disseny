@@ -2,40 +2,26 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class WorkCategoryAdmin
+ * Class SliderImageAdmin
  *
  * @category Admin
  * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
-class WorkCategoryAdmin extends AbstractBaseAdmin
+class SliderImageAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Category';
-    protected $baseRoutePattern = 'works/category';
+    protected $classnameLabel = 'Slider';
+    protected $baseRoutePattern = 'sliders/image';
     protected $datagridValues = array(
-        '_sort_by'    => 'title',
-        '_sort_order' => 'desc',
+        '_sort_by'    => 'position',
+        '_sort_order' => 'asc',
     );
-
-    /**
-     * Configure route collection
-     *
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-        $collection
-            ->remove('batch')
-            ->remove('show');
-    }
 
     /**
      * @param FormMapper $formMapper
@@ -43,44 +29,32 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(9))
             ->add(
-                'title',
-                null,
+                'imageFile',
+                'file',
                 array(
-                    'label' => 'backend.admin.title',
+                    'label'    => 'backend.admin.image',
+                    'required'    => false,
+                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+//                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
+            ->add(
+                'position',
+                null,
+                array(
+                    'label'    => 'backend.admin.position',
+                )
+            )
             ->add(
                 'enabled',
                 'checkbox',
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
-                )
-            )
-            ->end()
-            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
-            ->add(
-                'translations',
-                'a2lix_translations_gedmo',
-                array(
-                    'required'           => false,
-                    'label'              => ' ',
-                    'translatable_class' => 'AppBundle\Entity\Translation\WorkCategoryTranslation',
-                    'fields'             => array(
-                        'title'       => array(
-                            'label' => 'backend.admin.title',
-                            'required' => false
-                        ),
-                        'description' => array(
-                            'label'    => 'backend.admin.description',
-                            'attr'     => array('rows' => 8),
-                            'required' => false,
-                        ),
-                    ),
                 )
             )
             ->end();
@@ -93,10 +67,19 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
-                'title',
+                'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label'    => 'backend.admin.position',
+                )
+            )
+            ->add(
+                'createdAt',
+                'doctrine_orm_date',
+                array(
+                    'label'      => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format'     => 'd-m-Y',
                 )
             )
             ->add(
@@ -117,10 +100,26 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
         unset($this->listModes['mosaic']);
         $listMapper
             ->add(
-                'title',
+                'imageFile',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label'    => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
+            ->add(
+                'position',
+                null,
+                array(
+                    'label'    => 'backend.admin.position',
+                )
+            )
+            ->add(
+                'createdAt',
+                'date',
+                array(
+                    'label'    => 'backend.admin.created_date',
+                    'format'   => 'd/m/Y',
                     'editable' => true,
                 )
             )
