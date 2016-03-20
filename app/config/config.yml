@@ -107,9 +107,15 @@ fos_user:
     service:
         user_manager: sonata.user.orm.user_manager
 
+# JMS i18n Routing
+jms_i18n_routing:
+    default_locale: "%locale%"
+    locales:        [ "%locale%", "es", "en" ]
+    strategy:       prefix
+
 # A2lix Translations
 a2lix_translation_form:
-    locales:          [ en ]
+    locales:          [ "es", "en" ]
     default_required: true
     manager_registry: doctrine
     templating:       "::A2lix/i18n_form_template.html.twig"
