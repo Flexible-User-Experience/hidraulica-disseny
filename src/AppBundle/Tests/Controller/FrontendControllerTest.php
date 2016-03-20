@@ -69,7 +69,9 @@ class FrontendControllerTest extends AbstractBaseTest
     public function provideNotFoundUrls()
     {
         return array(
-            array('/broken-page'),
+            array('/ca/pagina-trenacada/'),
+            array('/es/pagina-rota/'),
+            array('/en/broken-page/'),
         );
     }
 }
