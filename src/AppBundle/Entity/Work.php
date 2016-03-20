@@ -2,13 +2,16 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
+use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Work
@@ -19,6 +22,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkRepository")
+ * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\WorkTranslation")
  * @Vich\Uploadable
  */
 class Work extends AbstractBase
@@ -26,6 +30,24 @@ class Work extends AbstractBase
     use ImageTrait;
     use TitleTrait;
     use SlugTrait;
+    use DescriptionTrait;
+    use TranslationsTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", length=4000, nullable=true)
+     * @Gedmo\Translatable
+     */
+    private $description;
 
     /**
      * @var WorkCategory
@@ -43,6 +65,17 @@ class Work extends AbstractBase
     private $workImages;
 
     /**
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Translation\WorkTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
+
+    /**
      *
      *
      * Methods
@@ -52,6 +85,7 @@ class Work extends AbstractBase
 
     public function __construct() {
         $this->workImages = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
@@ -30,6 +31,15 @@ class Product extends AbstractBase
     use TitleTrait;
     use SlugTrait;
     use TranslationsTrait;
+    use DescriptionTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
+     */
+    private $title;
 
     /**
      * @var string
@@ -75,24 +85,6 @@ class Product extends AbstractBase
     public function __construct() {
         $this->productImages = new ArrayCollection();
         $this->translations = new ArrayCollection();
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     * @return Product
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-        return $this;
     }
 
     /**
