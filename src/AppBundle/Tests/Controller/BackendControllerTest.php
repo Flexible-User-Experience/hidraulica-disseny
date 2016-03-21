@@ -57,7 +57,6 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/works/work/list'),
             array('/admin/works/work/create'),
             array('/admin/works/work/1/edit'),
-            array('/admin/works/work/1/preview'),
             array('/admin/works/work/1/delete'),
             array('/admin/works/image/list'),
             array('/admin/works/image/create'),
@@ -66,7 +65,6 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/products/product/list'),
             array('/admin/products/product/create'),
             array('/admin/products/product/1/edit'),
-            array('/admin/products/product/1/preview'),
             array('/admin/products/product/1/delete'),
             array('/admin/products/image/list'),
             array('/admin/products/image/create'),
@@ -123,6 +121,33 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/products/image/batch'),
             array('/admin/users/show'),
             array('/admin/users/batch'),
+        );
+    }
+
+    /**
+     * Test HTTP request is not found
+     *
+     * @dataProvider provideRedirectionUrls
+     * @param string $url
+     */
+    public function testAdminPagesAreRedirection($url)
+    {
+        $client = $this->makeClient(true);         // authenticated user
+        $client->request('GET', $url);
+
+        $this->assertStatusCode(302, $client);
+    }
+
+    /**
+     * Redirection Urls provider
+     *
+     * @return array
+     */
+    public function provideRedirectionUrls()
+    {
+        return array(
+            array('/admin/works/work/1/preview'),
+            array('/admin/products/product/1/preview'),
         );
     }
 }
