@@ -36,14 +36,14 @@ class FrontendControllerTest extends AbstractBaseTest
     {
         return array(
             array('/ca/'),
-            array('/secured/ca/treballs/'),
-            array('/secured/ca/productes/'),
+            array('/secure/ca/treballs/'),
+            array('/secure/ca/productes/'),
             array('/es/'),
-            array('/secured/es/trabajos/'),
-            array('/secured/es/productos/'),
+            array('/secure/es/trabajos/'),
+            array('/secure/es/productos/'),
             array('/en/'),
-            array('/secured/en/works/'),
-            array('/secured/en/products/'),
+            array('/secure/en/works/'),
+            array('/secure/en/products/'),
         );
     }
 

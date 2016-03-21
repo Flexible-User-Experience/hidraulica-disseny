@@ -27,7 +27,7 @@ class WorkAdminController extends BaseAdminController
      * @throws NotFoundHttpException If the object does not exist
      * @throws AccessDeniedException If access is not granted
      */
-    public function showAction($id = null, Request $request = null)
+    public function previewAction($id = null, Request $request = null)
     {
         $request = $this->resolveRequest($request);
         $id = $request->get($this->admin->getIdParameter());
@@ -39,7 +39,7 @@ class WorkAdminController extends BaseAdminController
             throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
         }
 
-        return $this->redirect($this->generateUrl('app_workt_detail', array(
+        return $this->redirect($this->generateUrl('app_work_detail', array(
             'slug' => $object->getSlug(),
         )));
     }

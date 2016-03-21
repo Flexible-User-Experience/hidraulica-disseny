@@ -27,7 +27,7 @@ class ProductAdminController extends BaseAdminController
      * @throws NotFoundHttpException If the object does not exist
      * @throws AccessDeniedException If access is not granted
      */
-    public function showAction($id = null, Request $request = null)
+    public function previewAction($id = null, Request $request = null)
     {
         $request = $this->resolveRequest($request);
         $id = $request->get($this->admin->getIdParameter());
