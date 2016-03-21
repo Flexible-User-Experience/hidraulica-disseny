@@ -1,9 +1,21 @@
 {% extends ':Frontend:layout.html.twig' %}
 
+{% block title %}{{ product.title }} · {{ parent() }}{% endblock %}
+
 {% block main %}
     <div class="container-fluid">
-        <div class="text-center row">
-            <div class="col-xs-12">PRODUCT DETAIL</div>
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ product.title }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#" class="thumbnail">
+                    <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('700xY') }}" alt="{{ product.title }}" class="img-responsive">
+                </a>
+                <p>{{ product.description | raw }}</p>
+            </div>
         </div>
     </div>
 {% endblock %}

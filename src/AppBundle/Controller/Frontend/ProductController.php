@@ -35,8 +35,15 @@ class ProductController extends Controller
      */
     public function productDetailAction($slug)
     {
+        $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(
+            array(
+                'slug' => $slug,
+            )
+        );
+
         return $this->render(
-            ':Frontend/Product:show.html.twig'
+            ':Frontend/Product:show.html.twig',
+            [ 'product' => $product ]
         );
     }
 }
