@@ -2,12 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
-use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Work
@@ -18,19 +23,32 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkRepository")
+ * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\WorkTranslation")
+ * @Vich\Uploadable
  */
 class Work extends AbstractBase
 {
+    use ImageTrait;
     use TitleTrait;
     use SlugTrait;
     use DescriptionTrait;
+    use TranslationsTrait;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
      */
-    private $mainImage;
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", length=4000, nullable=true)
+     * @Gedmo\Translatable
+     */
+    private $description;
 
     /**
      * @var WorkCategory
@@ -41,10 +59,34 @@ class Work extends AbstractBase
     private $workCategory;
 
     /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="work", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize = "10M",
+     *     mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"}
+     * )
+     * @Assert\Image(minWidth = 1200)
+     */
+    private $imageFile;
+
+    /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work")
+     * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $workImages;
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Translation\WorkTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
 
     /**
      *
@@ -56,25 +98,7 @@ class Work extends AbstractBase
 
     public function __construct() {
         $this->workImages = new ArrayCollection();
-    }
-
-    /**
-     * @return string
-     */
-    public function getMainImage()
-    {
-        return $this->mainImage;
-    }
-
-    /**
-     * @param string $mainImage
-     * @return Work
-     */
-    public function setMainImage($mainImage)
-    {
-        $this->mainImage = $mainImage;
-
-        return $this;
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -86,10 +110,10 @@ class Work extends AbstractBase
     }
 
     /**
-     * @param WorkCategory $workCategory
+     * @param WorkCategory|null $workCategory
      * @return Work
      */
-    public function setWorkCategory(WorkCategory $workCategory)
+    public function setWorkCategory($workCategory)
     {
         $this->workCategory = $workCategory;
 
@@ -121,6 +145,7 @@ class Work extends AbstractBase
      */
     public function addWorkImage(WorkImage $workImage)
     {
+        $workImage->setWork($this);
         $this->workImages->add($workImage);
 
         return $this;

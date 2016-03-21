@@ -2,12 +2,17 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
-use AppBundle\Entity\Traits\DescriptionTrait;
+use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Product
@@ -18,19 +23,32 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\ProductTranslation")
+ * @Vich\Uploadable
  */
 class Product extends AbstractBase
 {
+    use ImageTrait;
     use TitleTrait;
     use SlugTrait;
+    use TranslationsTrait;
     use DescriptionTrait;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
      */
-    private $mainImage;
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text", length=4000, nullable=true)
+     * @Gedmo\Translatable
+     */
+    private $description;
 
     /**
      * @var float
@@ -40,10 +58,34 @@ class Product extends AbstractBase
     private $price;
 
     /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize = "10M",
+     *     mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"}
+     * )
+     * @Assert\Image(minWidth = 1200)
+     */
+    private $imageFile;
+
+    /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     private $productImages;
+
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Translation\ProductTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
 
     /**
      *
@@ -55,25 +97,7 @@ class Product extends AbstractBase
 
     public function __construct() {
         $this->productImages = new ArrayCollection();
-    }
-
-    /**
-     * @return string
-     */
-    public function getMainImage()
-    {
-        return $this->mainImage;
-    }
-
-    /**
-     * @param string $mainImage
-     * @return Product
-     */
-    public function setMainImage($mainImage)
-    {
-        $this->mainImage = $mainImage;
-
-        return $this;
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -110,5 +134,33 @@ class Product extends AbstractBase
     {
         $this->productImages = $productImages;
         return $this;
+    }
+
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
+    public function addProductImage(ProductImage $productImage)
+    {
+        $productImage->setProduct($this);
+        $this->productImages->add($productImage);
+
+        return $this;
+    }
+
+    /**
+     * @param ProductImage $productImage
+     * @return $this
+     */
+    public function removeProductImage(ProductImage $productImage)
+    {
+        $this->productImages->removeElement($productImage);
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle() . ' # ' . $this->getPrice() . ' €';
     }
 }

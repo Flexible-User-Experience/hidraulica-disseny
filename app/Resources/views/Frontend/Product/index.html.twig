@@ -1,0 +1,23 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ 'front.title.products' | trans }} · {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="text-center row">
+            <div class="col-xs-12">
+                <h1>{{ 'front.title.products' | trans }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3">
+                    <h4>{{ product.title }}</h4>
+                    <a href="{{ path('app_product_detail', {slug: product.slug}) }}" class="thumbnail">
+                        <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('700xY') }}" alt="{{ product.title }}" class="img-responsive">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

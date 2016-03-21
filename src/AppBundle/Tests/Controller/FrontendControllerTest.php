@@ -2,16 +2,76 @@
 
 namespace AppBundle\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use AppBundle\Tests\AbstractBaseTest;
 
-class FrontendControllerTest extends WebTestCase
+/**
+ * Class FrontendControllerTest
+ *
+ * @category Test
+ * @package  AppBundle\Tests\Controller
+ * @author   David Romaní <david@flux.cat>
+ */
+class FrontendControllerTest extends AbstractBaseTest
 {
-    public function testIndex()
+    /**
+     * Test HTTP request is successful
+     *
+     * @dataProvider provideSuccessfulUrls
+     * @param string $url
+     */
+    public function testPagesAreSuccessful($url)
     {
-        $client = static::createClient();
+        $client = $this->makeClient(true);         // authenticated user
+        $client->request('GET', $url);
 
-        $crawler = $client->request('GET', '/');
+        $this->assertStatusCode(200, $client);
+    }
 
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    /**
+     * Successful Urls provider
+     *
+     * @return array
+     */
+    public function provideSuccessfulUrls()
+    {
+        return array(
+            array('/ca/'),
+            array('/secure/ca/treballs/'),
+            array('/secure/ca/productes/'),
+            array('/es/'),
+            array('/secure/es/trabajos/'),
+            array('/secure/es/productos/'),
+            array('/en/'),
+            array('/secure/en/works/'),
+            array('/secure/en/products/'),
+        );
+    }
+
+    /**
+     * Test HTTP request is not found
+     *
+     * @dataProvider provideNotFoundUrls
+     * @param string $url
+     */
+    public function testPagesAreNotFound($url)
+    {
+        $client = $this->createClient();         // anonymous user
+        $client->request('GET', $url);
+
+        $this->assertStatusCode(404, $client);
+    }
+
+    /**
+     * Not found Urls provider
+     *
+     * @return array
+     */
+    public function provideNotFoundUrls()
+    {
+        return array(
+            array('/ca/pagina-trenacada/'),
+            array('/es/pagina-rota/'),
+            array('/en/broken-page/'),
+        );
     }
 }

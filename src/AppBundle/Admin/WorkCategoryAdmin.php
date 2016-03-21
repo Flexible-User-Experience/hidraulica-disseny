@@ -2,8 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -26,17 +24,46 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     );
 
     /**
+     * Configure route collection
+     *
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection
+            ->remove('batch')
+            ->remove('show');
+    }
+
+    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.category', $this->getFormMdSuccessBoxArray(6))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'title',
                 null,
                 array(
                     'label' => 'backend.admin.title',
+                )
+            )
+            ->end()
+            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'translations',
+                'a2lix_translations_gedmo',
+                array(
+                    'required'           => false,
+                    'label'              => ' ',
+                    'translatable_class' => 'AppBundle\Entity\Translation\WorkCategoryTranslation',
+                    'fields'             => array(
+                        'title' => array(
+                            'label'    => 'backend.admin.title',
+                            'required' => false
+                        ),
+                    ),
                 )
             )
             ->end()
@@ -62,7 +89,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
@@ -102,10 +129,10 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );

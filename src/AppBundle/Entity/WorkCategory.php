@@ -4,9 +4,11 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
+use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class WorkCategory
@@ -17,11 +19,21 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\WorkCategoryRepository")
+ * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\WorkCategoryTranslation")
  */
 class WorkCategory extends AbstractBase
 {
     use TitleTrait;
     use SlugTrait;
+    use TranslationsTrait;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Translatable
+     */
+    private $title;
 
     /**
      * @var ArrayCollection
@@ -29,6 +41,16 @@ class WorkCategory extends AbstractBase
      */
     private $works;
 
+    /**
+     * @ORM\OneToMany(
+     *     targetEntity="AppBundle\Entity\Translation\WorkCategoryTranslation",
+     *     mappedBy="object",
+     *     cascade={"persist", "remove"}
+     * )
+     * @Assert\Valid(deep = true)
+     * @var ArrayCollection
+     */
+    protected $translations;
 
     /**
      *
@@ -40,6 +62,7 @@ class WorkCategory extends AbstractBase
 
     public function __construct() {
         $this->works = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -59,5 +82,15 @@ class WorkCategory extends AbstractBase
         $this->works = $works;
 
         return $this;
+    }
+
+    /**
+     * To string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->id ? $this->title : '---';
     }
 }

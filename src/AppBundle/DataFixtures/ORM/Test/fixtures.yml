@@ -1,6 +1,6 @@
 # Contact messages
 AppBundle\Entity\ContactMessage:
-  contact{1..10}:
+  contact{1..5}:
     email: <safeEmail()>
     message: <paragraph()>
     description: <paragraph()>
@@ -12,21 +12,19 @@ AppBundle\Entity\ContactMessage:
 
 ## Works
 AppBundle\Entity\Work:
-  work{1..10}:
+  work{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     enabled: <boolean(70)>
     workCategory: @workCategory<numberBetween(1, 3)>
 
 ## Products
 AppBundle\Entity\Product:
-  product{1..10}:
+  product{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
-    mainImage: <word()>
     price: <randomFloat(2, 0, 10)>
     enabled: <boolean(70)>
 
@@ -38,18 +36,71 @@ AppBundle\Entity\WorkCategory:
 
 ## Work Images
 AppBundle\Entity\WorkImage:
-  workImage{1..20}:
+  workImage{1..10}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    work: @work<numberBetween(1, 10)>
+    work: @work<numberBetween(1, 5)>
 
 ## Product Images
 AppBundle\Entity\ProductImage:
-  productImage{1..20}:
+  productImage{1..10}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
-    imageName: <word()>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    product: @product<numberBetween(1, 10)>
+    product: @product<numberBetween(1, 5)>
+
+## Slider Images
+AppBundle\Entity\SliderImage:
+  sliderImage{1..5}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    alt: <word()>
+    position: <numberBetween(1, 5)>
+
+## Cart Items
+AppBundle\Entity\Cart\CartItem:
+  cartItem{1..5}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    quantity: <numberBetween(1, 5)>
+    product: @product<numberBetween(1, 5)>
+    cart: @cart<numberBetween(1, 2)>
+
+## Cart
+AppBundle\Entity\Cart\Cart:
+  cart{1..2}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    customer: @customer<numberBetween(1, 5)>
+    status: <numberBetween(0, 3)>
+
+## Customers
+AppBundle\Entity\Cart\Customer:
+  customer{1..5}:
+    name: <firstName()>
+    address: <streetName()>
+    city: <city()>
+    state: <state()>
+    country: <country()>
+    postalCode: <postcode()>
+    email: <safeEmail()>
+    phone: <phoneNumber()>
+
+## Users
+AppBundle\Entity\User:
+    admin:
+        username: <{private_admin_test_user}>
+        plainPassword: <{private_admin_test_pass}>
+        email: <safeEmail()>
+        firstname: <name()>
+        lastname: <lastname()>
+        enabled: true
+        roles:
+            - ROLE_SUPER_ADMIN
+    editor:
+        username: <{private_editor_test_user}>
+        plainPassword: <{private_editor_test_pass}>
+        email: <safeEmail()>
+        firstname: <name()>
+        lastname: <lastname()>
+        enabled: true
+        roles:
+            - ROLE_CMS
