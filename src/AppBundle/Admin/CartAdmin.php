@@ -57,63 +57,62 @@ class CartAdmin extends AbstractBaseAdmin
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
-        // Here we set the fields of the ShowMapper variable, $showMapper (but this can be called anything)
         $showMapper
             ->with('backend.admin.cart.customer.customer', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'customer.name',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.name',
+                    'label' => 'backend.admin.cart.customer.name',
                 )
             )
             ->add(
                 'customer.address',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.address',
+                    'label' => 'backend.admin.cart.customer.address',
                 )
             )
             ->add(
                 'customer.postalCode',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.postal_code',
+                    'label' => 'backend.admin.cart.customer.postal_code',
                 )
             )
             ->add(
                 'customer.city',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.city',
+                    'label' => 'backend.admin.cart.customer.city',
                 )
             )
             ->add(
                 'customer.state',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.state',
+                    'label' => 'backend.admin.cart.customer.state',
                 )
             )
             ->add(
                 'customer.country',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.country',
+                    'label' => 'backend.admin.cart.customer.country',
                 )
             )
             ->add(
                 'customer.phone',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.phone',
+                    'label' => 'backend.admin.cart.customer.phone',
                 )
             )
             ->add(
                 'customer.email',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.email',
+                    'label' => 'backend.admin.cart.customer.email',
                 )
             )
             ->end()
@@ -129,9 +128,8 @@ class CartAdmin extends AbstractBaseAdmin
             ->add(
                 'statusHumanFriendly',
                 null,
-                array('label' => 'backend.admin.cart.status.status'),
-                'choice',
                 array(
+                    'label'   => 'backend.admin.cart.status.status',
                     'choices' => CartStatusEnum::getEnumArray(),
                 )
             )
@@ -141,14 +139,14 @@ class CartAdmin extends AbstractBaseAdmin
                 'items',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.items',
+                    'label' => 'backend.admin.cart.items',
                 )
             )
             ->add(
                 'totalAmount',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.total_amount',
+                    'label' => 'backend.admin.cart.total_amount',
                 )
             )
             ->end();
@@ -165,7 +163,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'items',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.items',
+                    'label' => 'backend.admin.cart.items',
                 )
             )
             ->end()
@@ -208,7 +206,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.customer',
+                    'label' => 'backend.admin.cart.customer.customer',
                 )
             )
             ->add(
@@ -219,7 +217,7 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'expanded' => false,
                     'multiple' => false,
-                    'choices' => CartStatusEnum::getEnumArray(),
+                    'choices'  => CartStatusEnum::getEnumArray(),
                 )
             );
     }
@@ -244,7 +242,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'customer',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.customer',
+                    'label' => 'backend.admin.cart.customer.customer',
                 )
             )
             ->add(
@@ -275,9 +273,10 @@ class CartAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+
                     ),
                 )
             );

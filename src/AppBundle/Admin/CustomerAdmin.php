@@ -4,9 +4,7 @@ namespace AppBundle\Admin;
 
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use AppBundle\Enum\CartStatusEnum;
 
 /**
  * Class CustomerAdmin
@@ -48,56 +46,56 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.name',
+                    'label' => 'backend.admin.cart.customer.name',
                 )
             )
             ->add(
                 'address',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.address',
+                    'label' => 'backend.admin.cart.customer.address',
                 )
             )
             ->add(
                 'postalCode',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.postal_code',
+                    'label' => 'backend.admin.cart.customer.postal_code',
                 )
             )
             ->add(
                 'city',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.city',
+                    'label' => 'backend.admin.cart.customer.city',
                 )
             )
             ->add(
                 'state',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.state',
+                    'label' => 'backend.admin.cart.customer.state',
                 )
             )
             ->add(
                 'country',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.country',
+                    'label' => 'backend.admin.cart.customer.country',
                 )
             )
             ->add(
                 'phone',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.phone',
+                    'label' => 'backend.admin.cart.customer.phone',
                 )
             )
             ->add(
                 'email',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.email',
+                    'label' => 'backend.admin.cart.customer.email',
                 )
             );
     }
@@ -113,65 +111,65 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'name',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.name',
+                    'label' => 'backend.admin.cart.customer.name',
                 )
             )
             ->add(
                 'address',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.address',
+                    'label' => 'backend.admin.cart.customer.address',
                 )
             )
             ->add(
                 'postalCode',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.postal_code',
+                    'label' => 'backend.admin.cart.customer.postal_code',
                 )
             )
             ->add(
                 'city',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.city',
+                    'label' => 'backend.admin.cart.customer.city',
                 )
             )
             ->add(
                 'state',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.state',
+                    'label' => 'backend.admin.cart.customer.state',
                 )
             )
             ->add(
                 'country',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.country',
+                    'label' => 'backend.admin.cart.customer.country',
                 )
             )
             ->add(
                 'phone',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.phone',
+                    'label' => 'backend.admin.cart.customer.phone',
                 )
             )
             ->add(
                 'email',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.customer.email',
+                    'label' => 'backend.admin.cart.customer.email',
                 )
             )
             ->add(
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                     ),
                 )
             );

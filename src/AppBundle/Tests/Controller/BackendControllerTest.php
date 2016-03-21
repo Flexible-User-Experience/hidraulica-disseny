@@ -123,4 +123,31 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/users/batch'),
         );
     }
+
+    /**
+     * Test HTTP request is not found
+     *
+     * @dataProvider provideRedirectionUrls
+     * @param string $url
+     */
+    public function testAdminPagesAreRedirection($url)
+    {
+        $client = $this->makeClient(true);         // authenticated user
+        $client->request('GET', $url);
+
+        $this->assertStatusCode(302, $client);
+    }
+
+    /**
+     * Redirection Urls provider
+     *
+     * @return array
+     */
+    public function provideRedirectionUrls()
+    {
+        return array(
+            array('/admin/works/work/1/preview'),
+            array('/admin/products/product/1/preview'),
+        );
+    }
 }

@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/", name="app_product_list")
+     * @Route("/products/", name="app_product_list", options={"i18n_prefix" = "secure"})
      */
     public function productListAction()
     {
@@ -28,7 +28,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}/", name="app_product_detail")
+     * @Route("/product/{slug}/", name="app_product_detail", options={"i18n_prefix" = "secure"})
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response

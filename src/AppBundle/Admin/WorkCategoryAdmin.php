@@ -2,8 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -61,8 +59,8 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                     'label'              => ' ',
                     'translatable_class' => 'AppBundle\Entity\Translation\WorkCategoryTranslation',
                     'fields'             => array(
-                        'title'       => array(
-                            'label' => 'backend.admin.title',
+                        'title' => array(
+                            'label'    => 'backend.admin.title',
                             'required' => false
                         ),
                     ),
@@ -91,7 +89,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
@@ -131,11 +129,10 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );
