@@ -20,7 +20,7 @@ class WorkController extends Controller
      */
     public function workListAction()
     {
-        return $this->render('Frontend/Work/work.html.twig');
+        return $this->render(':Frontend/Work:index.html.twig');
     }
 
     /**
@@ -31,6 +31,6 @@ class WorkController extends Controller
      */
     public function workDetailAction($slug)
     {
-        return $this->render('Frontend/Work/work_detail.html.twig');
+        return $this->render(':Frontend/Work:show.html.twig');
     }
 }

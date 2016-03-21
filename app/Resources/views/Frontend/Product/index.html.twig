@@ -1,0 +1,20 @@
+{% extends ':Frontend:layout.html.twig' %}
+
+{% block title %}{{ 'front.title.products' | trans }} · {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="text-center row">
+            <div class="col-xs-12">
+                <h1>{{ 'front.title.products' | trans }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-3">
+                    <h4>{{ product.title }}</h4>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

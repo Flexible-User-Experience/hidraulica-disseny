@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * @category Controller
  * @package  AppBundle\Controller\Frontend
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  */
 class ProductController extends Controller
 {
@@ -22,9 +21,10 @@ class ProductController extends Controller
     {
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
 
-        return $this->render('Frontend/Product/product.html.twig', array(
-            'products' => $products,
-        ));
+        return $this->render(
+            ':Frontend/Product:index.html.twig',
+            [ 'products' => $products ]
+        );
     }
 
     /**
@@ -35,6 +35,8 @@ class ProductController extends Controller
      */
     public function productDetailAction($slug)
     {
-        return $this->render('Frontend/Product/product_detail.html.twig');
+        return $this->render(
+            ':Frontend/Product:show.html.twig'
+        );
     }
 }
