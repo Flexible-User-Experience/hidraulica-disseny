@@ -4,7 +4,6 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\ContactMessage;
 use AppBundle\Form\Type\ContactMessageAnswerType;
-use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +16,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @package  AppBundle\Controller\Admin
  * @author   David Romaní <david@flux.cat>
  */
-class ContactMessageAdminController extends Controller
+class ContactMessageAdminController extends BaseAdminController
 {
     /**
      * Show action
@@ -116,18 +115,5 @@ class ContactMessageAdminController extends Controller
             null,
             $request
         );
-    }
-
-    /**
-     * @param Request|null $request
-     * @return Request
-     */
-    private function resolveRequest(Request $request = null)
-    {
-        if (null === $request) {
-            return $this->getRequest();
-        }
-
-        return $request;
     }
 }
