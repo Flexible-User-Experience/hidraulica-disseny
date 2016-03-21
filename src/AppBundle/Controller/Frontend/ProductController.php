@@ -11,30 +11,39 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  * @category Controller
  * @package  AppBundle\Controller\Frontend
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  */
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/", name="app_product_list")
+     * @Route("/products/", name="app_product_list", options={"i18n_prefix" = "secure"})
      */
     public function productListAction()
     {
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
 
-        return $this->render('Frontend/Product/product.html.twig', array(
-            'products' => $products,
-        ));
+        return $this->render(
+            ':Frontend/Product:index.html.twig',
+            [ 'products' => $products ]
+        );
     }
 
     /**
-     * @Route("/product/{slug}/", name="app_product_detail")
+     * @Route("/product/{slug}/", name="app_product_detail", options={"i18n_prefix" = "secure"})
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function productDetailAction($slug)
     {
-        return $this->render('Frontend/Product/product_detail.html.twig');
+        $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(
+            array(
+                'slug' => $slug,
+            )
+        );
+
+        return $this->render(
+            ':Frontend/Product:show.html.twig',
+            [ 'product' => $product ]
+        );
     }
 }

@@ -2,7 +2,7 @@ services:
 # Sonata Admins
     admin.work:
         class: AppBundle\Admin\WorkAdmin
-        arguments: [ ~, AppBundle\Entity\Work, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Work", group: "Works" }
     admin.workcategory:
@@ -22,7 +22,7 @@ services:
             - { name: sonata.admin, manager_type: orm, label: "Image", group: "Sliders", show_in_dashboard: true }
     admin.product:
         class: AppBundle\Admin\ProductAdmin
-        arguments: [ ~, AppBundle\Entity\Product, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
+        arguments: [ ~, AppBundle\Entity\Product, AppBundle:Admin\ProductAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Product", group: "Products" }
     admin.productimage:

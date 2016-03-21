@@ -74,7 +74,7 @@ class UserAdmin extends ParentUserAdmin
                 'firstname',
                 null,
                 array(
-                    'label' => 'backend.admin.firstname',
+                    'label'    => 'backend.admin.firstname',
                     'required' => false,
                 )
             )
@@ -85,14 +85,18 @@ class UserAdmin extends ParentUserAdmin
                     'label' => 'backend.admin.username',
                 )
             )
-            ->add('email', null, array(
-                'label' => 'backend.admin.email',
-            ))
+            ->add(
+                'email',
+                null,
+                array(
+                    'label' => 'backend.admin.email',
+                )
+            )
             ->add(
                 'plainPassword',
                 'text',
                 array(
-                    'label' => 'backend.admin.plain_password',
+                    'label'    => 'backend.admin.plain_password',
                     'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
                 )
             )
@@ -102,7 +106,7 @@ class UserAdmin extends ParentUserAdmin
                 'roles',
                 'choice',
                 array(
-                    'label' => 'backend.admin.roles',
+                    'label'    => 'backend.admin.roles',
                     'choices'  => UserRolesEnum::getEnumArray(),
                     'multiple' => true,
                     'expanded' => true
@@ -112,7 +116,7 @@ class UserAdmin extends ParentUserAdmin
                 'enabled',
                 'checkbox',
                 array(
-                    'label' => 'backend.admin.enabled',
+                    'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -132,9 +136,13 @@ class UserAdmin extends ParentUserAdmin
                     'label' => 'backend.admin.username',
                 )
             )
-            ->add('email', null, array(
-                'label' => 'backend.admin.email',
-            ))
+            ->add(
+                'email',
+                null,
+                array(
+                    'label' => 'backend.admin.email',
+                )
+            )
 //            ->add(
 //                'roles',
 //                'doctrine_orm_string',
@@ -163,7 +171,7 @@ class UserAdmin extends ParentUserAdmin
                 'username',
                 null,
                 array(
-                    'label' => 'backend.admin.username',
+                    'label'    => 'backend.admin.username',
                     'editable' => true,
                 )
             )
@@ -171,7 +179,7 @@ class UserAdmin extends ParentUserAdmin
                 'email',
                 null,
                 array(
-                    'label' => 'backend.admin.email',
+                    'label'    => 'backend.admin.email',
                     'editable' => true,
                 )
             )
@@ -179,7 +187,7 @@ class UserAdmin extends ParentUserAdmin
                 'roles',
                 null,
                 array(
-                    'label' => 'backend.admin.roles',
+                    'label'    => 'backend.admin.roles',
                     'template' => '::Admin/Cells/list__cell_user_roles.html.twig',
                 )
             )
@@ -187,7 +195,7 @@ class UserAdmin extends ParentUserAdmin
                 'enabled',
                 null,
                 array(
-                    'label' => 'backend.admin.enabled',
+                    'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -195,10 +203,10 @@ class UserAdmin extends ParentUserAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );

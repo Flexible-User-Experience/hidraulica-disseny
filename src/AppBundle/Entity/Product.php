@@ -9,6 +9,7 @@ use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TranslationsTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -55,6 +56,18 @@ class Product extends AbstractBase
      * @ORM\Column(type="float", name="price")
      */
     private $price;
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize = "10M",
+     *     mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"}
+     * )
+     * @Assert\Image(minWidth = 1200)
+     */
+    private $imageFile;
 
     /**
      * @var ArrayCollection

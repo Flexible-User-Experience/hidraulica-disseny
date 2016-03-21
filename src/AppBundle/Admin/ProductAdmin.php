@@ -2,7 +2,6 @@
 
 namespace AppBundle\Admin;
 
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -23,6 +22,15 @@ class ProductAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
+
+    /**
+     * @param RouteCollection $collection
+     */
+    public function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->add('preview', $this->getRouterIdParameter() . '/preview');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -91,7 +99,7 @@ class ProductAdmin extends AbstractBaseAdmin
                     'translatable_class' => 'AppBundle\Entity\Translation\ProductTranslation',
                     'fields'             => array(
                         'title'       => array(
-                            'label' => 'backend.admin.title',
+                            'label'    => 'backend.admin.title',
                             'required' => false
                         ),
                         'description' => array(
@@ -227,9 +235,9 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );

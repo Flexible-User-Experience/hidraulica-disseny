@@ -1,5 +1,3 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
 security:
     acl:
         connection: default
@@ -29,6 +27,12 @@ security:
             - ROLE_ADMIN_WORKIMAGE_EDIT
             - ROLE_ADMIN_WORKIMAGE_DELETE
             - ROLE_ADMIN_WORKIMAGE_EXPORT
+            - ROLE_ADMIN_SLIDERIMAGE_LIST
+            - ROLE_ADMIN_SLIDERIMAGE_VIEW
+            - ROLE_ADMIN_SLIDERIMAGE_CREATE
+            - ROLE_ADMIN_SLIDERIMAGE_EDIT
+            - ROLE_ADMIN_SLIDERIMAGE_DELETE
+            - ROLE_ADMIN_SLIDERIMAGE_EXPORT
             - ROLE_ADMIN_PRODUCT_LIST
             - ROLE_ADMIN_PRODUCT_VIEW
             - ROLE_ADMIN_PRODUCT_CREATE
@@ -60,7 +64,6 @@ security:
             - ROLE_ALLOWED_TO_SWITCH
     access_decision_manager:
         strategy: unanimous
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username_email
@@ -86,6 +89,10 @@ security:
                 path:   /admin/logout
                 target: /admin/login
             anonymous: true
+        development:
+            pattern: ^/secure(.*)
+            context: user
+            anonymous: true
         frontend:
             pattern: ^/(.*)
             context: user
@@ -94,4 +101,5 @@ security:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_USER }
+        - { path: ^/secure/, role: ROLE_USER }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

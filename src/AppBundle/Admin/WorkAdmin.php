@@ -2,13 +2,10 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Admin\AbstractBaseAdmin;
-use Doctrine\ORM\QueryBuilder;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class WorkAdmin
@@ -25,6 +22,15 @@ class WorkAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
+
+    /**
+     * @param RouteCollection $collection
+     */
+    public function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+        $collection->add('preview', $this->getRouterIdParameter() . '/preview');
+    }
 
     /**
      * @param FormMapper $formMapper
@@ -46,7 +52,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
@@ -54,7 +60,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'ckeditor',
                 array(
                     'config_name' => 'my_config',
-                    'label'    => 'backend.admin.description',
+                    'label'       => 'backend.admin.description',
                 )
             )
             ->end()
@@ -71,7 +77,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.category',
+                    'label' => 'backend.admin.category',
                 )
             )
             ->add(
@@ -93,7 +99,7 @@ class WorkAdmin extends AbstractBaseAdmin
                     'translatable_class' => 'AppBundle\Entity\Translation\WorkTranslation',
                     'fields'             => array(
                         'title'       => array(
-                            'label' => 'backend.admin.title',
+                            'label'    => 'backend.admin.title',
                             'required' => false
                         ),
                         'description' => array(
@@ -125,7 +131,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 ->end()
                 ->setHelps(
                     array('workImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
-            );
+                );
         }
     }
 
@@ -148,21 +154,21 @@ class WorkAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                 )
             )
             ->add(
                 'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.category',
+                    'label' => 'backend.admin.category',
                 )
             )
             ->add(
                 'description',
                 null,
                 array(
-                    'label'    => 'backend.admin.description',
+                    'label' => 'backend.admin.description',
                 )
             )
             ->add(
@@ -211,7 +217,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'workCategory',
                 null,
                 array(
-                    'label'    => 'backend.admin.category',
+                    'label' => 'backend.admin.category',
                 )
             )
             ->add(
@@ -226,11 +232,12 @@ class WorkAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
+
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );

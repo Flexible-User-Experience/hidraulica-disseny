@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use AppBundle\Entity\Traits\ImageTrait;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -29,6 +30,18 @@ class WorkImage extends AbstractBase
      * @ORM\JoinColumn(name="work_id", referencedColumnName="id")
      */
     private $work;
+
+    /**
+     * @var File
+     *
+     * @Vich\UploadableField(mapping="work", fileNameProperty="imageName")
+     * @Assert\File(
+     *     maxSize = "10M",
+     *     mimeTypes = {"image/jpg", "image/jpeg", "image/png", "image/gif"}
+     * )
+     * @Assert\Image(minWidth = 1200)
+     */
+    private $imageFile;
 
     /**
      *
