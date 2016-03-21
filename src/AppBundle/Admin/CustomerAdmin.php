@@ -169,7 +169,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show' => array(),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                     ),
                 )
             );

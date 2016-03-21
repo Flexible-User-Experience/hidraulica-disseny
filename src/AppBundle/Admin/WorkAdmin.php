@@ -234,9 +234,10 @@ class WorkAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
-                        'delete' => array(),
+                        'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
+
+                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );

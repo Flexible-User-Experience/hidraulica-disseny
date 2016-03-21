@@ -57,7 +57,6 @@ class CartAdmin extends AbstractBaseAdmin
 
     protected function configureShowFields(ShowMapper $showMapper)
     {
-        // Here we set the fields of the ShowMapper variable, $showMapper (but this can be called anything)
         $showMapper
             ->with('backend.admin.cart.customer.customer', $this->getFormMdSuccessBoxArray(6))
             ->add(
@@ -276,7 +275,8 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
-                        'show' => array(),
+                        'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
+
                     ),
                 )
             );
