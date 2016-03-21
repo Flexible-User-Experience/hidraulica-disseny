@@ -51,14 +51,14 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     'label' => 'backend.admin.checked',
                 )
             )
-//            ->add(
-//                'createdAt',
-//                'doctrine_orm_date',
-//                array(
-//                    'label'      => 'backend.admin.date',
-//                    'field_type' => 'sonata_type_date_picker',
-//                )
-//            )
+            ->add(
+                'createdAt',
+                'doctrine_orm_date',
+                array(
+                    'label'      => 'backend.admin.date',
+                    'field_type' => 'sonata_type_date_picker',
+                )
+            )
             ->add(
                 'email',
                 null,
@@ -95,19 +95,19 @@ class ContactMessageAdmin extends AbstractBaseAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-//            ->add(
-//                'createdAt',
-//                'date',
-//                array(
-//                    'label'  => 'backend.admin.date',
-//                    'format' => 'd/m/Y H:i',
-//                )
-//            )
             ->add(
                 'checked',
                 null,
                 array(
                     'label' => 'backend.admin.checked',
+                )
+            )
+            ->add(
+                'createdAt',
+                'date',
+                array(
+                    'label'  => 'backend.admin.date',
+                    'format' => 'd/m/Y H:i',
                 )
             )
             ->add(
@@ -184,7 +184,9 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show'   => array(),
+                        'show'   => array(
+                            'template' => '::Admin/Buttons/list__action_show_button.html.twig'
+                        ),
                         'answer' => array(
                             'template' => '::Admin/Cells/list__action_answer.html.twig'
                         )
