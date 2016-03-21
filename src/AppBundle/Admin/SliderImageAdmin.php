@@ -5,7 +5,6 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class SliderImageAdmin
@@ -35,8 +34,8 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 'file',
                 array(
                     'label'    => 'backend.admin.image',
-                    'required'    => false,
-                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+                    'required' => false,
+                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
 //                    'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
@@ -46,7 +45,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->add(
@@ -70,7 +69,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->add(
@@ -102,7 +101,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->add(
@@ -117,7 +116,7 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
                         'edit'   => array(),
                         'delete' => array(),

@@ -5,7 +5,6 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
  * Class WorkImageAdmin
@@ -34,7 +33,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'work',
                 null,
                 array(
-                    'attr'     => array(
+                    'attr' => array(
                         'hidden' => true,
                     ),
                 )
@@ -43,7 +42,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'imageFile',
                 'file',
                 array(
-                    'label'    => 'backend.admin.image_name',
+                    'label'       => 'backend.admin.image_name',
                     'required'    => false,
                     'help'        => $this->getImageHelperFormMapperWithThumbnail(),
                     'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
@@ -53,7 +52,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->end()
@@ -79,7 +78,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->add(
@@ -95,7 +94,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'imageName',
                 null,
                 array(
-                    'label'    => 'backend.admin.image_name',
+                    'label' => 'backend.admin.image_name',
                 )
             )
             ->add(
@@ -127,7 +126,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label'    => 'backend.admin.position',
+                    'label' => 'backend.admin.position',
                 )
             )
             ->add(
@@ -143,7 +142,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'imageName',
                 null,
                 array(
-                    'label'    => 'backend.admin.image_name',
+                    'label' => 'backend.admin.image_name',
                 )
             )
             ->add(
@@ -166,7 +165,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label' => 'backend.admin.actions',
+                    'label'   => 'backend.admin.actions',
                     'actions' => array(
                         'show'   => array(),
                         'edit'   => array(),

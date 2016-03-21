@@ -184,7 +184,7 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 'actions',
                 array(
                     'actions' => array(
-                        'show' => array(),
+                        'show'   => array(),
                         'answer' => array(
                             'template' => '::Admin/Cells/list__action_answer.html.twig'
                         )
