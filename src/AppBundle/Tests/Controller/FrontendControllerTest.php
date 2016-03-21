@@ -21,7 +21,7 @@ class FrontendControllerTest extends AbstractBaseTest
      */
     public function testPagesAreSuccessful($url)
     {
-        $client = $this->createClient();         // anonymous user
+        $client = $this->makeClient(true);         // authenticated user
         $client->request('GET', $url);
 
         $this->assertStatusCode(200, $client);
@@ -36,14 +36,14 @@ class FrontendControllerTest extends AbstractBaseTest
     {
         return array(
             array('/ca/'),
-            array('/ca/treballs/'),
-            array('/ca/productes/'),
+            array('/secured/ca/treballs/'),
+            array('/secured/ca/productes/'),
             array('/es/'),
-            array('/es/trabajos/'),
-            array('/es/productos/'),
+            array('/secured/es/trabajos/'),
+            array('/secured/es/productos/'),
             array('/en/'),
-            array('/en/works/'),
-            array('/en/products/'),
+            array('/secured/en/works/'),
+            array('/secured/en/products/'),
         );
     }
 
