@@ -35,6 +35,8 @@ backend:
         description: Descripció
         editor: Editor
         email: Correu electrònic
+        name: Nom
+        subject: Tema
         enabled: Actiu
         firstname: Nom
         general: General

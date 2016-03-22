@@ -1,6 +1,8 @@
 # Contact messages
 AppBundle\Entity\ContactMessage:
   contact{1..20}:
+    name: <name()>
+    subject: <word()>
     email: <safeEmail()>
     message: <paragraph()>
     description: <paragraph()>
