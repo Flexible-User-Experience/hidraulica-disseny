@@ -21,3 +21,7 @@
         </div>
     </div>
 {% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_product_list', params: {}} %}
+{% endblock %}
