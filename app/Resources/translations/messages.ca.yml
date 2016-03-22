@@ -1,6 +1,9 @@
 front:
   title:
     products: productes
+    works: treballs
+    about: sobre nosaltres
+    contact: contacte
 
 backend:
     admin:

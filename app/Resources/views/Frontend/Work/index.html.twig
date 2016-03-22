@@ -1,9 +1,17 @@
-{% extends ':Frontend:layout.html.twig' %}
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ 'front.title.works' | trans }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container-fluid">
         <div class="text-center row">
-            <div class="col-xs-12">WORK</div>
+            <div class="col-xs-12">
+                <h1>{{ 'front.title.works' | trans }}</h1>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_work_list', params: {}} %}
 {% endblock %}
