@@ -1,4 +1,6 @@
 app_homepage: '/'
+app_about: '/about-us/'
+app_contact: '/contact/'
 app_work_list: '/works/'
 app_work_detail: '/work/{slug}/'
 app_product_list: '/products/'

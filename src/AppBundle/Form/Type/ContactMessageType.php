@@ -3,6 +3,7 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -20,20 +21,19 @@ class ContactMessageType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add(
-                'message',
-                TextareaType::class,
+                'name',
+                TextType::class,
                 array(
-                    'label' => false,
+                    'label'    => false,
                     'required' => true,
-                    'attr' => array(
-                        'rows' => 1,
-                        'placeholder' => 'frontend.form.message',
+                    'attr'     => array(
+                        'placeholder' => 'front.contact.form.name',
                     ),
                 )
             )
@@ -41,10 +41,33 @@ class ContactMessageType extends AbstractType
                 'email',
                 EmailType::class,
                 array(
-                    'label' => false,
+                    'label'    => false,
                     'required' => true,
-                    'attr' => array(
-                        'placeholder' => 'frontend.form.email',
+                    'attr'     => array(
+                        'placeholder' => 'front.contact.form.email',
+                    ),
+                )
+            )
+            ->add(
+                'subject',
+                TextType::class,
+                array(
+                    'label'    => false,
+                    'required' => true,
+                    'attr'     => array(
+                        'placeholder' => 'front.contact.form.subject',
+                    ),
+                )
+            )
+            ->add(
+                'message',
+                TextareaType::class,
+                array(
+                    'label'    => false,
+                    'required' => true,
+                    'attr'     => array(
+                        'rows'        => 5,
+                        'placeholder' => 'front.contact.form.message',
                     ),
                 )
             )
@@ -52,8 +75,8 @@ class ContactMessageType extends AbstractType
                 'send',
                 SubmitType::class,
                 array(
-                    'label' => 'frontend.form.ok',
-                    'attr' => array(
+                    'label' => 'front.contact.form.ok',
+                    'attr'  => array(
                         'class' => 'btn-default',
                     ),
                 )
@@ -73,8 +96,10 @@ class ContactMessageType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\ContactMessage',
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'AppBundle\Entity\ContactMessage',
+            )
+        );
     }
 }

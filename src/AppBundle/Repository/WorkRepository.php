@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -14,4 +15,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class WorkRepository extends EntityRepository
 {
+    /**
+     * @return ArrayCollection
+     */
+    public function findAllEnabledSortedByDate()
+    {
+        $query = $this->createQueryBuilder('w')
+            ->where('w.enabled = :enabled')
+            ->setParameter('enabled', true)
+            ->orderBy('w.createdAt');
+
+        return $query->getQuery()->getResult();
+    }
 }

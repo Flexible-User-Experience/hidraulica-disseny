@@ -1,6 +1,8 @@
 # Contact messages
 AppBundle\Entity\ContactMessage:
   contact{1..20}:
+    name: <name()>
+    subject: <word()>
     email: <safeEmail()>
     message: <paragraph()>
     description: <paragraph()>
@@ -17,7 +19,7 @@ AppBundle\Entity\Work:
     title: <sentence()>
     description: <paragraph()>
     enabled: <boolean(70)>
-    workCategory: @workCategory<numberBetween(1, 10)>
+    category: @workCategory<numberBetween(1, 10)>
     imageName: <numberBetween(1, 5)>.jpg
 
 ## Work Category

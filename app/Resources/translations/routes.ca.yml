@@ -1,4 +1,6 @@
 app_homepage: '/'
+app_about: '/sobre-nosaltres/'
+app_contact: '/contacte/'
 app_work_list: '/treballs/'
 app_work_detail: '/treball/{slug}/'
 app_product_list: '/productes/'

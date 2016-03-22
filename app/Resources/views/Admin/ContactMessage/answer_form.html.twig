@@ -16,8 +16,16 @@
                                 <td>{{ object.createdAt | date('d/m/Y H:i') }}</td>
                             </tr>
                             <tr class="sonata-ba-view-container">
+                                <th>{{ 'backend.admin.name' | trans }}</th>
+                                <td>{{ object.name }}</td>
+                            </tr>
+                            <tr class="sonata-ba-view-container">
                                 <th>{{ 'backend.admin.email' | trans }}</th>
                                 <td>{{ object.email }}</td>
+                            </tr>
+                            <tr class="sonata-ba-view-container">
+                                <th>{{ 'backend.admin.subject' | trans }}</th>
+                                <td>{{ object.subject }}</td>
                             </tr>
                             <tr class="sonata-ba-view-container">
                                 <th>{{ 'backend.admin.message' | trans }}</th>

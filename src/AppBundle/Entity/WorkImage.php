@@ -26,7 +26,7 @@ class WorkImage extends AbstractBase
     /**
      * @var Work
      *
-     * @ORM\ManyToOne(targetEntity="Work", inversedBy="workImages")
+     * @ORM\ManyToOne(targetEntity="Work", inversedBy="images")
      * @ORM\JoinColumn(name="work_id", referencedColumnName="id")
      */
     private $work;

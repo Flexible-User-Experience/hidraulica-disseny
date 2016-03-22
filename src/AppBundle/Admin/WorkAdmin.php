@@ -74,7 +74,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'workCategory',
+                'category',
                 null,
                 array(
                     'label' => 'backend.admin.category',
@@ -115,7 +115,7 @@ class WorkAdmin extends AbstractBaseAdmin
             $formMapper
                 ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
                 ->add(
-                    'workImages',
+                    'images',
                     'sonata_type_collection',
                     array(
                         'label'              => ' ',
@@ -130,7 +130,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
                 ->end()
                 ->setHelps(
-                    array('workImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
+                    array('images' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
                 );
         }
     }
@@ -158,7 +158,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'workCategory',
+                'category',
                 null,
                 array(
                     'label' => 'backend.admin.category',
@@ -214,7 +214,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'workCategory',
+                'category',
                 null,
                 array(
                     'label' => 'backend.admin.category',
