@@ -4,7 +4,25 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                {{ knp_menu_render('top') }}
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="{{ path('app_homepage') }}">
+                                <img alt="{{ project_title }}" src="{{ asset('bundles/app/images/hidraulica.png') }}" class="img-responsive">
+                            </a>
+                            {#<a class="navbar-brand" href="#">Brand</a>#}
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            {{ knp_menu_render('top') }}
+                        </div>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                </nav>
             </div>
         </div>
     </div>
@@ -14,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-3">
-                <a href="mailto:hola@hidraulicadisseny.com">hola@hidraulicadisseny.com</a>
+                <a href="mailto:hola@hidraulicadisseny.com">{{ 'front.footer.email' | trans }}</a>
             </div>
             <div class="col-xs-9 text-right">
                 <a target="_blank" href="https://www.facebook.com/hidraulicadisseny">facebook</a>, <a target="_blank" href="https://www.behance.net/hidraulicadisseny">behance</a>, <a target="_blank" href="https://es.pinterest.com/hidraulicadis/">pinterest</a>, <a target="_blank" href="https://vimeo.com/hidraulica">vimeo</a>

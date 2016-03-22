@@ -11,6 +11,8 @@ front:
     works: treballs
     about: sobre nosaltres
     contact: contacte
+  footer:
+    email: "hola@hidraulicadisseny.com"
 backend:
     admin:
         admin: Administrador

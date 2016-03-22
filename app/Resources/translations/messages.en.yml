@@ -11,3 +11,5 @@ front:
     works: works
     about: about us
     contact: contact
+  footer:
+    email: "hello@hidraulicadisseny.com"

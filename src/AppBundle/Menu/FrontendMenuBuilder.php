@@ -52,7 +52,7 @@ class FrontendMenuBuilder
     public function createTopMenu(RequestStack $requestStack)
     {
         $menu = $this->factory->createItem('root');
-        $menu->setChildrenAttribute('class', 'my-menu list-unstyled no-gap-bottom');
+        $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
         if ($this->ac->isGranted('ROLE_CMS')) {
             $menu->addChild(
                 'admin',
