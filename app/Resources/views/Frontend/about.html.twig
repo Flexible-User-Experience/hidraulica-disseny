@@ -1,0 +1,17 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ 'front.title.about' | trans }} · {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="text-center row">
+            <div class="col-xs-12">
+                <h1>{{ 'front.title.about' | trans }}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_about', params: {}} %}
+{% endblock %}

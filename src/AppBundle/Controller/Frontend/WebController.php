@@ -22,4 +22,20 @@ class WebController extends Controller
     {
         return $this->render(':Frontend:homepage.html.twig');
     }
+
+    /**
+     * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
+     */
+    public function aboutAction()
+    {
+        return $this->render(':Frontend:about.html.twig');
+    }
+
+    /**
+     * @Route("/contact/", name="app_contact", options={"i18n_prefix" = "secure"})
+     */
+    public function contactAction()
+    {
+        return $this->render(':Frontend:contact.html.twig');
+    }
 }
