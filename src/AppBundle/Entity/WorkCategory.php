@@ -37,7 +37,7 @@ class WorkCategory extends AbstractBase
 
     /**
      * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="Work", mappedBy="workCategory")
+     * @ORM\OneToMany(targetEntity="Work", mappedBy="category")
      */
     private $works;
 

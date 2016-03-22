@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 <h1>{{ work.title }}</h1>
-                <h4 class="c-grey">{{ work.workCategory.title }}</h4>
+                <h4 class="c-grey">{{ work.category.title }}</h4>
             </div>
             <div class="col-sm-6 col-xs-12">
                 <p>{{ work.description | raw }}</p>
@@ -20,8 +20,8 @@
                 </div>
             </div>
         </div>
-        {% if work.workImages | length > 0 %}
-            {% for image in work.workImages %}
+        {% if work.images | length > 0 %}
+            {% for image in work.images %}
                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                     <div class="hovereffect">
                         <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">

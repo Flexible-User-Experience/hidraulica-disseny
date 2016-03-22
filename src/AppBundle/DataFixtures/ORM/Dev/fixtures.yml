@@ -17,7 +17,7 @@ AppBundle\Entity\Work:
     title: <sentence()>
     description: <paragraph()>
     enabled: <boolean(70)>
-    workCategory: @workCategory<numberBetween(1, 10)>
+    category: @workCategory<numberBetween(1, 10)>
     imageName: <numberBetween(1, 5)>.jpg
 
 ## Work Category

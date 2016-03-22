@@ -10,7 +10,7 @@
                     <div class="hovereffect">
                         <img class="img-responsive" src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
                         <div class="overlay">
-                            <h2>{{ work.workCategory.title }}</h2>
+                            <h2>{{ work.category.title }}</h2>
                             <a class="info" href="{{ path('app_work_detail', {slug: work.slug}) }}">{{ work.title }}</a>
                         </div>
                     </div>

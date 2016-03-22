@@ -17,7 +17,7 @@ AppBundle\Entity\Work:
     title: <sentence()>
     description: <paragraph()>
     enabled: <boolean(70)>
-    workCategory: @workCategory<numberBetween(1, 3)>
+    category: @workCategory<numberBetween(1, 3)>
 
 ## Products
 AppBundle\Entity\Product:

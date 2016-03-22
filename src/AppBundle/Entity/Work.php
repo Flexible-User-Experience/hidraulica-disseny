@@ -56,7 +56,7 @@ class Work extends AbstractBase
      * @ORM\ManyToOne(targetEntity="WorkCategory", inversedBy="works")
      * @ORM\JoinColumn(name="workCategory_id", referencedColumnName="id")
      */
-    private $workCategory;
+    private $category;
 
     /**
      * @var File
@@ -75,7 +75,7 @@ class Work extends AbstractBase
      * @ORM\OneToMany(targetEntity="WorkImage", mappedBy="work", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $workImages;
+    private $images;
 
     /**
      * @ORM\OneToMany(
@@ -97,44 +97,50 @@ class Work extends AbstractBase
      */
 
     public function __construct() {
-        $this->workImages = new ArrayCollection();
+        $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
     /**
+     * Get Category
+     *
      * @return WorkCategory
      */
-    public function getWorkCategory()
+    public function getCategory()
     {
-        return $this->workCategory;
+        return $this->category;
     }
 
     /**
-     * @param WorkCategory|null $workCategory
+     * @param WorkCategory $category
+     *
      * @return Work
      */
-    public function setWorkCategory($workCategory)
+    public function setCategory(WorkCategory $category)
     {
-        $this->workCategory = $workCategory;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
+     * Get Images
+     *
      * @return ArrayCollection
      */
-    public function getWorkImages()
+    public function getImages()
     {
-        return $this->workImages;
+        return $this->images;
     }
 
     /**
-     * @param ArrayCollection $workImages
+     * @param ArrayCollection $images
+     *
      * @return Work
      */
-    public function setWorkImages(ArrayCollection $workImages)
+    public function setImages(ArrayCollection $images)
     {
-        $this->workImages = $workImages;
+        $this->images = $images;
 
         return $this;
     }
@@ -143,10 +149,10 @@ class Work extends AbstractBase
      * @param WorkImage $workImage
      * @return $this
      */
-    public function addWorkImage(WorkImage $workImage)
+    public function addImage(WorkImage $workImage)
     {
         $workImage->setWork($this);
-        $this->workImages->add($workImage);
+        $this->images->add($workImage);
 
         return $this;
     }
@@ -155,9 +161,9 @@ class Work extends AbstractBase
      * @param WorkImage $workImage
      * @return $this
      */
-    public function removeWorkImage(WorkImage $workImage)
+    public function removeImage(WorkImage $workImage)
     {
-        $this->workImages->removeElement($workImage);
+        $this->images->removeElement($workImage);
 
         return $this;
     }
