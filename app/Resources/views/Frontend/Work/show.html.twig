@@ -5,18 +5,30 @@
 {% block main %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-sm-6 col-xs-12">
                 <h1>{{ work.title }}</h1>
+                <h4 class="c-grey">{{ work.workCategory.title }}</h4>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="thumbnail">
-                    <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}" class="img-responsive">
-                </a>
+            <div class="col-sm-6 col-xs-12">
                 <p>{{ work.description | raw }}</p>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="hovereffect">
+                    <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        {% if work.workImages | length > 0 %}
+            {% for image in work.workImages %}
+                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                    <div class="hovereffect">
+                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
 
