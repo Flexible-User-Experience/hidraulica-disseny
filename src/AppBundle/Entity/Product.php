@@ -20,7 +20,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @category Entity
  * @package  AppBundle\Entity
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
  * @Gedmo\TranslationEntity(class="AppBundle\Entity\Translation\ProductTranslation")
@@ -36,7 +35,6 @@ class Product extends AbstractBase
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Translatable
      */
@@ -44,7 +42,6 @@ class Product extends AbstractBase
 
     /**
      * @var string
-     *
      * @ORM\Column(type="text", length=4000, nullable=true)
      * @Gedmo\Translatable
      */
@@ -52,14 +49,12 @@ class Product extends AbstractBase
 
     /**
      * @var float
-     *
      * @ORM\Column(type="float", name="price")
      */
     private $price;
 
     /**
      * @var File
-     *
      * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "10M",
@@ -74,7 +69,7 @@ class Product extends AbstractBase
      * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
-    private $productImages;
+    private $images;
 
     /**
      * @ORM\OneToMany(
@@ -95,8 +90,9 @@ class Product extends AbstractBase
      *
      */
 
-    public function __construct() {
-        $this->productImages = new ArrayCollection();
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -110,51 +106,61 @@ class Product extends AbstractBase
 
     /**
      * @param float $price
+     *
      * @return Product
      */
     public function setPrice($price)
     {
         $this->price = $price;
+
         return $this;
     }
 
-     /**
+    /**
+     * Get Images
+     *
      * @return ArrayCollection
      */
-    public function getProductImages()
+    public function getImages()
     {
-        return $this->productImages;
+        return $this->images;
     }
 
     /**
-     * @param ArrayCollection $productImages
-     * @return Product
+     * Set Images
+     *
+     * @param ArrayCollection $images
+     *
+     * @return $this
      */
-    public function setProductImages(ArrayCollection $productImages)
+    public function setImages(ArrayCollection $images)
     {
-        $this->productImages = $productImages;
+        $this->images = $images;
+
         return $this;
     }
 
     /**
      * @param ProductImage $productImage
+     *
      * @return $this
      */
-    public function addProductImage(ProductImage $productImage)
+    public function addImage(ProductImage $productImage)
     {
         $productImage->setProduct($this);
-        $this->productImages->add($productImage);
+        $this->images->add($productImage);
 
         return $this;
     }
 
     /**
      * @param ProductImage $productImage
+     *
      * @return $this
      */
-    public function removeProductImage(ProductImage $productImage)
+    public function removeImage(ProductImage $productImage)
     {
-        $this->productImages->removeElement($productImage);
+        $this->images->removeElement($productImage);
 
         return $this;
     }

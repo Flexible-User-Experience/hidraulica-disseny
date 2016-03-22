@@ -15,7 +15,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * @category Entity
  * @package  AppBundle\Entity\Cart
  * @author   David Romaní <david@flux.cat>
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CartRepository")
  */
@@ -111,8 +110,7 @@ class Cart extends AbstractBase
     public function getCartItemByItem(CartItem $item)
     {
         /** @var CartItem $item */
-        foreach ($this->items as $item)
-        {
+        foreach ($this->items as $item) {
             if ($item->getId() == $item->getId()) {
                 return $item;
             }
@@ -129,8 +127,7 @@ class Cart extends AbstractBase
     public function getCartItemByProduct(Product $product)
     {
         /** @var CartItem $item */
-        foreach ($this->items as $item)
-        {
+        foreach ($this->items as $item) {
             if ($item->getProduct()->getId() == $product->getId()) {
                 return $item;
             }
@@ -188,11 +185,13 @@ class Cart extends AbstractBase
 
     /**
      * @param Customer $customer
+     *
      * @return Cart
      */
     public function setCustomer(Customer $customer)
     {
         $this->customer = $customer;
+
         return $this;
     }
 
@@ -214,11 +213,13 @@ class Cart extends AbstractBase
 
     /**
      * @param int $status
+     *
      * @return Cart
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
         return $this;
     }
 }

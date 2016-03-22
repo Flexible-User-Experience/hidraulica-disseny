@@ -14,58 +14,49 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @category Entity
  * @package  AppBundle\Entity
  * @author   David Romaní <david@flux.cat>
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CustomerRepository")
  */
 class Customer extends AbstractBase
 {
-
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $address;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $postalCode;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $city;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $state;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $country;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      * @Assert\Email(strict = true, checkMX = true, checkHost = true)
      */
@@ -73,7 +64,6 @@ class Customer extends AbstractBase
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
@@ -102,11 +92,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $name
+     *
      * @return Customer
      */
     public function setName($name)
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -120,11 +112,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $address
+     *
      * @return Customer
      */
     public function setAddress($address)
     {
         $this->address = $address;
+
         return $this;
     }
 
@@ -138,11 +132,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $postalCode
+     *
      * @return Customer
      */
     public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
+
         return $this;
     }
 
@@ -156,11 +152,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $city
+     *
      * @return Customer
      */
     public function setCity($city)
     {
         $this->city = $city;
+
         return $this;
     }
 
@@ -174,11 +172,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $state
+     *
      * @return Customer
      */
     public function setState($state)
     {
         $this->state = $state;
+
         return $this;
     }
 
@@ -192,11 +192,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $country
+     *
      * @return Customer
      */
     public function setCountry($country)
     {
         $this->country = $country;
+
         return $this;
     }
 
@@ -210,11 +212,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $email
+     *
      * @return Customer
      */
     public function setEmail($email)
     {
         $this->email = $email;
+
         return $this;
     }
 
@@ -228,11 +232,13 @@ class Customer extends AbstractBase
 
     /**
      * @param string $phone
+     *
      * @return Customer
      */
     public function setPhone($phone)
     {
         $this->phone = $phone;
+
         return $this;
     }
 
@@ -246,16 +252,19 @@ class Customer extends AbstractBase
 
     /**
      * @param ArrayCollection $carts
+     *
      * @return Customer
      */
     public function setCarts(ArrayCollection $carts)
     {
         $this->carts = $carts;
+
         return $this;
     }
 
     /**
      * @param Cart $cart
+     *
      * @return $this
      */
     public function addCart(Cart $cart)
@@ -268,6 +277,7 @@ class Customer extends AbstractBase
 
     /**
      * @param Cart $cart
+     *
      * @return $this
      */
     public function removeCart(Cart $cart)
@@ -282,9 +292,10 @@ class Customer extends AbstractBase
      *
      * @return string
      */
-    public function __toString() {
+    public function __toString()
+    {
 
-        return $this->id ? '#' . $this->getId() . ' · ' . $this->getName() :  '---';
+        return $this->id ? '#' . $this->getId() . ' · ' . $this->getName() : '---';
     }
 
 }
