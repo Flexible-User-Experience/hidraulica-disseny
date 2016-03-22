@@ -2,9 +2,6 @@
 
 namespace AppBundle\Menu;
 
-use AppBundle\Controller\WebController;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManager;
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -25,37 +22,18 @@ class FrontendMenuBuilder
     private $factory;
 
     /**
-     * @var EntityManager
-     */
-    private $em;
-
-    /**
      * @var AuthorizationChecker
      */
     private $ac;
 
     /**
-     * @var ArrayCollection all categories enabled sorted by title
-     */
-    private $categories;
-
-    /**
-     * @var ArrayCollection all static pages sorted by title
-     */
-    private $pages;
-
-    /**
      * @param FactoryInterface     $factory
-     * @param EntityManager        $em
      * @param AuthorizationChecker $ac
      */
-    public function __construct(FactoryInterface $factory, EntityManager $em, AuthorizationChecker $ac)
+    public function __construct(FactoryInterface $factory, AuthorizationChecker $ac)
     {
         $this->factory = $factory;
-        $this->em = $em;
         $this->ac = $ac;
-        $this->categories = $this->em->getRepository('AppBundle:Category')->findAllEnabledSortedByTitle();
-        $this->pages = $this->em->getRepository('AppBundle:Page')->findAllSortedByTitle();
     }
 
     /**
@@ -63,43 +41,54 @@ class FrontendMenuBuilder
      *
      * @return ItemInterface
      */
-    public function createSocialNetworksMenu(RequestStack $requestStack)
+    public function createTopMenu(RequestStack $requestStack)
     {
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'my-menu list-unstyled no-gap-bottom');
-        $menu->setChildrenAttribute('style', 'overflow:hidden');
-        $menu
-            ->addChild(
-                'facebook',
+        if ($this->ac->isGranted('ROLE_CMS')) {
+            $menu->addChild(
+                'admin',
                 array(
-                    'label' => 'facebook',
-                    'uri'   => 'https://www.facebook.com/asbelesteve',
+                    'label' => 'front.menu.admin',
+                    'route' => 'sonata_admin_dashboard',
                 )
             );
-        $menu
-            ->addChild(
-                'vimeo',
-                array(
-                    'label' => 'vimeo',
-                    'uri'   => 'https://vimeo.com/asbelesteve',
-                )
-            );
-        $menu
-            ->addChild(
-                'behance',
-                array(
-                    'label' => 'behance',
-                    'uri'   => 'https://www.behance.net',
-                )
-            );
-        $menu
-            ->addChild(
-                'pinterest',
-                array(
-                    'label' => 'pinterest',
-                    'uri'   => 'https://www.pinterest.com',
-                    )
-            );
+        }
+        $menu->addChild(
+            'app_homepage',
+            array(
+                'label' => 'front.menu.homepage',
+                'route' => 'app_homepage',
+            )
+        );
+        $menu->addChild(
+            'app_work_list',
+            array(
+                'label' => 'front.menu.work',
+                'route' => 'app_work_list',
+            )
+        );
+        $menu->addChild(
+            'app_product_list',
+            array(
+                'label' => 'front.menu.shop',
+                'route' => 'app_product_list',
+            )
+        );
+        $menu->addChild(
+            'app_about',
+            array(
+                'label' => 'front.menu.about',
+                'route' => 'app_about',
+            )
+        );
+        $menu->addChild(
+            'app_contact',
+            array(
+                'label' => 'front.menu.contact',
+                'route' => 'app_contact',
+            )
+        );
 
         return $menu;
     }
