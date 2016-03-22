@@ -1,9 +1,25 @@
-{% extends ':Frontend:layout.html.twig' %}
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ work.title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
-    <div class="container-fluid">
-        <div class="text-center row">
-            <div class="col-xs-12">WORK DETAIL</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ work.title }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#" class="thumbnail">
+                    <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}" class="img-responsive">
+                </a>
+                <p>{{ work.description | raw }}</p>
+            </div>
         </div>
     </div>
+{% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_work_detail', params: {slug: work.slug}} %}
 {% endblock %}

@@ -9,6 +9,16 @@
                 <h1>{{ 'front.title.works' | trans }}</h1>
             </div>
         </div>
+        <div class="row">
+            {% for work in works %}
+                <div class="col-md-3">
+                    <h4>{{ work.title }}</h4>
+                    <a href="{{ path('app_work_detail', {slug: work.slug}) }}" class="thumbnail">
+                        <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}" class="img-responsive">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
 

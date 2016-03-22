@@ -20,7 +20,12 @@ class WorkController extends Controller
      */
     public function workListAction()
     {
-        return $this->render(':Frontend/Work:index.html.twig');
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
+
+        return $this->render(
+            ':Frontend/Work:index.html.twig',
+            [ 'works' => $works ]
+        );
     }
 
     /**
@@ -31,6 +36,15 @@ class WorkController extends Controller
      */
     public function workDetailAction($slug)
     {
-        return $this->render(':Frontend/Work:show.html.twig');
+        $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(
+            array(
+                'slug' => $slug,
+            )
+        );
+
+        return $this->render(
+            ':Frontend/Work:show.html.twig',
+            [ 'work' => $work ]
+        );
     }
 }
