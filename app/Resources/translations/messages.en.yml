@@ -1,4 +1,11 @@
 front:
+  menu:
+    admin: "[ go admin ]"
+    homepage: homepage
+    work: work
+    shop: shop
+    about: about
+    contact: contact
   title:
     products: products
     works: works

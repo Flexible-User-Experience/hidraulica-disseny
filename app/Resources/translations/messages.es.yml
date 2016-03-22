@@ -1,4 +1,11 @@
 front:
+  menu:
+    admin: "[ go admin ]"
+    homepage: inicio
+    work: trabajos
+    shop: tienda
+    about: sobre nosotros
+    contact: contacto
   title:
     products: productos
     works: trabajos

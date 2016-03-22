@@ -1,10 +1,16 @@
 front:
+  menu:
+    admin: "[ go admin ]"
+    homepage: inici
+    work: treballs
+    shop: botiga
+    about: sobre nosaltres
+    contact: contacte
   title:
     products: productes
     works: treballs
     about: sobre nosaltres
     contact: contacte
-
 backend:
     admin:
         admin: Administrador
