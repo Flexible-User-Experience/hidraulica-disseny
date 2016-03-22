@@ -115,7 +115,7 @@ class ProductAdmin extends AbstractBaseAdmin
             $formMapper
                 ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
                 ->add(
-                    'productImages',
+                    'images',
                     'sonata_type_collection',
                     array(
                         'label'              => ' ',
@@ -243,4 +243,3 @@ class ProductAdmin extends AbstractBaseAdmin
             );
     }
 }
-

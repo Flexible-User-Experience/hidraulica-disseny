@@ -14,7 +14,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @category Entity
  * @package  AppBundle\Entity
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductImageRepository")
  * @Vich\Uploadable
@@ -25,15 +24,13 @@ class ProductImage extends AbstractBase
 
     /**
      * @var Product
-     *
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="productImages")
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="images")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     private $product;
 
     /**
      * @var File
-     *
      * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "10M",
@@ -61,6 +58,7 @@ class ProductImage extends AbstractBase
 
     /**
      * @param Product $product
+     *
      * @return ProductImage
      */
     public function setProduct(Product $product)

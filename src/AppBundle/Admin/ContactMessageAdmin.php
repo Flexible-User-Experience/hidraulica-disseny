@@ -60,10 +60,24 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'name',
+                null,
+                array(
+                    'label' => 'backend.admin.name',
+                )
+            )
+            ->add(
                 'email',
                 null,
                 array(
                     'label' => 'backend.admin.email',
+                )
+            )
+            ->add(
+                'subject',
+                null,
+                array(
+                    'label' => 'backend.admin.subject',
                 )
             )
             ->add(
@@ -111,10 +125,24 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'name',
+                null,
+                array(
+                    'label' => 'backend.admin.name',
+                )
+            )
+            ->add(
                 'email',
                 null,
                 array(
                     'label' => 'backend.admin.email',
+                )
+            )
+            ->add(
+                'subject',
+                null,
+                array(
+                    'label' => 'backend.admin.subject',
                 )
             )
             ->add(
@@ -166,10 +194,24 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'name',
+                null,
+                array(
+                    'label' => 'backend.admin.name',
+                )
+            )
+            ->add(
                 'email',
                 null,
                 array(
                     'label' => 'backend.admin.email',
+                )
+            )
+            ->add(
+                'subject',
+                null,
+                array(
+                    'label' => 'backend.admin.subject',
                 )
             )
             ->add(

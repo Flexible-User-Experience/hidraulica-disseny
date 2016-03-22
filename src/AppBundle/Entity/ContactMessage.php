@@ -31,6 +31,20 @@ class ContactMessage extends AbstractBase
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    private $subject;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
      * @Assert\Email(strict = true, checkMX = true, checkHost = true)
      */
     private $email;
@@ -86,6 +100,54 @@ class ContactMessage extends AbstractBase
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Get Name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set Name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Subject
+     *
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * Set Subject
+     *
+     * @param string $subject
+     *
+     * @return $this
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+
+        return $this;
     }
 
     /**

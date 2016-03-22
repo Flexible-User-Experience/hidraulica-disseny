@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function productListAction()
     {
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
 
         return $this->render(
             ':Frontend/Product:index.html.twig',

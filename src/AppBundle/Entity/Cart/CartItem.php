@@ -12,7 +12,6 @@ use AppBundle\Entity\Product;
  * @category Entity
  * @package  AppBundle\Entity\Cart
  * @author   David Romaní <david@flux.cat>
- *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CartItemRepository")
  */
