@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4cf99520ef793689057e3408b35eaa32",
-    "content-hash": "e826809be63b6953725a446a8267cba5",
+    "hash": "ffc1aaabb9a56fdc063e468dad67bf30",
+    "content-hash": "fcbb438173f946b33078c914100c366d",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -3751,74 +3751,6 @@
             "time": "2014-03-31 09:18:53"
         },
         {
-            "name": "sonata-project/seo-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sonata-project/SonataSeoBundle.git",
-                "reference": "d46ad33908fdcfbbc33ea1b99e1dd9b3f49270cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataSeoBundle/zipball/d46ad33908fdcfbbc33ea1b99e1dd9b3f49270cd",
-                "reference": "d46ad33908fdcfbbc33ea1b99e1dd9b3f49270cd",
-                "shasum": ""
-            },
-            "require": {
-                "sonata-project/block-bundle": "^2.3.9",
-                "sonata-project/exporter": "~1.2,>=1.2.2",
-                "symfony/framework-bundle": "~2.3|~3.0",
-                "symfony/options-resolver": "~2.3|~3.0",
-                "twig/twig": "~1.12"
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "~0.5|~1.0",
-                "guzzle/guzzle": "3.*",
-                "sonata-project/admin-bundle": "~2.4",
-                "symfony/console": "~2.3|~3.0",
-                "symfony/finder": "~2.3|~3.0",
-                "symfony/phpunit-bridge": "~2.7|~3.0"
-            },
-            "suggest": {
-                "guzzle/guzzle": "3.*",
-                "knplabs/knp-menu-bundle": "Used by the BreadcrumbMenuBuilder",
-                "sonata-project/block-bundle": "Allows you to use SEO friendly blocks"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sonata\\SeoBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sonata Community",
-                    "homepage": "https://github.com/sonata-project/SonataSeoBundle/contributors"
-                },
-                {
-                    "name": "Thomas Rabaix",
-                    "email": "thomas.rabaix@sonata-project.org",
-                    "homepage": "https://sonata-project.org"
-                }
-            ],
-            "description": "Symfony SonataSeoBundle",
-            "homepage": "https://sonata-project.org/bundles/seo",
-            "keywords": [
-                "seo",
-                "sonata"
-            ],
-            "time": "2016-01-30 10:35:18"
-        },
-        {
             "name": "sonata-project/user-bundle",
             "version": "dev-master",
             "source": {
@@ -5246,7 +5178,6 @@
         "sonata-project/admin-bundle": 20,
         "sonata-project/datagrid-bundle": 20,
         "sonata-project/doctrine-orm-admin-bundle": 20,
-        "sonata-project/seo-bundle": 20,
         "sonata-project/user-bundle": 20
     },
     "prefer-stable": false,
