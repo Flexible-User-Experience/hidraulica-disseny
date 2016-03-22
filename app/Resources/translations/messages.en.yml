@@ -1,6 +1,6 @@
 front:
   menu:
-    admin: "[ go admin ]"
+    admin: "[ cms ]"
     homepage: homepage
     work: work
     shop: shop

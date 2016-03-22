@@ -165,7 +165,7 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     'description',
                     'textarea',
                     array(
-                        'label' => 'backend.admin.description',
+                        'label' => 'backend.admin.answer',
                     )
                 );
         }

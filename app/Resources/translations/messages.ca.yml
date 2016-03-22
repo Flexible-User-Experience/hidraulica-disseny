@@ -1,6 +1,6 @@
 front:
   menu:
-    admin: "[ go admin ]"
+    admin: "[ cms ]"
     homepage: inici
     work: treballs
     shop: botiga
