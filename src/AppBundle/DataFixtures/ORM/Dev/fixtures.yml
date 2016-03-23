@@ -21,6 +21,7 @@ AppBundle\Entity\Work:
     enabled: <boolean(70)>
     category: @workCategory<numberBetween(1, 10)>
     imageName: <numberBetween(1, 5)>.jpg
+    urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
 
 ## Work Category
 AppBundle\Entity\WorkCategory:
@@ -45,6 +46,7 @@ AppBundle\Entity\Product:
     price: <randomFloat(2, 0, 10)>
     enabled: <boolean(70)>
     imageName: <numberBetween(1, 5)>.jpg
+    urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
 
 ## Product Images
 AppBundle\Entity\ProductImage:

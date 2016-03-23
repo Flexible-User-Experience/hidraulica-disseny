@@ -7,6 +7,7 @@ use AppBundle\Entity\Traits\ImageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TranslationsTrait;
+use AppBundle\Entity\Traits\UrlVimeoTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -32,6 +33,7 @@ class Product extends AbstractBase
     use SlugTrait;
     use TranslationsTrait;
     use DescriptionTrait;
+    use UrlVimeoTrait;
 
     /**
      * @var string
