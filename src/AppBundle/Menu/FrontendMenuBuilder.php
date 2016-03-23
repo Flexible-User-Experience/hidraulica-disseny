@@ -51,6 +51,7 @@ class FrontendMenuBuilder
      */
     public function createTopMenu(RequestStack $requestStack)
     {
+        $route = $requestStack->getCurrentRequest()->get('_route');
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
         if ($this->ac->isGranted('ROLE_CMS')) {
@@ -72,15 +73,17 @@ class FrontendMenuBuilder
         $menu->addChild(
             'app_work_list',
             array(
-                'label' => $this->ts->trans('front.menu.work'),
-                'route' => 'app_work_list',
+                'label'   => $this->ts->trans('front.menu.work'),
+                'route'   => 'app_work_list',
+                'current' => $route == 'app_work_list' || $route == 'app_work_detail',
             )
         );
         $menu->addChild(
             'app_product_list',
             array(
-                'label' => $this->ts->trans('front.menu.shop'),
-                'route' => 'app_product_list',
+                'label'   => $this->ts->trans('front.menu.shop'),
+                'route'   => 'app_product_list',
+                'current' => $route == 'app_product_list' || $route == 'app_product_detail',
             )
         );
         $menu->addChild(

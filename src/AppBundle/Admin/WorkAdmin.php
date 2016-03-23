@@ -63,6 +63,14 @@ class WorkAdmin extends AbstractBaseAdmin
                     'label'       => 'backend.admin.description',
                 )
             )
+            ->add(
+                'urlVimeo',
+                null,
+                array(
+                    'label' => 'Vimeo',
+                    'help'  => 'https://vimeo.com/NNNNNN',
+                )
+            )
             ->end()
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(

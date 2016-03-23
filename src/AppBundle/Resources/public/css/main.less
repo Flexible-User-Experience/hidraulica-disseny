@@ -55,6 +55,13 @@
 .bc-grey    { background-color: @grey }
 .bc-black   { background-color: @black }
 
+// Links
+@link-color: @black;
+@text-color: @grey;
+
+// Heads
+h1 { color: @black; }
+
 // Textarea
 textarea { resize: vertical; }
 
@@ -72,6 +79,14 @@ textarea { resize: vertical; }
   padding-left: 0;
   padding-right: 0;
 }
+
+// Navbar
+@navbar-height: 70px;
+@navbar-margin-bottom: @gap-big;
+@navbar-default-bg: transparent;
+@navbar-default-link-color: @grey;
+@navbar-default-link-hover-color: @black;
+@navbar-default-link-active-color: @black;
 
 // Clean ups
 .d-block { display: block; }
