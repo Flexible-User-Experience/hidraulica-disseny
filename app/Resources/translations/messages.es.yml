@@ -13,7 +13,7 @@ front:
     contact: contacto
   about:
     text: |
-      Hidràulica som un estudi de disseny ubicat a Amposta, oferim serveis professionals per a empreses i particulars.<br><br>Creiem en el disseny com a eina per al desenvolupament, la innovació i la comunicació.<br><br>Basem el nostre treball en la integració de diferents disciplines, abraçant des de la concepció de la idea fins a la realització de projectes d'interiorismen, espais comercials, mobiliari i arquitectura efímera.<br><br>
+      Hidràulica somos un estudio de diseño situado en Amposta; ofrecemos servicios profesionales para empresas y particulares.<br><br>Creemos en el diseño como herramienta para el desarrollo, la innovación y la comunicación.<br><br>Basamos nuestro trabajo en la integración de diferentes disciplinas, donde se incluyen desde la concepción de la idea hasta la realización de proyectos de interiorismo, espacios comerciales, mobiliario y arquitectura efímera.<br><br>
   contact:
     form:
       name: nombre
@@ -22,6 +22,6 @@ front:
       message: mensaje
       ok: enviar
     text: |
-      Contacta'ns, estarem encantats de poder treballar per a tu!<br><br>
+      Contacta con nosotros, estaremos encantados de poder trabajar para ti.<br><br>
   footer:
     email: "hola@hidraulicadisseny.com"
