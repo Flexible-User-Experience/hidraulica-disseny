@@ -58,11 +58,11 @@ AppBundle\Entity\ProductImage:
 
 ## Slider Images
 AppBundle\Entity\SliderImage:
-  sliderImage{1..25}:
+  sliderImage{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
-    position: <numberBetween(1, 5)>
-    imageName: <numberBetween(1, 5)>.jpg
+    position: <current()>
+    imageName: <current()>.jpg
 
 ## Cart Items
 AppBundle\Entity\Cart\CartItem:
