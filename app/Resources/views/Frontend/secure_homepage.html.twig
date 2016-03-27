@@ -1,0 +1,20 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ 'front.title.homepage' | trans }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <img src="{{ asset('bundles/app/images/about.jpg') }}" alt="{{ 'front.title.about' | trans }}" class="img-responsive">
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_secure_homepage', params: {}} %}
+{% endblock %}

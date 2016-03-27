@@ -28,6 +28,14 @@ class WebController extends Controller
     }
 
     /**
+     * @Route("/", name="app_secure_homepage", options={"i18n_prefix" = "secure"})
+     */
+    public function secureIndexAction()
+    {
+        return $this->render(':Frontend:secure_homepage.html.twig');
+    }
+
+    /**
      * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
      */
     public function aboutAction()
