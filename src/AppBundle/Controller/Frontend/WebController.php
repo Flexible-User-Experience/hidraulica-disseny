@@ -32,7 +32,12 @@ class WebController extends Controller
      */
     public function secureIndexAction()
     {
-        return $this->render(':Frontend:secure_homepage.html.twig');
+        $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
+
+        return $this->render(
+            ':Frontend:secure_homepage.html.twig',
+            [ 'slides' => $slides ]
+        );
     }
 
     /**
