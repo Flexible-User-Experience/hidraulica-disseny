@@ -13,7 +13,7 @@ use Symfony\Component\Translation\DataCollectorTranslator;
  *
  * @category Menu
  * @package  AppBundle\Menu
- * @author   Anotn Serra <aserratorta@gmail.com>
+ * @author   David Romaní <david@flux.cat>
  */
 class FrontendMenuBuilder
 {

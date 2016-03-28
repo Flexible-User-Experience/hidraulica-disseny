@@ -1,5 +1,5 @@
 services:
-# Sonata Admins
+# Sonata Admin
     admin.work:
         class: AppBundle\Admin\WorkAdmin
         arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
@@ -59,8 +59,7 @@ services:
     app.notification:
         class: AppBundle\Service\NotificationService
         arguments: [ "@app.courier", "@twig", "%mailer_destination%", "%mailer_url_base%" ]
-
-# Menus
+# Menu
     app.frontend_menu_builder:
         class: AppBundle\Menu\FrontendMenuBuilder
         arguments: [ "@knp_menu.factory", "@security.authorization_checker", "@translator" ]
@@ -70,3 +69,14 @@ services:
         arguments: [ "@request_stack" ]
         tags:
             - { name: knp_menu.menu, alias: top }
+# Repository
+    app.entity_repository.work:
+        class: AppBundle\Repository\WorkRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Work
+# Sitemap
+    app.sitemap:
+        class: AppBundle\Listener\SitemapListener
+        arguments: [ "@router", "@doctrine.orm.entity_manager", "@app.entity_repository.work" ]
+        tags: [ { name: "presta.sitemap.listener" } ]

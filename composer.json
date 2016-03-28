@@ -14,7 +14,6 @@
     },
     "require": {
         "a2lix/translation-form-bundle": "1.*",
-        "apoutchika/loremipsum-bundle": "1.*",
         "components/font-awesome": "^4.0",
         "components/jquery": "^2.0",
         "cypresslab/gitelephant-bundle": "dev-develop",
