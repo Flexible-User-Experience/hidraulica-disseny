@@ -83,5 +83,5 @@ services:
 # Sitemap
     app.sitemap:
         class: AppBundle\Listener\SitemapListener
-        arguments: [ "@router", "@app.entity_repository.work", "@app.entity_repository.product", %full_locales% ]
+        arguments: [ "@router", "@app.entity_repository.work", "@app.entity_repository.product", %locale_i18n_full% ]
         tags: [ { name: "presta.sitemap.listener" } ]
