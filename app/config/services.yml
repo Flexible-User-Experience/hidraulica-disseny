@@ -75,8 +75,13 @@ services:
         factory: [ "@doctrine", getRepository ]
         arguments:
             - AppBundle:Work
+    app.entity_repository.product:
+        class: AppBundle\Repository\ProductRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Product
 # Sitemap
     app.sitemap:
         class: AppBundle\Listener\SitemapListener
-        arguments: [ "@router", "@doctrine.orm.entity_manager", "@app.entity_repository.work" ]
+        arguments: [ "@router", "@app.entity_repository.work", "@app.entity_repository.product" ]
         tags: [ { name: "presta.sitemap.listener" } ]
