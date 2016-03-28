@@ -2,6 +2,7 @@
 
 namespace AppBundle\Listener;
 
+use AppBundle\Entity\Work;
 use AppBundle\Entity\Product;
 use AppBundle\Repository\WorkRepository;
 use AppBundle\Repository\ProductRepository;
@@ -29,18 +30,23 @@ class SitemapListener implements SitemapListenerInterface
     /** @var ProductRepository */
     private $pr;
 
+    /** @var array */
+    private $locales;
+
     /**
      * SitemapListener constructor
      *
      * @param RouterInterface   $router
      * @param WorkRepository    $wr
      * @param ProductRepository $pr
+     * @param array             $locales
      */
-    public function __construct(RouterInterface $router, WorkRepository $wr, ProductRepository $pr)
+    public function __construct(RouterInterface $router, WorkRepository $wr, ProductRepository $pr, array $locales)
     {
         $this->router = $router;
         $this->wr = $wr;
         $this->pr = $pr;
+        $this->locales = $locales;
     }
 
     /**
@@ -50,38 +56,90 @@ class SitemapListener implements SitemapListenerInterface
     {
         $section = $event->getSection();
         if (is_null($section) || $section == 'default') {
-            // Homepage
-            $event
-                ->getGenerator()
-                ->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('app_homepage', array(), UrlGeneratorInterface::ABSOLUTE_URL),
-                        new \DateTime(),
-                        UrlConcrete::CHANGEFREQ_HOURLY,
-                        1
-                    ),
-                    'default'
-                );
-            // Products
-            $event
-                ->getGenerator()
-                ->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('app_product_list', array(), UrlGeneratorInterface::ABSOLUTE_URL),
-                        new \DateTime(),
-                        UrlConcrete::CHANGEFREQ_HOURLY,
-                        1
-                    ),
-                    'default'
-                );
-            $products = $this->pr->findAllEnabledSortedByDate();
-            /** @var Product $product */
-            foreach ($products as $product) {
+            /** @var string $locale */
+            foreach ($this->locales as $locale) {
+// Homepage
                 $event
                     ->getGenerator()
                     ->addUrl(
                         new UrlConcrete(
-                            $this->router->generate('app_product_detail', array('slug' => $product->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL),
+                            $this->router->generate('app_homepage', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
+                            new \DateTime(),
+                            UrlConcrete::CHANGEFREQ_HOURLY,
+                            1
+                        ),
+                        'default'
+                    );
+                // Products
+                $event
+                    ->getGenerator()
+                    ->addUrl(
+                        new UrlConcrete(
+                            $this->router->generate('app_product_list', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
+                            new \DateTime(),
+                            UrlConcrete::CHANGEFREQ_HOURLY,
+                            1
+                        ),
+                        'default'
+                    );
+                /** @var Product $product */
+                foreach ($this->pr->findAllEnabledSortedByDate() as $product) {
+                    $event
+                        ->getGenerator()
+                        ->addUrl(
+                            new UrlConcrete(
+                                $this->router->generate('app_product_detail', array('_locale' => $locale, 'slug' => $product->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL),
+                                new \DateTime(),
+                                UrlConcrete::CHANGEFREQ_HOURLY,
+                                1
+                            ),
+                            'default'
+                        );
+                }
+                // Works
+                $event
+                    ->getGenerator()
+                    ->addUrl(
+                        new UrlConcrete(
+                            $this->router->generate('app_work_list', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
+                            new \DateTime(),
+                            UrlConcrete::CHANGEFREQ_HOURLY,
+                            1
+                        ),
+                        'default'
+                    );
+                /** @var Work $work */
+                foreach ($this->wr->findAllEnabledSortedByDate() as $work) {
+                    $event
+                        ->getGenerator()
+                        ->addUrl(
+                            new UrlConcrete(
+                                $this->router->generate('app_work_detail', array('_locale' => $locale, 'slug' => $work->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL),
+                                new \DateTime(),
+                                UrlConcrete::CHANGEFREQ_HOURLY,
+                                1
+                            ),
+                            'default'
+                        );
+                }
+                // About
+                $event
+                    ->getGenerator()
+                    ->addUrl(
+                        new UrlConcrete(
+                            $this->router->generate('app_about', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
+                            new \DateTime(),
+                            UrlConcrete::CHANGEFREQ_HOURLY,
+                            1
+                        ),
+                        'default'
+                    );
+                // Contact
+                $event
+                    ->getGenerator()
+                    ->addUrl(
+                        new UrlConcrete(
+                            $this->router->generate('app_contact', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
                             new \DateTime(),
                             UrlConcrete::CHANGEFREQ_HOURLY,
                             1
@@ -89,66 +147,6 @@ class SitemapListener implements SitemapListenerInterface
                         'default'
                     );
             }
-            // Works
-            $event
-                ->getGenerator()
-                ->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('app_work_list', array(), UrlGeneratorInterface::ABSOLUTE_URL),
-                        new \DateTime(),
-                        UrlConcrete::CHANGEFREQ_HOURLY,
-                        1
-                    ),
-                    'default'
-                );
-            // About
-            $event
-                ->getGenerator()
-                ->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('app_about', array(), UrlGeneratorInterface::ABSOLUTE_URL),
-                        new \DateTime(),
-                        UrlConcrete::CHANGEFREQ_HOURLY,
-                        1
-                    ),
-                    'default'
-                );
-            // Contact
-            $event
-                ->getGenerator()
-                ->addUrl(
-                    new UrlConcrete(
-                        $this->router->generate('app_contact', array(), UrlGeneratorInterface::ABSOLUTE_URL),
-                        new \DateTime(),
-                        UrlConcrete::CHANGEFREQ_HOURLY,
-                        1
-                    ),
-                    'default'
-                );
-
-//            // Blog categories list
-//            /** @var Category $category */
-//            foreach ($this->categories as $category) {
-//                $url = $this->router->generate(
-//                    'category_detail',
-//                    array(
-//                        'slug' => $category->getSlug(),
-//                    ),
-//                    UrlGeneratorInterface::ABSOLUTE_URL
-//                );
-//                $event
-//                    ->getGenerator()
-//                    ->addUrl(
-//                        new UrlConcrete(
-//                            $url,
-//                            new \DateTime(),
-//                            UrlConcrete::CHANGEFREQ_HOURLY,
-//                            1
-//                        ),
-//                        'default'
-//                    );
-//            }
-
         }
     }
 }
