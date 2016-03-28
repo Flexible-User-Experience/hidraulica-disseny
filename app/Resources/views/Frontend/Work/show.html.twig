@@ -6,11 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h1>{{ work.title }}</h1>
+                <h1 class="no-m-top">{{ work.title }}</h1>
                 <h4 class="c-grey">{{ work.category.title }}</h4>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <p>{{ work.description | raw }}</p>
+                <p class="no-m-top">{{ work.description | raw }}</p>
             </div>
         </div>
         {% if work.urlVimeo %}
