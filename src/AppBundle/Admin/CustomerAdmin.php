@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\AdminBundle\Show\ShowMapper;
 
 /**
  * Class CustomerAdmin
@@ -174,5 +175,77 @@ class CustomerAdmin extends AbstractBaseAdmin
                 )
             );
     }
-}
 
+    protected function configureShowFields(ShowMapper $show)
+    {
+        $show
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'name',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.name',
+                )
+            )
+            ->add(
+                'address',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.address',
+                )
+            )
+            ->add(
+                'postalCode',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.postal_code',
+                )
+            )
+            ->add(
+                'city',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.city',
+                )
+            )
+            ->add(
+                'state',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.state',
+                )
+            )
+            ->add(
+                'country',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.country',
+                )
+            )
+            ->add(
+                'phone',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.phone',
+                )
+            )
+            ->add(
+                'email',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.email',
+                )
+            )
+            ->end()
+            ->with('backend.admin.cart.customer.carts', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'carts',
+                null,
+                array(
+                    'label' => 'backend.admin.cart.customer.carts',
+                )
+            )
+            ->end()
+        ;
+    }
+}
