@@ -41,6 +41,10 @@ class ProductController extends Controller
             )
         );
 
+        if ($product->getEnabled() == false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
         return $this->render(
             ':Frontend/Product:show.html.twig',
             [ 'product' => $product ]
