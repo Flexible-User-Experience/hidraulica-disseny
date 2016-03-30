@@ -52,6 +52,8 @@ services:
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
+        calls:
+            - [ setTemplate, [ show, "::Admin/Shows/custom_customer_show_view.html.twig" ] ]
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService
