@@ -4,13 +4,16 @@
 
 {% block main %}
     <div class="container">
+        {% if not work.enabled %}
+            <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest treball no està disponible a la web pública</div>
+        {% endif %}
         <div class="row">
             <div class="col-sm-6 col-xs-12">
-                <h1>{{ work.title }}</h1>
+                <h1 class="no-m-top">{{ work.title }}</h1>
                 <h4 class="c-grey">{{ work.category.title }}</h4>
             </div>
             <div class="col-sm-6 col-xs-12">
-                <p>{{ work.description | raw }}</p>
+                <p class="no-m-top">{{ work.description | raw }}</p>
             </div>
         </div>
         {% if work.urlVimeo %}

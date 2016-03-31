@@ -22,6 +22,8 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     locale: ca
+    locale_i18n: [ es, en ]
+    locale_i18n_full: [ ca, es, en ]
 
     google_analytics_enabled:   false
     google_analytics_account:   "UA-xxxxxxxx-x"

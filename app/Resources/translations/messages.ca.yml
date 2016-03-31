@@ -78,6 +78,7 @@ backend:
                 country: País
                 email: Correu Electrònic
                 phone: Telèfon
+                carts: Comandes
             status:
                 status: Estat comanda
                 new: Nou

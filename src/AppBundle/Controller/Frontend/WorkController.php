@@ -42,6 +42,10 @@ class WorkController extends Controller
             )
         );
 
+        if ($work->getEnabled() == false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
+
         return $this->render(
             ':Frontend/Work:show.html.twig',
             [ 'work' => $work ]

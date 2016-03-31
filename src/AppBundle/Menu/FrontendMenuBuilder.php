@@ -13,7 +13,7 @@ use Symfony\Component\Translation\DataCollectorTranslator;
  *
  * @category Menu
  * @package  AppBundle\Menu
- * @author   Anotn Serra <aserratorta@gmail.com>
+ * @author   David Romaní <david@flux.cat>
  */
 class FrontendMenuBuilder
 {
@@ -67,7 +67,8 @@ class FrontendMenuBuilder
             'app_homepage',
             array(
                 'label' => $this->ts->trans('front.menu.homepage'),
-                'route' => 'app_homepage',
+//                'route' => 'app_homepage',
+                'route' => 'app_secure_homepage',
             )
         );
         $menu->addChild(

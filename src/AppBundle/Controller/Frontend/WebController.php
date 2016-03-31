@@ -28,6 +28,19 @@ class WebController extends Controller
     }
 
     /**
+     * @Route("/", name="app_secure_homepage", options={"i18n_prefix" = "secure"})
+     */
+    public function secureIndexAction()
+    {
+        $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
+
+        return $this->render(
+            ':Frontend:secure_homepage.html.twig',
+            [ 'slides' => $slides ]
+        );
+    }
+
+    /**
      * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
      */
     public function aboutAction()

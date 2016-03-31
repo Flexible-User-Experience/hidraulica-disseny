@@ -1,5 +1,5 @@
 services:
-# Sonata Admins
+# Sonata Admin
     admin.work:
         class: AppBundle\Admin\WorkAdmin
         arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
@@ -52,6 +52,8 @@ services:
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
+        calls:
+            - [ setTemplate, [ show, "::Admin/Shows/custom_customer_show_view.html.twig" ] ]
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService
@@ -59,8 +61,7 @@ services:
     app.notification:
         class: AppBundle\Service\NotificationService
         arguments: [ "@app.courier", "@twig", "%mailer_destination%", "%mailer_url_base%" ]
-
-# Menus
+# Menu
     app.frontend_menu_builder:
         class: AppBundle\Menu\FrontendMenuBuilder
         arguments: [ "@knp_menu.factory", "@security.authorization_checker", "@translator" ]
@@ -70,3 +71,19 @@ services:
         arguments: [ "@request_stack" ]
         tags:
             - { name: knp_menu.menu, alias: top }
+# Repository
+    app.entity_repository.work:
+        class: AppBundle\Repository\WorkRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Work
+    app.entity_repository.product:
+        class: AppBundle\Repository\ProductRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Product
+# Sitemap
+    app.sitemap:
+        class: AppBundle\Listener\SitemapListener
+        arguments: [ "@router", "@app.entity_repository.work", "@app.entity_repository.product", %locale_i18n_full% ]
+        tags: [ { name: "presta.sitemap.listener" } ]
