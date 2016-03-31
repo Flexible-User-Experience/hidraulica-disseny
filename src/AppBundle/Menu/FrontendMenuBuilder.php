@@ -6,7 +6,7 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class FrontendMenuBuilder
@@ -28,16 +28,16 @@ class FrontendMenuBuilder
     private $ac;
 
     /**
-     * @var DataCollectorTranslator
+     * @var TranslatorInterface
      */
     private $ts;
 
     /**
-     * @param FactoryInterface        $factory
-     * @param AuthorizationChecker    $ac
-     * @param DataCollectorTranslator $ts
+     * @param FactoryInterface     $factory
+     * @param AuthorizationChecker $ac
+     * @param TranslatorInterface  $ts
      */
-    public function __construct(FactoryInterface $factory, AuthorizationChecker $ac, DataCollectorTranslator $ts)
+    public function __construct(FactoryInterface $factory, AuthorizationChecker $ac, TranslatorInterface $ts)
     {
         $this->factory = $factory;
         $this->ac = $ac;
