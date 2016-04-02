@@ -5,6 +5,7 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class SliderImageAdmin
@@ -31,11 +32,20 @@ class SliderImageAdmin extends AbstractBaseAdmin
             ->with('backend.admin.image', $this->getFormMdSuccessBoxArray(9))
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'    => 'backend.admin.image',
                     'required' => false,
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                )
+            )
+            ->add(
+                'alt',
+                null,
+                array(
+                    'label'    => 'backend.admin.alt',
+                    'required' => false,
+                    'help'     => 'metadescripció',
                 )
             )
             ->end()
@@ -100,7 +110,8 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 'position',
                 null,
                 array(
-                    'label' => 'backend.admin.position',
+                    'label'    => 'backend.admin.position',
+                    'editable' => true,
                 )
             )
             ->add(

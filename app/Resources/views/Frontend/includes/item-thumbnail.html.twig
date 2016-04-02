@@ -1,0 +1,11 @@
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="hovereffect">
+        <img class="img-responsive" src="{{ vich_uploader_asset(item, 'imageFile') | imagine_filter('700xY') }}" alt="{{ item.title }}">
+        <div class="overlay">
+            {% if item.category is not null %}
+                <h2>{{ item.category.title }}</h2>
+            {% endif %}
+            <a class="info" href="{{ path('app_work_detail', {slug: item.slug}) }}">{{ item.title }}</a>
+        </div>
+    </div>
+</div>

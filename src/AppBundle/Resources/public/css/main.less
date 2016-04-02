@@ -1,6 +1,7 @@
 // Imports
 @import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
+@import "hero.less";
 
 // Variables
 @blue-dark:   #08122F;
@@ -81,15 +82,15 @@ textarea { resize: vertical; }
 }
 
 // Navbar
-@navbar-height: 70px;
+@navbar-height: 80px;
 @navbar-margin-bottom: @gap-big;
-@navbar-default-bg: @white;
-@navbar-default-link-color: @grey;
+@navbar-default-bg: transparent;
+@navbar-default-link-color: @blue-light;
 @navbar-default-link-hover-color: @black;
 @navbar-default-link-active-color: @black;
-@navbar-default-link-active-bg: @white;
-@navbar-default-border: @white;
-body { padding-top: 70px; }
+@navbar-default-link-active-bg: transparent;
+@navbar-default-border: transparent;
+//body { padding-top: 80px; }
 //.navbar-header {
 //  float: none;
 //}
@@ -115,6 +116,33 @@ body { padding-top: 70px; }
 //  padding-bottom: 10px;
 //}
 
+/* Carousel base class */
+.carousel {
+  margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  margin: 0 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 500px;
+  background-color:#bbb;
+}
+.carousel img {
+  /*  position: absolute;*/
+  /*  top: 0;*/
+  /*  left: 0;*/
+  height: 500px;
+  width: 100%;
+  vertical-align: middle;
+  min-height: 100%;
+  /* max-height: none;  */
+}
+
 // Cleanups
 .d-block { display: block; }
 .no-overflow { overflow: hidden; }
@@ -122,6 +150,9 @@ body { padding-top: 70px; }
   text-decoration: none;
   &:hover { text-decoration: none; }
 }
+
+// Footer
+footer.main { margin-top: 50px; }
 
 // Hovers
 .hovereffect {
