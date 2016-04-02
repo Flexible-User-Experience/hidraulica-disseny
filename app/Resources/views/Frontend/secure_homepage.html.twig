@@ -1,25 +1,31 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
 {% block main %}
-    <div class="container">
+    {#<div class="container">#}
         {#<div class="row">#}
             {#<div class="col-xs-12">#}
                 {#<h1>{{ 'front.title.homepage' | trans }}</h1>#}
             {#</div>#}
         {#</div>#}
         {% if slides | length == 1 %}
-            <div class="row">
-                <div class="col-xs-12">
-                    {% set slide = slides[0] %}
-                    <img class="img-responsive" src="{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ slide.alt }}">
+            {% set slide = slides[0] %}
+            <div class="jumbotron" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('1200xY') }}')">
+                <div class="container">
+                    <div class="hero"></div>
                 </div>
             </div>
+            {#<div class="row">#}
+                {#<div class="col-xs-12">#}
+                    {#{% set slide = slides[0] %}#}
+                    {#<img class="img-responsive" src="{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ slide.alt }}">#}
+                {#</div>#}
+            {#</div>#}
         {% elseif slides | length > 1 %}
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <div id="my-hero-carousel" class="carousel slide" data-ride="carousel">
                 {#<!-- Indicators -->#}
                 <ol class="carousel-indicators">
                     {% for slide in slides %}
-                        <li data-target="#carousel-example-generic" data-slide-to="{{ loop.index }}"{% if loop.first %} class="active"{% endif %}></li>
+                        <li data-target="#my-hero-carousel" data-slide-to="{{ loop.index }}"{% if loop.first %} class="active"{% endif %}></li>
                     {% endfor %}
                 </ol>
                 {#<!-- Wrapper for slides -->#}
@@ -32,17 +38,17 @@
                     {% endfor %}
                 </div>
                 {#<!-- Controls -->#}
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <a class="left carousel-control" href="#my-hero-carousel" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <a class="right carousel-control" href="#my-hero-carousel" role="button" data-slide="next">
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
         {% endif %}
-    </div>
+    {#</div>#}
 {% endblock %}
 
 {% block languages %}
