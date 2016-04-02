@@ -29,7 +29,7 @@ backend:
     admin:
         admin: Administrador
         actions: Accions
-        alt: alt
+        alt: Text alternatiu
         answer_action: Answer
         answer: Resposta
         answered: Respost
