@@ -2,12 +2,19 @@
 
 {% block main %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>{{ 'front.title.homepage' | trans }}</h1>
+        {#<div class="row">#}
+            {#<div class="col-xs-12">#}
+                {#<h1>{{ 'front.title.homepage' | trans }}</h1>#}
+            {#</div>#}
+        {#</div>#}
+        {% if slides | length == 1 %}
+            <div class="row">
+                <div class="col-xs-12">
+                    {% set slide = slides[0] %}
+                    <img class="img-responsive" src="{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ slide.alt }}">
+                </div>
             </div>
-        </div>
-        {% if slides | length > 0 %}
+        {% elseif slides | length > 1 %}
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 {#<!-- Indicators -->#}
                 <ol class="carousel-indicators">
