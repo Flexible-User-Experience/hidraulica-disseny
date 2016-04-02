@@ -1,5 +1,7 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
+{% block body_class %}no-gap{% endblock %}
+
 {% block main %}
     {% if slides | length == 1 %}
         {% set slide = slides[0] %}

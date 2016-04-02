@@ -90,7 +90,12 @@ textarea { resize: vertical; }
 @navbar-default-link-active-color: @black;
 @navbar-default-link-active-bg: transparent;
 @navbar-default-border: transparent;
-//body { padding-top: 80px; }
+
+// Body
+body {
+  &.base { padding-top: 80px; }
+  &.no-gap { padding-top: 0 }
+}
 
 /* Carousel base class */
 .carousel {
