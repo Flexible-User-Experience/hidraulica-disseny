@@ -38,6 +38,15 @@
             {#</a>#}
         </div>
     {% endif %}
+    {% if thumbs | length > 0 %}
+        <div class="container">
+            <div class="row">
+                {% for thumb in thumbs %}
+                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: thumb} %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block languages %}
