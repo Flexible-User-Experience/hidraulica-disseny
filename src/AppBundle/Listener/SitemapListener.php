@@ -58,7 +58,7 @@ class SitemapListener implements SitemapListenerInterface
         if (is_null($section) || $section == 'default') {
             /** @var string $locale */
             foreach ($this->locales as $locale) {
-// Homepage
+                // Homepage
                 $event
                     ->getGenerator()
                     ->addUrl(
