@@ -15,11 +15,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/", name="app_product_list", options={"i18n_prefix" = "secure"})
+     * @Route("/products/{page}/", name="app_product_list", options={"i18n_prefix" = "secure"})
+     *
+     * @param int $page
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function productListAction()
+    public function productListAction($page = 1)
     {
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
+        $paginator = $this->get('knp_paginator');
+        $products = $paginator->paginate(
+            $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate(),
+            $page,
+            9
+        );
 
         return $this->render(
             ':Frontend/Product:index.html.twig',

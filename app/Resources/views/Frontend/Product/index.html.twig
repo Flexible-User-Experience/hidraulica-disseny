@@ -16,6 +16,7 @@
                 </div>
             {% endfor %}
         </div>
+        {% include ':Frontend/includes:paginator-button-bar.html.twig' with {items: products} %}
     </div>
 {% endblock %}
 
