@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row">
                 {% for thumb in thumbs %}
-                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: thumb} %}
+                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {route: 'app_work_detail', item: thumb} %}
                 {% endfor %}
             </div>
         </div>

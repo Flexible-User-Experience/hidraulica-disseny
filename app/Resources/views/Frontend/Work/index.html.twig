@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             {% for work in works %}
-                {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: work} %}
+                {% include ':Frontend/includes:item-thumbnail.html.twig' with {route:'app_work_detail', item: work} %}
             {% endfor %}
         </div>
         {% include ':Frontend/includes:paginator-button-bar.html.twig' with {items: works} %}
