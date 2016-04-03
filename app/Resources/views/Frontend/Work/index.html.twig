@@ -7,24 +7,9 @@
         <div class="row">
             {% for work in works %}
                 {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: work} %}
-                {#<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">#}
-                    {#<div class="hovereffect">#}
-                        {#<img class="img-responsive" src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">#}
-                        {#<div class="overlay">#}
-                            {#<h2>{{ work.category.title }}</h2>#}
-                            {#<a class="info" href="{{ path('app_work_detail', {slug: work.slug}) }}">{{ work.title }}</a>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
             {% endfor %}
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="navigation">
-                    {{ knp_pagination_render(works) }}
-                </div>
-            </div>
-        </div>
+        {% include ':Frontend/includes:paginator-button-bar.html.twig' with {items: works} %}
     </div>
 {% endblock %}
 

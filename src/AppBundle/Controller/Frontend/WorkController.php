@@ -18,20 +18,19 @@ use Symfony\Component\HttpFoundation\Response;
 class WorkController extends Controller
 {
     /**
-     * @Route("/works/", name="app_work_list", options={"i18n_prefix" = "secure"})
+     * @Route("/works/{page}/", name="app_work_list", options={"i18n_prefix" = "secure"})
      *
-     * @param Request $request
+     * @param int $page
      * @return Response
      */
-    public function workListAction(Request $request)
+    public function workListAction($page = 1)
     {
-        $paginator  = $this->get('knp_paginator');
+        $paginator = $this->get('knp_paginator');
         $works = $paginator->paginate(
             $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(),
-            $request->query->getInt('page', 1),
+            $page,
             9
         );
-//        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
 
         return $this->render(
             ':Frontend/Work:index.html.twig',

@@ -129,8 +129,3 @@ ivory_ck_editor:
     configs:
         my_config:
             toolbar: standard
-
-# KNP Paginator
-knp_paginator:
-    template:
-        pagination: "KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig"
