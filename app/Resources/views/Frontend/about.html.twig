@@ -4,17 +4,15 @@
 
 {% block main %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>{{ 'front.title.about' | trans }}</h1>
-            </div>
-        </div>
+        {#<div class="row">#}
+            {#<div class="col-xs-12">#}
+                {#<h1>{{ 'front.title.about' | trans }}</h1>#}
+            {#</div>#}
+        {#</div>#}
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 {{ 'front.about.text' | trans | raw }}
             </div>
-        </div>
-        <div class="row">
             <div class="col-xs-12">
                 <img src="{{ asset('bundles/app/images/about.jpg') }}" alt="{{ 'front.title.about' | trans }}" class="img-responsive">
             </div>
