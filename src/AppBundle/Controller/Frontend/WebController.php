@@ -32,7 +32,6 @@ class WebController extends Controller
      */
     public function secureIndexAction()
     {
-        $paginator  = $this->get('knp_paginator');
         $thumbs = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(9);
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
 
