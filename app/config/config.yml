@@ -36,7 +36,7 @@ twig:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
         project_title:            "%project_web_title%"
-        admin_tag_version:        "v0.1.4"
+        admin_tag_version:        "v0.1.5"
 
 # Assetic
 assetic:
@@ -52,8 +52,7 @@ assetic:
     assets:
         mycss:
             inputs:
-                - "@AppBundle/Resources/public/css/main.less"    # comment this line to avoid double included CSS
-#                - "@AppBundle/Resources/public/css/icomoon.less"
+                - "@AppBundle/Resources/public/css/main.less"
         myjs:
             inputs:
                 - "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
@@ -73,11 +72,11 @@ doctrine:
             json: Sonata\Doctrine\Types\JsonType
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        naming_strategy:             doctrine.orm.naming_strategy.underscore
+        auto_mapping:                true
 
 doctrine_migrations:
-    dir_name: "%kernel.root_dir%/../src/AppBundle/DoctrineMigrations"
+    dir_name:  "%kernel.root_dir%/../src/AppBundle/DoctrineMigrations"
     namespace: AppBundle\DoctrineMigrations
 
 # Stof Doctrine Extensions

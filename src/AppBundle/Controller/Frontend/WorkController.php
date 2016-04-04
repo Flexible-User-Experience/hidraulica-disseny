@@ -4,6 +4,8 @@ namespace AppBundle\Controller\Frontend;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class WorkController
@@ -16,11 +18,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class WorkController extends Controller
 {
     /**
-     * @Route("/works/", name="app_work_list", options={"i18n_prefix" = "secure"})
+     * @Route("/works/{page}/", name="app_work_list", options={"i18n_prefix" = "secure"})
+     *
+     * @param int $page
+     * @return Response
      */
-    public function workListAction()
+    public function workListAction($page = 1)
     {
-        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
+        $paginator = $this->get('knp_paginator');
+        $works = $paginator->paginate(
+            $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(),
+            $page,
+            9
+        );
 
         return $this->render(
             ':Frontend/Work:index.html.twig',

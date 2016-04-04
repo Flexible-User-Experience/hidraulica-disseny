@@ -4,36 +4,26 @@
 
 {% block main %}
     <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>{{ 'front.title.contact' | trans }}</h1>
-            </div>
-        </div>
+        {#<div class="row">#}
+            {#<div class="col-xs-12">#}
+                {#<h1>{{ 'front.title.contact' | trans }}</h1>#}
+            {#</div>#}
+        {#</div>#}
         <div class="row">
             <div class="col-sm-6 col-xs-12">
                 {{ 'front.about.text' | trans | raw }}
                 {{ 'front.contact.text' | trans | raw }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
                 <address>
                     Carrer Navarra, 22 1er pis<br>
                     43870 Amposta, Spain<br>
                     +34 615 299 663
                 </address>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
                 <p>
                     {{ 'front.title.contact' | trans }}<br>
                     <a href="mailto:hola@hidraulicadisseny.com">{{ 'front.footer.email' | trans }}</a>
                 </p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-9">
+            <div class="col-sm-6 col-xs-12">
                 {{ form(form) }}
             </div>
         </div>

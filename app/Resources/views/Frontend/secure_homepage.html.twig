@@ -1,5 +1,7 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
+{% block body_class %}no-gap{% endblock %}
+
 {% block main %}
     {% if slides | length == 1 %}
         {% set slide = slides[0] %}
@@ -42,7 +44,7 @@
         <div class="container">
             <div class="row">
                 {% for thumb in thumbs %}
-                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: thumb} %}
+                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {route: 'app_work_detail', item: thumb} %}
                 {% endfor %}
             </div>
         </div>

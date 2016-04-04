@@ -1,0 +1,9 @@
+{% if items.getTotalItemCount > 9 %}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="navigation">
+                {{ knp_pagination_render(items) }}
+            </div>
+        </div>
+    </div>
+{% endif %}
