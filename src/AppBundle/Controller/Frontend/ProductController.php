@@ -15,12 +15,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/{page}/", name="app_product_list", options={"i18n_prefix" = "secure"})
+     * @Route("/products/{page}", name="app_product_list", options={"i18n_prefix" = "secure"}, defaults={"page" = 1})
      *
      * @param int $page
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function productListAction($page = 1)
+    public function productListAction($page)
     {
         $paginator = $this->get('knp_paginator');
         $products = $paginator->paginate(
@@ -36,7 +36,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}/", name="app_product_detail", options={"i18n_prefix" = "secure"})
+     * @Route("/product/{slug}", name="app_product_detail", options={"i18n_prefix" = "secure"})
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response

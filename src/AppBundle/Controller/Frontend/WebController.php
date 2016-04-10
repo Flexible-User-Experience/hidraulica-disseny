@@ -45,7 +45,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
+     * @Route("/about-us", name="app_about", options={"i18n_prefix" = "secure"})
      */
     public function aboutAction()
     {
@@ -53,7 +53,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="app_contact", options={"i18n_prefix" = "secure"})
+     * @Route("/contact", name="app_contact", options={"i18n_prefix" = "secure"})
      * @param Request $request
      *
      * @return Response

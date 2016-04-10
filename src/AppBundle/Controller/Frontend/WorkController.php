@@ -4,7 +4,6 @@ namespace AppBundle\Controller\Frontend;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -18,12 +17,12 @@ use Symfony\Component\HttpFoundation\Response;
 class WorkController extends Controller
 {
     /**
-     * @Route("/works/{page}/", name="app_work_list", options={"i18n_prefix" = "secure"})
+     * @Route("/works/{page}", name="app_work_list", options={"i18n_prefix" = "secure"}, defaults={"page" = 1})
      *
      * @param int $page
      * @return Response
      */
-    public function workListAction($page = 1)
+    public function workListAction($page)
     {
         $paginator = $this->get('knp_paginator');
         $works = $paginator->paginate(
@@ -39,7 +38,7 @@ class WorkController extends Controller
     }
 
     /**
-     * @Route("/work/{slug}/", name="app_work_detail", options={"i18n_prefix" = "secure"})
+     * @Route("/work/{slug}", name="app_work_detail", options={"i18n_prefix" = "secure"})
      * @param $slug
      *
      * @return \Symfony\Component\HttpFoundation\Response
