@@ -26,6 +26,8 @@ front:
   jumper:
     work: back to works
     product: back to products
+  cart:
+    add: add to cart
   form:
     flash:
       user: Your message has been sent successfully.

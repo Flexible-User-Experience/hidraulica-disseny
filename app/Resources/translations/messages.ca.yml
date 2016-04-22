@@ -26,6 +26,8 @@ front:
   jumper:
     work: tornar als treballs
     product: tornar als productes
+  cart:
+    add: afegir a la cistella
   form:
     flash:
       user: El teu missatge s'ha enviat correctament.

@@ -26,6 +26,8 @@ front:
   jumper:
     work: volver a los trabajos
     product: volver a los productos
+  cart:
+    add: añadir al carrito
   form:
     flash:
       user: Tu mensaje se ha enviado correctamente.

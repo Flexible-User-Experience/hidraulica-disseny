@@ -16,6 +16,7 @@
             margin: 2px;
         }
         .item img { width: 100%; }
+        .btn-lg, .input-lg { border-radius: 0; }
     </style>
 {% endblock %}
 
@@ -51,7 +52,21 @@
             </div>
             <div class="col-sm-6 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
-                <span>{{ product.price }} <i class="fa fa-eur"></i></span>
+                <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label>
+                            <select class="form-control input-lg" id="quantity">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
+                </form>
                 <p>{{ product.description | raw }}</p>
             </div>
         </div>
