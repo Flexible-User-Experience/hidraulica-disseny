@@ -96,7 +96,12 @@ textarea {
 // Body
 body {
   &.base { padding-top: 80px; }
-  &.no-gap { padding-top: 0 }
+  &.no-gap {
+    padding-top: 0;
+    .navbar-default {
+      background-color: transparent;
+    }
+  }
 }
 
 /* Carousel base class */
@@ -113,19 +118,12 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 500px;
   background-color:#bbb;
 }
 
 .carousel img {
-  /*  position: absolute;*/
-  /*  top: 0;*/
-  /*  left: 0;*/
-  height: 500px;
   width: 100%;
   vertical-align: middle;
-  min-height: 100%;
-  /* max-height: none;  */
 }
 
 // Cleanups
