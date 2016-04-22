@@ -49,6 +49,7 @@ backend:
         email: Correu electrònic
         name: Nom
         subject: Tema
+        homepage: Homepage
         enabled: Actiu
         firstname: Nom
         general: General

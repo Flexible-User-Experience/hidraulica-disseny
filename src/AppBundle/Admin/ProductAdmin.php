@@ -89,6 +89,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'required' => false,
+                )
+            )
+            ->add(
                 'enabled',
                 'checkbox',
                 array(
@@ -180,11 +188,17 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label' => 'backend.admin.homepage',
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
-                    'editable' => true,
+                    'label' => 'backend.admin.enabled',
                 )
             );
     }
@@ -230,6 +244,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'editable' => true,
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
@@ -244,8 +266,8 @@ class ProductAdmin extends AbstractBaseAdmin
                     'label'   => 'backend.admin.actions',
                     'actions' => array(
                         'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
-                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
+                        'edit'    => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete'  => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             );
