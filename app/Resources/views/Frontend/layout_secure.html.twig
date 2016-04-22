@@ -13,13 +13,13 @@
                     {#<span class="icon-bar"></span>#}
                 {#</button>#}
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="first">
+                    <a id="top-menu-bars-icon" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
             {#<div class="navbar-collapse collapse">#}
             <div id="top-menu-bars" class="closed-navbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="first active">
-                        <a id="top-menu-bars-icon" href="#"><i class="fa fa-bars"></i></a>
-                    </li>
-                </ul>
                 {{ knp_menu_render('top', {currentClass: 'active'}) }}
             </div>
         </div>
