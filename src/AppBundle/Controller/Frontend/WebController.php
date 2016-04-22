@@ -3,6 +3,8 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Entity\Work;
+use AppBundle\Entity\Product;
 use AppBundle\Form\Type\ContactMessageType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,7 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
  * @category Controller
  * @package  AppBundle\Controller\Frontend
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  */
 class WebController extends Controller
 {
@@ -32,8 +33,22 @@ class WebController extends Controller
      */
     public function secureIndexAction()
     {
-        $thumbs = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(9);
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
+        $thumbs = array_merge($works, $products);
+        usort(
+            $thumbs,
+            function ($a, $b) {
+                /** @var Work|Product $a */
+                /** @var Work|Product $b */
+                if ($a->getCreatedAt() == $b->getCreatedAt()) {
+                    return 0;
+                }
+
+                return ($a->getCreatedAt() > $b->getCreatedAt()) ? -1 : 1;
+            }
+        );
 
         return $this->render(
             ':Frontend:secure_homepage.html.twig',
@@ -81,7 +96,7 @@ class WebController extends Controller
 
         return $this->render(
             ':Frontend:contact.html.twig',
-            [ 'form' => $form->createView() ]
+            ['form' => $form->createView()]
         );
     }
 }

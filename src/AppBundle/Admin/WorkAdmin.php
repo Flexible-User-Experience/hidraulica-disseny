@@ -89,6 +89,14 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'required' => false,
+                )
+            )
+            ->add(
                 'enabled',
                 'checkbox',
                 array(
@@ -180,6 +188,13 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label' => 'backend.admin.homepage',
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
@@ -226,6 +241,14 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.category',
+                )
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'editable' => true,
                 )
             )
             ->add(
