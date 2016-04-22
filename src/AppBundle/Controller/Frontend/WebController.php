@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\ContactMessage;
 use AppBundle\Form\Type\ContactMessageType;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,8 +33,10 @@ class WebController extends Controller
      */
     public function secureIndexAction()
     {
-        $thumbs = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(9);
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(9);
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate(9);
+        $thumbs = array_merge($works, $products);
 
         return $this->render(
             ':Frontend:secure_homepage.html.twig',

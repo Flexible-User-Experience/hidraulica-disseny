@@ -4,6 +4,8 @@ namespace AppBundle\Repository;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * Class ProductRepository
@@ -16,15 +18,41 @@ use Doctrine\ORM\EntityRepository;
 class ProductRepository extends EntityRepository
 {
     /**
-     * @return ArrayCollection
+     * @param int|null $limit
+     *
+     * @return QueryBuilder
      */
-    public function findAllEnabledSortedByDate()
+    public function findAllEnabledSortedByDateQB($limit = null)
     {
         $query = $this->createQueryBuilder('p')
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
             ->orderBy('p.createdAt');
 
-        return $query->getQuery()->getResult();
+        if (!is_null($limit)) {
+            $query->setMaxResults($limit);
+        }
+
+        return $query;
+    }
+
+    /**
+     * @param int|null $limit
+     *
+     * @return Query
+     */
+    public function findAllEnabledSortedByDateQ($limit = null)
+    {
+        return $this->findAllEnabledSortedByDateQB($limit)->getQuery();
+    }
+
+    /**
+     * @param int|null $limit
+     *
+     * @return ArrayCollection
+     */
+    public function findAllEnabledSortedByDate($limit = null)
+    {
+        return $this->findAllEnabledSortedByDateQ($limit)->getResult();
     }
 }
