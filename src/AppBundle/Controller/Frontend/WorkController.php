@@ -62,6 +62,32 @@ class WorkController extends Controller
     }
 
     /**
+     * @Route("/work/{slug}/prev", name="app_work_detail_prev", options={"i18n_prefix" = "secure"})
+     * @Method({"GET"})
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function prevWorkAction($slug)
+    {
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
+        $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(['slug' => $slug]);
+        /** @var Work $item */
+        foreach ($works as $i => $item) {
+            if ($item->getSlug() == $work->getSlug()) {
+                if ($i === 0) {
+                    $work = $works[(count($works) - 1)];
+                } else {
+                    $work = $works[$i - 1];
+                }
+                break;
+            }
+        }
+
+        return $this->redirectToRoute('app_work_detail', ['slug' => $work->getSlug()]);
+    }
+
+    /**
      * @Route("/work/{slug}/next", name="app_work_detail_next", options={"i18n_prefix" = "secure"})
      * @Method({"GET"})
      * @param $slug
@@ -79,32 +105,6 @@ class WorkController extends Controller
                     $work = $works[0];
                 } else {
                     $work = $works[$i + 1];
-                }
-                break;
-            }
-        }
-
-        return $this->redirectToRoute('app_work_detail', ['slug' => $work->getSlug()]);
-    }
-
-    /**
-     * @Route("/work/{slug}/prev", name="app_work_detail_prev")
-     * @Method({"GET"})
-     * @param $slug
-     *
-     * @return Response
-     */
-    public function prevWorkAction($slug)
-    {
-        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
-        $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(['slug' => $slug]);
-        /** @var Work $item */
-        foreach ($works as $i => $item) {
-            if ($item->getSlug() == $work->getSlug()) {
-                if ($i === 0) {
-                    $work = $works[(count($works) - 1)];
-                } else {
-                    $work = $works[$i - 1];
                 }
                 break;
             }
