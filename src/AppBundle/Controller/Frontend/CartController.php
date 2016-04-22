@@ -32,6 +32,23 @@ class CartController extends Controller
     }
 
     /**
+     * @Route("/cart/include-new-item", name="app_cart_include_new_item", options={"i18n_prefix" = "secure"})
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function includeNewItemAction(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            $quantity = $request->request->get('quantity');
+            $productId = $request->request->get('product');
+            $this->get('app.cart_service')->addItem($productId, $quantity);
+        }
+
+        return $this->redirect($this->getRequest()->headers->get('referer'));
+    }
+
+    /**
      * @Route("/pedido/nuevo/item/{itemId}/", name="app_frontend_cart_add_item")
      * @param int $itemId
      *

@@ -53,10 +53,10 @@
             <div class="col-sm-6 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
                 <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
-                <form class="form-inline">
+                <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
                     <div class="form-group">
-                        <label>
-                            <select class="form-control input-lg" id="quantity">
+                        <label for="quantity">
+                            <select class="form-control input-lg" name="quantity">
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
@@ -65,6 +65,7 @@
                             </select>
                         </label>
                     </div>
+                    <input type="hidden" name="product" value="{{ product.id }}">
                     <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
                 </form>
                 <p>{{ product.description | raw }}</p>

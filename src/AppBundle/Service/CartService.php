@@ -138,7 +138,6 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
-
                 return $cart;
             }
         }
@@ -168,7 +167,7 @@ class CartService
      */
     public function getItemById($itemId)
     {
-        return $this->em->getRepository('ECVulcoAppBundle:AbstractProduct')->findOneBy(array('id' => $itemId));
+        return $this->em->getRepository('AppBundle:Product')->findOneBy(array('id' => $itemId));
     }
 
     /**
