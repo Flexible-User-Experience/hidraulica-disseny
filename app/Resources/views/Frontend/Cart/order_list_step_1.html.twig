@@ -1,0 +1,230 @@
+{% extends ':Frontend:base.html.twig' %}
+
+{% block title %}Revisar Carrito | {{ parent() }}{% endblock %}
+
+{% block css_plugins %}
+    {#<!-- CSS Implementing Plugins -->#}
+    <link rel="stylesheet" href="{{ asset('assets/plugins/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/line-icons/line-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/jquery-steps/css/custom-jquery.steps.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/scrollbar/css/jquery.mCustomScrollbar.css') }}">
+{% endblock %}
+
+{% block css_style_switcher %}
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/style-switcher.css') }}">
+{% endblock %}
+
+{% block content %}
+    {#<!--=== Breadcrumbs v4 ===-->#}
+    <div class="breadcrumbs-v4">
+        <div class="container">
+            <span class="page-name">&nbsp;</span>
+            {% include ':Frontend/Default/block:breadcrumb_level_1.html.twig' with {breadcrump_page: 'Pedido'} %}
+        </div>{#<!--/end container-->#}
+    </div>
+    {#<!--=== End Breadcrumbs v4 ===-->#}
+
+    {% if cart.items | length > 0 %}
+    {#<!--=== Content Medium Part ===-->#}
+    <div class="content-xs margin-bottom-30">
+        <div class="container">
+            <form class="shopping-cart" action="#">
+                <div class="wizard clearfix">
+                    <div class="steps clearfix">
+                        <ul role="tablist">
+                            <li role="tab" class="first current" aria-disabled="false" aria-selected="true">
+                                <a id="steps-uid-0-t-0" aria-controls="steps-uid-0-p-0">
+                                    <span class="current-info audible">current step: </span>
+                                    <span class="number">1.</span>
+                                    <div class="overflow-h">
+                                        <h2>Pedido</h2>
+                                        <p>Revisa y edita tus productos</p>
+                                        <i class="rounded-x fa fa-check"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="tab" class="disabled" aria-disabled="true">
+                                <a id="steps-uid-0-t-1" aria-controls="steps-uid-0-p-1">
+                                    <span class="number">2.</span>
+                                    <div class="overflow-h">
+                                        <h2>Factutación</h2>
+                                        <p>Dirección de entrega</p>
+                                        <i class="rounded-x fa fa-home"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li role="tab" class="disabled last" aria-disabled="true">
+                                <a id="steps-uid-0-t-2" aria-controls="steps-uid-0-p-2">
+                                    <span class="number">3.</span>
+                                    <div class="overflow-h">
+                                        <h2>Pago</h2>
+                                        <p>Selecciona forma de pago</p>
+                                        <i class="rounded-x fa fa-credit-card"></i>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content clearfix">
+                        <section>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in cart.items %}
+                                        <tr>
+                                            <td class="product-in-table">
+                                                <img class="img-responsive" src="{{ vich_uploader_asset(item.product, 'image') | imagine_filter('60x60') }}" alt="{{ item.product.name }} photo">
+                                                <div class="product-it-in">
+                                                    <h3><a href="{{ product_detail_path(item.product, {id: item.product.id, slug: item.product.slug}) }}">{{ item.product.name }}</a></h3>
+                                                    {#<span>Sed aliquam tincidunt tempus</span>#}
+                                                </div>
+                                            </td>
+                                            <td>{{ item.product.priceFinalWithTax | money_format }}</td>
+                                            <td>
+                                                <button type="button" class="quantity-button" name="subtract" id="subtract_button_{{ item.product.id }}" value="-" onclick="removeItem({{ item.product.id }})"><i class="fa fa-minus"></i></button>
+                                                <input type="text" class="quantity-field" name="qty{{ item.product.id }}" value="{{ item.quantity }}" id="qty_{{ item.product.id }}"/>
+                                                <button type="button" class="quantity-button" name="add" id="add_button_{{ item.product.id }}" value="+" onclick="addItem({{ item.product.id }})"><i class="fa fa-plus"></i></button>
+                                            </td>
+                                            <td class="shop-red"><span id="shop_red_{{ item.product.id }}">{{ item.quantityMultiplicationPriceWithTax | money_format }}</span></td>
+                                            <td>
+                                                <a href="{{ path('app_frontend_cart_remove_item', {itemId: item.product.id}) }}" class="close"><i class="fa fa-times"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <div class="coupon-code">
+                            <div class="row">
+                                <div class="col-sm-6 sm-margin-bottom-30">
+                                    {% if site.garage.eCommerceWarningMessage %}
+                                        <h3>Mensaje del taller</h3>
+                                        <div class="alert alert-info fade in">
+                                            {{ site.garage.eCommerceWarningMessage }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-3 col-sm-offset-3">
+                                    <ul class="list-inline total-result">
+                                        <li>
+                                            <h4>Base:</h4>
+                                            <div class="total-result-in">
+                                                <span id="base_amount">{{ cart.totalAmount | money_format }}</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h4>I.V.A.:</h4>
+                                            <div class="total-result-in">
+                                                <span id="tax_amount">{{ cart.totalBaseTax | money_format }}</span>
+                                            </div>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="total-price">
+                                            <h4>Total:</h4>
+                                            <div class="total-result-in">
+                                                <span id="total_amount">{{ cart.totalAmountWithTax| money_format }}</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="actions clearfix">
+                        <ul role="menu" aria-label="Pagination">
+                            <li aria-hidden="false" style="display: block;">
+                                <a href="{{ path('app_frontend_cart_order_step_2') }}" role="menuitem">Siguiente <i class="fa fa-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+        {# Empty cart list #}
+        <div class="content-xs margin-bottom-30">
+            <div class="container">
+                <div>
+                    <div class="header-tags">
+                        <div class="overflow-h">
+                            <h2>No existen productos en tu pedido</h2>
+                            <p>Accede a la tienda para continuar comprando productos</p>
+                            <a href="{{ path('app_frontend_homepage') }}" class="btn btn-primary"><i class="fa fa-chevron-left"></i> Ir a la tienda</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block js_plugins %}
+    {#<!-- JS Implementing Plugins -->#}
+    <script type="text/javascript" src="{{ asset('assets/plugins/back-to-top.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/smoothScroll.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/jquery-steps/build/jquery.steps.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js') }}"></script>
+{% endblock %}
+
+{% block js_page_level %}
+    {#<!-- JS Page Level -->#}
+    <script type="text/javascript" src="{{ asset('assets/js/shop.app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/forms/page_login.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script type="text/javascript">
+        function addItem(id) {
+            var btn = jQuery('#add_button_' + id);
+            var qty = jQuery('#qty_' + id);
+            var value = parseInt(qty.val()) + 1;
+            btn.html('<i class="fa fa-spin fa-refresh"></i>');
+            jQuery.getJSON(Routing.generate('api_cart_update_item_quantity', {itemId: id, quantity: value}, true), function (data) {
+                if (typeof data.result !== 'undefined' && data.result === 'OK') {
+                    qty.val(value);
+                    btn.html('<i class="fa fa-plus"></i>');
+                    jQuery('#shop_red_' + id).text(data.line + ' €');
+                    jQuery('#base_amount').text(data.base + ' €');
+                    jQuery('#tax_amount').text(data.tax + ' €');
+                    jQuery('#total_amount').text(data.total + ' €');
+                }
+            });
+        }
+        function removeItem(id) {
+            var btn = jQuery('#subtract_button_' + id);
+            var qty = jQuery('#qty_' + id);
+            var value = parseInt(qty.val()) - 1;
+            if (value < 0) {
+                value = 0;
+            }
+            btn.html('<i class="fa fa-spin fa-refresh"></i>');
+            jQuery.getJSON(Routing.generate('api_cart_update_item_quantity', {itemId: id, quantity: value}, true), function (data) {
+                if (typeof data.result !== 'undefined' && data.result === 'OK') {
+                    qty.val(value);
+                    btn.html('<i class="fa fa-minus"></i>');
+                    jQuery('#shop_red_' + id).text(data.line + ' €');
+                    jQuery('#subtotal_amount').text(data.total + ' €');
+                    jQuery('#total_amount').text(data.total + ' €');
+                }
+            });
+        }
+    </script>
+{% endblock %}
+
+{% block js_ready %}
+    App.init();
+    Login.initLogin();
+    App.initScrollBar();
+{% endblock %}

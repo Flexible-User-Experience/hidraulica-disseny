@@ -1,0 +1,32 @@
+{% block my_cart %}
+    {% if cart.items | length == 0 %}
+        <ul class="nav navbar-nav navbar-right">
+            <li class="first">
+                <a href="#"><i class="fa fa-shopping-cart"></i> <span class="badge">{{ cart.items | length }}</span></a>
+                {#<ul class="list-unstyled badge-open mCustomScrollbar" data-mcs-theme="minimal-dark">#}
+                    {#{% for item in cart.items %}#}
+                        {#<li>#}
+                            {#<img class="img-responsive" src="{{ vich_uploader_asset(item.product, 'image') | imagine_filter('60x60') }}" alt="{{ item.product.name }} photo">#}
+                            {#<a href="{{ path('app_frontend_cart_remove_item', {itemId: item.product.id}) }}" class="close"><i class="fa fa-times"></i></a>#}
+                            {#<div class="overflow-h">#}
+                                {#<span>{{ item.product.name }}</span>#}
+                                {#<small>{{ item.quantity }} x {{ item.product.priceFinalWithTax | money_format }}</small>#}
+                            {#</div>#}
+                        {#</li>#}
+                    {#{% endfor %}#}
+                    {#<li class="subtotal">#}
+                        {#<div class="overflow-h margin-bottom-10">#}
+                            {#<span>TOTAL</span>#}
+                            {#<span class="pull-right subtotal-cost">{{ cart.totalAmountWithTax | money_format }}</span>#}
+                        {#</div>#}
+                        {#<div class="row">#}
+                            {#<div class="col-xs-12">#}
+                                {#<a href="{{ path('app_frontend_cart_order_list') }}" class="btn-u btn-u-sea-shop btn-block">Confirmar compra</a>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</li>#}
+                {#</ul>#}
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}

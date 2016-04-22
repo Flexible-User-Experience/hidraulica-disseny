@@ -40,13 +40,11 @@ services:
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "User", group: "Users" }
-
     admin.cart:
         class: AppBundle\Admin\CartAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Cart, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Cart", group: "Carts" }
-
     admin.customer:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
@@ -54,6 +52,10 @@ services:
             - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
         calls:
             - [ setTemplate, [ show, "::Admin/Shows/custom_customer_show_view.html.twig" ] ]
+# Cart
+    app.cart_service:
+        class: AppBundle\Service\CartService
+        arguments: [ "@session", "@doctrine.orm.entity_manager", "@security.context" ]
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService
