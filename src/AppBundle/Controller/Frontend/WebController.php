@@ -34,8 +34,8 @@ class WebController extends Controller
     public function secureIndexAction()
     {
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
-        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(9);
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate(9);
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
         $thumbs = array_merge($works, $products);
 
         return $this->render(

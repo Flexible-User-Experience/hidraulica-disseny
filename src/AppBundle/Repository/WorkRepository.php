@@ -55,4 +55,38 @@ class WorkRepository extends EntityRepository
     {
         return $this->findAllEnabledSortedByDateQ($limit)->getResult();
     }
+
+    /**
+     * @param int|null $limit
+     *
+     * @return QueryBuilder
+     */
+    public function findShowInHomepageEnabledSortedByDateQB($limit = null)
+    {
+        $query = $this->findAllEnabledSortedByDateQB($limit)
+            ->andWhere('w.showInHomepage = :showInHomepage')
+            ->setParameter('showInHomepage', true);
+
+        return $query;
+    }
+
+    /**
+     * @param int|null $limit
+     *
+     * @return Query
+     */
+    public function findShowInHomepageEnabledSortedByDateQ($limit = null)
+    {
+        return $this->findShowInHomepageEnabledSortedByDateQB($limit)->getQuery();
+    }
+
+    /**
+     * @param int|null $limit
+     *
+     * @return array
+     */
+    public function findShowInHomepageEnabledSortedByDate($limit = null)
+    {
+        return $this->findShowInHomepageEnabledSortedByDateQ($limit)->getResult();
+    }
 }
