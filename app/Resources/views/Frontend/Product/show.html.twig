@@ -7,7 +7,7 @@
         {% if not product.enabled %}
             <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest producte no està disponible a la web pública</div>
         {% endif %}
-        <div class="row">
+        <div class="row extra-m-bottom">
             <div class="col-sm-6 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
             </div>
@@ -33,14 +33,27 @@
             </div>
         </div>
         {% if product.images | length > 0 %}
-            {% for image in product.images %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ product.title }}">
+            <div class="row">
+                {% for image in product.images %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ product.title }}">
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endif %}
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="c-grey" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-left"></i></a>
+            </div>
+            <div class="col-xs-10 text-center">
+                <a class="c-grey" href="{{ path('app_product_list') }}">{{ 'front.jumper.product' | trans | upper }}</a>
+            </div>
+            <div class="col-xs-1 text-right">
+                <a class="c-grey" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-right"></i></a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

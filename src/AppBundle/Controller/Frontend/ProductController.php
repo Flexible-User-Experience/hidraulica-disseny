@@ -2,8 +2,11 @@
 
 namespace AppBundle\Controller\Frontend;
 
+use AppBundle\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ProductController
@@ -15,12 +18,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/{page}/", name="app_product_list", options={"i18n_prefix" = "secure"})
+     * @Route("/products/{page}", name="app_product_list", options={"i18n_prefix" = "secure"}, defaults={"page" = 1})
+     * @Method({"GET"})
      *
      * @param int $page
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function productListAction($page = 1)
+    public function productListAction($page)
     {
         $paginator = $this->get('knp_paginator');
         $products = $paginator->paginate(
@@ -36,10 +40,11 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}/", name="app_product_detail", options={"i18n_prefix" = "secure"})
+     * @Route("/product/{slug}", name="app_product_detail", options={"i18n_prefix" = "secure"})
+     * @Method({"GET"})
      * @param $slug
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function productDetailAction($slug)
     {
@@ -57,5 +62,57 @@ class ProductController extends Controller
             ':Frontend/Product:show.html.twig',
             [ 'product' => $product ]
         );
+    }
+
+    /**
+     * @Route("/product/{slug}/prev", name="app_product_detail_prev", options={"i18n_prefix" = "secure"})
+     * @Method({"GET"})
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function prevProductAction($slug)
+    {
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
+        $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(['slug' => $slug]);
+        /** @var Product $item */
+        foreach ($products as $i => $item) {
+            if ($item->getSlug() == $product->getSlug()) {
+                if ($i === 0) {
+                    $product = $products[(count($products) - 1)];
+                } else {
+                    $product = $products[$i - 1];
+                }
+                break;
+            }
+        }
+
+        return $this->redirectToRoute('app_product_detail', ['slug' => $product->getSlug()]);
+    }
+
+    /**
+     * @Route("/product/{slug}/next", name="app_product_detail_next", options={"i18n_prefix" = "secure"})
+     * @Method({"GET"})
+     * @param $slug
+     *
+     * @return Response
+     */
+    public function nextProductAction($slug)
+    {
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
+        $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(['slug' => $slug]);
+        /** @var Product $item */
+        foreach ($products as $i => $item) {
+            if ($item->getSlug() == $product->getSlug()) {
+                if (($i + 1) === count($products)) {
+                    $product = $products[0];
+                } else {
+                    $product = $products[$i + 1];
+                }
+                break;
+            }
+        }
+
+        return $this->redirectToRoute('app_product_detail', ['slug' => $product->getSlug()]);
     }
 }

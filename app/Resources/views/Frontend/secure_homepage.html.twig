@@ -11,20 +11,20 @@
             </div>
         </div>
     {% elseif slides | length > 1 %}
-        <div id="my-hero-carousel" class="carousel fade-carousel slide" data-ride="carousel" data-interval="2500">
+        <div id="my-hero-carousel" class="carousel fade-carousel slide" data-ride="carousel"  data-interval="2500">
             {#<!-- Overlay -->#}
             <div class="overlay"></div>
             {#<!-- Indicators -->#}
             <ol class="carousel-indicators">
                 {% for slide in slides %}
-                    <li data-target="#my-hero-carousel" data-slide-to="{{ loop.index }}"{% if loop.first %} class="active"{% endif %}></li>
+                    <li data-target="#my-hero-carousel" data-slide-to="{{ loop.index - 1 }}"{% if loop.first %} class="active"{% endif %}></li>
                 {% endfor %}
             </ol>
             {#<!-- Wrapper for slides -->#}
             <div class="carousel-inner" role="listbox">
                 {% for slide in slides %}
                     <div class="item slides{% if loop.first %} active{% endif %}">
-                        <div class="slide-{{ loop.index }}" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('Xx550') }}')"></div>
+                        <div class="slide-{{ loop.index - 1 }}" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('Xx550') }}')"></div>
                         <div class="hero"></div>
                     </div>
                 {% endfor %}

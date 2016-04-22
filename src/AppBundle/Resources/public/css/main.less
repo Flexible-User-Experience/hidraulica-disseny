@@ -64,7 +64,9 @@
 h1 { color: @black; }
 
 // Textarea
-textarea { resize: vertical; }
+textarea {
+  .resizable(vertical);
+}
 
 // Gaps
 .no-m { margin: 0; }
@@ -84,7 +86,7 @@ textarea { resize: vertical; }
 // Navbar
 @navbar-height: 80px;
 @navbar-margin-bottom: @gap-big;
-@navbar-default-bg: transparent;
+@navbar-default-bg: rgba(255, 255, 255, 0.85);
 @navbar-default-link-color: @blue-light;
 @navbar-default-link-hover-color: @black;
 @navbar-default-link-active-color: @black;
@@ -101,6 +103,7 @@ body {
 .carousel {
   margin-bottom: 60px;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -113,6 +116,7 @@ body {
   height: 500px;
   background-color:#bbb;
 }
+
 .carousel img {
   /*  position: absolute;*/
   /*  top: 0;*/
@@ -130,6 +134,24 @@ body {
 .no-underline {
   text-decoration: none;
   &:hover { text-decoration: none; }
+}
+
+// Contact form
+#contact_message_name, #contact_message_email, #contact_message_subject, #contact_message_message {
+  border: none;
+  border-bottom: solid 1px @grey;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+}
+
+#contact_message_send {
+  border-radius: 0;
+  border: none;
+  background-color: @black;
+  color: @white;
+  padding: @gap-small @gap-big;
+  text-transform: uppercase;
 }
 
 // Footer

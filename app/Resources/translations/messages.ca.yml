@@ -23,6 +23,12 @@ front:
       ok: enviar
     text: |
       Contacta'ns, estarem encantats de poder treballar per a tu!<br><br>
+  jumper:
+    work: tornar als treballs
+    product: tornar als productes
+  form:
+    flash:
+      user: El teu missatge s'ha enviat correctament.
   footer:
     email: "hola@hidraulicadisseny.com"
 backend:

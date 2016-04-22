@@ -1,5 +1,5 @@
-app:
-    resource: "@AppBundle/Controller/"
+app_frontend:
+    resource: "@AppBundle/Controller/Frontend/"
     type:     annotation
 
 sonata:
@@ -23,6 +23,10 @@ sonata_user_admin_resetting:
     prefix:   /admin/resetting
     options:  { i18n: false }
 
+app_backend:
+    resource: "@AppBundle/Controller/Admin/"
+    type:     annotation
+
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
     options:  { i18n: false }
@@ -30,4 +34,9 @@ _liip_imagine:
 _presta_sitemap:
     resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
     prefix:   /sitemap
+    options:  { i18n: false }
+
+_redirecting_trailing_slashes:
+    resource: "@AppBundle/Controller/RedirectingController.php"
+    type:     annotation
     options:  { i18n: false }

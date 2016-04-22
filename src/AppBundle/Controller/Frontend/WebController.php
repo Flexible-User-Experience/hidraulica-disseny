@@ -45,7 +45,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
+     * @Route("/about-us", name="app_about", options={"i18n_prefix" = "secure"})
      */
     public function aboutAction()
     {
@@ -53,7 +53,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="app_contact", options={"i18n_prefix" = "secure"})
+     * @Route("/contact", name="app_contact", options={"i18n_prefix" = "secure"})
      * @param Request $request
      *
      * @return Response
@@ -76,7 +76,7 @@ class WebController extends Controller
             $contact = new ContactMessage();
             $form = $this->createForm(ContactMessageType::class, $contact);
             // build flash message
-            $this->addFlash('msg', 'frontend.form.flash.user');
+            $this->addFlash('msg', 'front.form.flash.user');
         }
 
         return $this->render(
