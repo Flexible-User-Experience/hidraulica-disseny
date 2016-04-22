@@ -46,6 +46,17 @@
                 {% endfor %}
             </div>
         {% endif %}
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="c-grey" href="{{ path('app_work_detail_prev', {slug: work.slug}) }}"><i class="fa fa-3x fa-chevron-left"></i></a>
+            </div>
+            <div class="col-xs-10 text-center">
+                <a class="c-grey" href="{{ path('app_work_list') }}">{{ 'front.jumper.work' | trans | upper }}</a>
+            </div>
+            <div class="col-xs-1 text-right">
+                <a class="c-grey" href="{{ path('app_work_detail_next', {slug: work.slug}) }}"><i class="fa fa-3x fa-chevron-right"></i></a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

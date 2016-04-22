@@ -23,6 +23,9 @@ front:
       ok: send
     text: |
       Contact us, we'll be glad to work for you!<br><br>
+  jumper:
+    work: back to works
+    product: back to products
   form:
     flash:
       user: Your message has been sent successfully.
