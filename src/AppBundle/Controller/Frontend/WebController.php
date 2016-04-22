@@ -20,6 +20,14 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class WebController extends Controller
 {
+    private function cmp($a, $b)
+    {
+        if ($a['createdAt'] == $b['createdAt']) {
+            return 0;
+        }
+        return ($a['createdAt'] < $b['createdAt']) ? -1 : 1;
+    }
+
     /**
      * @Route("/", name="app_homepage")
      */
@@ -37,6 +45,13 @@ class WebController extends Controller
         $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
         $thumbs = array_merge($works, $products);
+//        usort($thumbs, function ($a, $b)
+//        {
+//            if ($a['createdAt'] == $b['createdAt']) {
+//                return 0;
+//            }
+//            return ($a['createdAt'] < $b['createdAt']) ? -1 : 1;
+//        });
 
         return $this->render(
             ':Frontend:secure_homepage.html.twig',

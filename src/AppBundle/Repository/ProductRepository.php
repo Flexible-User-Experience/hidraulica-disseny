@@ -2,7 +2,6 @@
 
 namespace AppBundle\Repository;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -19,15 +18,16 @@ class ProductRepository extends EntityRepository
 {
     /**
      * @param int|null $limit
+     * @param string   $order
      *
      * @return QueryBuilder
      */
-    public function findAllEnabledSortedByDateQB($limit = null)
+    public function findAllEnabledSortedByDateQB($limit = null, $order = 'DESC')
     {
         $query = $this->createQueryBuilder('p')
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
-            ->orderBy('p.createdAt');
+            ->orderBy('p.createdAt', $order);
 
         if (!is_null($limit)) {
             $query->setMaxResults($limit);
@@ -38,32 +38,35 @@ class ProductRepository extends EntityRepository
 
     /**
      * @param int|null $limit
+     * @param string   $order
      *
      * @return Query
      */
-    public function findAllEnabledSortedByDateQ($limit = null)
+    public function findAllEnabledSortedByDateQ($limit = null, $order = 'DESC')
     {
-        return $this->findAllEnabledSortedByDateQB($limit)->getQuery();
+        return $this->findAllEnabledSortedByDateQB($limit, $order)->getQuery();
     }
 
     /**
      * @param int|null $limit
+     * @param string   $order
      *
-     * @return ArrayCollection
+     * @return array
      */
-    public function findAllEnabledSortedByDate($limit = null)
+    public function findAllEnabledSortedByDate($limit = null, $order = 'DESC')
     {
-        return $this->findAllEnabledSortedByDateQ($limit)->getResult();
+        return $this->findAllEnabledSortedByDateQ($limit, $order)->getResult();
     }
 
     /**
      * @param int|null $limit
+     * @param string   $order
      *
      * @return QueryBuilder
      */
-    public function findShowInHomepageEnabledSortedByDateQB($limit = null)
+    public function findShowInHomepageEnabledSortedByDateQB($limit = null, $order = 'DESC')
     {
-        $query = $this->findAllEnabledSortedByDateQB($limit)
+        $query = $this->findAllEnabledSortedByDateQB($limit, $order)
             ->andWhere('p.showInHomepage = :showInHomepage')
             ->setParameter('showInHomepage', true);
 
@@ -72,21 +75,23 @@ class ProductRepository extends EntityRepository
 
     /**
      * @param int|null $limit
+     * @param string   $order
      *
      * @return Query
      */
-    public function findShowInHomepageEnabledSortedByDateQ($limit = null)
+    public function findShowInHomepageEnabledSortedByDateQ($limit = null, $order = 'DESC')
     {
-        return $this->findShowInHomepageEnabledSortedByDateQB($limit)->getQuery();
+        return $this->findShowInHomepageEnabledSortedByDateQB($limit, $order)->getQuery();
     }
 
     /**
      * @param int|null $limit
+     * @param string   $order
      *
      * @return array
      */
-    public function findShowInHomepageEnabledSortedByDate($limit = null)
+    public function findShowInHomepageEnabledSortedByDate($limit = null, $order = 'DESC')
     {
-        return $this->findShowInHomepageEnabledSortedByDateQ($limit)->getResult();
+        return $this->findShowInHomepageEnabledSortedByDateQ($limit, $order)->getResult();
     }
 }
