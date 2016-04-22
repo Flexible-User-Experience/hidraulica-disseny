@@ -14,7 +14,7 @@
                 {#</button>#}
             </div>
             {#<div class="navbar-collapse collapse">#}
-            <div>
+            <div id="top-menu-bars" class="closed-navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="first active">
                         <a id="top-menu-bars-icon" href="#"><i class="fa fa-bars"></i></a>
@@ -57,7 +57,12 @@
         jQuery(document).ready(function ($) {
             var top_menu_bars_icon = $('#top-menu-bars-icon');
             top_menu_bars_icon.click(function() {
-                console.log('hit');
+                var top_menu_bars = $('#top-menu-bars');
+                if (top_menu_bars.hasClass('closed-navbar')) {
+                    top_menu_bars.removeClass('closed-navbar');
+                } else {
+                    top_menu_bars.addClass('closed-navbar');
+                }
             });
         });
     </script>
