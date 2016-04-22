@@ -36,13 +36,15 @@
             </div>
         </div>
         {% if work.images | length > 0 %}
-            {% for image in work.images %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
+            <div class="row">
+                {% for image in work.images %}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         {% endif %}
     </div>
 {% endblock %}
