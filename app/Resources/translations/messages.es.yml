@@ -23,6 +23,9 @@ front:
       ok: enviar
     text: |
       Contacta con nosotros, estaremos encantados de poder trabajar para ti.<br><br>
+  form:
+    flash:
+      user: Tu mensaje se ha enviado correctamente.
   footer:
     email: "hola@hidraulicadisseny.com"
 Previous: anterior

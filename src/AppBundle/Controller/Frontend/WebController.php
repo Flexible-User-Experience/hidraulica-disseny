@@ -76,7 +76,7 @@ class WebController extends Controller
             $contact = new ContactMessage();
             $form = $this->createForm(ContactMessageType::class, $contact);
             // build flash message
-            $this->addFlash('msg', 'frontend.form.flash.user');
+            $this->addFlash('msg', 'front.form.flash.user');
         }
 
         return $this->render(
