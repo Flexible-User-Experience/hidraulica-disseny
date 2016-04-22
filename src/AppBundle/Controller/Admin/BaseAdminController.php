@@ -6,7 +6,7 @@ use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class ProductAdminController
+ * Class BaseAdminController
  *
  * @category Controller
  * @package  AppBundle\Controller\Admin

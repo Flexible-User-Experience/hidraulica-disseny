@@ -31,6 +31,7 @@ class NotificationService
      * @param CourierService    $messenger
      * @param \Twig_Environment $twig
      * @param string            $amd
+     * @param string            $urlBase
      */
     public function __construct(CourierService $messenger, \Twig_Environment $twig, $amd, $urlBase)
     {
