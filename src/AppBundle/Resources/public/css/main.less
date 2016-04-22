@@ -96,7 +96,12 @@ textarea {
 // Body
 body {
   &.base { padding-top: 80px; }
-  &.no-gap { padding-top: 0 }
+  &.no-gap {
+    padding-top: 0;
+    .navbar-default {
+      background-color: transparent;
+    }
+  }
 }
 
 /* Carousel base class */
