@@ -43,6 +43,17 @@
                 {% endfor %}
             </div>
         {% endif %}
+        <div class="row">
+            <div class="col-xs-1">
+                <a class="c-grey" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-left"></i></a>
+            </div>
+            <div class="col-xs-10 text-center">
+                <a class="c-grey" href="{{ path('app_product_list') }}">{{ 'front.jumper.product' | trans | upper }}</a>
+            </div>
+            <div class="col-xs-1 text-right">
+                <a class="c-grey" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-right"></i></a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
