@@ -34,6 +34,15 @@ front:
       title: carrito
     step2:
       title: datos cliente
+      name: Nombre
+      email: Email
+      phone: Teléfono
+      address: Dirección
+      city: Ciudad
+      zip: Código postal
+      state: Provincia
+      country: País
+      submit: PAGAR
     step3:
       title: pago
     back: seguir comprando

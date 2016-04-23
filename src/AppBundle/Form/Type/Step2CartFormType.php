@@ -31,7 +31,7 @@ class Step2CartFormType extends AbstractType
                 'name',
                 TextType::class,
                 array(
-                    'label' => 'Nombre',
+                    'label' => 'front.cart.step2.name',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -41,7 +41,7 @@ class Step2CartFormType extends AbstractType
                 'email',
                 EmailType::class,
                 array(
-                    'label' => 'Email',
+                    'label' => 'front.cart.step2.email',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -51,7 +51,7 @@ class Step2CartFormType extends AbstractType
                 'phone',
                 TextType::class,
                 array(
-                    'label'    => 'Teléfono',
+                    'label'    => 'front.cart.step2.phone',
                     'required' => false,
                     'attr'     => array(
                         'class' => 'form-control',
@@ -62,7 +62,7 @@ class Step2CartFormType extends AbstractType
                 'address',
                 TextType::class,
                 array(
-                    'label' => 'Dirección',
+                    'label' => 'front.cart.step2.address',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -72,7 +72,7 @@ class Step2CartFormType extends AbstractType
                 'city',
                 TextType::class,
                 array(
-                    'label' => 'Ciudad',
+                    'label' => 'front.cart.step2.city',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -82,7 +82,7 @@ class Step2CartFormType extends AbstractType
                 'postalCode',
                 TextType::class,
                 array(
-                    'label' => 'Código postal',
+                    'label' => 'front.cart.step2.zip',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -92,7 +92,7 @@ class Step2CartFormType extends AbstractType
                 'state',
                 TextType::class,
                 array(
-                    'label' => 'Provincia',
+                    'label' => 'front.cart.step2.state',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -102,7 +102,7 @@ class Step2CartFormType extends AbstractType
                 'country',
                 TextType::class,
                 array(
-                    'label' => 'Pais',
+                    'label' => 'front.cart.step2.country',
                     'attr'  => array(
                         'class' => 'form-control',
                     ),
@@ -112,7 +112,7 @@ class Step2CartFormType extends AbstractType
                 'send',
                 SubmitType::class,
                 array(
-                    'label' => 'Siguiente',
+                    'label' => 'front.cart.step2.submit',
                     'attr'  => array(
                         'class' => 'btn btn-success'
                     ),

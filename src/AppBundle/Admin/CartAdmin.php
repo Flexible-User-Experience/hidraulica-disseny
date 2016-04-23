@@ -129,11 +129,12 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'statusHumanFriendly',
+                'status',
                 null,
                 array(
                     'label'   => 'backend.admin.cart.status.status',
-                    'choices' => CartStatusEnum::getEnumArray(),
+                    'template' => '::Admin/Shows/show__field_cart_status_enum.html.twig',
+//                    'choices' => CartStatusEnum::getEnumArray(),
                 )
             )
             ->end()

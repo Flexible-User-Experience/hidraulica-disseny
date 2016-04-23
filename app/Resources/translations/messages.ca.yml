@@ -34,6 +34,15 @@ front:
       title: cistella
     step2:
       title: dades client
+      name: Nom
+      email: Email
+      phone: Telèfon
+      address: Adreça
+      city: Ciutat
+      zip: Codi postal
+      state: Província
+      country: Pais
+      submit: PAGAR
     step3:
       title: pagament
     back: seguir comprant

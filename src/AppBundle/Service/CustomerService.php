@@ -4,7 +4,6 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Cart\Customer;
 use Doctrine\ORM\EntityManager;
-use AppBundle\Entity\Cart\Cart;
 
 /**
  * Class CustomerService
@@ -39,12 +38,13 @@ class CustomerService
     /**
      * @param Customer $searchedCustomer
      *
-     * @return Cart
+     * @return Customer
      */
     public function loadCustomerByEmail($searchedCustomer)
     {
         $customer = $this->em->getRepository('AppBundle:Cart\Customer')->findOneBy(['email' => $searchedCustomer->getEmail()]);
         if (!$customer) {
+            $customer = new Customer();
             $customer
                 ->setName($searchedCustomer->getName())
                 ->setAddress($searchedCustomer->getAddress())

@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Cart\Cart;
 use AppBundle\Entity\Cart\Customer;
+use AppBundle\Enum\CartStatusEnum;
 use AppBundle\Form\Type\Step2CartFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -111,7 +112,9 @@ class CartController extends Controller
             $em->flush();
             $cart = $this->getCart();
             if ($cart) {
-                $cart->setCustomer($customer);
+                $cart
+                    ->setStatus(CartStatusEnum::CART_STATUS_PENDING)
+                    ->setCustomer($customer);
                 $em->persist($cart);
                 $em->flush();
             }
