@@ -9,6 +9,8 @@
             {% if cart.status == 1 %}
                 {% set bs = 'warning' %}
             {% elseif cart.status == 2 %}
+                {% set bs = 'info' %}
+            {% elseif cart.status == 3 %}
                 {% set bs = 'success' %}
             {% endif %}
             <div class="alert alert-{{ bs }}" role="alert">

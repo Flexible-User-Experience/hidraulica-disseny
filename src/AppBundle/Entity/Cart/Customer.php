@@ -7,7 +7,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Customer
@@ -17,7 +16,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @author   David Romaní <david@flux.cat>
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="AppBundle\Repository\Cart\CustomerRepository")
- * @UniqueEntity("email")
  */
 class Customer extends AbstractBase
 {

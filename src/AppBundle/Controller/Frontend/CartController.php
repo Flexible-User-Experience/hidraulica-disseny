@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Payum\Core\Request\GetHumanStatus;
 
 /**
  * Class CartController
@@ -137,10 +139,72 @@ class CartController extends Controller
      */
     public function step3Action()
     {
-        return $this->render(
-            ':Frontend/Cart:order_list_step_3.html.twig',
-            ['cart' => $this->getCart()]
+        $cart = $this->getCart();
+        $gatewayName = 'offline';
+        $storage = $this->get('payum')->getStorage('AppBundle\Entity\Cart\Payment');
+
+        $payment = $storage->create();
+        $payment->setNumber(uniqid());
+        $payment->setCurrencyCode('EUR');
+        $payment->setTotalAmount($cart->getTotalAmountWithDeliveryAndVatTax() * 100);
+        $payment->setDescription('A description'); // TODO change payment description
+        $payment->setClientId($cart->getCustomer()->getId());
+        $payment->setClientEmail($cart->getCustomer()->getEmail());
+        $storage->update($payment);
+        $cart->setStatus(CartStatusEnum::CART_STATUS_SENT);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($cart);
+        $em->flush();
+
+        $captureToken = $this->get('payum')->getTokenFactory()->createCaptureToken(
+            $gatewayName,
+            $payment,
+            'app_cart_payment_done' // the route to redirect after capture
         );
+
+        return $this->redirect($captureToken->getTargetUrl());
+    }
+
+    /**
+     * @Route("/cart/payment/done", name="app_cart_payment_done", options={"i18n_prefix" = "secure"})
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function doneAction(Request $request)
+    {
+        $token = $this->get('payum')->getHttpRequestVerifier()->verify($request);
+        $gateway = $this->get('payum')->getGateway($token->getGatewayName());
+
+        // you can invalidate the token. The url could not be requested any more.
+        // $this->get('payum')->getHttpRequestVerifier()->invalidate($token);
+
+        // Once you have token you can get the model from the storage directly.
+        //$identity = $token->getDetails();
+        //$payment = $payum->getStorage($identity->getClass())->find($identity);
+
+        // or Payum can fetch the model for you while executing a request (Preferred).
+        $gateway->execute($status = new GetHumanStatus($token));
+        $payment = $status->getFirstModel();
+
+        $cart = $this->getCart();
+        $cart->setStatus(CartStatusEnum::CART_STATUS_INVOICED);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($cart);
+        $em->flush();
+        $this->get('app.cart_service')->removeSessionCart();
+
+        // you have order and payment status
+        // so you can do whatever you want for example you can just print status and payment details.
+
+        return new JsonResponse(array(
+            'status' => $status->getValue(),
+            'payment' => array(
+                'total_amount' => $payment->getTotalAmount(),
+                'currency_code' => $payment->getCurrencyCode(),
+                'details' => $payment->getDetails(),
+            ),
+        ));
     }
 
     /**

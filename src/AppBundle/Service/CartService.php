@@ -161,6 +161,14 @@ class CartService
     }
 
     /**
+     * remove session cart
+     */
+    public function removeSessionCart()
+    {
+        $this->session->set('cart', null);
+    }
+
+    /**
      * @param int $itemId
      *
      * @return Product
