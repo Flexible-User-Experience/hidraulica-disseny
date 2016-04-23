@@ -33,8 +33,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Nombre',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Nombre',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -44,8 +43,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Email',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Email',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -56,8 +54,7 @@ class Step2CartFormType extends AbstractType
                     'label'    => 'Teléfono',
                     'required' => false,
                     'attr'     => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Teléfono',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -67,8 +64,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Dirección',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Dirección',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -78,8 +74,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Ciudad',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Ciudad',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -89,8 +84,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Código postal',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Código postal',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -100,8 +94,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Provincia',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Provincia',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -111,8 +104,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'Pais',
                     'attr'  => array(
-                        'class'       => 'form-control',
-                        'placeholder' => 'Pais',
+                        'class' => 'form-control',
                     ),
                 )
             )
@@ -121,7 +113,7 @@ class Step2CartFormType extends AbstractType
                 SubmitType::class,
                 array(
                     'label' => 'Siguiente',
-                    'attr' => array(
+                    'attr'  => array(
                         'class' => 'btn btn-success'
                     ),
                 )

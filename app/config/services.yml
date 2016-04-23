@@ -56,6 +56,9 @@ services:
     app.cart_service:
         class: AppBundle\Service\CartService
         arguments: [ "@session", "@doctrine.orm.entity_manager", "@security.context" ]
+    app.customer_service:
+        class: AppBundle\Service\CustomerService
+        arguments: [ "@doctrine.orm.entity_manager" ]
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService

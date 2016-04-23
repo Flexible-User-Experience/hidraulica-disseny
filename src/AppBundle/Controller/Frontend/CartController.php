@@ -3,6 +3,7 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Cart\Cart;
+use AppBundle\Entity\Cart\Customer;
 use AppBundle\Form\Type\Step2CartFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -102,7 +103,20 @@ class CartController extends Controller
         $step2Form->handleRequest($request);
 
         if ($step2Form->isSubmitted() && $step2Form->isValid()) {
+            /** @var Customer $searchedCustomer */
+            $searchedCustomer = $step2Form->getData();
+            $customer = $this->get('app.customer_service')->loadCustomerByEmail($searchedCustomer);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($customer);
+            $em->flush();
+            $cart = $this->getCart();
+            if ($cart) {
+                $cart->setCustomer($customer);
+                $em->persist($cart);
+                $em->flush();
+            }
 
+            return $this->redirectToRoute('app_cart_payment_step_3');
         }
 
         return $this->render(
