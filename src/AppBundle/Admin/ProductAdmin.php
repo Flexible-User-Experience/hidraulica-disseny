@@ -120,7 +120,10 @@ class ProductAdmin extends AbstractBaseAdmin
                         ),
                         'description' => array(
                             'label'    => 'backend.admin.description',
-                            'attr'     => array('rows' => 8),
+                            'attr'     => array(
+                                'rows'  => 8,
+                                'class' => 'ckeditor',
+                            ),
                             'required' => false,
                         ),
                     ),
@@ -239,7 +242,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label'    => 'backend.admin.price',
+                    'label' => 'backend.admin.price',
                 )
             )
             ->add(

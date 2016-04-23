@@ -120,7 +120,10 @@ class WorkAdmin extends AbstractBaseAdmin
                         ),
                         'description' => array(
                             'label'    => 'backend.admin.description',
-                            'attr'     => array('rows' => 8),
+                            'attr'     => array(
+                                'rows'    => 8,
+                                'class'   => 'ckeditor',
+                            ),
                             'required' => false,
                         ),
                     ),
