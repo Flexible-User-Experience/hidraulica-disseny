@@ -39,6 +39,7 @@ front:
       unitprice: precio unidad
       units: unidades
       price: importe
+      tax: IVA
   form:
     flash:
       user: Tu mensaje se ha enviado correctamente.

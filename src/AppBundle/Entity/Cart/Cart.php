@@ -186,6 +186,16 @@ class Cart extends AbstractBase
     /**
      * @return float
      */
+    public function getVatTaxAmount()
+    {
+        $amount = $this->getTotalAmountWithDelivery();
+
+        return ($amount * $this->vatTax) / 100;
+    }
+
+    /**
+     * @return float
+     */
     public function getTotalAmountWithDeliveryAndVatTax()
     {
         $amount = $this->getTotalAmountWithDelivery();

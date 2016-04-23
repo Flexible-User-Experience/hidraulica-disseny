@@ -4,85 +4,71 @@
 
 {% block main %}
     <div class="container">
-        <div class="row extra-m-top extra-m-bottom">
+        <div class="row extra-m-top">
             <div class="col-xs-3">
-                {{ 'front.cart.back' | trans }}
+                <a href="{{ path('app_product_list') }}"><i class="fa fa-chevron-circle-left"></i> {{ 'front.cart.back' | trans | upper }}</a>
             </div>
             <div class="col-xs-6 text-center">
-                <h2>{{ 'front.cart.cart' | trans }}</h2>
+                <h2 class="no-m-top no-m-bottom">{{ 'front.cart.cart' | trans | upper }}</h2>
             </div>
             <div class="col-xs-3 text-right">
-                {{ 'front.cart.continue' | trans }}
+                <a href="{{ path('app_cart_checkout_step_2') }}" class="btn btn-success">{{ 'front.cart.continue' | trans | upper }}</a>
             </div>
-            <hr>
         </div>
+        <hr>
         <div class="row">
             <div class="col-xs-12">
                 <table class="table table-hover">
                     <thead>
                     <tr>
                         <th colspan="2"></th>
-                        <th class="text-right">{{ 'front.cart.table.unitprice' | trans }}</th>
-                        <th class="text-right">{{ 'front.cart.table.units' | trans }}</th>
-                        <th class="text-right">{{ 'front.cart.table.price' | trans }}</th>
+                        <th class="text-right">{{ 'front.cart.table.unitprice' | trans | title }}</th>
+                        <th class="text-right">{{ 'front.cart.table.units' | trans | title }}</th>
+                        <th class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for item in cart.items %}
                         <tr>
-                            <td>{{ item.id }}</td>
+                            <td><img class="img-responsive" src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('60x60') }}" alt="{{ item.product.title }} photo"></td>
                             <td>{{ item.product.title }}</td>
                             <td class="text-right">{{ item.baseAmount }} €</td>
-                            <td class="text-right">4</td>
+                            <td class="text-right">{{ item.quantity }}</td>
                             <td class="text-right">{{ item.totalAmount }} €</td>
-                            <td class="text-right"><a href="#"><i class="fa fa-times"></i></a></td>
+                            <td class="text-right"><a href="#"><i class="fa fa-times-circle"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
+                        <th class="text-right">{{ cart.baseAmount }} €</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right">{{ 'front.cart.table.tax' | trans | title }} {{ cart.vatTax }}%</th>
+                        <th class="text-right">{{ cart.vatTaxAmount }} €</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
+                        <th class="text-right">{{ cart.totalAmountWithDeliveryAndVatTax }} €</th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <a href="{{ path('app_cart_checkout_step_2') }}" class="btn btn-success">{{ 'front.cart.continue' | trans | upper }}</a>
+            </div>
+        </div>
     </div>
-    {#<!--=== Content Medium Part ===-->#}
-                                {#<div class="col-sm-3 col-sm-offset-3">#}
-                                    {#<ul class="list-inline total-result">#}
-                                        {#<li>#}
-                                            {#<h4>Base:</h4>#}
-                                            {#<div class="total-result-in">#}
-                                                {#<span id="base_amount">{{ cart.totalAmount | money_format }}</span>#}
-                                            {#</div>#}
-                                        {#</li>#}
-                                        {#<li>#}
-                                            {#<h4>I.V.A.:</h4>#}
-                                            {#<div class="total-result-in">#}
-                                                {#<span id="tax_amount">{{ cart.totalBaseTax | money_format }}</span>#}
-                                            {#</div>#}
-                                        {#</li>#}
-                                        {#<li class="divider"></li>#}
-                                        {#<li class="total-price">#}
-                                            {#<h4>Total:</h4>#}
-                                            {#<div class="total-result-in">#}
-                                                {#<span id="total_amount">{{ cart.totalAmountWithTax| money_format }}</span>#}
-                                            {#</div>#}
-                                        {#</li>#}
-                                    {#</ul>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-{##}
-                    {#</div>#}
-                    {#<div class="actions clearfix">#}
-                        {#<ul role="menu" aria-label="Pagination">#}
-                            {#<li aria-hidden="false" style="display: block;">#}
-                                {#<a href="{{ path('app_frontend_cart_order_step_2') }}" role="menuitem">Siguiente <i class="fa fa-chevron-right"></i></a>#}
-                            {#</li>#}
-                        {#</ul>#}
-                    {#</div>#}
-                {#</div>#}
-            {#</form>#}
-        {#</div>#}
-    {#</div>#}
 {% endblock %}
 
 {% block js_page_level %}
