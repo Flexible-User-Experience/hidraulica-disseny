@@ -1,6 +1,6 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ 'front.cart.step1.title' | trans }} · {{ parent() }}{% endblock %}
+{% block title %}{{ 'front.cart.step1.title' | trans | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -36,7 +36,7 @@
                             <td class="text-right">{{ item.baseAmount }} €</td>
                             <td class="text-right">{{ item.quantity }}</td>
                             <td class="text-right">{{ item.totalAmount }} €</td>
-                            <td class="text-right"><a href="#"><i class="fa fa-times-circle"></i></a></td>
+                            <td class="text-right"><a href="{{ path('app_cart_remove_item', {itemId: item.product.id}) }}"><i class="fa fa-times-circle"></i></a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

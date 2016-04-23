@@ -104,7 +104,7 @@ class CartController extends Controller
     {
         $this->get('app.cart_service')->removeItem($itemId);
 
-        return $this->redirect($this->getRequest()->headers->get('referer'));
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**
