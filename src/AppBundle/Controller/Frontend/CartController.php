@@ -65,37 +65,6 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/api/cart/update-item/{itemId}/quantity/{quantity}/", name="api_cart_update_item_quantity", options={"expose"=true})
-     * @param int $itemId
-     * @param int $quantity
-     *
-     * @return JsonResponse
-     */
-    public function updateItemCartQuantityAction($itemId, $quantity)
-    {
-        $line = 0;
-        $moneyFormatter = $this->get('tbbc_money.formatter.money_formatter');
-        if ($quantity <= 0) {
-            $this->get('app.cart_service')->removeItem($itemId);
-        } else {
-            $this->get('app.cart_service')->setItemQuantity($itemId, $quantity);
-            $product = $this->get('app.cart_service')->getItemById($itemId);
-            $cartItem = $this->get('app.cart_service')->getCart()->getCartItemByProduct($product);
-            $line = $moneyFormatter->asFloat($cartItem->getQuantityMultiplicationPriceWithTax());
-        }
-
-        return new JsonResponse(
-            array(
-                'line'   => $line,
-                'base'   => $moneyFormatter->asFloat($this->get('app.cart_service')->getCart()->getTotalAmount()),
-                'tax'    => $moneyFormatter->asFloat($this->get('app.cart_service')->getCart()->getTotalBaseTax()),
-                'total'  => $moneyFormatter->asFloat($this->get('app.cart_service')->getCart()->getTotalAmountWithTax()),
-                'result' => 'OK',
-            )
-        );
-    }
-
-    /**
      * @Route("/cart/remove/item/{itemId}/", name="app_cart_remove_item", options={"i18n_prefix" = "secure"})
      * @param Request $request
      * @param int     $itemId

@@ -42,7 +42,7 @@
                                 <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
                                     <div class="form-group">
                                         <label for="quantity">
-                                            <select class="form-control" name="quantity">
+                                            <select class="form-control" name="quantity" onchange="this.form.submit()">
                                                 <option{% if item.quantity == 1 %} selected="selected"{% endif %}>1</option>
                                                 <option{% if item.quantity == 2 %} selected="selected"{% endif %}>2</option>
                                                 <option{% if item.quantity == 3 %} selected="selected"{% endif %}>3</option>
