@@ -32,6 +32,10 @@ front:
     confirm: confirmar compra
     step1:
       title: cistella
+    step2:
+      title: dades client
+    step3:
+      title: pagament
     back: seguir comprant
     cart: la teva cistella
     continue: continuar

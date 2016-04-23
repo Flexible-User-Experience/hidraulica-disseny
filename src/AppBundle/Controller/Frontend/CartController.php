@@ -3,10 +3,10 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Cart\Cart;
+use AppBundle\Form\Type\Step2CartFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -102,12 +102,7 @@ class CartController extends Controller
         $step2Form->handleRequest($request);
 
         if ($step2Form->isSubmitted() && $step2Form->isValid()) {
-            $os = $this->get('app.order_service');
-            $site = $request->attributes->get('subdomain');
-            /** @var Order $order */
-            $order = $os->saveOrder($step2Form->getData()['billing'], $this->getCart(), $site);
 
-            return $this->get('app.services.payment')->handlePayment($order);
         }
 
         return $this->render(

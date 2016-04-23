@@ -83,6 +83,14 @@ class Customer extends AbstractBase
      */
 
     /**
+     * Customer constructor
+     */
+    public function __construct()
+    {
+        $this->carts = new ArrayCollection();
+    }
+
+    /**
      * @return string
      */
     public function getName()
@@ -294,7 +302,6 @@ class Customer extends AbstractBase
      */
     public function __toString()
     {
-
         return $this->id ? '#' . $this->getId() . ' · ' . $this->getName() : '---';
     }
 

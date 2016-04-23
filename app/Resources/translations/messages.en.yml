@@ -32,6 +32,10 @@ front:
     confirm: checkout
     step1:
       title: cart
+    step2:
+      title: customer date
+    step3:
+      title: payment
     back: continue shopping
     cart: your cart
     continue: continue

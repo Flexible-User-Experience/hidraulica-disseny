@@ -32,6 +32,10 @@ front:
     confirm: confirmar compra
     step1:
       title: carrito
+    step2:
+      title: datos cliente
+    step3:
+      title: pago
     back: seguir comprando
     cart: tu carrito
     continue: continuar
