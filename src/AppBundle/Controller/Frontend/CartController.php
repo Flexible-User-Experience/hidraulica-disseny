@@ -43,6 +43,8 @@ class CartController extends Controller
             $quantity = $request->request->get('quantity');
             $productId = $request->request->get('product');
             $this->get('app.cart_service')->addItem($productId, $quantity);
+
+            return $this->redirectToRoute('app_cart_list_step_1');
         }
 
         return $this->redirect($request->headers->get('referer'));

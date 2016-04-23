@@ -75,7 +75,7 @@ class CartService
 
         if ($cart->hasItemByProduct($product)) {
             $cartItem = $cart->getCartItemByProduct($product);
-            $cartItem->setQuantity($cartItem->getQuantity() + $quantity);
+            $cartItem->setQuantity($quantity);
             $this->em->persist($cartItem);
             $this->em->flush();
         } else {

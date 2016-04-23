@@ -57,11 +57,11 @@
                     <div class="form-group">
                         <label for="quantity">
                             <select class="form-control input-lg" name="quantity">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
+                                <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
+                                <option{% if quantity == 3 %} selected="selected"{% endif %}>3</option>
+                                <option{% if quantity == 4 %} selected="selected"{% endif %}>4</option>
+                                <option{% if quantity == 5 %} selected="selected"{% endif %}>5</option>
                             </select>
                         </label>
                     </div>

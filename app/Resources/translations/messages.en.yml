@@ -39,7 +39,8 @@ front:
       unitprice: unit price
       units: units
       price: amount
-      tax: VAT
+      tax: vat
+      total: total
   form:
     flash:
       user: Your message has been sent successfully.
