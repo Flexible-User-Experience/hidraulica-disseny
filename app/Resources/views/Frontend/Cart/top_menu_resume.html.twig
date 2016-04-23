@@ -1,5 +1,5 @@
 {% block my_cart %}
-    {% if cart.items | length == 0 %}
+    {% if cart.items | length > 0 %}
         <ul class="nav navbar-nav navbar-right">
             <li class="first">
                 <a href="#"><i class="fa fa-shopping-cart"></i> <span class="badge">{{ cart.items | length }}</span></a>

@@ -239,8 +239,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'price',
                 null,
                 array(
-                    'label' => 'backend.admin.price',
-
+                    'label'    => 'backend.admin.price',
                 )
             )
             ->add(

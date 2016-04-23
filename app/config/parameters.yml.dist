@@ -38,3 +38,4 @@ parameters:
     private_editor_test_pass: user
 
     project_web_title: "Hidràulica"
+    default_vat_amount: 21
