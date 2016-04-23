@@ -45,20 +45,21 @@ class CartController extends Controller
             $this->get('app.cart_service')->addItem($productId, $quantity);
         }
 
-        return $this->redirect($this->getRequest()->headers->get('referer'));
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**
-     * @Route("/pedido/nuevo/item/{itemId}/", name="app_frontend_cart_add_item")
-     * @param int $itemId
+     * @Route("/cart/new/item/{itemId}/", name="app_cart_new_item", options={"i18n_prefix" = "secure"})
+     * @param Request $request
+     * @param int     $itemId
      *
      * @return Response
      */
-    public function addItemAction($itemId)
+    public function addItemAction(Request $request, $itemId)
     {
         $this->get('app.cart_service')->addItem($itemId);
 
-        return $this->redirect($this->getRequest()->headers->get('referer'));
+        return $this->redirect($request->headers->get('referer'));
     }
 
     /**
@@ -93,12 +94,13 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/pedido/elimina/item/{itemId}/", name="app_frontend_cart_remove_item")
-     * @param int $itemId
+     * @Route("/cart/remove/item/{itemId}/", name="app_cart_remove_item", options={"i18n_prefix" = "secure"})
+     * @param Request $request
+     * @param int     $itemId
      *
      * @return Response
      */
-    public function deleteItemAction($itemId)
+    public function deleteItemAction(Request $request, $itemId)
     {
         $this->get('app.cart_service')->removeItem($itemId);
 
@@ -106,7 +108,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/pedido/", name="app_frontend_cart_order_list", options={"expose"=true})
+     * @Route("/cart/list", name="app_cart_list_step_1", options={"i18n_prefix" = "secure"})
      * @return Response
      */
     public function listAction()
@@ -118,7 +120,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/pedido/facturacion/", name="app_frontend_cart_order_step_2", options={"expose"=false})
+     * @Route("/cart/checkout/", name="app_cart_checkout_step_2", options={"i18n_prefix" = "secure"})
      * @param Request $request
      *
      * @return Response
@@ -147,7 +149,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/pedido/pago/", name="app_frontend_cart_order_step_3", options={"expose"=false})
+     * @Route("/cart/payment/", name="app_cart_payment_step_3", options={"i18n_prefix" = "secure"})
      * @return Response
      */
     public function step3Action()

@@ -30,6 +30,15 @@ front:
     add: add to cart
     total: total
     confirm: checkout
+    step1:
+      title: cart
+    back: continue shopping
+    cart: your cart
+    continue: continue
+    table:
+      unitprice: unit price
+      units: units
+      price: amount
   form:
     flash:
       user: Your message has been sent successfully.

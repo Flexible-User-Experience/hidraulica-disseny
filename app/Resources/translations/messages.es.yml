@@ -30,6 +30,15 @@ front:
     add: añadir al carrito
     total: total
     confirm: confirmar compra
+    step1:
+      title: carrito
+    back: seguir comprando
+    cart: tu carrito
+    continue: continuar
+    table:
+      unitprice: precio unidad
+      units: unidades
+      price: importe
   form:
     flash:
       user: Tu mensaje se ha enviado correctamente.

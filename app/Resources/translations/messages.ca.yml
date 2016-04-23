@@ -30,6 +30,15 @@ front:
     add: afegir a la cistella
     total: total
     confirm: confirmar compra
+    step1:
+      title: cistella
+    back: seguir comprant
+    cart: la teva cistella
+    continue: continuar
+    table:
+      unitprice: preu unitat
+      units: unitats
+      price: import
   form:
     flash:
       user: El teu missatge s'ha enviat correctament.
