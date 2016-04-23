@@ -123,6 +123,6 @@ class CartItem extends AbstractBase
      */
     public function __toString()
     {
-        return $this->quantity . ' # ' . $this->getProduct();
+        return $this->getProduct()->getTitle() . ' >>> ' . $this->quantity . ' * ' . $this->baseAmount . '€/u. = ' . $this->getTotalAmount() . '€';
     }
 }

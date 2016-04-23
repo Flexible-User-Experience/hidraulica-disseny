@@ -146,10 +146,31 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'baseAmount',
+                null,
+                array(
+                    'label' => 'Base imposable',
+                )
+            )
+            ->add(
+                'deliveryAmount',
+                null,
+                array(
+                    'label' => 'Enviament',
+                )
+            )
+            ->add(
+                'vatTax',
+                null,
+                array(
+                    'label' => 'IVA',
+                )
+            )
+            ->add(
                 'totalAmount',
                 null,
                 array(
-                    'label' => 'backend.admin.cart.total_amount',
+                    'label' => 'Total',
                 )
             )
             ->end();
@@ -257,7 +278,7 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'totalAmount',
+                'baseAmount',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.total_amount',
