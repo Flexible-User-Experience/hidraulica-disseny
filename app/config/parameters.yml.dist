@@ -38,3 +38,10 @@ parameters:
     private_editor_test_pass: user
 
     project_web_title: "Hidràulica"
+
+    default_vat_amount: 21
+
+    paypal_username:  XXX
+    paypal_password:  YYY
+    paypal_signature: ZZZ
+    paypal_sandbox:   false

@@ -26,6 +26,34 @@ front:
   jumper:
     work: volver a los trabajos
     product: volver a los productos
+  cart:
+    add: añadir al carrito
+    total: total
+    confirm: confirmar compra
+    step1:
+      title: carrito
+    step2:
+      title: datos cliente
+      name: Nombre
+      email: Email
+      phone: Teléfono
+      address: Dirección
+      city: Ciudad
+      zip: Código postal
+      state: Provincia
+      country: País
+      submit: PAGAR
+    step3:
+      title: pago
+    back: seguir comprando
+    cart: tu carrito
+    continue: continuar
+    table:
+      unitprice: precio unidad
+      units: unidades
+      price: importe
+      tax: iva
+      total: total
   form:
     flash:
       user: Tu mensaje se ha enviado correctamente.

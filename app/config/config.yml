@@ -36,7 +36,7 @@ twig:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
         project_title:            "%project_web_title%"
-        admin_tag_version:        "v1.0.4"
+        admin_tag_version:        "v1.0.5"
 
 # Assetic
 assetic:
@@ -129,3 +129,20 @@ ivory_ck_editor:
     configs:
         my_config:
             toolbar: standard
+
+# Payum
+payum:
+    security:
+        token_storage:
+            AppBundle\Entity\Cart\PaymentToken: { doctrine: orm }
+    storages:
+        AppBundle\Entity\Cart\Payment: { doctrine: orm }
+    gateways:
+        offline:
+            factory: offline
+        paypal:
+            factory:   paypal_express_checkout
+            username:  "%paypal_username%"
+            password:  "%paypal_password%"
+            signature: "%paypal_signature%"
+            sandbox:   "%paypal_sandbox%"

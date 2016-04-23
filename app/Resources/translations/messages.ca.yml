@@ -26,6 +26,34 @@ front:
   jumper:
     work: tornar als treballs
     product: tornar als productes
+  cart:
+    add: afegir a la cistella
+    total: total
+    confirm: confirmar compra
+    step1:
+      title: cistella
+    step2:
+      title: dades client
+      name: Nom
+      email: Email
+      phone: Telèfon
+      address: Adreça
+      city: Ciutat
+      zip: Codi postal
+      state: Província
+      country: Pais
+      submit: PAGAR
+    step3:
+      title: pagament
+    back: seguir comprant
+    cart: la teva cistella
+    continue: continuar
+    table:
+      unitprice: preu unitat
+      units: unitats
+      price: import
+      tax: iva
+      total: total
   form:
     flash:
       user: El teu missatge s'ha enviat correctament.

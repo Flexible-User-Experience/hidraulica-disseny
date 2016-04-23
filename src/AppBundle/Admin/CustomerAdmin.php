@@ -242,10 +242,10 @@ class CustomerAdmin extends AbstractBaseAdmin
                 'carts',
                 null,
                 array(
-                    'label' => 'backend.admin.cart.customer.carts',
+                    'label'    => 'backend.admin.cart.customer.carts',
+                    'template' => '::Admin/Shows/show__field_customer_carts.html.twig'
                 )
             )
-            ->end()
-        ;
+            ->end();
     }
 }

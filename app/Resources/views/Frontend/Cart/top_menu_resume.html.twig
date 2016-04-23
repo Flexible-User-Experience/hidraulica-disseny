@@ -1,0 +1,25 @@
+{% block my_cart %}
+    {% if cart.items | length > 0 %}
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-shopping-cart"></i> <span class="badge">{{ cart.items | length }}</span></a>
+                <ul class="dropdown-menu" style="min-width:250px">
+                    {% for item in cart.items %}
+                        <li><a><img class="img-responsive" src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('60x60') }}" alt="{{ item.product.title }} photo"> {{ item.quantity }}x {{ item.product.title }}<span class="pull-right">{{ item.baseAmount }}€</span></a></li>
+                    {% endfor %}
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a>
+                            <span>{{ 'front.cart.total' | trans | upper }}</span>
+                            <span class="pull-right">{{ cart.baseAmount }}€</span>
+                        </a>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li>
+                        <a href="{{ path('app_cart_list_step_1') }}"><i class="fa fa-shopping-cart"></i> {{ 'front.cart.confirm' | trans }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}

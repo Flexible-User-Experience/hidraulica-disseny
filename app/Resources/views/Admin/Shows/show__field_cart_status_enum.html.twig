@@ -1,0 +1,15 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% if object.status == 0 %}
+        <span class="label label-danger" style="margin-right:10px">{{ 'backend.admin.cart.status.new' | trans }}</span>
+    {% elseif object.status == 1 %}
+        <span class="label label-warning" style="margin-right:10px">{{ 'backend.admin.cart.status.pending' | trans }}</span>
+    {% elseif object.status == 2 %}
+        <span class="label label-info" style="margin-right:10px">{{ 'backend.admin.cart.status.sent' | trans }}</span>
+    {% elseif object.status == 3 %}
+        <span class="label label-success" style="margin-right:10px">{{ 'backend.admin.cart.status.invoiced' | trans }}</span>
+    {% else %}
+        ---
+    {% endif %}
+{% endblock %}

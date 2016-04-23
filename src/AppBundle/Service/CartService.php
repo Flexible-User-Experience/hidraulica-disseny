@@ -75,7 +75,7 @@ class CartService
 
         if ($cart->hasItemByProduct($product)) {
             $cartItem = $cart->getCartItemByProduct($product);
-            $cartItem->setQuantity($cartItem->getQuantity() + $quantity);
+            $cartItem->setQuantity($quantity);
             $this->em->persist($cartItem);
             $this->em->flush();
         } else {
@@ -138,7 +138,6 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
-
                 return $cart;
             }
         }
@@ -162,13 +161,21 @@ class CartService
     }
 
     /**
+     * remove session cart
+     */
+    public function removeSessionCart()
+    {
+        $this->session->set('cart', null);
+    }
+
+    /**
      * @param int $itemId
      *
      * @return Product
      */
     public function getItemById($itemId)
     {
-        return $this->em->getRepository('ECVulcoAppBundle:AbstractProduct')->findOneBy(array('id' => $itemId));
+        return $this->em->getRepository('AppBundle:Product')->findOneBy(array('id' => $itemId));
     }
 
     /**

@@ -26,6 +26,34 @@ front:
   jumper:
     work: back to works
     product: back to products
+  cart:
+    add: add to cart
+    total: total
+    confirm: checkout
+    step1:
+      title: cart
+    step2:
+      title: customer date
+      name: Name
+      email: Email
+      phone: Phone
+      address: Address
+      city: City
+      zip: Postal code
+      state: State
+      country: Country
+      submit: Pay
+    step3:
+      title: payment
+    back: continue shopping
+    cart: your cart
+    continue: continue
+    table:
+      unitprice: unit price
+      units: units
+      price: amount
+      tax: vat
+      total: total
   form:
     flash:
       user: Your message has been sent successfully.

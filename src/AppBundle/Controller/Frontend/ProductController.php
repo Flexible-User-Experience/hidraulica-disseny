@@ -58,9 +58,21 @@ class ProductController extends Controller
             throw $this->createAccessDeniedException();
         }
 
+        $quantity = 0;
+        $cart = $this->get('app.cart_service')->getCart();
+        if ($cart) {
+            $cartItem = $cart->getCartItemByProduct($product);
+            if ($cartItem) {
+                $quantity = $cartItem->getQuantity();
+            }
+        }
+
         return $this->render(
             ':Frontend/Product:show.html.twig',
-            [ 'product' => $product ]
+            [
+                'product'  => $product,
+                'quantity' => $quantity,
+            ]
         );
     }
 

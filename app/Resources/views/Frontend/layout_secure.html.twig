@@ -5,15 +5,22 @@
         <div class="container">
             <div class="navbar-header">
                 <div style="width:240px;float:left;">
-                    <img alt="{{ project_title }}" src="{{ asset('bundles/app/vectors/logo.svg') }}">
+                    <a href="{{ path('app_secure_homepage') }}"><img alt="{{ project_title }}" src="{{ asset('bundles/app/vectors/logo.svg') }}"></a>
                 </div>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                {#</button>#}
             </div>
-            <div class="navbar-collapse collapse">
+            {{ render(controller('AppBundle:Frontend/Cart:topMenuResumeCart')) }}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="first">
+                    <a id="top-menu-bars-icon" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+            {#<div class="navbar-collapse collapse">#}
+            <div id="top-menu-bars" class="closed-navbar">
                 {{ knp_menu_render('top', {currentClass: 'active'}) }}
             </div>
         </div>
@@ -43,4 +50,21 @@
             </div>
         </div>
     </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            var top_menu_bars_icon = $('#top-menu-bars-icon');
+            top_menu_bars_icon.click(function() {
+                var top_menu_bars = $('#top-menu-bars');
+                if (top_menu_bars.hasClass('closed-navbar')) {
+                    top_menu_bars.removeClass('closed-navbar');
+                } else {
+                    top_menu_bars.addClass('closed-navbar');
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -34,6 +34,9 @@ class CartAdmin extends AbstractBaseAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
+            ->remove('create')
+            ->remove('delete')
+            ->remove('edit')
             ->remove('batch');
     }
 
@@ -126,11 +129,11 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'statusHumanFriendly',
+                'status',
                 null,
                 array(
                     'label'   => 'backend.admin.cart.status.status',
-                    'choices' => CartStatusEnum::getEnumArray(),
+                    'template' => '::Admin/Shows/show__field_cart_status_enum.html.twig',
                 )
             )
             ->end()
@@ -143,10 +146,31 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'baseAmount',
+                null,
+                array(
+                    'label' => 'Base imposable',
+                )
+            )
+            ->add(
+                'deliveryAmount',
+                null,
+                array(
+                    'label' => 'Enviament',
+                )
+            )
+            ->add(
+                'vatTax',
+                null,
+                array(
+                    'label' => 'IVA',
+                )
+            )
+            ->add(
                 'totalAmount',
                 null,
                 array(
-                    'label' => 'backend.admin.cart.total_amount',
+                    'label' => 'Total',
                 )
             )
             ->end();
@@ -254,7 +278,7 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'totalAmount',
+                'baseAmount',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.total_amount',

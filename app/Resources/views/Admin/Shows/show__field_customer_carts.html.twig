@@ -1,0 +1,23 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block name %}{% endblock %}
+
+{% block field %}
+    {% if object.carts | length > 0 %}
+        {% for cart in object.carts %}
+            {% set bs = 'danger' %}
+            {% if cart.status == 1 %}
+                {% set bs = 'warning' %}
+            {% elseif cart.status == 2 %}
+                {% set bs = 'info' %}
+            {% elseif cart.status == 3 %}
+                {% set bs = 'success' %}
+            {% endif %}
+            <div class="alert alert-{{ bs }}" role="alert">
+                <a href="{{ path('admin_app_cart_cart_show', {id: cart.id}) }}" class="alert-link"><i class="fa fa-file-text"></i></a> {{ cart.items | length }} items · {{ cart.baseAmount }}€
+            </div>
+        {% endfor %}
+    {% else %}
+        ---
+    {% endif %}
+{% endblock %}
