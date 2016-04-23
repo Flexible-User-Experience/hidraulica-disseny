@@ -28,6 +28,8 @@ front:
     product: volver a los productos
   cart:
     add: añadir al carrito
+    total: total
+    confirm: confirmar compra
   form:
     flash:
       user: Tu mensaje se ha enviado correctamente.

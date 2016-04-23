@@ -28,6 +28,8 @@ front:
     product: back to products
   cart:
     add: add to cart
+    total: total
+    confirm: checkout
   form:
     flash:
       user: Your message has been sent successfully.

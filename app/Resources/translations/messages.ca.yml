@@ -28,6 +28,8 @@ front:
     product: tornar als productes
   cart:
     add: afegir a la cistella
+    total: total
+    confirm: confirmar compra
   form:
     flash:
       user: El teu missatge s'ha enviat correctament.

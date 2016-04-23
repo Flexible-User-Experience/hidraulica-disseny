@@ -21,7 +21,7 @@ class FrontendControllerTest extends AbstractBaseTest
      */
     public function testPagesAreSuccessful($url)
     {
-        $client = $this->makeClient(true);         // authenticated user
+        $client = $this->createClient(true);
         $client->request('GET', $url);
 
         $this->assertStatusCode(200, $client);
