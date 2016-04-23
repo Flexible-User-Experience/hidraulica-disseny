@@ -129,3 +129,14 @@ ivory_ck_editor:
     configs:
         my_config:
             toolbar: standard
+
+# Payum
+payum:
+    security:
+        token_storage:
+            AppBundle\Entity\Cart\PaymentToken: { doctrine: orm }
+    storages:
+        AppBundle\Entity\Cart\Payment: { doctrine: orm }
+    gateways:
+        offline:
+            factory: offline

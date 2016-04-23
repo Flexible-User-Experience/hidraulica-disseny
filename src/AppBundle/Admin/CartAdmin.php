@@ -134,7 +134,6 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'label'   => 'backend.admin.cart.status.status',
                     'template' => '::Admin/Shows/show__field_cart_status_enum.html.twig',
-//                    'choices' => CartStatusEnum::getEnumArray(),
                 )
             )
             ->end()
