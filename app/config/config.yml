@@ -140,3 +140,9 @@ payum:
     gateways:
         offline:
             factory: offline
+        paypal:
+            factory:   paypal_express_checkout
+            username:  "%paypal_username%"
+            password:  "%paypal_password%"
+            signature: "%paypal_signature%"
+            sandbox:   "%paypal_sandbox%"

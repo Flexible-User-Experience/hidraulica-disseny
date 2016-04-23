@@ -141,7 +141,7 @@ class CartController extends Controller
     public function step3Action()
     {
         $cart = $this->getCart();
-        $gatewayName = 'offline';
+        $gatewayName = 'paypal_express_checkout';
         $storage = $this->get('payum')->getStorage('AppBundle\Entity\Cart\Payment');
 
         /** @var Payment $payment */
@@ -150,7 +150,7 @@ class CartController extends Controller
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
         $payment->setTotalAmount($cart->getTotalAmountWithDeliveryAndVatTax() * 100);
-        $payment->setDescription('A description'); // TODO change payment description
+        $payment->setDescription($cart->getCustomer()->getName()); // TODO change payment description
         $payment->setClientId($cart->getCustomer()->getId());
         $payment->setClientEmail($cart->getCustomer()->getEmail());
         $storage->update($payment);
