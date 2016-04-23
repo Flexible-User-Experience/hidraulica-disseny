@@ -75,9 +75,6 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/sliders/image/1/edit'),
             array('/admin/sliders/image/1/delete'),
             array('/admin/carts/cart/list'),
-            array('/admin/carts/cart/create'),
-            array('/admin/carts/cart/1/edit'),
-            array('/admin/carts/cart/1/delete'),
             array('/admin/carts/cart/1/show'),
             array('/admin/carts/customer/list'),
             array('/admin/carts/customer/1/show'),
@@ -121,6 +118,8 @@ class BackendControllerTest extends AbstractBaseTest
             array('/admin/products/image/batch'),
             array('/admin/users/show'),
             array('/admin/users/batch'),
+            array('/admin/carts/cart/create'),
+            array('/admin/carts/cart/1/delete'),
         );
     }
 

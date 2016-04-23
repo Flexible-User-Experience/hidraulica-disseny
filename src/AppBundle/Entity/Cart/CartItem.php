@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity\Cart;
 
+use AppBundle\Entity\Traits\BaseAmountTrait;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\AbstractBase;
 use AppBundle\Entity\Product;
@@ -17,6 +18,8 @@ use AppBundle\Entity\Product;
  */
 class CartItem extends AbstractBase
 {
+    use BaseAmountTrait;
+
     /**
      * @var integer
      * @ORM\Column(name="quantity", type="integer")
@@ -107,6 +110,17 @@ class CartItem extends AbstractBase
         return $this->product;
     }
 
+    /**
+     * @return float
+     */
+    public function getTotalAmount()
+    {
+        return $this->quantity * $this->baseAmount;
+    }
+
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->quantity . ' # ' . $this->getProduct();
