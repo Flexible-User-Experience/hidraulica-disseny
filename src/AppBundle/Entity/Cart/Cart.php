@@ -50,6 +50,13 @@ class Cart extends AbstractBase
     private $deliveryAmount = 0;
 
     /**
+     * @var Payment
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart\Payment", inversedBy="cart")
+     * @ORM\JoinColumn(name="payment_id", referencedColumnName="id")
+     */
+    private $payment;
+
+    /**
      *
      *
      * Methods
@@ -114,15 +121,15 @@ class Cart extends AbstractBase
     }
 
     /**
-     * @param CartItem $item
+     * @param CartItem $cartItem
      *
      * @return CartItem|null
      */
-    public function getCartItemByItem(CartItem $item)
+    public function getCartItemByItem(CartItem $cartItem)
     {
         /** @var CartItem $item */
         foreach ($this->items as $item) {
-            if ($item->getId() == $item->getId()) {
+            if ($item->getId() == $cartItem->getId()) {
                 return $item;
             }
         }
@@ -282,6 +289,30 @@ class Cart extends AbstractBase
     public function setDeliveryAmount($deliveryAmount)
     {
         $this->deliveryAmount = $deliveryAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get Payment
+     *
+     * @return Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set Payment
+     *
+     * @param Payment $payment
+     *
+     * @return $this
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
 
         return $this;
     }

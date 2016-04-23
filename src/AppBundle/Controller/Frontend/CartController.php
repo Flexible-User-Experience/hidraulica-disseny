@@ -4,6 +4,7 @@ namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\Cart\Cart;
 use AppBundle\Entity\Cart\Customer;
+use AppBundle\Entity\Cart\Payment;
 use AppBundle\Enum\CartStatusEnum;
 use AppBundle\Form\Type\Step2CartFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -143,7 +144,9 @@ class CartController extends Controller
         $gatewayName = 'offline';
         $storage = $this->get('payum')->getStorage('AppBundle\Entity\Cart\Payment');
 
+        /** @var Payment $payment */
         $payment = $storage->create();
+        $payment->setCart($cart);
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
         $payment->setTotalAmount($cart->getTotalAmountWithDeliveryAndVatTax() * 100);

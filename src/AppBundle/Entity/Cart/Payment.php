@@ -25,4 +25,34 @@ class Payment extends BasePayment
      * @var integer $id
      */
     protected $id;
+
+    /**
+     * @var Cart
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart\Cart", mappedBy="payment")
+     */
+    protected $cart;
+
+    /**
+     * Get Cart
+     *
+     * @return Cart
+     */
+    public function getCart()
+    {
+        return $this->cart;
+    }
+
+    /**
+     * Set Cart
+     *
+     * @param Cart $cart
+     *
+     * @return $this
+     */
+    public function setCart($cart)
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
 }
