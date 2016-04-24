@@ -36,7 +36,7 @@ twig:
         google_analytics_enabled: %google_analytics_enabled%
         google_analytics_account: "%google_analytics_account%"
         project_title:            "%project_web_title%"
-        admin_tag_version:        "v1.0.7"
+        admin_tag_version:        "v1.0.8"
 
 # Assetic
 assetic:
@@ -123,12 +123,22 @@ a2lix_translation_form:
     manager_registry: doctrine
     templating:       "::A2lix/i18n_form_template.html.twig"
 
-# CKEditor
-ivory_ck_editor:
-    inline: false
-    configs:
-        my_config:
-            toolbar: standard
+# TinyMCE
+stfalcon_tinymce:
+    include_jquery: false
+    tinymce_jquery: true
+    selector: ".tinymce"
+    language: "%locale%"
+    theme:
+        simple:
+            theme: "modern"
+            plugins:
+                - "advlist autolink lists link charmap print preview hr anchor pagebreak"
+                - "searchreplace wordcount visualblocks visualchars code fullscreen"
+                - "insertdatetime nonbreaking save contextmenu directionality"
+                - "emoticons template paste textcolor"
+            toolbar1: "bold italic underline | bullist numlist outdent indent | link"
+            image_advtab: true
 
 # Payum
 payum:

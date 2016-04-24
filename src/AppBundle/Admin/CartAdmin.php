@@ -125,7 +125,7 @@ class CartAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
+                    'format' => 'd/m/Y',
                 )
             )
             ->add(
