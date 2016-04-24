@@ -2,8 +2,17 @@ app_frontend:
     resource: "@AppBundle/Controller/Frontend/"
     type:     annotation
 
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+    options:  { i18n: false }
+
 payum_capture:
     resource: "@PayumBundle/Resources/config/routing/capture.xml"
+#    options:  { i18n: false }
+
+payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+#    options:  { i18n: false }
 
 sonata:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
@@ -29,10 +38,6 @@ sonata_user_admin_resetting:
 app_backend:
     resource: "@AppBundle/Controller/Admin/"
     type:     annotation
-
-_liip_imagine:
-    resource: "@LiipImagineBundle/Resources/config/routing.xml"
-    options:  { i18n: false }
 
 _presta_sitemap:
     resource: "@PrestaSitemapBundle/Resources/config/routing.yml"

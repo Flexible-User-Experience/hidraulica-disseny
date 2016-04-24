@@ -141,7 +141,7 @@ class CartController extends Controller
     public function step3Action()
     {
         $cart = $this->getCart();
-        $gatewayName = 'paypal_express_checkout';
+        $gatewayName = 'paypal';
         $storage = $this->get('payum')->getStorage('AppBundle\Entity\Cart\Payment');
 
         /** @var Payment $payment */
