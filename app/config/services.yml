@@ -106,3 +106,10 @@ services:
         arguments: [ "%default_vat_amount%" ]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
+# Twig
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+        arguments: [ "@router" ]
