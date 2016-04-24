@@ -82,14 +82,14 @@
             <hr>
         {% endif %}
         <div class="row">
-            <div class="col-xs-2">
-                <a class="c-grey" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-left"></i></a>
+            <div class="col-sm-1 col-xs-2">
+                <a class="c-grey" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><img alt="chevron thin left" src="{{ asset('bundles/app/vectors/chevron-thin-left.svg') }}"></a>
             </div>
-            <div class="col-xs-8 text-center">
+            <div class="col-sm-10 col-xs-8 text-center">
                 <a class="c-grey" href="{{ path('app_product_list') }}">{{ 'front.jumper.product' | trans | upper }}</a>
             </div>
-            <div class="col-xs-2 text-right">
-                <a class="c-grey" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><i class="fa fa-3x fa-chevron-right"></i></a>
+            <div class="col-sm-1 col-xs-2 text-right">
+                <a class="c-grey" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><img alt="chevron thin right" src="{{ asset('bundles/app/vectors/chevron-thin-right.svg') }}"></a>
             </div>
         </div>
     </div>
