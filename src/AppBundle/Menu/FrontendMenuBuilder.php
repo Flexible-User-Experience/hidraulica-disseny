@@ -67,8 +67,8 @@ class FrontendMenuBuilder
             'app_homepage',
             array(
                 'label' => $this->ts->trans('front.menu.homepage'),
-//                'route' => 'app_homepage',
-                'route' => 'app_secure_homepage',
+                'route' => 'app_homepage',
+//                'route' => 'app_secure_homepage',
             )
         );
         $menu->addChild(

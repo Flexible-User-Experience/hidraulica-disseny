@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 class WorkController extends Controller
 {
     /**
-     * @Route("/works/{page}", name="app_work_list", options={"i18n_prefix" = "secure"}, defaults={"page" = 1})
+     * @Route("/works/{page}", name="app_work_list", defaults={"page" = 1})
      * @Method({"GET"})
      *
      * @param int $page
@@ -41,7 +41,7 @@ class WorkController extends Controller
     }
 
     /**
-     * @Route("/work/{slug}", name="app_work_detail", options={"i18n_prefix" = "secure"})
+     * @Route("/work/{slug}", name="app_work_detail")
      * @Method({"GET"})
      * @param $slug
      *
@@ -62,7 +62,7 @@ class WorkController extends Controller
     }
 
     /**
-     * @Route("/work/{slug}/prev", name="app_work_detail_prev", options={"i18n_prefix" = "secure"})
+     * @Route("/work/{slug}/prev", name="app_work_detail_prev")
      * @Method({"GET"})
      * @param $slug
      *
@@ -88,7 +88,7 @@ class WorkController extends Controller
     }
 
     /**
-     * @Route("/work/{slug}/next", name="app_work_detail_next", options={"i18n_prefix" = "secure"})
+     * @Route("/work/{slug}/next", name="app_work_detail_next")
      * @Method({"GET"})
      * @param $slug
      *

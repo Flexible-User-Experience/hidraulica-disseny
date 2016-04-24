@@ -45,6 +45,18 @@ security:
             - ROLE_ADMIN_PRODUCTIMAGE_EDIT
             - ROLE_ADMIN_PRODUCTIMAGE_DELETE
             - ROLE_ADMIN_PRODUCTIMAGE_EXPORT
+            - ROLE_ADMIN_CART_LIST
+            - ROLE_ADMIN_CART_VIEW
+            - ROLE_ADMIN_CART_CREATE
+            - ROLE_ADMIN_CART_EDIT
+            - ROLE_ADMIN_CART_DELETE
+            - ROLE_ADMIN_CART_EXPORT
+            - ROLE_ADMIN_CUSTOMER_LIST
+            - ROLE_ADMIN_CUSTOMER_VIEW
+            - ROLE_ADMIN_CUSTOMER_CREATE
+            - ROLE_ADMIN_CUSTOMER_EDIT
+            - ROLE_ADMIN_CUSTOMER_DELETE
+            - ROLE_ADMIN_CUSTOMER_EXPORT
         ROLE_SONATA_MANAGER:
             - ROLE_ADMIN_USER_LIST
             - ROLE_ADMIN_USER_VIEW
@@ -89,10 +101,6 @@ security:
                 path:   /admin/logout
                 target: /admin/login
             anonymous: true
-        development:
-            pattern: ^/secure(.*)
-            context: user
-            anonymous: true
         frontend:
             pattern: ^/(.*)
             context: user
@@ -101,5 +109,4 @@ security:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_USER }
-        - { path: ^/secure/, role: ROLE_USER }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
