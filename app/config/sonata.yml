@@ -17,6 +17,8 @@ sonata_admin:
         use_select2:    true
         pager_links:    10
     persist_filters: true
+    security:
+        handler: sonata.admin.security.handler.role
     templates:
         layout: "::Admin/layout.html.twig"
         show:   "::Admin/show.html.twig"
@@ -43,20 +45,18 @@ sonata_admin:
                     content: >
                         <h1 style="margin-top:0">Content Management System</h1>
             -
-                position: top
+                position: left
                 type: sonata.admin.block.admin_list
-                class: col-md-6
                 settings:
                     groups: [ Works, Products, Sliders ]
             -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Contacts, Carts, Users ]
-            -
                 position: right
                 type: admin.block.messages
+            -
+                position: right
+                type: sonata.admin.block.admin_list
+                settings:
+                    groups: [ Contacts, Carts, Users ]
             -
                 position: bottom
                 type: sonata.block.service.text
