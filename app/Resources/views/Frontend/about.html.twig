@@ -1,6 +1,6 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ 'front.title.about' | trans }} · {{ parent() }}{% endblock %}
+{% block title %}{{ 'front.title.about' | trans | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
@@ -10,7 +10,7 @@
             {#</div>#}
         {#</div>#}
         <div class="row">
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-6 col-xs-12 c-black">
                 {{ 'front.about.text' | trans | raw }}
             </div>
             <div class="col-xs-12">
