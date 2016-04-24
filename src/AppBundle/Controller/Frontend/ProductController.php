@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends Controller
 {
     /**
-     * @Route("/products/{page}", name="app_product_list", options={"i18n_prefix" = "secure"}, defaults={"page" = 1})
+     * @Route("/products/{page}", name="app_product_list", defaults={"page" = 1})
      * @Method({"GET"})
      *
      * @param int $page
@@ -40,7 +40,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}", name="app_product_detail", options={"i18n_prefix" = "secure"})
+     * @Route("/product/{slug}", name="app_product_detail")
      * @Method({"GET"})
      * @param $slug
      *
@@ -77,7 +77,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}/prev", name="app_product_detail_prev", options={"i18n_prefix" = "secure"})
+     * @Route("/product/{slug}/prev", name="app_product_detail_prev")
      * @Method({"GET"})
      * @param $slug
      *
@@ -103,7 +103,7 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/product/{slug}/next", name="app_product_detail_next", options={"i18n_prefix" = "secure"})
+     * @Route("/product/{slug}/next", name="app_product_detail_next")
      * @Method({"GET"})
      * @param $slug
      *

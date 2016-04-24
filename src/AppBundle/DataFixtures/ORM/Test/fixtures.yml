@@ -40,19 +40,29 @@ AppBundle\Entity\WorkCategory:
 
 ## Work Images
 AppBundle\Entity\WorkImage:
-  workImage{1..10}:
+  workImage1{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    work: @work<numberBetween(1, 5)>
+    work: @work<current()>
+  workImage2{1..3}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    alt: <word()>
+    position: <numberBetween(1, 5)>
+    work: @work<current()>
 
 ## Product Images
 AppBundle\Entity\ProductImage:
-  productImage{1..10}:
+  productImage1{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    product: @product<numberBetween(1, 5)>
+    product: @product<current()>
+  productImage2{1..3}:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    alt: <word()>
+    position: <numberBetween(1, 5)>
+    product: @product<current()>
 
 ## Slider Images
 AppBundle\Entity\SliderImage:

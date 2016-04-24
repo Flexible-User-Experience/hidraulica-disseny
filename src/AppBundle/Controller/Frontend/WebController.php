@@ -25,14 +25,6 @@ class WebController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':Frontend:homepage.html.twig');
-    }
-
-    /**
-     * @Route("/", name="app_secure_homepage", options={"i18n_prefix" = "secure"})
-     */
-    public function secureIndexAction()
-    {
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
         $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
@@ -60,7 +52,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/about-us", name="app_about", options={"i18n_prefix" = "secure"})
+     * @Route("/about-us", name="app_about")
      */
     public function aboutAction()
     {
@@ -68,7 +60,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/contact", name="app_contact", options={"i18n_prefix" = "secure"})
+     * @Route("/contact", name="app_contact")
      * @param Request $request
      *
      * @return Response

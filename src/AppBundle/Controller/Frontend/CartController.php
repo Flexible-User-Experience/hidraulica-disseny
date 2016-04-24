@@ -25,7 +25,7 @@ use Payum\Core\Request\GetHumanStatus;
 class CartController extends Controller
 {
     /**
-     * @Route("/cart/top-menu-resume", name="app_cart_top_menu_resume", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/top-menu-resume", name="app_cart_top_menu_resume")
      * @Method({"GET"})
      */
     public function topMenuResumeCartAction()
@@ -37,7 +37,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/include-new-item", name="app_cart_include_new_item", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/include-new-item", name="app_cart_include_new_item")
      * @param Request $request
      *
      * @return Response
@@ -56,7 +56,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/new/item/{itemId}/", name="app_cart_new_item", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/new/item/{itemId}/", name="app_cart_new_item")
      * @param Request $request
      * @param int     $itemId
      *
@@ -70,7 +70,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/remove/item/{itemId}/", name="app_cart_remove_item", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/remove/item/{itemId}/", name="app_cart_remove_item")
      * @param Request $request
      * @param int     $itemId
      *
@@ -84,7 +84,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/list", name="app_cart_list_step_1", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/list", name="app_cart_list_step_1")
      * @return Response
      */
     public function listAction()
@@ -96,7 +96,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/checkout/", name="app_cart_checkout_step_2", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/checkout/", name="app_cart_checkout_step_2")
      * @param Request $request
      *
      * @return Response
@@ -135,7 +135,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/payment/", name="app_cart_payment_step_3", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/payment/", name="app_cart_payment_step_3")
      * @return Response
      */
     public function step3Action()
@@ -169,7 +169,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/payment/done", name="app_cart_payment_done", options={"i18n_prefix" = "secure"})
+     * @Route("/cart/payment/done", name="app_cart_payment_done")
      * @param Request $request
      *
      * @return Response

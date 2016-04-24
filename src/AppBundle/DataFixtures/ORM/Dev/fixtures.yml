@@ -31,11 +31,11 @@ AppBundle\Entity\WorkCategory:
 
 ## Work Images
 AppBundle\Entity\WorkImage:
-  workImage{1..25}:
+  workImage{1..50}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    work: @work<numberBetween(1, 10)>
+    work: @work<current()>
 
 ## Products
 AppBundle\Entity\Product:
@@ -50,11 +50,11 @@ AppBundle\Entity\Product:
 
 ## Product Images
 AppBundle\Entity\ProductImage:
-  productImage{1..25}:
+  productImage{1..50}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
-    product: @product<numberBetween(1, 10)>
+    product: @product<current()>
 
 ## Slider Images
 AppBundle\Entity\SliderImage:
