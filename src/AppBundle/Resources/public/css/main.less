@@ -104,6 +104,18 @@ textarea {
   }
 }
 
+.nav > li {
+  @media(max-width: @screen-xs-max) {
+    display: inline-block;
+  }
+}
+
+.navbar-nav {
+  @media(max-width: @screen-xs-max) {
+    margin: 0px -15px;
+  }
+}
+
 // Body
 body {
   &.base { padding-top: 80px; }
@@ -112,6 +124,14 @@ body {
     .navbar-default {
       background-color: transparent;
     }
+  }
+}
+
+#top-logo-div-holder {
+  width: 240px;
+  float: left;
+  @media(max-width: @screen-xs-max) {
+    width: 120px;
   }
 }
 
