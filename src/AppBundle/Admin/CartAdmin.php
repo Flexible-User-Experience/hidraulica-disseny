@@ -137,6 +137,43 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
+            ->with('Estat pagament', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'payment.number',
+                null,
+                array(
+                    'label'  => 'Referència',
+                )
+            )
+            ->add(
+                'payment.description',
+                null,
+                array(
+                    'label'  => 'Descripció',
+                )
+            )
+            ->add(
+                'payment.clientEmail',
+                null,
+                array(
+                    'label'  => 'Email',
+                )
+            )
+            ->add(
+                'payment.currencyCode',
+                null,
+                array(
+                    'label'  => 'Moneda',
+                )
+            )
+            ->add(
+                'payment.totalAmount',
+                null,
+                array(
+                    'label'  => 'Import',
+                )
+            )
+            ->end()
             ->with('backend.admin.cart.items', $this->getFormMdSuccessBoxArray(12))
             ->add(
                 'items',
@@ -167,7 +204,7 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'totalAmount',
+                'totalAmountWithDeliveryAndVatTax',
                 null,
                 array(
                     'label' => 'Total',
