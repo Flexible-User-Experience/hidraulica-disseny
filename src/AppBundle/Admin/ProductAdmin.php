@@ -60,6 +60,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'textarea',
                 array(
                     'attr'  => array(
+                        'rows'  => 8,
                         'class' => 'tinymce',
                     ),
                     'label' => 'backend.admin.description',
