@@ -57,10 +57,12 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                'ckeditor',
+                'textarea',
                 array(
-                    'config_name' => 'my_config',
-                    'label'       => 'backend.admin.description',
+                    'attr'  => array(
+                        'class' => 'tinymce',
+                    ),
+                    'label' => 'backend.admin.description',
                 )
             )
             ->add(
@@ -122,7 +124,7 @@ class ProductAdmin extends AbstractBaseAdmin
                             'label'    => 'backend.admin.description',
                             'attr'     => array(
                                 'rows'  => 8,
-                                'class' => 'ckeditor',
+                                'class' => 'tinymce',
                             ),
                             'required' => false,
                         ),
