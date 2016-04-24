@@ -14,22 +14,40 @@ AppBundle\Entity\ContactMessage:
 
 ## Works
 AppBundle\Entity\Work:
-  work{1..5}:
+  work1:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    title: my work
+    description: <paragraph()>
+    enabled: true
+    category: @workCategory<numberBetween(1, 10)>
+    imageName: <numberBetween(1, 5)>.jpg
+    urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
+  work{2..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
     enabled: <boolean(70)>
     category: @workCategory<numberBetween(1, 3)>
+    imageName: <numberBetween(1, 5)>.jpg
     urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
 
 ## Products
 AppBundle\Entity\Product:
-  product{1..5}:
+  product1:
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    title: my product
+    description: <paragraph()>
+    price: <randomFloat(2, 0, 10)>
+    enabled: true
+    imageName: <numberBetween(1, 5)>.jpg
+    urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
+  product{2..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     title: <sentence()>
     description: <paragraph()>
     price: <randomFloat(2, 0, 10)>
     enabled: <boolean(70)>
+    imageName: <numberBetween(1, 5)>.jpg
     urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
 
 ## Work Category
@@ -44,11 +62,13 @@ AppBundle\Entity\WorkImage:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
+    imageName: <numberBetween(1, 5)>.jpg
     work: @work<current()>
   workImage2{1..3}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
+    imageName: <numberBetween(1, 5)>.jpg
     work: @work<current()>
 
 ## Product Images
@@ -57,17 +77,20 @@ AppBundle\Entity\ProductImage:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
+    imageName: <numberBetween(1, 5)>.jpg
     product: @product<current()>
   productImage2{1..3}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
     alt: <word()>
     position: <numberBetween(1, 5)>
+    imageName: <numberBetween(1, 5)>.jpg
     product: @product<current()>
 
 ## Slider Images
 AppBundle\Entity\SliderImage:
   sliderImage{1..5}:
     createdAt: <dateTimeBetween('-2 months', '-1 months')>
+    imageName: <numberBetween(1, 5)>.jpg
     alt: <word()>
     position: <numberBetween(1, 5)>
 

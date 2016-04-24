@@ -101,10 +101,6 @@ security:
                 path:   /admin/logout
                 target: /admin/login
             anonymous: true
-        development:
-            pattern: ^/secure(.*)
-            context: user
-            anonymous: true
         frontend:
             pattern: ^/(.*)
             context: user
@@ -113,5 +109,4 @@ security:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_USER }
-        - { path: ^/secure/, role: ROLE_USER }
         - { path: ^/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
