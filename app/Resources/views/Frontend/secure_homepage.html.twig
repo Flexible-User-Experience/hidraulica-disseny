@@ -5,7 +5,7 @@
 {% block main %}
     {% if slides | length == 1 %}
         {% set slide = slides[0] %}
-        <div class="homepage jumbotron" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('Xx550') }}')">
+        <div class="homepage jumbotron" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') }}')">
             <div class="container">
                 <div class="hero"></div>
             </div>
@@ -24,7 +24,7 @@
             <div class="carousel-inner" role="listbox">
                 {% for slide in slides %}
                     <div class="item slides{% if loop.first %} active{% endif %}">
-                        <div class="slide-{{ loop.index - 1 }}" style="background: url('{{ vich_uploader_asset(slide, 'imageFile') | imagine_filter('Xx550') }}') no-repeat center center fixed;background-size: cover"></div>
+                        <div class="slide-{{ loop.index - 1 }}" style="background: url('{{ vich_uploader_asset(slide, 'imageFile') }}') no-repeat center center fixed;background-size: cover"></div>
                         <div class="hero"></div>
                     </div>
                 {% endfor %}
