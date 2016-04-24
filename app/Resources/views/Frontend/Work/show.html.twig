@@ -1,6 +1,6 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ work.title }} · {{ parent() }}{% endblock %}
+{% block title %}{{ work.title | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">

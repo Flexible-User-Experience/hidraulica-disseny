@@ -1,6 +1,6 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ product.title }} · {{ parent() }}{% endblock %}
+{% block title %}{{ product.title | title }} · {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
