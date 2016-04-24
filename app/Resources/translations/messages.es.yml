@@ -59,5 +59,11 @@ front:
       user: Tu mensaje se ha enviado correctamente.
   footer:
     email: "hola@hidraulicadisseny.com"
+backend:
+  admin:
+    block:
+      title: Notifications
+      text: pending messages
+      notext: you have no pending messages
 Previous: anterior
 Next: siguiente

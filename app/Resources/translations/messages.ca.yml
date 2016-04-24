@@ -60,65 +60,70 @@ front:
   footer:
     email: "hola@hidraulicadisseny.com"
 backend:
-    admin:
-        admin: Administrador
-        actions: Accions
-        alt: Text alternatiu
-        answer_action: Answer
-        answer: Resposta
-        answered: Respost
-        category: Categoria
-        checked: Llegit
-        created_date: Data de creació
-        controls: Controls
-        date: Data
-        description: Descripció
-        editor: Editor
-        email: Correu electrònic
+  admin:
+    block:
+      title: Notifications
+      text: pending messages
+      notext: you have no pending messages
+    admin: Administrador
+    actions: Accions
+    alt: Text alternatiu
+    answer_action: Answer
+    answer: Resposta
+    answered: Respost
+    category: Categoria
+    checked: Llegit
+    created_date: Data de creació
+    controls: Controls
+    date: Data
+    description: Descripció
+    editor: Editor
+    email: Correu electrònic
+    name: Nom
+    subject: Tema
+    homepage: Homepage
+    enabled: Actiu
+    firstname: Nom
+    general: General
+    image: Imatge
+    images: Imatges
+    image_name: Nom imatge
+    main_image: Imatge principal
+    message: Missatge
+    plain_password: Contrasenya
+    position: Ordre
+    price: Preu
+    product: Producte
+    roles: Rols
+    submit: Enviar
+    superadmin: Superadministrador
+    title: Títol
+    translations: Traduccions
+    user: Usuari
+    username: Usuari
+    user_question: Pregunta del usuari
+    your_answer: La teva resposta
+    cart:
+      total_amount: Import
+      items: Ítems
+      nitems: Ítems
+      customer:
+        customer: Client
         name: Nom
-        subject: Tema
-        homepage: Homepage
-        enabled: Actiu
-        firstname: Nom
-        general: General
-        image: Imatge
-        images: Imatges
-        image_name: Nom imatge
-        main_image: Imatge principal
-        message: Missatge
-        plain_password: Contrasenya
-        position: Ordre
-        price: Preu
-        product: Producte
-        roles: Rols
-        submit: Enviar
-        superadmin: Superadministrador
-        title: Títol
-        translations: Traduccions
-        user: Usuari
-        username: Usuari
-        user_question: Pregunta del usuari
-        your_answer: La teva resposta
-        cart:
-            total_amount: Import
-            items: Ítems
-            nitems: Ítems
-            customer:
-                customer: Client
-                name: Nom
-                address: Direcció
-                postal_code: Codi Postal
-                city: Població
-                state: Província
-                country: País
-                email: Correu Electrònic
-                phone: Telèfon
-                carts: Comandes
-            status:
-                status: Estat comanda
-                new: Nou
-                pending: Pendent
-                sent: Enviat
-                invoiced: Cobrat
+        address: Direcció
+        postal_code: Codi Postal
+        city: Població
+        state: Província
+        country: País
+        email: Correu Electrònic
+        phone: Telèfon
+        carts: Comandes
+      status:
+        status: Estat comanda
+        new: Nou
+        pending: Pendent
+        sent: Enviat
+        invoiced: Cobrat
+
 Previous: anterior
 Next: següent

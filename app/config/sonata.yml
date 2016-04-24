@@ -2,9 +2,10 @@
 sonata_block:
     default_contexts: [ cms ]
     blocks:
-        sonata.admin.block.admin_list:  ~
         sonata.user.block.menu:         ~
         sonata.block.service.text:      ~
+        sonata.admin.block.admin_list:  ~
+        admin.block.messages:           ~
 
 # Admin
 sonata_admin:
@@ -27,13 +28,12 @@ sonata_admin:
                 icon: "<i class='fa fa-table'></i>"
             Sliders:
                 icon: "<i class='fa fa-picture-o'></i>"
-            Carts:
-                icon: "<i class='fa fa-shopping-cart'></i>"
             Contacts:
                 icon: "<i class='fa fa-envelope'></i>"
+            Carts:
+                icon: "<i class='fa fa-shopping-cart'></i>"
             Users:
                 icon: "<i class='fa fa-user'></i>"
-
         blocks:
             -
                 position: top
@@ -47,37 +47,23 @@ sonata_admin:
                 type: sonata.admin.block.admin_list
                 class: col-md-6
                 settings:
-                    groups: [ Works ]
+                    groups: [ Works, Products, Sliders ]
             -
                 position: top
                 type: sonata.admin.block.admin_list
                 class: col-md-6
                 settings:
-                    groups: [ Products ]
+                    groups: [ Contacts, Carts, Users ]
             -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Sliders ]
+                position: right
+                type: admin.block.messages
             -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
+                position: bottom
+                type: sonata.block.service.text
+                class: col-md-12
                 settings:
-                    groups: [ Carts ]
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Contacts ]
-            -
-                position: top
-                type: sonata.admin.block.admin_list
-                class: col-md-6
-                settings:
-                    groups: [ Users ]
+                    content: >
+                        <div><hr style="margin-top:40px;border-top:solid 1px #d2d6de"><p><i class="fa fa-info-circle"></i> Technical support at <a href="mailto:suport@flux.cat?subject=Hidraulica CMS help" style="color:#000">suport@flux.cat</a></p></div>
 
 # User
 sonata_user:

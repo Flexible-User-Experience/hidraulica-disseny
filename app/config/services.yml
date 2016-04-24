@@ -50,6 +50,12 @@ services:
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
+# Sonata Blocks
+    admin.block.messages:
+        class: AppBundle\Admin\Block\PendingMessagesBlock
+        tags:
+            - { name: sonata.block }
+        arguments: [ "sonata.admin.block.messages", "@templating", "@doctrine.orm.entity_manager" ]
 # Cart
     app.cart_service:
         class: AppBundle\Service\CartService
