@@ -14,11 +14,6 @@
     .item {
       .hero, .hero.active {
         opacity: 0;
-        //-webkit-transition: 2s all ease-in-out .1s;
-        //-moz-transition: 2s all ease-in-out .1s;
-        //-ms-transition: 2s all ease-in-out .1s;
-        //-o-transition: 2s all ease-in-out .1s;
-        //transition: 2s all ease-in-out .1s;
         .transition-transform(2s all ease-in-out .1s);
       }
     }
@@ -72,6 +67,12 @@
 /********************************/
 .fade-carousel .slides [class^='slide-'] {
   height: 550px;
+  @media(max-width: 767px) {
+    height: 350px;
+  }
+  @media(max-width: 550px) {
+    height: 200px;
+  }
 }
 
 /********************************/
