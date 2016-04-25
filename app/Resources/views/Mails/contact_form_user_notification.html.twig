@@ -1,13 +1,13 @@
 {% block body %}
-    <h1>Thanks for contact us!</h1>
+    <h1>{{ 'mail.thanks' | trans }}!</h1>
     <p>
-        Your question "{{ contact.subject }}":<br><br>
+        {{ 'mail.yourquestion' | trans }} "{{ contact.subject }}":<br><br>
         <em>"{{ contact.message | raw }}"</em><br><br>
-        has been received.
+        {{ 'mail.recived' | trans }}.
     </p>
     <br>
     <br>
-    <p>We will answer you as soon as possible. Keep in touch.</p>
+    <p>{{ 'mail.asap' | trans }}</p>
     <br>
     <br>
     {% include ':Mails:common_hidraulica_signature.html.twig' %}
