@@ -148,7 +148,7 @@ class CartController extends Controller
         $payment->setCart($cart);
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
-        $payment->setTotalAmount($cart->getTotalAmountWithDeliveryAndVatTax() * 100);
+        $payment->setTotalAmount($cart->getTotalAmount() * 100);
         $payment->setDescription('CART_ID#'. $cart->getId() . ' ' . $cart->getCreatedAt()->format('d/m/Y') . ' ' . $cart->getCustomer()->getName());
         $payment->setClientId($cart->getCustomer()->getId());
         $payment->setClientEmail($cart->getCustomer()->getEmail());

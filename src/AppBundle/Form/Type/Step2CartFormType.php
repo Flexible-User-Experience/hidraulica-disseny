@@ -114,7 +114,7 @@ class Step2CartFormType extends AbstractType
                 array(
                     'label' => 'front.cart.step2.submit',
                     'attr'  => array(
-                        'class' => 'btn btn-success'
+                        'class' => 'btn btn-success btn-lg'
                     ),
                 )
             );

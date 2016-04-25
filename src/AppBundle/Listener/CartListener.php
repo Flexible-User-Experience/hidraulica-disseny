@@ -3,6 +3,7 @@
 namespace AppBundle\Listener;
 
 use AppBundle\Entity\Cart\Cart;
+use AppBundle\Entity\Product;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
@@ -17,22 +18,6 @@ use Doctrine\ORM\Events;
 class CartListener implements EventSubscriber
 {
     /**
-     * @var integer
-     * Default VAT tax amount
-     */
-    private $dvt;
-
-    /**
-     * TyreSubscriber constructor.
-     *
-     * @param int $dvt
-     */
-    public function __construct($dvt)
-    {
-        $this->dvt = $dvt;
-    }
-
-    /**
      * @return array
      */
     public function getSubscribedEvents()
@@ -40,7 +25,6 @@ class CartListener implements EventSubscriber
         return array(
             Events::prePersist,
             Events::preUpdate,
-            Events::postLoad,
         );
     }
 
@@ -51,7 +35,7 @@ class CartListener implements EventSubscriber
     {
         $object = $args->getEntity();
         if ($object instanceof Cart) {
-            $object->setVatTax($this->dvt);
+            $object->setVatTax(Product::VAT_TAX);
         }
     }
 
@@ -59,17 +43,6 @@ class CartListener implements EventSubscriber
      * @param LifecycleEventArgs $args Args
      */
     public function preUpdate(LifecycleEventArgs $args)
-    {
-        $object = $args->getEntity();
-        if ($object instanceof Cart) {
-            $object->setBaseAmount($object->getTotalAmount());
-        }
-    }
-
-    /**
-     * @param LifecycleEventArgs $args Args
-     */
-    public function postLoad(LifecycleEventArgs $args)
     {
         $object = $args->getEntity();
         if ($object instanceof Cart) {

@@ -103,7 +103,6 @@ services:
               - { name: doctrine.event_subscriber, connection: default }
     app.cart_listener:
         class: AppBundle\Listener\CartListener
-        arguments: [ "%default_vat_amount%" ]
         tags:
               - { name: doctrine.event_subscriber, connection: default }
 # Twig

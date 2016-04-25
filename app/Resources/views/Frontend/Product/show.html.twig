@@ -55,7 +55,7 @@
                 <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
                 <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
                     <div class="form-group">
-                        <label for="quantity">
+                        <label for="quantity" style="margin: 0 5px 0 0">
                             <select class="form-control input-lg" name="quantity">
                                 <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
                                 <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
@@ -68,7 +68,7 @@
                     <input type="hidden" name="product" value="{{ product.id }}">
                     <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
                 </form>
-                <p>{{ product.description | raw }}</p>
+                <div class="banner-description-p extra-m-top">{{ product.description | raw }}</div>
             </div>
         </div>
         {% if product.urlVimeo %}
@@ -83,13 +83,13 @@
         {% endif %}
         <div class="row">
             <div class="col-sm-1 col-xs-2">
-                <a class="c-grey" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><img alt="chevron thin left" src="{{ asset('bundles/app/vectors/chevron-thin-left.svg') }}"></a>
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><i class="fa-2x icon-chevron-thin-left"></i></a>
             </div>
             <div class="col-sm-10 col-xs-8 text-center">
                 <a class="c-grey" href="{{ path('app_product_list') }}">{{ 'front.jumper.product' | trans | upper }}</a>
             </div>
             <div class="col-sm-1 col-xs-2 text-right">
-                <a class="c-grey" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><img alt="chevron thin right" src="{{ asset('bundles/app/vectors/chevron-thin-right.svg') }}"></a>
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><i class="fa-2x icon-chevron-thin-right"></i></a>
             </div>
         </div>
     </div>

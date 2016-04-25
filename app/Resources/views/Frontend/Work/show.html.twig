@@ -48,13 +48,13 @@
         {% endif %}
         <div class="row">
             <div class="col-sm-1 col-xs-2">
-                <a class="c-grey" href="{{ path('app_work_detail_prev', {slug: work.slug}) }}"><img alt="chevron thin left" src="{{ asset('bundles/app/vectors/chevron-thin-left.svg') }}"></a>
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_work_detail_prev', {slug: work.slug}) }}"><i class="fa-2x icon-chevron-thin-left"></i></a>
             </div>
             <div class="col-sm-10 col-xs-8 text-center">
                 <a class="c-grey" href="{{ path('app_work_list') }}">{{ 'front.jumper.work' | trans | upper }}</a>
             </div>
             <div class="col-sm-1 col-xs-2 text-right">
-                <a class="c-grey" href="{{ path('app_work_detail_next', {slug: work.slug}) }}"><img alt="chevron thin right" src="{{ asset('bundles/app/vectors/chevron-thin-right.svg') }}"></a>
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_work_detail_next', {slug: work.slug}) }}"><i class="fa-2x icon-chevron-thin-right"></i></a>
             </div>
         </div>
     </div>

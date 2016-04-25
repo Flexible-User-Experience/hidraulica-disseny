@@ -29,6 +29,10 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Product extends AbstractBase
 {
+    const VAT_TAX = 21;
+    const VAT_TAX_DIVIDER = 1.21;
+    const VAT_TAX_MULTIPLIER = 0.21;
+
     use ImageTrait;
     use TitleTrait;
     use SlugTrait;
@@ -106,6 +110,19 @@ class Product extends AbstractBase
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPriceWithoutTax()
+    {
+        $result = 0;
+        if ($this->price > 0) {
+            $result = $this->price / self::VAT_TAX_DIVIDER;
+        }
+
+        return $result;
     }
 
     /**
