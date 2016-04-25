@@ -55,7 +55,7 @@
                 <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
                 <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
                     <div class="form-group">
-                        <label for="quantity">
+                        <label for="quantity" style="margin: 0 5px 0 0">
                             <select class="form-control input-lg" name="quantity">
                                 <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
                                 <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
@@ -68,7 +68,7 @@
                     <input type="hidden" name="product" value="{{ product.id }}">
                     <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
                 </form>
-                <p>{{ product.description | raw }}</p>
+                <div class="banner-description-p extra-m-top">{{ product.description | raw }}</div>
             </div>
         </div>
         {% if product.urlVimeo %}
