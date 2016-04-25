@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6512d9be4a80e61a3e4760fb87bb86e6",
-    "content-hash": "74a882171ef730ac4cc93643eae63b5e",
+    "hash": "88553138b2ebe5cc65b9ef2086049ee4",
+    "content-hash": "d85cab7dacbc6ff0944dac1daec56301",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -4799,12 +4799,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataUserBundle.git",
-                "reference": "9f7df77921116127600deefa840346c6451a4eb5"
+                "reference": "bccb224a83c9bf5eecb7108932bc14fdd05d8cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/9f7df77921116127600deefa840346c6451a4eb5",
-                "reference": "9f7df77921116127600deefa840346c6451a4eb5",
+                "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/bccb224a83c9bf5eecb7108932bc14fdd05d8cd7",
+                "reference": "bccb224a83c9bf5eecb7108932bc14fdd05d8cd7",
                 "shasum": ""
             },
             "require": {
@@ -4868,7 +4868,7 @@
                 "sonata",
                 "user"
             ],
-            "time": "2016-04-21 15:31:20"
+            "time": "2016-04-25 09:12:28"
         },
         {
             "name": "stfalcon/tinymce-bundle",
