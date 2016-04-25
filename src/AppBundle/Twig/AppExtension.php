@@ -49,6 +49,7 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter('class_short_name', array($this, 'getClass')),
+            new \Twig_SimpleFilter('is_product', array($this, 'isProductInstace')),
         );
     }
 
@@ -60,6 +61,16 @@ class AppExtension extends \Twig_Extension
     public function getClass($object)
     {
         return (new \ReflectionClass($object))->getShortName();
+    }
+
+    /**
+     * @param mixed $object
+     *
+     * @return string
+     */
+    public function isProductInstace($object)
+    {
+        return $object instanceof Product;
     }
 
     /**
