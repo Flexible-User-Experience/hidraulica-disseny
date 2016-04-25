@@ -45,6 +45,8 @@ front:
       submit: PAGAR
     step3:
       title: pago
+      ok: Gracias por tu compra. Enviaremos tu pedido lo antes posible.
+      error: Se ha producido un error durante tu compra. Nos pondremos en contacto contigo lo antes posible.
     back: seguir comprando
     cart: tu carrito
     continue: continuar

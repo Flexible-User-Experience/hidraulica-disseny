@@ -154,7 +154,9 @@ class CartController extends Controller
         $payment->setClientEmail($cart->getCustomer()->getEmail());
         $payment->setCart($cart);
         $storage->update($payment);
-        $cart->setStatus(CartStatusEnum::CART_STATUS_SENT);
+        $cart
+            ->setPayment($payment)
+            ->setStatus(CartStatusEnum::CART_STATUS_SENT);
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         $this->get('app.cart_service')->removeSessionCart();
@@ -197,17 +199,18 @@ class CartController extends Controller
         $em->persist($cart);
         $em->flush();
 
-        // you have order and payment status
-        // so you can do whatever you want for example you can just print status and payment details.
-
-        return new JsonResponse(array(
-            'status' => $status->getValue(),
-            'payment' => array(
-                'total_amount' => $payment->getTotalAmount(),
-                'currency_code' => $payment->getCurrencyCode(),
-                'details' => $payment->getDetails(),
-            ),
-        ));
+        return $this->render(
+            ':Frontend/Cart:order_list_step_3.html.twig',
+            [
+                'cart' => $this->getCart(),
+                'status' => $status->getValue(),
+                'payment' => array(
+                    'total_amount' => $payment->getTotalAmount(),
+                    'currency_code' => $payment->getCurrencyCode(),
+                    'details' => $payment->getDetails(),
+                ),
+            ]
+        );
     }
 
     /**

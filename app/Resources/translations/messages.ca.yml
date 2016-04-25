@@ -45,6 +45,8 @@ front:
       submit: PAGAR
     step3:
       title: pagament
+      ok: Gràcies per la teva compra. Enviarem la teva comanda el més aviat possible.
+      error: S'ha produit un error durant la teva compra. Ens posarem en contacte amb tu el més aviat possible.
     back: seguir comprant
     cart: la teva cistella
     continue: continuar
