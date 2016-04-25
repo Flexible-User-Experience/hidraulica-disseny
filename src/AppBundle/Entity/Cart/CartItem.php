@@ -119,6 +119,19 @@ class CartItem extends AbstractBase
     }
 
     /**
+     * @return float
+     */
+    public function getTotalAmountWithoutTax()
+    {
+        $result = 0;
+        if ($this->quantity * $this->baseAmount > 0) {
+            $result = $this->quantity * ($this->baseAmount / Product::VAT_TAX_DIVIDER);
+        }
+
+        return $result;
+    }
+
+    /**
      * @return string
      */
     public function __toString()

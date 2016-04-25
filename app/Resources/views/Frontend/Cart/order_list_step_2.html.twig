@@ -34,9 +34,9 @@
                             </a>
                         </td>
                         <td>{{ item.product.title }}</td>
-                        <td class="text-right">{{ item.baseAmount }} €</td>
+                        <td class="text-right">{{ item.product.priceWithoutTax | round(2) }} €</td>
                         <td class="text-right">{{ item.quantity }}</td>
-                        <td class="text-right">{{ item.totalAmount }} €</td>
+                        <td class="text-right">{{ item.totalAmountWithoutTax | round(2) }} €</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -44,7 +44,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th colspan="2" class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
-                    <th class="text-right">{{ cart.baseAmount }} €</th>
+                    <th class="text-right">{{ cart.baseAmount - cart.vatTaxAmount }} €</th>
                 </tr>
                 <tr>
                     <th colspan="2"></th>
@@ -54,7 +54,7 @@
                 <tr>
                     <th colspan="2"></th>
                     <th colspan="2" class="text-right"><h3 class="no-m">{{ 'front.cart.table.total' | trans | upper }}</h3></th>
-                    <th class="text-right"><h3 class="no-m"><span class="label label-primary">{{ cart.totalAmountWithDeliveryAndVatTax }} €</span></h3></th>
+                    <th class="text-right"><h3 class="no-m"><span class="label label-primary">{{ cart.baseAmount }} €</span></h3></th>
                 </tr>
                 </tfoot>
             </table>
@@ -62,6 +62,13 @@
         <div class="col-sm-1 col-xs-12"></div>
         <div class="col-sm-5 col-xs-12">
             {{ form(form) }}
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="9BUQA8TTNS3TC">
+                <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="PayPal. La forma rápida y segura de pagar en Internet.">
+                <img alt="" border="0" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
             <span class="pull-right"><i class="fa fa-3x fa-cc-paypal"></i></span>
         </div>
     </div>
