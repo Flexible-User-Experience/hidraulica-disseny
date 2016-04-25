@@ -45,6 +45,8 @@ front:
       submit: Pay
     step3:
       title: payment
+      ok: Thank you for your purchase. We will send your order as soon as possible.
+      error: An error occurred during your purchase. We will contact you as soon as possible.
     back: continue shopping
     cart: your cart
     continue: continue

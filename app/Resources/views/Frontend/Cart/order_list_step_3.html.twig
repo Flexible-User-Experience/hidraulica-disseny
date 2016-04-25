@@ -1,0 +1,53 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ 'front.cart.step3.title' | trans | title }} · {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row extra-m-top">
+            <div class="col-xs-12">
+                <h1 class="no-m-top no-m-bottom">{{ 'front.cart.step3.title' | trans | upper }}</h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12">
+                {% if status == 'failed' %}
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="extra-m-bottom extra-m-top"><i class="fa fa-exclamation-triangle"></i> {{ 'front.cart.step3.error' | trans }}</h4>
+                    </div>
+                {% else %}
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="extra-m-bottom extra-m-top"><i class="fa fa-check"></i> {{ 'front.cart.step3.ok' | trans }}</h4>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% if app.environment == 'dev' %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Cart</th>
+                            <th>Status</th>
+                            <th>Total amount</th>
+                            <th>Currency code</th>
+                            <th>Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ cart }}</td>
+                            <td>{{ status }}</td>
+                            <td>{{ payment.total_amount }}</td>
+                            <td>{{ payment.currency_code }}</td>
+                            <td>{{ payment.details | join(' · ') }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
