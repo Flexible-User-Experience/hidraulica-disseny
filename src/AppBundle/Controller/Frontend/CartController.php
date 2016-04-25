@@ -152,6 +152,7 @@ class CartController extends Controller
         $payment->setDescription('CART_ID#'. $cart->getId() . ' ' . $cart->getCreatedAt()->format('d/m/Y') . ' ' . $cart->getCustomer()->getName());
         $payment->setClientId($cart->getCustomer()->getId());
         $payment->setClientEmail($cart->getCustomer()->getEmail());
+        $payment->setCart($cart);
         $storage->update($payment);
         $cart->setStatus(CartStatusEnum::CART_STATUS_SENT);
         $em = $this->getDoctrine()->getManager();
