@@ -69,3 +69,13 @@ backend:
       notext: you don't have pending messages
 Previous: previous
 Next: next
+mail:
+  helloagain: Hello again!
+  yourquestion: Your question
+  recived: has been received
+  asap: We will answer you as soon as possible. Keep in touch.
+  youhave: You have received this notification in order to answer your question
+  from: from
+  at: at
+  thanks: Thanks for contact us
+  ourmailaddress: Our mailing address is

@@ -126,6 +126,15 @@ backend:
         pending: Pendent
         sent: Enviat
         invoiced: Cobrat
-
 Previous: anterior
 Next: següent
+mail:
+  helloagain: Hola de nou!
+  yourquestion: La teva pregunta
+  recived: s'ha rebut
+  asap: Et respondem el més aviat possible. Estem en contacte.
+  youhave: Ha rebut aquesta notificació per tal de respondre a la seva pregunta
+  from: del
+  at: a les
+  thanks: Gràcies per posar-se en contacte amb nosaltres
+  ourmailaddress: La nostra adreça de correu és
