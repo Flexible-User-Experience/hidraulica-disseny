@@ -118,7 +118,6 @@ class CartController extends Controller
                 $cart
                     ->setStatus(CartStatusEnum::CART_STATUS_PENDING)
                     ->setCustomer($customer);
-                $em->persist($cart);
                 $em->flush();
             }
 
@@ -150,14 +149,15 @@ class CartController extends Controller
         $payment->setNumber(uniqid());
         $payment->setCurrencyCode('EUR');
         $payment->setTotalAmount($cart->getTotalAmountWithDeliveryAndVatTax() * 100);
-        $payment->setDescription($cart->getCustomer()->getName()); // TODO change payment description
+        $payment->setDescription('CART_ID#'. $cart->getId() . ' ' . $cart->getCreatedAt()->format('d/m/Y') . ' ' . $cart->getCustomer()->getName());
         $payment->setClientId($cart->getCustomer()->getId());
         $payment->setClientEmail($cart->getCustomer()->getEmail());
+        $payment->setCart($cart);
         $storage->update($payment);
         $cart->setStatus(CartStatusEnum::CART_STATUS_SENT);
         $em = $this->getDoctrine()->getManager();
-        $em->persist($cart);
         $em->flush();
+        $this->get('app.cart_service')->removeSessionCart();
 
         $captureToken = $this->get('payum')->getTokenFactory()->createCaptureToken(
             $gatewayName,
@@ -188,14 +188,14 @@ class CartController extends Controller
 
         // or Payum can fetch the model for you while executing a request (Preferred).
         $gateway->execute($status = new GetHumanStatus($token));
+        /** @var Payment $payment */
         $payment = $status->getFirstModel();
 
-        $cart = $this->getCart();
+        $cart = $payment->getCart();
         $cart->setStatus(CartStatusEnum::CART_STATUS_INVOICED);
         $em = $this->getDoctrine()->getManager();
         $em->persist($cart);
         $em->flush();
-        $this->get('app.cart_service')->removeSessionCart();
 
         // you have order and payment status
         // so you can do whatever you want for example you can just print status and payment details.
