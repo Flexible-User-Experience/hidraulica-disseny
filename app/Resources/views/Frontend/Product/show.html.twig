@@ -26,7 +26,7 @@
             <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest producte no està disponible a la web pública</div>
         {% endif %}
         <div class="row extra-m-bottom">
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-8 col-xs-12">
                 <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
                     <div class="carousel-inner">
                         {% for image in product.images %}
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
                 <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
                 <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
