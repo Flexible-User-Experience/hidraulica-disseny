@@ -6,16 +6,11 @@
     {{ parent() }}
     <style>
         .carousel { margin-bottom: 20px; }
+        .carousel .item { background-color: #FFF; }
         .item .thumb {
-            width: 25%;
+            margin-bottom: 10px;
             cursor: pointer;
-            float: left;
         }
-        .item .thumb img {
-            width: 100%;
-            margin: 2px;
-        }
-        .item img { width: 100%; }
         .btn-lg, .input-lg { border-radius: 0; }
     </style>
 {% endblock %}
@@ -26,7 +21,7 @@
             <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest producte no està disponible a la web pública</div>
         {% endif %}
         <div class="row extra-m-bottom">
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-8 col-xs-12">
                 <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">
                     <div class="carousel-inner">
                         {% for image in product.images %}
@@ -40,17 +35,20 @@
                     <div id="thumbcarousel" class="carousel slide" data-interval="false">
                         <div class="carousel-inner">
                             <div class="item active">
-                                {% for image in product.images %}
-                                    <div data-target="#carousel" data-slide-to="{{ loop.index - 1 }}" class="thumb">
-                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('138x75') }}" alt="{{ product.title }}">
-                                    </div>
-                                {% endfor %}
+                                <div class="row">
+                                    {% for image in product.images %}
+                                        <div data-target="#carousel" data-slide-to="{{ loop.index - 1 }}" class="thumb col-xs-6 col-sm-4 col-md-3">
+                                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('138x75') }}" alt="{{ product.title }}">
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-sm-4 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
                 <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
                 <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">

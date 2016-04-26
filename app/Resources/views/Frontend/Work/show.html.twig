@@ -19,7 +19,7 @@
             </div>
         </div>
         {% if work.urlVimeo %}
-            <div class="row">
+            <div class="row extra-m-bottom">
                 <div class="col-xs-12">
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{ work.vimeoId }}" frameborder="0"></iframe>
@@ -28,23 +28,19 @@
             </div>
             <hr>
         {% endif %}
-        <div class="row">
+        <div class="row extra-m-bottom">
             <div class="col-xs-12">
-                <div class="hovereffect">
-                    <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}" class="img-responsive">
-                </div>
+                <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}" class="img-responsive">
             </div>
         </div>
         {% if work.images | length > 0 %}
-            <div class="row">
-                {% for image in work.images %}
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                        <div class="hovereffect">
-                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x400') }}" alt="{{ work.title }}">
-                        </div>
+            {% for image in work.images %}
+                <div class="row extra-m-bottom">
+                    <div class="col-xs-12">
+                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}">
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
         {% endif %}
         <div class="row">
             <div class="col-sm-1 col-xs-2">
