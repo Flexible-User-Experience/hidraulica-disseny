@@ -38,7 +38,7 @@
                                 <div class="row">
                                     {% for image in product.images %}
                                         <div data-target="#carousel" data-slide-to="{{ loop.index - 1 }}" class="thumb col-xs-6 col-sm-4 col-md-3">
-                                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('138x75') }}" alt="{{ product.title }}">
+                                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('336x182') }}" alt="{{ product.title }}">
                                         </div>
                                     {% endfor %}
                                 </div>
