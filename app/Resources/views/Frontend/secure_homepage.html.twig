@@ -3,15 +3,6 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-
-        /* jssor slider bullet navigator skin 05 css */
-        /*
-        .jssorb05 div           (normal)
-        .jssorb05 div:hover     (normal mouseover)
-        .jssorb05 .av           (active)
-        .jssorb05 .av:hover     (active mouseover)
-        .jssorb05 .dn           (mousedown)
-        */
         .jssorb05 {
             position: absolute;
         }
@@ -28,16 +19,6 @@
         .jssorb05 div:hover, .jssorb05 .av:hover { background-position: -37px -7px; }
         .jssorb05 .av { background-position: -67px -7px; }
         .jssorb05 .dn, .jssorb05 .dn:hover { background-position: -97px -7px; }
-
-        /* jssor slider arrow navigator skin 22 css */
-        /*
-        .jssora22l                  (normal)
-        .jssora22r                  (normal)
-        .jssora22l:hover            (normal mouseover)
-        .jssora22r:hover            (normal mouseover)
-        .jssora22l.jssora22ldn      (mousedown)
-        .jssora22r.jssora22rdn      (mousedown)
-        */
         .jssora22l, .jssora22r {
             display: block;
             position: absolute;
@@ -126,8 +107,6 @@
                 }
             };
             var jssor_1_slider = new $JssorSlider$('jssor_1', jssor_1_options);
-//          responsive code begin
-//          you can remove responsive code if you don't want the slider scales while window resizing
             function ScaleSlider() {
                 var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
                 if (refSize) {
