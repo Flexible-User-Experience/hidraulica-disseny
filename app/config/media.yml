@@ -34,6 +34,10 @@ liip_imagine:
             animated: true
             filters:
                 thumbnail: { size: [ 700, 400 ], mode: inbound }
+        700x530:
+            quality: 95
+            filters:
+                thumbnail: { size: [ 700, 530 ], mode: inbound }
         700x495:
             quality: 95
             filters:

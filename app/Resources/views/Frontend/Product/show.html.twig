@@ -26,7 +26,7 @@
                     <div class="carousel-inner">
                         {% for image in product.images %}
                             <div class="item{% if loop.first %} active{% endif %}">
-                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('555x370') }}" alt="{{ product.title }}">
+                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="{{ product.title }}">
                             </div>
                         {% endfor %}
                     </div>
