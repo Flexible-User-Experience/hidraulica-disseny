@@ -5,81 +5,35 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        .carousel { margin-bottom: 20px; }
-        .carousel .item { background-color: #FFF; }
-        .item .thumb {
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-        .btn-lg, .input-lg { border-radius: 0; }
-        .jssora02l, .jssora02r {
-            display: block;
-            position: absolute;
-            /* size of arrow element */
-            width: 55px;
-            height: 55px;
-            cursor: pointer;
-            background: url('{{ asset('bundles/app/images/a02.png') }}') no-repeat;
-            overflow: hidden;
-        }
-        .jssora02l { background-position: -3px -33px; }
-        .jssora02r { background-position: -63px -33px; }
-        .jssora02l:hover { background-position: -123px -33px; }
-        .jssora02r:hover { background-position: -183px -33px; }
-        .jssora02l.jssora02ldn { background-position: -3px -33px; }
-        .jssora02r.jssora02rdn { background-position: -63px -33px; }
-        .jssort03 .p {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 62px;
-            height: 32px;
-        }
-        .jssort03 .t {
-            position: absolute;
-            top: 0;
-            left: 0;
+        #carousel-custom .carousel-indicators {
+            margin: 10px 0 0;
+            overflow-x: scroll;
+            position: static;
+            text-align: left;
+            white-space: nowrap;
             width: 100%;
-            height: 100%;
-            border: none;
         }
-        .jssort03 .w, .jssort03 .pav:hover .w {
-            position: absolute;
-            width: 60px;
-            height: 30px;
-            border: white 1px solid;
-            box-sizing: content-box;
+        #carousel-custom .carousel-indicators li {
+            background-color: transparent;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            display: inline-block;
+            height: auto;
+            margin: 0 !important;
+            width: auto;
         }
-        .jssort03 .pdn .w, .jssort03 .pav .w {
-            border-style: solid;
+        #carousel-custom .carousel-indicators li img {
+            display: block;
+            opacity: 0.5;
         }
-        .jssort03 .c {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 62px;
-            height: 32px;
-            background-color: #000;
-            filter: alpha(opacity=45);
-            opacity: .45;
-            transition: opacity .6s;
-            -moz-transition: opacity .6s;
-            -webkit-transition: opacity .6s;
-            -o-transition: opacity .6s;
+        #carousel-custom .carousel-indicators li.active img {
+            opacity: 1;
         }
-        .jssort03 .p:hover .c, .jssort03 .pav .c {
-            filter: alpha(opacity=0);
-            opacity: 0;
+        #carousel-custom .carousel-indicators li:hover img {
+            opacity: 0.75;
         }
-        .jssort03 .p:hover .c {
-            transition: none;
-            -moz-transition: none;
-            -webkit-transition: none;
-            -o-transition: none;
-        }
-        * html .jssort03 .w {
-            width /**/: 62px;
-            height /**/: 32px;
+        #carousel-custom .carousel-outer {
+            position: relative;
         }
     </style>
 {% endblock %}
@@ -91,30 +45,32 @@
         {% endif %}
         <div class="row extra-m-bottom">
             <div class="col-sm-8 col-xs-12">
-                <div id="jssor_1" style="position:relative;margin:0 auto;top:0;left:0;height:480px;overflow:hidden;visibility: hidden;">
-                    <div data-u="slides" style="cursor:default;position:relative;top:0;left:0;width:700px;height:530px;overflow: hidden;">
-                        {% for image in product.images %}
-                            <div data-p="112.50" style="display: none;">
-                                <img data-u="image" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" />
-                                <img data-u="thumb" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('138x75') }}" />
-                            </div>
-                        {% endfor %}
-                        <a data-u="ad" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
-                    </div>
-                    {#<!-- Thumbnail Navigator -->#}
-                    <div u="thumbnavigator" class="jssort03" style="position:absolute;left:0;bottom:0;width:600px;height:75px;" data-autocenter="1">
-                        <div style="position:absolute;top:0;left:0;width:100%;height:100%;background-color: #000; filter:alpha(opacity=30.0); opacity:0.3;"></div>
-                        {#<!-- Thumbnail Item Skin Begin -->#}
-                        <div u="slides" style="cursor:default;">
-                            <div u="prototype" class="p">
-                                <div class="w">
-                                    <div u="thumbnailtemplate" class="t"></div>
+                <div id="carousel-custom" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <div class="carousel-outer">
+                        {#<!-- Wrapper for slides -->#}
+                        <div class="carousel-inner">
+                            {% for image in product.images %}
+                                <div class="item{% if loop.index == 1 %} active{% endif %}">
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
                                 </div>
-                                <div class="c"></div>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {#<!-- Thumbnail Item Skin End -->#}
+                        {#<!-- Controls -->#}
+                        <a class="left carousel-control" href="#carousel-custom" data-slide="prev">
+                            {#<i class="fa-2x icon-chevron-thin-left"></i>#}
+                        </a>
+                        <a class="right carousel-control" href="#carousel-custom" data-slide="next">
+                            {#<i class="fa-2x icon-chevron-thin-right"></i>#}
+                        </a>
                     </div>
+                    {#<!-- Indicators -->#}
+                    <ol class="carousel-indicators mCustomScrollbar">
+                        {% for image in product.images %}
+                            <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
+                            </li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
@@ -164,44 +120,4 @@
 
 {% block languages %}
     {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_product_detail', params: {slug: product.slug}} %}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('bundles/app/js/jssor.slider.min.js') }}"></script>
-    <script type="text/javascript">
-        jssor_1_slider_init = function() {
-            var jssor_1_options = {
-                $AutoPlay: false,
-                $ArrowNavigatorOptions: {
-                    $Class: $JssorArrowNavigator$
-                },
-                $ThumbnailNavigatorOptions: {
-                    $Class: $JssorThumbnailNavigator$,
-                    $Cols: 9,
-                    $SpacingX: 3,
-                    $SpacingY: 3,
-                    $Align: 260
-                }
-            };
-            var jssor_1_slider = new $JssorSlider$('jssor_1', jssor_1_options);
-            function ScaleSlider() {
-                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-                if (refSize) {
-                    refSize = Math.min(refSize, 780);
-                    jssor_1_slider.$ScaleWidth(refSize);
-                }
-                else {
-                    window.setTimeout(ScaleSlider, 30);
-                }
-            }
-            ScaleSlider();
-            $Jssor$.$AddEvent(window, 'load', ScaleSlider);
-            $Jssor$.$AddEvent(window, 'resize', ScaleSlider);
-            $Jssor$.$AddEvent(window, 'orientationchange', ScaleSlider);
-        };
-        jQuery(document).ready(function($) {
-            jssor_1_slider_init();
-        });
-    </script>
 {% endblock %}
