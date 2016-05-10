@@ -3466,16 +3466,16 @@
         },
         {
             "name": "php-http/guzzle6-adapter",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/guzzle6-adapter.git",
-                "reference": "e884cf6dae5235fffd2a07f761e0066b9ebef170"
+                "reference": "a56941f9dc6110409cfcddc91546ee97039277ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/guzzle6-adapter/zipball/e884cf6dae5235fffd2a07f761e0066b9ebef170",
-                "reference": "e884cf6dae5235fffd2a07f761e0066b9ebef170",
+                "url": "https://api.github.com/repos/php-http/guzzle6-adapter/zipball/a56941f9dc6110409cfcddc91546ee97039277ab",
+                "reference": "a56941f9dc6110409cfcddc91546ee97039277ab",
                 "shasum": ""
             },
             "require": {
@@ -3489,12 +3489,12 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "php-http/adapter-integration-tests": "^0.3"
+                "php-http/adapter-integration-tests": "^0.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -3522,7 +3522,7 @@
                 "Guzzle",
                 "http"
             ],
-            "time": "2016-01-26 20:39:00"
+            "time": "2016-05-10 06:13:32"
         },
         {
             "name": "php-http/httplug",
@@ -4158,12 +4158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "0a477d024e0a11b282140ba6b2abfc39c41cd3e8"
+                "reference": "f5584787637d5d4eb1a90f42a42afe90a4cb1a0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/0a477d024e0a11b282140ba6b2abfc39c41cd3e8",
-                "reference": "0a477d024e0a11b282140ba6b2abfc39c41cd3e8",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/f5584787637d5d4eb1a90f42a42afe90a4cb1a0a",
+                "reference": "f5584787637d5d4eb1a90f42a42afe90a4cb1a0a",
                 "shasum": ""
             },
             "require": {
@@ -4243,7 +4243,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2016-05-09 10:59:48"
+            "time": "2016-05-10 06:26:01"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4382,12 +4382,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "d9ed9884ae330bde90d8c6db11b006bb977864ef"
+                "reference": "d02a84c0b39e573541bab277515387399d4ef828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/d9ed9884ae330bde90d8c6db11b006bb977864ef",
-                "reference": "d9ed9884ae330bde90d8c6db11b006bb977864ef",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/d02a84c0b39e573541bab277515387399d4ef828",
+                "reference": "d02a84c0b39e573541bab277515387399d4ef828",
                 "shasum": ""
             },
             "require": {
@@ -4444,7 +4444,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2016-05-09 05:43:09"
+            "time": "2016-05-09 21:31:02"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -4557,18 +4557,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "d99c9af579aa8c0a1ce04c64cdc90ca84364bdaf"
+                "reference": "2105055abd6f0d11a941b0f0d258aa90006b90d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/d99c9af579aa8c0a1ce04c64cdc90ca84364bdaf",
-                "reference": "d99c9af579aa8c0a1ce04c64cdc90ca84364bdaf",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/2105055abd6f0d11a941b0f0d258aa90006b90d5",
+                "reference": "2105055abd6f0d11a941b0f0d258aa90006b90d5",
                 "shasum": ""
             },
             "require": {
                 "doctrine/orm": "^2.3",
-                "sonata-project/admin-bundle": "3.x-dev@dev",
-                "sonata-project/core-bundle": "3.x-dev@dev",
+                "sonata-project/admin-bundle": "^3.0",
+                "sonata-project/core-bundle": "^3.0",
                 "sonata-project/exporter": "^1.3.1",
                 "symfony/console": "^2.3 || ^3.0",
                 "symfony/doctrine-bridge": "^2.2 || ^3.0",
@@ -4622,7 +4622,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2016-05-03 14:28:50"
+            "time": "2016-05-10 08:06:38"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -5743,16 +5743,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.5",
+            "version": "v2.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2"
+                "reference": "8408816780215fae055599d100b5385d9a247151"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2",
-                "reference": "39ddd2383f4113cf67f8b28cde2c9d3fa340c3c2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/8408816780215fae055599d100b5385d9a247151",
+                "reference": "8408816780215fae055599d100b5385d9a247151",
                 "shasum": ""
             },
             "require": {
@@ -5873,7 +5873,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-04-29 15:34:08"
+            "time": "2016-05-09 21:45:54"
         },
         {
             "name": "twbs/bootstrap",
