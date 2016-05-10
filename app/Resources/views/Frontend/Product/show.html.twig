@@ -4,9 +4,10 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/jquery.mThumbnailScroller.css') }}">
     <style>
         #carousel-custom .carousel-indicators {
-            margin: 10px 0 0;
+            margin: 5px 0 0;
             overflow-x: auto;
             position: static;
             text-align: left;
@@ -74,13 +75,15 @@
                         {#</a>#}
                     </div>
                     {#<!-- Indicators -->#}
-                    <ol class="carousel-indicators mCustomScrollbar">
-                        {% for image in product.images %}
-                            <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
-                                <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
-                            </li>
-                        {% endfor %}
-                    </ol>
+                    <div id="my-thumbs-list">
+                        <ul class="carousel-indicators mCustomScrollbar">
+                            {% for image in product.images %}
+                                <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-4 col-xs-12">
@@ -130,4 +133,17 @@
 
 {% block languages %}
     {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_product_detail', params: {slug: product.slug}} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jquery.mThumbnailScroller.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#my-thumbs-list').mThumbnailScroller({
+                axis: 'x',
+                contentTouchScroll: true
+            });
+        });
+    </script>
 {% endblock %}
