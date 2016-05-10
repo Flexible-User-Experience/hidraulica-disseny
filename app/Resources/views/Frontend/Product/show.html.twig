@@ -20,10 +20,10 @@
                     <div class="rg-thumbs">
                         {#<!-- Elastislide Carousel Thumbnail Viewer -->#}
                         <div class="es-carousel-wrapper">
-                            <div class="es-nav">
-                                <span class="es-nav-prev">Previous</span>
-                                <span class="es-nav-next">Next</span>
-                            </div>
+                            {#<div class="es-nav">#}
+                                {#<span class="es-nav-prev">Previous</span>#}
+                                {#<span class="es-nav-next">Next</span>#}
+                            {#</div>#}
                             <div class="es-carousel">
                                 <ul>
                                     {% for image in product.images %}
@@ -100,6 +100,10 @@
                     <p></p>
                 </div>
             </div>
+            {#<div class="rg-image-nav">#}
+				{#<a href="#" class="rg-image-nav-prev">Previous Image</a>#}
+				{#<a href="#" class="rg-image-nav-next">Next Image</a>#}
+            {#</div>#}
         </div>
     </script>
 {% endblock %}
