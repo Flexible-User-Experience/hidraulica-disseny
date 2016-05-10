@@ -116,35 +116,6 @@
                         {#<!-- Thumbnail Item Skin End -->#}
                     </div>
                 </div>
-
-
-
-
-
-                {#<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="false">#}
-                    {#<div class="carousel-inner">#}
-                        {#{% for image in product.images %}#}
-                            {#<div class="item{% if loop.first %} active{% endif %}">#}
-                                {#<img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="{{ product.title }}">#}
-                            {#</div>#}
-                        {#{% endfor %}#}
-                    {#</div>#}
-                {#</div>#}
-                {#<div class="clearfix">#}
-                    {#<div id="thumbcarousel" class="carousel slide" data-interval="false">#}
-                        {#<div class="carousel-inner">#}
-                            {#<div class="item active">#}
-                                {#<div class="row">#}
-                                    {#{% for image in product.images %}#}
-                                        {#<div data-target="#carousel" data-slide-to="{{ loop.index - 1 }}" class="thumb col-xs-6 col-sm-4 col-md-3">#}
-                                            {#<img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('336x182') }}" alt="{{ product.title }}">#}
-                                        {#</div>#}
-                                    {#{% endfor %}#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-                {#</div>#}
             </div>
             <div class="col-sm-4 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
@@ -201,7 +172,7 @@
     <script type="text/javascript">
         jssor_1_slider_init = function() {
             var jssor_1_options = {
-                $AutoPlay: true,
+                $AutoPlay: false,
                 $ArrowNavigatorOptions: {
                     $Class: $JssorArrowNavigator$
                 },

@@ -59,10 +59,10 @@
                 <a data-u="ad" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
             </div>
             {#<!-- Bullet Navigator -->#}
-            <div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+            {#<div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">#}
                 {#<!-- bullet navigator item prototype -->#}
-                <div data-u="prototype" style="width:16px;height:16px;"></div>
-            </div>
+                {#<div data-u="prototype" style="width:16px;height:16px;"></div>#}
+            {#</div>#}
             {#<!-- Arrow Navigator -->#}
             {#<span data-u="arrowleft" class="jssora22l" style="top:0;left:12px;width:40px;height:58px;" data-autocenter="2"></span>#}
             {#<span data-u="arrowright" class="jssora22r" style="top:0;right:12px;width:40px;height:58px;" data-autocenter="2"></span>#}
@@ -97,7 +97,7 @@
         jssor_1_slider_init = function() {
             var jssor_1_options = {
                 $AutoPlay: true,
-                $SlideDuration: 800,
+                $SlideDuration: 1000,
                 $SlideEasing: $Jease$.$OutQuint,
                 $ArrowNavigatorOptions: {
                     $Class: $JssorArrowNavigator$
