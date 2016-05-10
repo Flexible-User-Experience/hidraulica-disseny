@@ -7,7 +7,7 @@
     <style>
         #carousel-custom .carousel-indicators {
             margin: 10px 0 0;
-            overflow-x: scroll;
+            overflow-x: auto;
             position: static;
             text-align: left;
             white-space: nowrap;
@@ -20,7 +20,7 @@
             display: inline-block;
             height: auto;
             margin: 0 !important;
-            width: auto;
+            width: 128px;
         }
         #carousel-custom .carousel-indicators li img {
             display: block;
@@ -34,6 +34,16 @@
         }
         #carousel-custom .carousel-outer {
             position: relative;
+        }
+        @media(max-width: 991px) {
+            #carousel-custom .carousel-indicators li {
+                width: 64px;
+            }
+        }
+        @media(max-width: 767px) {
+            #carousel-custom .carousel-indicators li {
+                width: 32px;
+            }
         }
     </style>
 {% endblock %}
