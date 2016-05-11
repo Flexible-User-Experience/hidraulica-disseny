@@ -1825,16 +1825,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "v1.2.2",
+            "version": "v1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "a7b9da1f4fe4cb92ab18e5934399bc67ac182e6e"
+                "reference": "96dc5d831485af2feb1fb26ae0b990fbcdba63dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/a7b9da1f4fe4cb92ab18e5934399bc67ac182e6e",
-                "reference": "a7b9da1f4fe4cb92ab18e5934399bc67ac182e6e",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/96dc5d831485af2feb1fb26ae0b990fbcdba63dc",
+                "reference": "96dc5d831485af2feb1fb26ae0b990fbcdba63dc",
                 "shasum": ""
             },
             "require": {
@@ -1904,7 +1904,7 @@
                 "orm",
                 "symfony"
             ],
-            "time": "2016-03-21 21:09:09"
+            "time": "2016-05-11 12:57:42"
         },
         {
             "name": "imagine/imagine",
@@ -2674,16 +2674,16 @@
         },
         {
             "name": "liip/functional-test-bundle",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/liip/LiipFunctionalTestBundle.git",
-                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02"
+                "reference": "f3606bff7fcf7208a482f88d4cd216ebf4af194e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/7401da84b3da42cbde1fab51f26503ae9d6b8f02",
-                "reference": "7401da84b3da42cbde1fab51f26503ae9d6b8f02",
+                "url": "https://api.github.com/repos/liip/LiipFunctionalTestBundle/zipball/f3606bff7fcf7208a482f88d4cd216ebf4af194e",
+                "reference": "f3606bff7fcf7208a482f88d4cd216ebf4af194e",
                 "shasum": ""
             },
             "require": {
@@ -2745,7 +2745,7 @@
             "keywords": [
                 "Symfony2"
             ],
-            "time": "2016-04-15 09:58:44"
+            "time": "2016-05-10 22:04:27"
         },
         {
             "name": "liip/imagine-bundle",
@@ -4158,12 +4158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "5dc9071790d0889a2de7482869e0b381c52b7d15"
+                "reference": "cc7cf83258f21d5518e1b366ab378d0560db74e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/5dc9071790d0889a2de7482869e0b381c52b7d15",
-                "reference": "5dc9071790d0889a2de7482869e0b381c52b7d15",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/cc7cf83258f21d5518e1b366ab378d0560db74e4",
+                "reference": "cc7cf83258f21d5518e1b366ab378d0560db74e4",
                 "shasum": ""
             },
             "require": {
@@ -4243,7 +4243,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2016-05-10 16:18:21"
+            "time": "2016-05-11 11:36:43"
         },
         {
             "name": "sonata-project/block-bundle",
