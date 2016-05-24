@@ -1,36 +1,149 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ product.title }} · {{ parent() }}{% endblock %}
+{% block title %}{{ product.title | title }} · {{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/jquery.mThumbnailScroller.css') }}">
+    <style>
+        #carousel-custom .carousel-indicators {
+            margin: 5px 0 0;
+            overflow-x: auto;
+            position: static;
+            text-align: left;
+            white-space: nowrap;
+            width: 100%;
+        }
+        #carousel-custom .carousel-indicators li {
+            background-color: transparent;
+            -webkit-border-radius: 0;
+            border-radius: 0;
+            display: inline-block;
+            height: auto;
+            margin: 0 !important;
+            width: 128px;
+        }
+        #carousel-custom .carousel-indicators li img {
+            display: block;
+            opacity: 0.5;
+        }
+        #carousel-custom .carousel-indicators li.active img {
+            opacity: 1;
+        }
+        #carousel-custom .carousel-indicators li:hover img {
+            opacity: 0.75;
+        }
+        #carousel-custom .carousel-outer {
+            position: relative;
+        }
+        @media(max-width: 991px) {
+            #carousel-custom .carousel-indicators li {
+                width: 64px;
+            }
+        }
+        @media(max-width: 767px) {
+            #carousel-custom .carousel-indicators li {
+                width: 32px;
+            }
+        }
+    </style>
+{% endblock %}
 
 {% block main %}
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-xs-12">
-                <h1>{{ product.title }}</h1>
-            </div>
-            <div class="col-sm-6 col-xs-12">
-                <p>{{ product.description | raw }}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="hovereffect">
-                    <img src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ product.title }}" class="img-responsive">
-                </div>
-            </div>
-        </div>
-        {% if product.images | length > 0 %}
-            {% for image in product.images %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
+        {% if not product.enabled %}
+            <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest producte no està disponible a la web pública</div>
+        {% endif %}
+        <div class="row extra-m-bottom">
+            <div class="col-sm-8 col-xs-12">
+                <div id="carousel-custom" class="carousel slide" data-ride="carousel" data-interval="0">
+                    <div class="carousel-outer">
+                        {#<!-- Wrapper for slides -->#}
+                        <div class="carousel-inner">
+                            {% for image in product.images %}
+                                <div class="item{% if loop.index == 1 %} active{% endif %}">
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {#<!-- Controls -->#}
+                        {#<a class="left carousel-control" href="#carousel-custom" data-slide="prev">#}
+                            {#<i class="fa-2x icon-chevron-thin-left"></i>#}
+                        {#</a>#}
+                        {#<a class="right carousel-control" href="#carousel-custom" data-slide="next">#}
+                            {#<i class="fa-2x icon-chevron-thin-right"></i>#}
+                        {#</a>#}
+                    </div>
+                    {#<!-- Indicators -->#}
+                    <div id="my-thumbs-list">
+                        <ul class="carousel-indicators mCustomScrollbar">
+                            {% for image in product.images %}
+                                <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
-            {% endfor %}
+            </div>
+            <div class="col-sm-4 col-xs-12">
+                <h1 class="no-m-top">{{ product.title }}</h1>
+                <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
+                <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
+                    <div class="form-group">
+                        <label for="quantity" style="margin: 0 5px 0 0">
+                            <select class="form-control input-lg" name="quantity">
+                                <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
+                                <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
+                                <option{% if quantity == 3 %} selected="selected"{% endif %}>3</option>
+                                <option{% if quantity == 4 %} selected="selected"{% endif %}>4</option>
+                                <option{% if quantity == 5 %} selected="selected"{% endif %}>5</option>
+                            </select>
+                        </label>
+                    </div>
+                    <input type="hidden" name="product" value="{{ product.id }}">
+                    <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
+                </form>
+                <div class="normal-font-size extra-m-top">{{ product.description | raw }}</div>
+            </div>
+        </div>
+        {% if product.urlVimeo %}
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{ product.vimeoId }}" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            <hr>
         {% endif %}
+        <div class="row">
+            <div class="col-sm-1 col-xs-2">
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_product_detail_prev', {slug: product.slug}) }}"><i class="fa-2x icon-chevron-thin-left"></i></a>
+            </div>
+            <div class="col-sm-10 col-xs-8 text-center">
+                <a class="c-grey" href="{{ path('app_product_list') }}">{{ 'front.jumper.product' | trans | upper }}</a>
+            </div>
+            <div class="col-sm-1 col-xs-2 text-right">
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_product_detail_next', {slug: product.slug}) }}"><i class="fa-2x icon-chevron-thin-right"></i></a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block languages %}
     {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_product_detail', params: {slug: product.slug}} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jquery.mThumbnailScroller.min.js') }}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            jQuery('#my-thumbs-list').mThumbnailScroller({
+                axis: 'x',
+                contentTouchScroll: true
+            });
+        });
+    </script>
 {% endblock %}

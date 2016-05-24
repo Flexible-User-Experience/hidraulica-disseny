@@ -1,34 +1,58 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ work.title }} · {{ parent() }}{% endblock %}
+{% block title %}{{ work.title | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
-        <div class="row">
+        {% if not work.enabled %}
+            <div class="alert alert-danger" role="alert"><i class="fa fa-exclamation-triangle"></i> Borrador. Aquest treball no està disponible a la web pública</div>
+        {% endif %}
+        <div class="row extra-m-bottom">
             <div class="col-sm-6 col-xs-12">
-                <h1>{{ work.title }}</h1>
-                <h4 class="c-grey">{{ work.category.title }}</h4>
+                <h1 class="no-m-top">{{ work.title }}</h1>
+                {% if work.category is not null %}
+                    <h4 class="c-grey">{{ work.category.title }}</h4>
+                {% endif %}
             </div>
-            <div class="col-sm-6 col-xs-12">
-                <p>{{ work.description | raw }}</p>
+            <div class="col-sm-6 col-xs-12 normal-font-size">
+                <p class="no-m-top">{{ work.description | raw }}</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="hovereffect">
-                    <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}" class="img-responsive">
+        {% if work.urlVimeo %}
+            <div class="row extra-m-bottom">
+                <div class="col-xs-12">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{ work.vimeoId }}" frameborder="0"></iframe>
+                    </div>
                 </div>
+            </div>
+            <hr>
+        {% endif %}
+        <div class="row extra-m-bottom">
+            <div class="col-xs-12">
+                <img src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}" class="img-responsive">
             </div>
         </div>
         {% if work.images | length > 0 %}
             {% for image in work.images %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
+                <div class="row extra-m-bottom">
+                    <div class="col-xs-12">
+                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}">
                     </div>
                 </div>
             {% endfor %}
         {% endif %}
+        <div class="row">
+            <div class="col-sm-1 col-xs-2">
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_work_detail_prev', {slug: work.slug}) }}"><i class="fa-2x icon-chevron-thin-left"></i></a>
+            </div>
+            <div class="col-sm-10 col-xs-8 text-center">
+                <a class="c-grey" href="{{ path('app_work_list') }}">{{ 'front.jumper.work' | trans | upper }}</a>
+            </div>
+            <div class="col-sm-1 col-xs-2 text-right">
+                <a class="c-grey" style="text-decoration:none" href="{{ path('app_work_detail_next', {slug: work.slug}) }}"><i class="fa-2x icon-chevron-thin-right"></i></a>
+            </div>
+        </div>
     </div>
 {% endblock %}
 

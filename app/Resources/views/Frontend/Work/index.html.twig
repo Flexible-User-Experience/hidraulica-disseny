@@ -1,22 +1,15 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ 'front.title.works' | trans }} · {{ parent() }}{% endblock %}
+{% block title %}{{ 'front.title.works' | trans | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="row">
             {% for work in works %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(work, 'imageFile') | imagine_filter('700xY') }}" alt="{{ work.title }}">
-                        <div class="overlay">
-                            <h2>{{ work.category.title }}</h2>
-                            <a class="info" href="{{ path('app_work_detail', {slug: work.slug}) }}">{{ work.title }}</a>
-                        </div>
-                    </div>
-                </div>
+                {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: work} %}
             {% endfor %}
         </div>
+        {% include ':Frontend/includes:paginator-button-bar.html.twig' with {items: works} %}
     </div>
 {% endblock %}
 

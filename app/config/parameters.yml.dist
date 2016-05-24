@@ -22,6 +22,8 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
 
     locale: ca
+    locale_i18n: [ es, en ]
+    locale_i18n_full: [ ca, es, en ]
 
     google_analytics_enabled:   false
     google_analytics_account:   "UA-xxxxxxxx-x"
@@ -36,3 +38,8 @@ parameters:
     private_editor_test_pass: user
 
     project_web_title: "Hidràulica"
+
+    paypal_username:  XXX
+    paypal_password:  YYY
+    paypal_signature: ZZZ
+    paypal_sandbox:   false

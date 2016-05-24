@@ -57,7 +57,7 @@ class Customer extends AbstractBase
 
     /**
      * @var string
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\Email(strict = true, checkMX = true, checkHost = true)
      */
     private $email;
@@ -81,6 +81,14 @@ class Customer extends AbstractBase
      *
      *
      */
+
+    /**
+     * Customer constructor
+     */
+    public function __construct()
+    {
+        $this->carts = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -294,7 +302,6 @@ class Customer extends AbstractBase
      */
     public function __toString()
     {
-
         return $this->id ? '#' . $this->getId() . ' · ' . $this->getName() : '---';
     }
 

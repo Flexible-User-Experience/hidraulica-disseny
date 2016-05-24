@@ -3,6 +3,8 @@
 namespace AppBundle\Controller\Frontend;
 
 use AppBundle\Entity\ContactMessage;
+use AppBundle\Entity\Work;
+use AppBundle\Entity\Product;
 use AppBundle\Form\Type\ContactMessageType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,7 +17,6 @@ use Symfony\Component\HttpFoundation\Response;
  * @category Controller
  * @package  AppBundle\Controller\Frontend
  * @author   Anton Serra <aserratorta@gmail.com>
- *
  */
 class WebController extends Controller
 {
@@ -24,11 +25,34 @@ class WebController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':Frontend:homepage.html.twig');
+        $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
+        $thumbs = array_merge($works, $products);
+        usort(
+            $thumbs,
+            function ($a, $b) {
+                /** @var Work|Product $a */
+                /** @var Work|Product $b */
+                if ($a->getCreatedAt() == $b->getCreatedAt()) {
+                    return 0;
+                }
+
+                return ($a->getCreatedAt() > $b->getCreatedAt()) ? -1 : 1;
+            }
+        );
+
+        return $this->render(
+            ':Frontend:secure_homepage.html.twig',
+            [
+                'thumbs' => $thumbs,
+                'slides' => $slides,
+            ]
+        );
     }
 
     /**
-     * @Route("/about/", name="app_about", options={"i18n_prefix" = "secure"})
+     * @Route("/about-us", name="app_about")
      */
     public function aboutAction()
     {
@@ -36,7 +60,7 @@ class WebController extends Controller
     }
 
     /**
-     * @Route("/contact/", name="app_contact", options={"i18n_prefix" = "secure"})
+     * @Route("/contact", name="app_contact")
      * @param Request $request
      *
      * @return Response
@@ -59,12 +83,12 @@ class WebController extends Controller
             $contact = new ContactMessage();
             $form = $this->createForm(ContactMessageType::class, $contact);
             // build flash message
-            $this->addFlash('msg', 'frontend.form.flash.user');
+            $this->addFlash('msg', 'front.form.flash.user');
         }
 
         return $this->render(
             ':Frontend:contact.html.twig',
-            [ 'form' => $form->createView() ]
+            ['form' => $form->createView()]
         );
     }
 }

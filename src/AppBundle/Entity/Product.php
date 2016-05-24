@@ -4,9 +4,11 @@ namespace AppBundle\Entity;
 
 use AppBundle\Entity\Traits\DescriptionTrait;
 use AppBundle\Entity\Traits\ImageTrait;
+use AppBundle\Entity\Traits\ShowInHomepageTrait;
 use AppBundle\Entity\Traits\TitleTrait;
 use AppBundle\Entity\Traits\SlugTrait;
 use AppBundle\Entity\Traits\TranslationsTrait;
+use AppBundle\Entity\Traits\UrlVimeoTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -27,11 +29,17 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Product extends AbstractBase
 {
+    const VAT_TAX = 21;
+    const VAT_TAX_DIVIDER = 1.21;
+    const VAT_TAX_MULTIPLIER = 0.21;
+
     use ImageTrait;
     use TitleTrait;
     use SlugTrait;
     use TranslationsTrait;
     use DescriptionTrait;
+    use UrlVimeoTrait;
+    use ShowInHomepageTrait;
 
     /**
      * @var string
@@ -102,6 +110,19 @@ class Product extends AbstractBase
     public function getPrice()
     {
         return $this->price;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPriceWithoutTax()
+    {
+        $result = 0;
+        if ($this->price > 0) {
+            $result = $this->price / self::VAT_TAX_DIVIDER;
+        }
+
+        return $result;
     }
 
     /**

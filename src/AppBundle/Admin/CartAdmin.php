@@ -34,6 +34,9 @@ class CartAdmin extends AbstractBaseAdmin
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
+            ->remove('create')
+            ->remove('delete')
+            ->remove('edit')
             ->remove('batch');
     }
 
@@ -122,15 +125,52 @@ class CartAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'  => 'backend.admin.created_date',
-                    'format' => 'd/M/y',
+                    'format' => 'd/m/Y',
                 )
             )
             ->add(
-                'statusHumanFriendly',
+                'status',
                 null,
                 array(
                     'label'   => 'backend.admin.cart.status.status',
-                    'choices' => CartStatusEnum::getEnumArray(),
+                    'template' => '::Admin/Shows/show__field_cart_status_enum.html.twig',
+                )
+            )
+            ->end()
+            ->with('Estat pagament', $this->getFormMdSuccessBoxArray(6))
+            ->add(
+                'payment.number',
+                null,
+                array(
+                    'label'  => 'Referència',
+                )
+            )
+            ->add(
+                'payment.description',
+                null,
+                array(
+                    'label'  => 'Descripció',
+                )
+            )
+            ->add(
+                'payment.clientEmail',
+                null,
+                array(
+                    'label'  => 'Email',
+                )
+            )
+            ->add(
+                'payment.currencyCode',
+                null,
+                array(
+                    'label'  => 'Moneda',
+                )
+            )
+            ->add(
+                'payment.totalAmount',
+                null,
+                array(
+                    'label'  => 'Import',
                 )
             )
             ->end()
@@ -143,10 +183,31 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'totalAmount',
+                'baseAmount',
                 null,
                 array(
-                    'label' => 'backend.admin.cart.total_amount',
+                    'label' => 'Base imposable',
+                )
+            )
+            ->add(
+                'deliveryAmount',
+                null,
+                array(
+                    'label' => 'Enviament',
+                )
+            )
+            ->add(
+                'vatTax',
+                null,
+                array(
+                    'label' => 'IVA',
+                )
+            )
+            ->add(
+                'totalAmountWithDeliveryAndVatTax',
+                null,
+                array(
+                    'label' => 'Total',
                 )
             )
             ->end();
@@ -254,7 +315,7 @@ class CartAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
-                'totalAmount',
+                'baseAmount',
                 null,
                 array(
                     'label'    => 'backend.admin.cart.total_amount',

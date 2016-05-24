@@ -9,7 +9,7 @@ namespace AppBundle\Enum;
  * @package  AppBundle\Enum
  * @author   David Romaní <david@flux.cat>
  */
-class CartStatusEnum
+class CartStatusEnum extends Enum
 {
     const CART_STATUS_NEW = 0;
     const CART_STATUS_PENDING = 1;

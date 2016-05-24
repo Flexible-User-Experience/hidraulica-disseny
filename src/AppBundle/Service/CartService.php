@@ -75,17 +75,20 @@ class CartService
 
         if ($cart->hasItemByProduct($product)) {
             $cartItem = $cart->getCartItemByProduct($product);
-            $cartItem->setQuantity($cartItem->getQuantity() + $quantity);
+            $cartItem->setQuantity($quantity);
             $this->em->persist($cartItem);
+            $this->em->flush();
+            $cart->setBaseAmount($cart->getBaseAmount() + $cartItem->getTotalAmount());
             $this->em->flush();
         } else {
             $cartItem = new CartItem();
             $cartItem->setCart($cart);
             $cartItem->setProduct($product);
             $cartItem->setQuantity($quantity);
-            $cart->addItem($cartItem);
             $this->em->persist($cartItem);
-            $this->em->persist($cart);
+            $this->em->flush();
+            $cart->addItem($cartItem);
+            $cart->setBaseAmount($cartItem->getTotalAmount());
             $this->em->flush();
         }
     }
@@ -102,7 +105,9 @@ class CartService
         if ($cart->hasItemByProduct($product)) {
             $cartItem = $cart->getCartItemByProduct($product);
             $cartItem->setQuantity($quantity);
+            $cart->setBaseAmount($cart->getBaseAmount() + $cartItem->getTotalAmount());
             $this->em->persist($cartItem);
+            $this->em->flush();
             $this->em->flush();
         } else {
             $cartItem = new CartItem();
@@ -110,8 +115,8 @@ class CartService
             $cartItem->setProduct($product);
             $cartItem->setQuantity($quantity);
             $cart->addItem($cartItem);
+            $cart->setBaseAmount($cartItem->getTotalAmount());
             $this->em->persist($cartItem);
-            $this->em->persist($cart);
             $this->em->flush();
         }
     }
@@ -125,6 +130,7 @@ class CartService
         $product = $this->getItemById($itemId);
         $cartItem = $cart->getCartItemByProduct($product);
         if ($cartItem) {
+            $cart->setBaseAmount($cart->getBaseAmount() - $cartItem->getTotalAmount());
             $this->em->remove($cartItem);
             $this->em->flush();
         }
@@ -138,7 +144,6 @@ class CartService
         if ($this->session->get('cart', null)) {
             $cart = $this->getCartById($this->session->get('cart', null));
             if ($cart) {
-
                 return $cart;
             }
         }
@@ -162,13 +167,21 @@ class CartService
     }
 
     /**
+     * remove session cart
+     */
+    public function removeSessionCart()
+    {
+        $this->session->set('cart', null);
+    }
+
+    /**
      * @param int $itemId
      *
      * @return Product
      */
     public function getItemById($itemId)
     {
-        return $this->em->getRepository('ECVulcoAppBundle:AbstractProduct')->findOneBy(array('id' => $itemId));
+        return $this->em->getRepository('AppBundle:Product')->findOneBy(array('id' => $itemId));
     }
 
     /**

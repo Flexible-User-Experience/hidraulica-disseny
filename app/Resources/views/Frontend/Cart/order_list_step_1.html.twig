@@ -1,0 +1,92 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block title %}{{ 'front.cart.step1.title' | trans | title }} · {{ parent() }}{% endblock %}
+
+{% block main %}
+    <div class="container">
+        <div class="row extra-m-top">
+            <div class="col-xs-3">
+                <a href="{{ path('app_product_list') }}"><i class="fa fa-chevron-circle-left"></i> {{ 'front.cart.back' | trans | upper }}</a>
+            </div>
+            <div class="col-xs-6 text-center">
+                <h2 class="no-m-top no-m-bottom">{{ 'front.cart.cart' | trans | upper }}</h2>
+            </div>
+            <div class="col-xs-3 text-right">
+                <a href="{{ path('app_cart_checkout_step_2') }}" class="btn btn-success">{{ 'front.cart.continue' | trans | upper }}</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th class="text-right">{{ 'front.cart.table.unitprice' | trans | title }}</th>
+                        <th class="text-right">{{ 'front.cart.table.units' | trans | title }}</th>
+                        <th class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in cart.items %}
+                        <tr>
+                            <td>
+                                <a href="{{ path('app_product_detail', {slug: item.product.slug}) }}">
+                                    <img class="img-responsive" src="{{ vich_uploader_asset(item.product, 'imageFile') | imagine_filter('60x60') }}" alt="{{ item.product.title }} photo">
+                                </a>
+                            </td>
+                            <td>{{ item.product.title }}</td>
+                            <td class="text-right">{{ item.product.priceWithoutTax | round(2) }} €</td>
+                            <td class="text-right">
+                                <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
+                                    <div class="form-group">
+                                        <label for="quantity">
+                                            <select class="form-control" name="quantity" onchange="this.form.submit()">
+                                                <option{% if item.quantity == 1 %} selected="selected"{% endif %}>1</option>
+                                                <option{% if item.quantity == 2 %} selected="selected"{% endif %}>2</option>
+                                                <option{% if item.quantity == 3 %} selected="selected"{% endif %}>3</option>
+                                                <option{% if item.quantity == 4 %} selected="selected"{% endif %}>4</option>
+                                                <option{% if item.quantity == 5 %} selected="selected"{% endif %}>5</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <input type="hidden" name="product" value="{{ item.product.id }}">
+                                </form>
+                            </td>
+                            <td class="text-right">{{ item.totalAmountWithoutTax | round(2) }} €</td>
+                            <td class="text-right"><a href="{{ path('app_cart_remove_item', {itemId: item.product.id}) }}"><i class="text-danger fa fa-times-circle"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right">{{ 'front.cart.table.price' | trans | title }}</th>
+                        <th class="text-right">{{ cart.baseAmount - cart.vatTaxAmount }} €</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right">{{ 'front.cart.table.tax' | trans | upper }} {{ cart.vatTax }}%</th>
+                        <th class="text-right">{{ cart.vatTaxAmount }} €</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2"></th>
+                        <th colspan="2" class="text-right"><h3 class="no-m">{{ 'front.cart.table.total' | trans | upper }}</h3></th>
+                        <th class="text-right"><h3 class="no-m"><span class="label label-primary">{{ cart.baseAmount }} €</span></h3></th>
+                        <th></th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <a href="{{ path('app_cart_checkout_step_2') }}" class="btn btn-success">{{ 'front.cart.continue' | trans | upper }}</a>
+            </div>
+            {% include (':Frontend/includes:paypal-trusted-icons.html.twig') %}
+        </div>
+    </div>
+{% endblock %}

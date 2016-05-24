@@ -11,9 +11,11 @@ front:
     works: works
     about: about us
     contact: contact
+  homepage:
+    banner: Hydraulic are a interior design, furniture and ephemeral architecture study located on the Terres de l'Ebre.
   about:
     text: |
-      Hidràulica som un estudi de disseny ubicat a Amposta, oferim serveis professionals per a empreses i particulars.<br><br>Creiem en el disseny com a eina per al desenvolupament, la innovació i la comunicació.<br><br>Basem el nostre treball en la integració de diferents disciplines, abraçant des de la concepció de la idea fins a la realització de projectes d'interiorismen, espais comercials, mobiliari i arquitectura efímera.<br><br>
+      Hidràulica is a design studio located in Amposta; we offer professional services for businesses and individuals.<br><br>We believe in design as a tool for development, innovation and communication.<br><br>We base our work on the integration of different disciplines, which include from conception of the idea to the realization of interior design projects, commercial spaces, furniture and ephemeral architecture.<br><br>
   contact:
     form:
       name: name
@@ -22,6 +24,60 @@ front:
       message: message
       ok: send
     text: |
-      Contacta'ns, estarem encantats de poder treballar per a tu!<br><br>
+      Contact us, we'll be glad to work for you!<br><br>
+  jumper:
+    work: back to works
+    product: back to products
+  cart:
+    add: add to cart
+    total: total
+    confirm: checkout
+    step1:
+      title: cart
+    step2:
+      title: customer date
+      name: Name
+      email: Email
+      phone: Phone
+      address: Address
+      city: City
+      zip: Postal code
+      state: State
+      country: Country
+      submit: Pay
+    step3:
+      title: payment
+      ok: Thank you for your purchase. We will send your order as soon as possible.
+      error: An error occurred during your purchase. We will contact you as soon as possible.
+    back: continue shopping
+    cart: your cart
+    continue: continue
+    table:
+      unitprice: unit price
+      units: units
+      price: amount
+      tax: vat
+      total: total
+  form:
+    flash:
+      user: Your message has been sent successfully.
   footer:
     email: "hello@hidraulicadisseny.com"
+backend:
+  admin:
+    block:
+      title: Notifications
+      text: pending messages
+      notext: you don't have pending messages
+Previous: previous
+Next: next
+mail:
+  helloagain: Hello again!
+  yourquestion: Your question
+  recived: has been received
+  asap: We will answer you as soon as possible. Keep in touch.
+  youhave: You have received this notification in order to answer your question
+  from: from
+  at: at
+  thanks: Thanks for contact us
+  ourmailaddress: Our mailing address is

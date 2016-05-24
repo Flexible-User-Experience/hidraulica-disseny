@@ -22,7 +22,7 @@ class ContactMessageAdminController extends BaseAdminController
      * Show action
      *
      * @param int|string|null $id
-     * @param Request $request
+     * @param Request         $request
      *
      * @return Response
      * @throws NotFoundHttpException If the object does not exist
@@ -57,8 +57,8 @@ class ContactMessageAdminController extends BaseAdminController
         return $this->render(
             $this->admin->getTemplate('show'),
             array(
-                'action' => 'show',
-                'object' => $object,
+                'action'   => 'show',
+                'object'   => $object,
                 'elements' => $this->admin->getShow(),
             ),
             null,
@@ -70,7 +70,7 @@ class ContactMessageAdminController extends BaseAdminController
      * Answer message action.
      *
      * @param int|string|null $id
-     * @param Request $request
+     * @param Request         $request
      *
      * @return Response
      * @throws NotFoundHttpException If the object does not exist
@@ -108,9 +108,10 @@ class ContactMessageAdminController extends BaseAdminController
         return $this->render(
             '::Admin/ContactMessage/answer_form.html.twig',
             array(
-                'action' => 'answer',
-                'object' => $object,
-                'form' => $form->createView(),
+                'action'   => 'answer',
+                'object'   => $object,
+                'form'     => $form->createView(),
+                'elements' => $this->admin->getShow(),
             ),
             null,
             $request

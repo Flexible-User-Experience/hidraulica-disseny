@@ -1,5 +1,5 @@
 services:
-# Sonata Admins
+# Sonata Admin
     admin.work:
         class: AppBundle\Admin\WorkAdmin
         arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
@@ -40,18 +40,29 @@ services:
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "User", group: "Users" }
-
     admin.cart:
         class: AppBundle\Admin\CartAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Cart, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Cart", group: "Carts" }
-
     admin.customer:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
             - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
+# Sonata Blocks
+    admin.block.messages:
+        class: AppBundle\Admin\Block\PendingMessagesBlock
+        tags:
+            - { name: sonata.block }
+        arguments: [ "sonata.admin.block.messages", "@templating", "@doctrine.orm.entity_manager" ]
+# Cart
+    app.cart_service:
+        class: AppBundle\Service\CartService
+        arguments: [ "@session", "@doctrine.orm.entity_manager", "@security.context" ]
+    app.customer_service:
+        class: AppBundle\Service\CustomerService
+        arguments: [ "@doctrine.orm.entity_manager" ]
 # Messaging
     app.courier:
         class: AppBundle\Service\CourierService
@@ -59,8 +70,7 @@ services:
     app.notification:
         class: AppBundle\Service\NotificationService
         arguments: [ "@app.courier", "@twig", "%mailer_destination%", "%mailer_url_base%" ]
-
-# Menus
+# Menu
     app.frontend_menu_builder:
         class: AppBundle\Menu\FrontendMenuBuilder
         arguments: [ "@knp_menu.factory", "@security.authorization_checker", "@translator" ]
@@ -70,3 +80,35 @@ services:
         arguments: [ "@request_stack" ]
         tags:
             - { name: knp_menu.menu, alias: top }
+# Repository
+    app.entity_repository.work:
+        class: AppBundle\Repository\WorkRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Work
+    app.entity_repository.product:
+        class: AppBundle\Repository\ProductRepository
+        factory: [ "@doctrine", getRepository ]
+        arguments:
+            - AppBundle:Product
+# Sitemap
+    app.sitemap:
+        class: AppBundle\Listener\SitemapListener
+        arguments: [ "@router", "@app.entity_repository.work", "@app.entity_repository.product", %locale_i18n_full% ]
+        tags: [ { name: "presta.sitemap.listener" } ]
+# Listeners
+    app.cart_item_listener:
+        class: AppBundle\Listener\CartItemListener
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+    app.cart_listener:
+        class: AppBundle\Listener\CartListener
+        tags:
+              - { name: doctrine.event_subscriber, connection: default }
+# Twig
+    app.twig_extension:
+        class: AppBundle\Twig\AppExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+        arguments: [ "@router" ]

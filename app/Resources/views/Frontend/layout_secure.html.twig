@@ -1,52 +1,70 @@
 {% extends ':Frontend:layout.html.twig' %}
 
 {% block header %}
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="{{ path('app_homepage') }}">
-                                <img alt="{{ project_title }}" src="{{ asset('bundles/app/images/hidraulica.png') }}" class="img-responsive">
-                            </a>
-                            {#<a class="navbar-brand" href="#">Brand</a>#}
-                        </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            {{ knp_menu_render('top') }}
-                        </div>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                </nav>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-heade">
+                <div id="top-logo-div-holder">
+                    <a href="{{ path('app_homepage') }}"><img alt="{{ project_title }}" src="{{ asset('bundles/app/vectors/logo.svg') }}"></a>
+                </div>
+                {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                    {#<span class="icon-bar"></span>#}
+                {#</button>#}
+            </div>
+            {{ render(controller('AppBundle:Frontend/Cart:topMenuResumeCart')) }}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="first">
+                    <a id="top-menu-bars-icon" href="#"><i class="fa fa-bars"></i></a>
+                </li>
+            </ul>
+            {#<div class="navbar-collapse collapse">#}
+            <div id="top-menu-bars" class="closed-navbar">
+                {{ knp_menu_render('top', {currentClass: 'active'}) }}
             </div>
         </div>
-    </div>
+    </nav>
 {% endblock %}
 
 {% block footer %}
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-3">
-                <a href="mailto:hola@hidraulicadisseny.com">{{ 'front.footer.email' | trans }}</a>
+    <footer class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3">
+                    <a href="mailto:hola@hidraulicadisseny.com">{{ 'front.footer.email' | trans }}</a>
+                </div>
+                <div class="col-xs-9 text-right">
+                    <a target="_blank" href="https://www.facebook.com/hidraulicadisseny">facebook</a>, <a target="_blank" href="https://www.behance.net/hidraulicadisseny">behance</a>, <a target="_blank" href="https://es.pinterest.com/hidraulicadis/">pinterest</a>, <a target="_blank" href="https://vimeo.com/hidraulica">vimeo</a>
+                </div>
             </div>
-            <div class="col-xs-9 text-right">
-                <a target="_blank" href="https://www.facebook.com/hidraulicadisseny">facebook</a>, <a target="_blank" href="https://www.behance.net/hidraulicadisseny">behance</a>, <a target="_blank" href="https://es.pinterest.com/hidraulicadis/">pinterest</a>, <a target="_blank" href="https://vimeo.com/hidraulica">vimeo</a>
+            <div class="row">
+                <div class="col-xs-3">
+                    <i class="fa fa-copyright"></i> {{ 'now' | date('Y') }}
+                </div>
+                <div class="col-xs-9 text-right">
+                    {% block languages %}
+                        {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_homepage', params: {}} %}
+                    {% endblock %}
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-3">
-                <i class="fa fa-copyright"></i> {{ 'now' | date('Y') }}
-            </div>
-            <div class="col-xs-9 text-right">
-                {% block languages %}
-                    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_homepage', params: {}} %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
+    </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            var top_menu_bars_icon = $('#top-menu-bars-icon');
+            top_menu_bars_icon.click(function() {
+                var top_menu_bars = $('#top-menu-bars');
+                if (top_menu_bars.hasClass('closed-navbar')) {
+                    top_menu_bars.removeClass('closed-navbar');
+                } else {
+                    top_menu_bars.addClass('closed-navbar');
+                }
+            });
+        });
+    </script>
 {% endblock %}

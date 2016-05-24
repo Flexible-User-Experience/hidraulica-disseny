@@ -9,7 +9,7 @@ namespace AppBundle\Enum;
  * @package  AppBundle\Enum
  * @author   David Romaní <david@flux.cat>
  */
-class UserRolesEnum
+class UserRolesEnum extends Enum
 {
     const ROLE_USER = 'ROLE_USER';
     const ROLE_CMS = 'ROLE_CMS';

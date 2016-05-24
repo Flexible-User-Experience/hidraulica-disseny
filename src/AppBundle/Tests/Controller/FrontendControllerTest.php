@@ -21,7 +21,7 @@ class FrontendControllerTest extends AbstractBaseTest
      */
     public function testPagesAreSuccessful($url)
     {
-        $client = $this->makeClient(true);         // authenticated user
+        $client = $this->createClient();
         $client->request('GET', $url);
 
         $this->assertStatusCode(200, $client);
@@ -36,14 +36,27 @@ class FrontendControllerTest extends AbstractBaseTest
     {
         return array(
             array('/ca/'),
-//            array('/secure/ca/treballs/'),
-//            array('/secure/ca/productes/'),
+            array('/ca/treballs'),
+            array('/ca/treball/my-work'),
+            array('/ca/productes'),
+            array('/ca/producte/my-product'),
+            array('/ca/sobre-nosaltres'),
+            array('/ca/contacte'),
             array('/es/'),
-//            array('/secure/es/trabajos/'),
-//            array('/secure/es/productos/'),
+            array('/es/trabajos'),
+            array('/es/trabajo/my-work'),
+            array('/es/productos'),
+            array('/es/producto/my-product'),
+            array('/es/sobre-nosotros'),
+            array('/es/contacto'),
             array('/en/'),
-//            array('/secure/en/works/'),
-//            array('/secure/en/products/'),
+            array('/en/works'),
+            array('/en/work/my-work'),
+            array('/en/products'),
+            array('/en/product/my-product'),
+            array('/en/about-us'),
+            array('/en/contact'),
+            array('/sitemap/sitemap.default.xml'),
         );
     }
 
@@ -69,9 +82,9 @@ class FrontendControllerTest extends AbstractBaseTest
     public function provideNotFoundUrls()
     {
         return array(
-            array('/ca/pagina-trenacada/'),
-            array('/es/pagina-rota/'),
-            array('/en/broken-page/'),
+            array('/ca/pagina-trenacada'),
+            array('/es/pagina-rota'),
+            array('/en/broken-page'),
         );
     }
 }

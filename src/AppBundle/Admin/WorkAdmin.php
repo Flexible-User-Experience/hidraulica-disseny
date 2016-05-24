@@ -57,10 +57,21 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                'ckeditor',
+                'textarea',
                 array(
-                    'config_name' => 'my_config',
-                    'label'       => 'backend.admin.description',
+                    'attr'  => array(
+                        'rows'  => 8,
+                        'class' => 'tinymce',
+                    ),
+                    'label' => 'backend.admin.description',
+                )
+            )
+            ->add(
+                'urlVimeo',
+                null,
+                array(
+                    'label' => 'Vimeo',
+                    'help'  => 'https://vimeo.com/NNNNNN',
                 )
             )
             ->end()
@@ -78,6 +89,14 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.category',
+                )
+            )
+            ->add(
+                'showInHomepage',
+                'checkbox',
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'required' => false,
                 )
             )
             ->add(
@@ -104,7 +123,10 @@ class WorkAdmin extends AbstractBaseAdmin
                         ),
                         'description' => array(
                             'label'    => 'backend.admin.description',
-                            'attr'     => array('rows' => 8),
+                            'attr'     => array(
+                                'rows'  => 8,
+                                'class' => 'tinymce',
+                            ),
                             'required' => false,
                         ),
                     ),
@@ -172,6 +194,13 @@ class WorkAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label' => 'backend.admin.homepage',
+                )
+            )
+            ->add(
                 'enabled',
                 null,
                 array(
@@ -218,6 +247,14 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.category',
+                )
+            )
+            ->add(
+                'showInHomepage',
+                null,
+                array(
+                    'label'    => 'backend.admin.homepage',
+                    'editable' => true,
                 )
             )
             ->add(

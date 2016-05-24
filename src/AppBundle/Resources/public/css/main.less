@@ -1,6 +1,7 @@
 // Imports
 @import "../../../../../vendor/twbs/bootstrap/less/bootstrap.less";
 @import "../../../../../vendor/components/font-awesome/less/font-awesome.less";
+@import "hero.less";
 
 // Variables
 @blue-dark:   #08122F;
@@ -13,6 +14,9 @@
 @gap-big: @gap-normal * 2;
 @gap-normal: 20px;
 @gap-small: @gap-normal / 2;
+@c-font-size-base:  16px;
+@c-font-size-large: ceil((@font-size-base * 1.25));
+@c-font-size-small: ceil((@font-size-base * 0.95));
 
 // Fonts
 @icon-font-path: "/bundles/app/fonts/";
@@ -55,8 +59,18 @@
 .bc-grey    { background-color: @grey }
 .bc-black   { background-color: @black }
 
+// Links
+@link-color: @black;
+@text-color: @grey;
+@btn-border-radius-base: 0;
+
+// Heads
+h1 { color: @black; }
+
 // Textarea
-textarea { resize: vertical; }
+textarea {
+  .resizable(vertical);
+}
 
 // Gaps
 .no-m { margin: 0; }
@@ -73,7 +87,108 @@ textarea { resize: vertical; }
   padding-right: 0;
 }
 
-// Clean ups
+// Navbar
+@navbar-height: 80px;
+@navbar-margin-bottom: @gap-big;
+@navbar-default-bg: rgba(255, 255, 255, 0.85);
+@navbar-default-link-color: @black;
+@navbar-default-link-hover-color: @blue-light;
+@navbar-default-link-active-color: @blue-light;
+@navbar-default-link-active-bg: transparent;
+@navbar-default-border: transparent;
+.closed-navbar {
+  ul {
+    li {
+      a { display: none; }
+      &.active {
+        a { display: block; }
+      }
+    }
+  }
+}
+
+.nav > li {
+  @media(max-width: @screen-xs-max) {
+    display: inline-block;
+  }
+}
+
+.navbar-nav {
+  @media(max-width: @screen-xs-max) {
+    margin: 0px -15px;
+  }
+}
+
+.navbar-right {
+  font-size: @font-size-large;
+  @media(max-width: @screen-sm-max) {
+    font-size: @font-size-base;
+  }
+  @media(max-width: @screen-xs-max) {
+    font-size: @font-size-small;
+  }
+}
+
+#top-menu-resume-dropdown-menu {
+  min-width: 450px;
+}
+
+// Body
+body {
+  &.base { padding-top: 80px; }
+  &.no-gap {
+    padding-top: 0;
+    .navbar-default {
+      background-color: transparent;
+    }
+  }
+}
+
+.banner-description-p p {
+  font-size: @font-size-large;
+  @media(max-width: @screen-xs-max) {
+    font-size: @font-size-base;
+  }
+}
+
+#top-logo-div-holder {
+  width: 240px;
+  float: left;
+  @media(max-width: @screen-xs-max) {
+    width: 120px;
+  }
+}
+
+.normal-font-size {
+  font-size: @c-font-size-base;
+  @media(max-width: @screen-xs-max) {
+    font-size: @c-font-size-small;
+  }
+}
+
+/* Carousel base class */
+.carousel {
+  margin-bottom: 60px;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
+  margin: 0 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  background-color: @grey;
+}
+
+.carousel img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+// Cleanups
 .d-block { display: block; }
 .no-overflow { overflow: hidden; }
 .no-underline {
@@ -81,92 +196,88 @@ textarea { resize: vertical; }
   &:hover { text-decoration: none; }
 }
 
+// Contact form
+#contact_message_name, #contact_message_email, #contact_message_subject, #contact_message_message {
+  border: none;
+  border-bottom: solid 1px @grey;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 6px 0;
+}
+
+#contact_message_send {
+  border-radius: 0;
+  border: none;
+  background-color: @black;
+  color: @white;
+  padding: @gap-small @gap-big;
+  text-transform: uppercase;
+}
+
+// Footer
+footer.main { margin-top: 50px; }
+
 // Hovers
 .hovereffect {
-  width:100%;
-  height:100%;
-  float:left;
-  overflow:hidden;
-  position:relative;
-  text-align:center;
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow: hidden;
+  position: relative;
   margin-bottom: @gap-big;
-  cursor:default;
-}
-
-.hovereffect .overlay {
-  width:100%;
-  height:100%;
-  position:absolute;
-  overflow:hidden;
-  top:0;
-  left:0;
-  opacity:0;
-  background-color:rgba(0,0,0,0.5);
-  -webkit-transition:all .4s ease-in-out;
-  transition:all .4s ease-in-out
-}
-
-.hovereffect img {
-  display:block;
-  position:relative;
-  -webkit-transition:all .4s linear;
-  transition:all .4s linear;
-}
-
-.hovereffect h2 {
-  text-transform:uppercase;
-  color:#fff;
-  text-align:center;
-  position:relative;
-  font-size:17px;
-  background:rgba(0,0,0,0.6);
-  -webkit-transform:translatey(-100px);
-  -ms-transform:translatey(-100px);
-  transform:translatey(-100px);
-  -webkit-transition:all .2s ease-in-out;
-  transition:all .2s ease-in-out;
-  padding:10px;
-}
-
-.hovereffect a.info {
-  text-decoration:none;
-  display:inline-block;
-  text-transform:uppercase;
-  color:#fff;
-  border:1px solid #fff;
-  background-color:transparent;
-  opacity:0;
-  filter:alpha(opacity=0);
-  -webkit-transition:all .2s ease-in-out;
-  transition:all .2s ease-in-out;
-  margin:50px 0 0;
-  padding:7px 14px;
-}
-
-.hovereffect a.info:hover {
-  box-shadow:0 0 5px #fff;
-}
-
-.hovereffect:hover img {
-  -ms-transform:scale(1.2);
-  -webkit-transform:scale(1.2);
-  transform:scale(1.2);
+  .overlay {
+    padding: @gap-normal;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    .opacity(0);
+    background-color: rgba(45, 116, 119, 0.85);
+    .transition(all .2s ease-in-out);
+  }
+  img {
+    display: block;
+    position: relative;
+  }
+  h2 {
+    color: @grey;
+    position: relative;
+    font-size: 17px;
+    padding: 0;
+    margin: 0 0 @gap-small 0;
+  }
+  h3 {
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .hovereffect:hover .overlay {
-  opacity:1;
-  filter:alpha(opacity=100);
+  .opacity(1);
 }
 
-.hovereffect:hover h2,.hovereffect:hover a.info {
-  opacity:1;
-  filter:alpha(opacity=100);
-  -ms-transform:translatey(0);
-  -webkit-transform:translatey(0);
-  transform:translatey(0);
-}
-
-.hovereffect:hover a.info {
-  -webkit-transition-delay:.2s;
-  transition-delay:.2s;
+// Scroll to top helper
+.scroll-top-wrapper {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  text-align: center;
+  z-index: 2000;
+  background-color: lighten(@grey, 30);
+  color: @white;
+  width: 60px;
+  height: 60px;
+  right: 15px;
+  bottom: 15px;
+  padding-top: 8px;
+  .transition (all 0.5s ease-in-out);
+  &.show {
+    visibility: visible;
+    cursor: pointer;
+    opacity: 0.85;
+  }
+  i.fa { line-height: inherit; }
 }

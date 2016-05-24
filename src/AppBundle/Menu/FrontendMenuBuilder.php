@@ -6,14 +6,14 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
-use Symfony\Component\Translation\DataCollectorTranslator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class FrontendMenuBuilder
  *
  * @category Menu
  * @package  AppBundle\Menu
- * @author   Anotn Serra <aserratorta@gmail.com>
+ * @author   David Romaní <david@flux.cat>
  */
 class FrontendMenuBuilder
 {
@@ -28,16 +28,16 @@ class FrontendMenuBuilder
     private $ac;
 
     /**
-     * @var DataCollectorTranslator
+     * @var TranslatorInterface
      */
     private $ts;
 
     /**
-     * @param FactoryInterface        $factory
-     * @param AuthorizationChecker    $ac
-     * @param DataCollectorTranslator $ts
+     * @param FactoryInterface     $factory
+     * @param AuthorizationChecker $ac
+     * @param TranslatorInterface  $ts
      */
-    public function __construct(FactoryInterface $factory, AuthorizationChecker $ac, DataCollectorTranslator $ts)
+    public function __construct(FactoryInterface $factory, AuthorizationChecker $ac, TranslatorInterface $ts)
     {
         $this->factory = $factory;
         $this->ac = $ac;
@@ -51,6 +51,7 @@ class FrontendMenuBuilder
      */
     public function createTopMenu(RequestStack $requestStack)
     {
+        $route = $requestStack->getCurrentRequest()->get('_route');
         $menu = $this->factory->createItem('root');
         $menu->setChildrenAttribute('class', 'nav navbar-nav navbar-right');
         if ($this->ac->isGranted('ROLE_CMS')) {
@@ -67,20 +68,23 @@ class FrontendMenuBuilder
             array(
                 'label' => $this->ts->trans('front.menu.homepage'),
                 'route' => 'app_homepage',
+//                'route' => 'app_secure_homepage',
             )
         );
         $menu->addChild(
             'app_work_list',
             array(
-                'label' => $this->ts->trans('front.menu.work'),
-                'route' => 'app_work_list',
+                'label'   => $this->ts->trans('front.menu.work'),
+                'route'   => 'app_work_list',
+                'current' => $route == 'app_work_list' || $route == 'app_work_detail',
             )
         );
         $menu->addChild(
             'app_product_list',
             array(
-                'label' => $this->ts->trans('front.menu.shop'),
-                'route' => 'app_product_list',
+                'label'   => $this->ts->trans('front.menu.shop'),
+                'route'   => 'app_product_list',
+                'current' => $route == 'app_product_list' || $route == 'app_product_detail',
             )
         );
         $menu->addChild(

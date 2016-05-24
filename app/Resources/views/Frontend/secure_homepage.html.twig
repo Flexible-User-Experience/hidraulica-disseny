@@ -1,0 +1,129 @@
+{% extends ':Frontend:layout_secure.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .jssorb05 {
+            position: absolute;
+        }
+        .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
+            position: absolute;
+            /* size of bullet elment */
+            width: 16px;
+            height: 16px;
+            background: url('{{ asset('bundles/app/images/b05.png') }}') no-repeat;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .jssorb05 div { background-position: -7px -7px; }
+        .jssorb05 div:hover, .jssorb05 .av:hover { background-position: -37px -7px; }
+        .jssorb05 .av { background-position: -67px -7px; }
+        .jssorb05 .dn, .jssorb05 .dn:hover { background-position: -97px -7px; }
+        .jssora22l, .jssora22r {
+            display: block;
+            position: absolute;
+            /* size of arrow element */
+            width: 40px;
+            height: 58px;
+            cursor: pointer;
+            background: url('{{ asset('bundles/app/images/a22.png') }}') center center no-repeat;
+            overflow: hidden;
+        }
+        .jssora22l { background-position: -10px -31px; }
+        .jssora22r { background-position: -70px -31px; }
+        .jssora22l:hover { background-position: -130px -31px; }
+        .jssora22r:hover { background-position: -190px -31px; }
+        .jssora22l.jssora22ldn { background-position: -250px -31px; }
+        .jssora22r.jssora22rdn { background-position: -310px -31px; }
+    </style>
+{% endblock %}
+
+{% block body_class %}no-gap{% endblock %}
+
+{% block main %}
+    {% if slides | length == 1 %}
+        {% set slide = slides[0] %}
+        <div class="homepage jumbotron" style="background-image: url('{{ vich_uploader_asset(slide, 'imageFile') }}')">
+            <div class="container">
+                <div class="hero"></div>
+            </div>
+        </div>
+    {% elseif slides | length > 1 %}
+        <div id="jssor_1" style="position:relative;margin: 0 auto 40px auto;top:0;left:0;width:1300px;height:700px;overflow:hidden;visibility:hidden;">
+            <div data-u="slides" style="cursor:default;position:relative;top:0;left:0;width:1300px;height:700px;overflow:hidden;">
+                {% for slide in slides %}
+                    <div data-p="225.00" style="display:none;">
+                        <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" />
+                    </div>
+                {% endfor %}
+                <a data-u="ad" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
+            </div>
+            {#<!-- Bullet Navigator -->#}
+            {#<div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">#}
+                {#<!-- bullet navigator item prototype -->#}
+                {#<div data-u="prototype" style="width:16px;height:16px;"></div>#}
+            {#</div>#}
+            {#<!-- Arrow Navigator -->#}
+            {#<span data-u="arrowleft" class="jssora22l" style="top:0;left:12px;width:40px;height:58px;" data-autocenter="2"></span>#}
+            {#<span data-u="arrowright" class="jssora22r" style="top:0;right:12px;width:40px;height:58px;" data-autocenter="2"></span>#}
+        </div>
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 extra-m-bottom text-center">
+                <h3 class="extra-m-bottom c-black"><strong>{{ 'front.homepage.banner' | trans }}</strong></h3>
+            </div>
+        </div>
+    </div>
+    {% if thumbs | length > 0 %}
+        <div class="container">
+            <div class="row">
+                {% for thumb in thumbs %}
+                    {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: thumb} %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block languages %}
+    {% include ':Frontend/includes:language-selector.html.twig' with {route: 'app_homepage', params: {}} %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/app/js/jssor.slider.min.js') }}"></script>
+    <script type="text/javascript">
+        jssor_1_slider_init = function() {
+            var jssor_1_options = {
+                $AutoPlay: true,
+                $SlideDuration: 1000,
+                $SlideEasing: $Jease$.$OutQuint,
+                $ArrowNavigatorOptions: {
+                    $Class: $JssorArrowNavigator$
+                },
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$
+                }
+            };
+            var jssor_1_slider = new $JssorSlider$('jssor_1', jssor_1_options);
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 1920);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $Jssor$.$AddEvent(window, 'load', ScaleSlider);
+            $Jssor$.$AddEvent(window, 'resize', ScaleSlider);
+            $Jssor$.$AddEvent(window, 'orientationchange', ScaleSlider);
+        };
+        jQuery(document).ready(function() {
+            jssor_1_slider_init();
+        });
+    </script>
+{% endblock %}

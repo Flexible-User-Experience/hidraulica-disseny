@@ -11,9 +11,23 @@ front:
     works: trabajos
     about: sobre nosotros
     contact: contacto
+  homepage:
+    banner: Hidráulica somos un estudio de diseño de interiores, mobiliario y arquitectura efímera ubicado en Terres de l'Ebre.
   about:
     text: |
-      Hidràulica som un estudi de disseny ubicat a Amposta, oferim serveis professionals per a empreses i particulars.<br><br>Creiem en el disseny com a eina per al desenvolupament, la innovació i la comunicació.<br><br>Basem el nostre treball en la integració de diferents disciplines, abraçant des de la concepció de la idea fins a la realització de projectes d'interiorismen, espais comercials, mobiliari i arquitectura efímera.<br><br>
+      <h3>ESTUDIO</h3>
+      Hidràulica somos un estudio de diseño ubicado en Amposta que ofrece servicios profesionales a empresas y a particulares. Creemos en el diseño como herramienta para el desarrollo, la innovación y comunicación de la empresa.   Trabajamos en la integración de diferentes disciplinas, utilizando formas sencillas y depuradas, abarcando desde la generación de ideas hasta la ejecución de proyectos de interiorismo, espacios comerciales, mobiliario y todo tipo de arquitectura efímera.<br>
+      Contáctenos, estaremos encantados de poder trabajar para usted!<br><br>
+      <h3>TIENDA</h3>
+      En Hidràulica Disseny puedes comprar muebles únicos y de diseño exclusivo.<br>
+      Nuestros productos sólo se venden a través de esta web.<br>
+      Nosotros los disenyamos para ti y los adaptamos a tus necesidades. Tú eliges el mueble y si necesitas otra medida o color lo creamos para ti.<br>
+      Nos encargamos de todo y te llevamos los muebles a casa sin coste.<br><br>
+      <h3>Nuestros principios:</h3>
+      Somos un equipo experimentado en el sector del mueble, el diseño y la decoración.<br>
+      Todos nuestros productos son de fabricación y diseño propio buscando el equilibrio entre calidad, producto, servicio y precio.<br>
+      Estamos siempre pendientes de la efectividad del proceso de compra y del buen servicio. Nos interesa la transparencia en la gestión de los pedidos, la profesionalidad en la entrega y la satisfacción de nuestros clientes.<br>
+      La comunicación directa con nuestros clientes es fundamental, hablamos antes, durante y después de cada compra.<br><br>
   contact:
     form:
       name: nombre
@@ -22,6 +36,60 @@ front:
       message: mensaje
       ok: enviar
     text: |
-      Contacta'ns, estarem encantats de poder treballar per a tu!<br><br>
+      Contacta con nosotros, estaremos encantados de poder trabajar para ti.<br><br>
+  jumper:
+    work: volver a los trabajos
+    product: volver a los productos
+  cart:
+    add: añadir al carrito
+    total: total
+    confirm: confirmar compra
+    step1:
+      title: carrito
+    step2:
+      title: datos cliente
+      name: Nombre
+      email: Email
+      phone: Teléfono
+      address: Dirección
+      city: Ciudad
+      zip: Código postal
+      state: Provincia
+      country: País
+      submit: PAGAR
+    step3:
+      title: pago
+      ok: Gracias por tu compra. Enviaremos tu pedido lo antes posible.
+      error: Se ha producido un error durante tu compra. Nos pondremos en contacto contigo lo antes posible.
+    back: seguir comprando
+    cart: tu carrito
+    continue: continuar
+    table:
+      unitprice: precio unidad
+      units: unidades
+      price: importe
+      tax: iva
+      total: total
+  form:
+    flash:
+      user: Tu mensaje se ha enviado correctamente.
   footer:
     email: "hola@hidraulicadisseny.com"
+backend:
+  admin:
+    block:
+      title: Notifications
+      text: pending messages
+      notext: you don't have pending messages
+Previous: anterior
+Next: siguiente
+mail:
+  helloagain: ¡Hola de nuevo!
+  yourquestion: Tu pregunta
+  recived: ha sido recibida
+  asap: Te responderemos tan pronto como sea posible. Estamos en contacto.
+  youhave: Ha recibido esta notificación con el fin de responder a su pregunta
+  from: del
+  at: a las
+  thanks: Gracias por ponerse en contacto con nosotros
+  ourmailaddress: Nuestra dirección de correo es

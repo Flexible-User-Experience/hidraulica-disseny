@@ -11,9 +11,23 @@ front:
     works: treballs
     about: sobre nosaltres
     contact: contacte
+  homepage:
+    banner: Hidràulica som un estudi de disseny d'interiors, mobiliari i arquitectura efímera ubicat a les Terres de l'Ebre.
   about:
     text: |
-      Hidràulica som un estudi de disseny ubicat a Amposta, oferim serveis professionals per a empreses i particulars.<br><br>Creiem en el disseny com a eina per al desenvolupament, la innovació i la comunicació.<br><br>Basem el nostre treball en la integració de diferents disciplines, abraçant des de la concepció de la idea fins a la realització de projectes d'interiorismen, espais comercials, mobiliari i arquitectura efímera.<br><br>
+      <h3>ESTUDI</h3>
+      Hidràulica som un estudi de disseny ubicat a Amposta, oferim serveis professionals per a empreses i particulars. Creiem en el disseny com a ferramenta per al desenvolupament, la innovació i la comunicació. Treballem en la integració de diferents disciplines, abraçant des de la concepció de la idea fins a l’execució de projectes d’interiorisme, espais comercials, mobiliari, instal.lacions i arquitectura efímera.<br>
+      Contacta’ns, estarem encantats de poder treballar per a tu!<br><br>
+      <h3>BOTIGA</h3>
+      A Hidràulica Disseny pots comprar mobles únics i de disseny exclusiu.<br>
+      Els nostres productes només es venen a través d'aquesta web.<br>
+      Nosaltres els dissenyem per a tu i els adaptem a les teves necessitats. Tu tries el moble i si necessites una altra mida o color el creem per a tu.<br>
+      Ens encarreguem de tot i et portem els mobles a casa sense cost.<br><br>
+      <h3>Els nostres principis:</h3>
+      Som un equip experimentat en el sector del moble, el disseny i la decoració.<br>
+      Tots els nostres productes són de fabricació i disseny propi buscant l'equilibri entre qualitat, producte, servei i preu.<br>
+      Estem sempre pendents de l'efectivitat del procés de compra i del bon servei. Ens interessa la transparència en la gestió de les comandes, la professionalitat en el lliurament i la satisfacció dels nostres clients.<br>
+      La comunicació directa amb els nostres clients és fonamental, parlem abans, durant i després de cada compra.<br><br>
   contact:
     form:
       name: nom
@@ -23,64 +37,118 @@ front:
       ok: enviar
     text: |
       Contacta'ns, estarem encantats de poder treballar per a tu!<br><br>
+  jumper:
+    work: tornar als treballs
+    product: tornar als productes
+  cart:
+    add: afegir a la cistella
+    total: total
+    confirm: confirmar compra
+    step1:
+      title: cistella
+    step2:
+      title: dades client
+      name: Nom
+      email: Email
+      phone: Telèfon
+      address: Adreça
+      city: Ciutat
+      zip: Codi postal
+      state: Província
+      country: Pais
+      submit: PAGAR
+    step3:
+      title: pagament
+      ok: Gràcies per la teva compra. Enviarem la teva comanda el més aviat possible.
+      error: S'ha produit un error durant la teva compra. Ens posarem en contacte amb tu el més aviat possible.
+    back: seguir comprant
+    cart: la teva cistella
+    continue: continuar
+    table:
+      unitprice: preu unitat
+      units: unitats
+      price: import
+      tax: iva
+      total: total
+  form:
+    flash:
+      user: El teu missatge s'ha enviat correctament.
   footer:
     email: "hola@hidraulicadisseny.com"
 backend:
-    admin:
-        admin: Administrador
-        actions: Accions
-        alt: alt
-        answer_action: Answer
-        answer: Resposta
-        answered: Respost
-        category: Categoria
-        checked: Llegit
-        created_date: Data de creació
-        controls: Controls
-        date: Data
-        description: Descripció
-        editor: Editor
-        email: Correu electrònic
+  admin:
+    block:
+      title: Notifications
+      text: pending messages
+      notext: you don't have pending messages
+    admin: Administrador
+    actions: Accions
+    alt: Text alternatiu
+    answer_action: Answer
+    answer: Resposta
+    answered: Respost
+    category: Categoria
+    checked: Llegit
+    created_date: Data de creació
+    controls: Controls
+    date: Data
+    description: Descripció
+    editor: Editor
+    email: Correu electrònic
+    name: Nom
+    subject: Tema
+    homepage: Homepage
+    enabled: Actiu
+    firstname: Nom
+    general: General
+    image: Imatge
+    images: Imatges
+    image_name: Nom imatge
+    main_image: Imatge principal
+    message: Missatge
+    plain_password: Contrasenya
+    position: Ordre
+    price: Preu
+    product: Producte
+    roles: Rols
+    submit: Enviar
+    superadmin: Superadministrador
+    title: Títol
+    translations: Traduccions
+    user: Usuari
+    username: Usuari
+    user_question: Pregunta del usuari
+    your_answer: La teva resposta
+    cart:
+      total_amount: Import
+      items: Ítems
+      nitems: Ítems
+      customer:
+        customer: Client
         name: Nom
-        subject: Tema
-        enabled: Actiu
-        firstname: Nom
-        general: General
-        image: Imatge
-        images: Imatges
-        image_name: Nom imatge
-        main_image: Imatge principal
-        message: Missatge
-        plain_password: Contrasenya
-        position: Ordre
-        price: Preu
-        product: Producte
-        roles: Rols
-        submit: Enviar
-        superadmin: Superadministrador
-        title: Títol
-        translations: Traduccions
-        user: Usuari
-        username: Usuari
-        user_question: Pregunta del usuari
-        your_answer: La teva resposta
-        cart:
-            total_amount: Import
-            items: Ítems
-            nitems: Ítems
-            customer:
-                customer: Client
-                name: Nom
-                address: Direcció
-                postal_code: Codi Postal
-                city: Població
-                state: Província
-                country: País
-                email: Correu Electrònic
-                phone: Telèfon
-            status:
-                status: Estat comanda
-                new: Nou
-                pending: Pendent
-                sent: Enviat
-                invoiced: Cobrat
+        address: Direcció
+        postal_code: Codi Postal
+        city: Població
+        state: Província
+        country: País
+        email: Correu Electrònic
+        phone: Telèfon
+        carts: Comandes
+      status:
+        status: Estat comanda
+        new: Nou
+        pending: Pendent
+        sent: Enviat
+        invoiced: Cobrat
+Previous: anterior
+Next: següent
+mail:
+  helloagain: Hola de nou!
+  yourquestion: La teva pregunta
+  recived: s'ha rebut
+  asap: Et respondem el més aviat possible. Estem en contacte.
+  youhave: Ha rebut aquesta notificació per tal de respondre a la seva pregunta
+  from: del
+  at: a les
+  thanks: Gràcies per posar-se en contacte amb nosaltres
+  ourmailaddress: La nostra adreça de correu és

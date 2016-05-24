@@ -1,21 +1,15 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
-{% block title %}{{ 'front.title.products' | trans }} · {{ parent() }}{% endblock %}
+{% block title %}{{ 'front.title.products' | trans | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}
     <div class="container">
         <div class="row">
             {% for product in products %}
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                    <div class="hovereffect">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(product, 'imageFile') | imagine_filter('700xY') }}" alt="{{ product.title }}">
-                        <div class="overlay">
-                            <a class="info" href="{{ path('app_product_detail', {slug: product.slug}) }}">{{ product.title }}</a>
-                        </div>
-                    </div>
-                </div>
+                {% include ':Frontend/includes:item-thumbnail.html.twig' with {item: product} %}
             {% endfor %}
         </div>
+        {% include ':Frontend/includes:paginator-button-bar.html.twig' with {items: products} %}
     </div>
 {% endblock %}
 

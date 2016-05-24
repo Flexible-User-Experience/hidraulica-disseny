@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity\Cart;
 
+use AppBundle\Entity\Traits\BaseAmountTrait;
+use AppBundle\Entity\Traits\VatTaxTrait;
 use AppBundle\Enum\CartStatusEnum;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,6 +22,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Cart extends AbstractBase
 {
+    use BaseAmountTrait;
+    use VatTaxTrait;
+
     /**
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="CartItem", mappedBy="cart")
@@ -34,9 +39,22 @@ class Cart extends AbstractBase
 
     /**
      * @var integer
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"default" = 0})
      */
-    private $status;
+    private $status = 0;
+
+    /**
+     * @var float
+     * @ORM\Column(type="float", options={"default" = 0})
+     */
+    private $deliveryAmount = 0;
+
+    /**
+     * @var Payment
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Cart\Payment", inversedBy="cart")
+     * @ORM\JoinColumn(name="payment_id", referencedColumnName="id")
+     */
+    private $payment;
 
     /**
      *
@@ -103,15 +121,15 @@ class Cart extends AbstractBase
     }
 
     /**
-     * @param CartItem $item
+     * @param CartItem $cartItem
      *
      * @return CartItem|null
      */
-    public function getCartItemByItem(CartItem $item)
+    public function getCartItemByItem(CartItem $cartItem)
     {
         /** @var CartItem $item */
         foreach ($this->items as $item) {
-            if ($item->getId() == $item->getId()) {
+            if ($item->getId() == $cartItem->getId()) {
                 return $item;
             }
         }
@@ -151,17 +169,45 @@ class Cart extends AbstractBase
     }
 
     /**
-     * @return int
+     * @return float
      */
     public function getTotalAmount()
     {
         $amount = 0;
         /** @var CartItem $item */
         foreach ($this->getItems() as $item) {
-            $amount += $item->getQuantity() * $item->getProduct()->getPrice();
+            $amount += $item->getTotalAmount();
         }
 
-        return $amount . ' €';
+        return $amount;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalAmountWithDelivery()
+    {
+        return $this->getTotalAmount() + $this->deliveryAmount;
+    }
+
+    /**
+     * @return float
+     */
+    public function getVatTaxAmount()
+    {
+        $amount = $this->getTotalAmountWithDelivery();
+
+        return ($amount * $this->vatTax) / 100;
+    }
+
+    /**
+     * @return float
+     */
+    public function getTotalAmountWithDeliveryAndVatTax()
+    {
+        $amount = $this->getTotalAmountWithDelivery();
+
+        return $amount + (($amount * $this->vatTax) / 100);
     }
 
     /**
@@ -219,6 +265,54 @@ class Cart extends AbstractBase
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get DeliveryAmount
+     *
+     * @return float
+     */
+    public function getDeliveryAmount()
+    {
+        return $this->deliveryAmount;
+    }
+
+    /**
+     * Set DeliveryAmount
+     *
+     * @param float $deliveryAmount
+     *
+     * @return $this
+     */
+    public function setDeliveryAmount($deliveryAmount)
+    {
+        $this->deliveryAmount = $deliveryAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get Payment
+     *
+     * @return Payment
+     */
+    public function getPayment()
+    {
+        return $this->payment;
+    }
+
+    /**
+     * Set Payment
+     *
+     * @param Payment $payment
+     *
+     * @return $this
+     */
+    public function setPayment($payment)
+    {
+        $this->payment = $payment;
 
         return $this;
     }
