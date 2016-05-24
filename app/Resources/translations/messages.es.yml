@@ -15,7 +15,19 @@ front:
     banner: Hidráulica somos un estudio de diseño de interiores, mobiliario y arquitectura efímera ubicado en Terres de l'Ebre.
   about:
     text: |
-      Hidràulica somos un estudio de diseño situado en Amposta; ofrecemos servicios profesionales para empresas y particulares.<br><br>Creemos en el diseño como herramienta para el desarrollo, la innovación y la comunicación.<br><br>Basamos nuestro trabajo en la integración de diferentes disciplinas, donde se incluyen desde la concepción de la idea hasta la realización de proyectos de interiorismo, espacios comerciales, mobiliario y arquitectura efímera.<br><br>
+      <h3>ESTUDIO</h3>
+      Hidràulica somos un estudio de diseño ubicado en Amposta que ofrece servicios profesionales a empresas y a particulares. Creemos en el diseño como herramienta para el desarrollo, la innovación y comunicación de la empresa.   Trabajamos en la integración de diferentes disciplinas, utilizando formas sencillas y depuradas, abarcando desde la generación de ideas hasta la ejecución de proyectos de interiorismo, espacios comerciales, mobiliario y todo tipo de arquitectura efímera.<br>
+      Contáctenos, estaremos encantados de poder trabajar para usted!<br><br>
+      <h3>TIENDA</h3>
+      En Hidràulica Disseny puedes comprar muebles únicos y de diseño exclusivo.<br>
+      Nuestros productos sólo se venden a través de esta web.<br>
+      Nosotros los disenyamos para ti y los adaptamos a tus necesidades. Tú eliges el mueble y si necesitas otra medida o color lo creamos para ti.<br>
+      Nos encargamos de todo y te llevamos los muebles a casa sin coste.<br><br>
+      <h3>Nuestros principios:</h3>
+      Somos un equipo experimentado en el sector del mueble, el diseño y la decoración.<br>
+      Todos nuestros productos son de fabricación y diseño propio buscando el equilibrio entre calidad, producto, servicio y precio.<br>
+      Estamos siempre pendientes de la efectividad del proceso de compra y del buen servicio. Nos interesa la transparencia en la gestión de los pedidos, la profesionalidad en la entrega y la satisfacción de nuestros clientes.<br>
+      La comunicación directa con nuestros clientes es fundamental, hablamos antes, durante y después de cada compra.<br><br>
   contact:
     form:
       name: nombre
