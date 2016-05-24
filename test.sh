@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo `date +"%T %d/%m/%Y"`
+echo "Started at `date +"%T %d/%m/%Y"`"
 
 if [ -z "$1" ]
   then
@@ -18,3 +18,5 @@ if [ -z "$1" ]
             echo "Argument error! Available argument options: 'cc' or 'coverage'"
         fi
 fi
+
+echo "Finished at `date +"%T %d/%m/%Y"`"

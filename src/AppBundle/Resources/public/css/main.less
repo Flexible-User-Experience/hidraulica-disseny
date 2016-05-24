@@ -14,6 +14,9 @@
 @gap-big: @gap-normal * 2;
 @gap-normal: 20px;
 @gap-small: @gap-normal / 2;
+@c-font-size-base:  16px;
+@c-font-size-large: ceil((@font-size-base * 1.25));
+@c-font-size-small: ceil((@font-size-base * 0.95));
 
 // Fonts
 @icon-font-path: "/bundles/app/fonts/";
@@ -153,6 +156,13 @@ body {
   float: left;
   @media(max-width: @screen-xs-max) {
     width: 120px;
+  }
+}
+
+.normal-font-size {
+  font-size: @c-font-size-base;
+  @media(max-width: @screen-xs-max) {
+    font-size: @c-font-size-small;
   }
 }
 

@@ -78,14 +78,17 @@ class CartService
             $cartItem->setQuantity($quantity);
             $this->em->persist($cartItem);
             $this->em->flush();
+            $cart->setBaseAmount($cart->getBaseAmount() + $cartItem->getTotalAmount());
+            $this->em->flush();
         } else {
             $cartItem = new CartItem();
             $cartItem->setCart($cart);
             $cartItem->setProduct($product);
             $cartItem->setQuantity($quantity);
-            $cart->addItem($cartItem);
             $this->em->persist($cartItem);
-            $this->em->persist($cart);
+            $this->em->flush();
+            $cart->addItem($cartItem);
+            $cart->setBaseAmount($cartItem->getTotalAmount());
             $this->em->flush();
         }
     }
@@ -102,7 +105,9 @@ class CartService
         if ($cart->hasItemByProduct($product)) {
             $cartItem = $cart->getCartItemByProduct($product);
             $cartItem->setQuantity($quantity);
+            $cart->setBaseAmount($cart->getBaseAmount() + $cartItem->getTotalAmount());
             $this->em->persist($cartItem);
+            $this->em->flush();
             $this->em->flush();
         } else {
             $cartItem = new CartItem();
@@ -110,8 +115,8 @@ class CartService
             $cartItem->setProduct($product);
             $cartItem->setQuantity($quantity);
             $cart->addItem($cartItem);
+            $cart->setBaseAmount($cartItem->getTotalAmount());
             $this->em->persist($cartItem);
-            $this->em->persist($cart);
             $this->em->flush();
         }
     }
@@ -125,6 +130,7 @@ class CartService
         $product = $this->getItemById($itemId);
         $cartItem = $cart->getCartItemByProduct($product);
         if ($cartItem) {
+            $cart->setBaseAmount($cart->getBaseAmount() - $cartItem->getTotalAmount());
             $this->em->remove($cartItem);
             $this->em->flush();
         }
