@@ -45,6 +45,11 @@ front:
       state: State
       country: Country
       submit: Pay
+      agreement: |
+        I have read and accept <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" style="text-decoration:underline">the privacy policy</a>
+      agreements:
+        title: Privacy policy
+        text: d
     step3:
       title: payment
       ok: Thank you for your purchase. We will send your order as soon as possible.

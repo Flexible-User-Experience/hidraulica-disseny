@@ -57,6 +57,11 @@ front:
       state: Provincia
       country: País
       submit: PAGAR
+      agreement: |
+        He leído y acepto <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" style="text-decoration:underline">la política de privacidad</a>
+      agreements:
+        title: Política de privacitat
+        text: d
     step3:
       title: pago
       ok: Gracias por tu compra. Enviaremos tu pedido lo antes posible.

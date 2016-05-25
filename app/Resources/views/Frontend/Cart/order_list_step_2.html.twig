@@ -1,5 +1,30 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
+{% form_theme form _self %}
+
+{%- block checkbox_widget -%}
+    <div class="checkbox">
+        <label class="checkbox">
+            <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            <i></i>
+            {{ 'front.cart.step2.agreement' | trans | raw }}
+        </label>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                        <h4 id="myLargeModalLabel2" class="modal-title">{{ 'front.cart.step2.agreements.title' | trans }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ 'front.cart.step2.agreements.text' | trans | raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{%- endblock checkbox_widget -%}
+
 {% block title %}{{ 'front.cart.step2.title' | trans | title }} · {{ parent() }}{% endblock %}
 
 {% block main %}

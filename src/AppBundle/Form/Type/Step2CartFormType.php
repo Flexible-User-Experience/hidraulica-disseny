@@ -3,6 +3,7 @@
 namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -105,6 +106,17 @@ class Step2CartFormType extends AbstractType
                     'label' => 'front.cart.step2.country',
                     'attr'  => array(
                         'class' => 'form-control',
+                    ),
+                )
+            )
+            ->add(
+                'agreement',
+                CheckboxType::class,
+                array(
+                    'label'    => 'front.cart.step2.agreement',
+                    'required' => true,
+                    'attr'     => array(
+                        'class' => 'checkbox',
                     ),
                 )
             )
