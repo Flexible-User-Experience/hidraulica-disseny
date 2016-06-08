@@ -50,6 +50,12 @@ AppBundle\Entity\Product:
     imageName: <numberBetween(1, 5)>.jpg
     urlVimeo: https://vimeo.com/<numberBetween(100000, 999999)>
 
+## Product Category
+AppBundle\Entity\ProductCategory:
+  productCategory{1..3}:
+    title: <sentence()>
+    createdAt: <dateTimeBetween('-2 months', '-1 months')>
+
 ## Work Category
 AppBundle\Entity\WorkCategory:
   workCategory{1..3}:

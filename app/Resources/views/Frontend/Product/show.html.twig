@@ -61,9 +61,11 @@
                         {#<!-- Wrapper for slides -->#}
                         <div class="carousel-inner">
                             {% for image in product.images %}
-                                <div class="item{% if loop.index == 1 %} active{% endif %}">
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
-                                </div>
+                                {% if image.imageName %}
+                                    <div class="item{% if loop.index == 1 %} active{% endif %}">
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
+                                    </div>
+                                {% endif %}
                             {% endfor %}
                         </div>
                         {#<!-- Controls -->#}
@@ -78,9 +80,11 @@
                     <div id="my-thumbs-list">
                         <ul class="carousel-indicators mCustomScrollbar">
                             {% for image in product.images %}
-                                <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
-                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
-                                </li>
+                                {% if image.imageName %}
+                                    <li data-target="#carousel-custom" data-slide-to="{{ loop.index - 1 }}"{% if loop.index == 1 %} class="active"{% endif %}>
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('128x128') }}" alt="alt thumb img {{ loop.index }}"/>
+                                    </li>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                     </div>

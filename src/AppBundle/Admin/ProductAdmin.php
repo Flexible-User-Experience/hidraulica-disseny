@@ -38,7 +38,7 @@ class ProductAdmin extends AbstractBaseAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
+            ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'imageFile',
                 'file',
@@ -75,7 +75,18 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
+            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(4))
+            ->add(
+                'categories',
+                'sonata_type_model',
+                array(
+                    'label'      => 'Etiquetes',
+                    'btn_add'    => true,
+                    'btn_delete' => false,
+                    'required'   => false,
+                    'multiple'   => true,
+                )
+            )
             ->add(
                 'createdAt',
                 'sonata_type_date_picker',
@@ -116,7 +127,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->end()
-            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
+            ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(12))
             ->add(
                 'translations',
                 'a2lix_translations_gedmo',
@@ -195,6 +206,13 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'categories',
+                null,
+                array(
+                    'label'    => 'Etiquetes',
+                )
+            )
+            ->add(
                 'price',
                 null,
                 array(
@@ -254,6 +272,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.title',
                     'editable' => true,
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label'    => 'Etiquetes',
+                    'editable' => false,
                 )
             )
             ->add(
