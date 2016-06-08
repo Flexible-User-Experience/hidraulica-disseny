@@ -64,9 +64,9 @@ class Product extends AbstractBase
     /**
      * @var boolean
      *
-     * @ORM\Column(type="boolean", options={"default" = true})
+     * @ORM\Column(type="boolean", options={"default" = false})
      */
-    private $showPrice = true;
+    private $askPrice = false;
 
     /**
      * @var File
@@ -145,29 +145,29 @@ class Product extends AbstractBase
     }
 
     /**
-     * Get ShowPrice
+     * Get AskPrice
      *
      * @return boolean
      */
-    public function getShowPrice()
+    public function getAskPrice()
     {
-        return $this->showPrice;
+        return $this->askPrice;
     }
 
     /**
-     * Set ShowPrice
+     * Set AskPrice
      *
-     * @param boolean $showPrice
+     * @param boolean $askPrice
      *
      * @return $this
      */
-    public function setShowPrice($showPrice)
+    public function setAskPrice($askPrice)
     {
-        $this->showPrice = $showPrice;
+        $this->askPrice = $askPrice;
 
         return $this;
     }
-
+    
     /**
      * Get Images
      *
