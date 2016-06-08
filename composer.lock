@@ -850,16 +850,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "1.6.2",
+            "version": "1.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "e9c2ccf573b59b7cea566390f34254fed3c20ed9"
+                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/e9c2ccf573b59b7cea566390f34254fed3c20ed9",
-                "reference": "e9c2ccf573b59b7cea566390f34254fed3c20ed9",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/fd51907c6c76acaa8a5234822a4f901c1500afc1",
+                "reference": "fd51907c6c76acaa8a5234822a4f901c1500afc1",
                 "shasum": ""
             },
             "require": {
@@ -876,13 +876,14 @@
                 "phpunit/phpunit": "~4",
                 "satooshi/php-coveralls": "~0.6.1",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/property-info": "~2.8|~3.0",
                 "symfony/validator": "~2.2|~3.0",
                 "symfony/yaml": "~2.2|~3.0",
                 "twig/twig": "~1.10"
             },
             "suggest": {
                 "doctrine/orm": "The Doctrine ORM integration is optional in the bundle.",
-                "symfony/web-profiler-bundle": "to use the data collector"
+                "symfony/web-profiler-bundle": "To use the data collector."
             },
             "type": "symfony-bundle",
             "extra": {
@@ -925,7 +926,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2016-01-10 17:21:44"
+            "time": "2016-04-21 19:55:56"
         },
         {
             "name": "doctrine/doctrine-cache-bundle",
@@ -1959,16 +1960,16 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "v1.2.3",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "96dc5d831485af2feb1fb26ae0b990fbcdba63dc"
+                "reference": "ecb649d1a53e75511e16c924797fb2676810d21d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/96dc5d831485af2feb1fb26ae0b990fbcdba63dc",
-                "reference": "96dc5d831485af2feb1fb26ae0b990fbcdba63dc",
+                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/ecb649d1a53e75511e16c924797fb2676810d21d",
+                "reference": "ecb649d1a53e75511e16c924797fb2676810d21d",
                 "shasum": ""
             },
             "require": {
@@ -2038,7 +2039,7 @@
                 "orm",
                 "symfony"
             ],
-            "time": "2016-05-11 12:57:42"
+            "time": "2016-06-07 20:46:56"
         },
         {
             "name": "imagine/imagine",
@@ -3518,17 +3519,17 @@
         },
         {
             "name": "payum/core",
-            "version": "1.3.2",
+            "version": "1.3.3",
             "target-dir": "Payum/Core",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Core.git",
-                "reference": "18b1f998a7b58daf073ace2bee9c06ba33b83969"
+                "reference": "a358d060a421b10d6880c9dc6015665d020a8376"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Core/zipball/18b1f998a7b58daf073ace2bee9c06ba33b83969",
-                "reference": "18b1f998a7b58daf073ace2bee9c06ba33b83969",
+                "url": "https://api.github.com/repos/Payum/Core/zipball/a358d060a421b10d6880c9dc6015665d020a8376",
+                "reference": "a358d060a421b10d6880c9dc6015665d020a8376",
                 "shasum": ""
             },
             "require": {
@@ -3621,7 +3622,7 @@
                 "subscription",
                 "withdrawal"
             ],
-            "time": "2016-04-29 05:59:46"
+            "time": "2016-05-31 20:19:11"
         },
         {
             "name": "payum/iso4217",
@@ -3814,24 +3815,23 @@
         },
         {
             "name": "payum/payum-bundle",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/PayumBundle.git",
-                "reference": "2c40b549b9b56573967d421c6b6f315ba51504a5"
+                "reference": "b5a9ac17213b52df688cc48a4ef6347d584400ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/2c40b549b9b56573967d421c6b6f315ba51504a5",
-                "reference": "2c40b549b9b56573967d421c6b6f315ba51504a5",
+                "url": "https://api.github.com/repos/Payum/PayumBundle/zipball/b5a9ac17213b52df688cc48a4ef6347d584400ed",
+                "reference": "b5a9ac17213b52df688cc48a4ef6347d584400ed",
                 "shasum": ""
             },
             "require": {
-                "payum/core": "^1.2.6",
+                "payum/core": "^1.3.3",
                 "php": "^5.5.0|^7.0",
                 "symfony/form": "~2.8|~3.0",
                 "symfony/framework-bundle": "~2.8|~3.0",
-                "symfony/twig-bundle": "~2.8|~3.0",
                 "symfony/validator": "~2.8|~3.0"
             },
             "require-dev": {
@@ -3845,9 +3845,10 @@
                 "omnipay/paypal": "~2.0",
                 "omnipay/stripe": "~2.0",
                 "paypal/rest-api-sdk-php": "0.5.*",
-                "payum/jms-payment-bridge": "^1",
-                "payum/omnipay-bridge": "^1",
-                "payum/payum": "^1.2.6",
+                "payum/jms-payment-bridge": "^1@dev",
+                "payum/omnipay-bridge": "^1@dev",
+                "payum/payum": "^1.3@dev",
+                "php-http/guzzle6-adapter": "^1",
                 "phpunit/phpunit": "~4.0",
                 "sonata-project/admin-bundle": "~2.4@dev",
                 "stripe/stripe-php": "~1.0",
@@ -3864,7 +3865,7 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -3910,7 +3911,7 @@
                 "stripe.js",
                 "symfony"
             ],
-            "time": "2016-03-18 16:47:30"
+            "time": "2016-05-31 20:28:14"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -4651,16 +4652,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "53850de35eb88ebadeb21ad09487d9edfcd357ed"
+                "reference": "685f48a662df8ce3b5d00d338e1df79cb35c2357"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/53850de35eb88ebadeb21ad09487d9edfcd357ed",
-                "reference": "53850de35eb88ebadeb21ad09487d9edfcd357ed",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/685f48a662df8ce3b5d00d338e1df79cb35c2357",
+                "reference": "685f48a662df8ce3b5d00d338e1df79cb35c2357",
                 "shasum": ""
             },
             "require": {
@@ -4694,6 +4695,7 @@
             },
             "require-dev": {
                 "jms/di-extra-bundle": "^1.7",
+                "jms/translation-bundle": "^1.2",
                 "sensio/generator-bundle": "^2.3 || ^3.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
                 "sonata-project/intl-bundle": "^2.2.4",
@@ -4740,7 +4742,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2016-05-16 23:39:58"
+            "time": "2016-06-04 15:30:52"
         },
         {
             "name": "sonata-project/block-bundle",
@@ -4875,20 +4877,21 @@
         },
         {
             "name": "sonata-project/core-bundle",
-            "version": "3.0.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataCoreBundle.git",
-                "reference": "bf2b5bb35b0bf12e1987d3255688915ce1e9a686"
+                "reference": "68c19b011aee8717c23a97ae9eccf24219d96eaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/bf2b5bb35b0bf12e1987d3255688915ce1e9a686",
-                "reference": "bf2b5bb35b0bf12e1987d3255688915ce1e9a686",
+                "url": "https://api.github.com/repos/sonata-project/SonataCoreBundle/zipball/68c19b011aee8717c23a97ae9eccf24219d96eaf",
+                "reference": "68c19b011aee8717c23a97ae9eccf24219d96eaf",
                 "shasum": ""
             },
             "require": {
                 "cocur/slugify": "^1.4 || ^2.0",
+                "php": "^5.3 || ^7.0",
                 "symfony/config": "^2.3 || ^3.0",
                 "symfony/form": "^2.3 || ^3.0",
                 "symfony/http-foundation": "^2.3 || ^3.0",
@@ -4902,9 +4905,10 @@
                 "doctrine/phpcr-odm": "^1.0",
                 "friendsofsymfony/rest-bundle": "^1.1 || ^2.0",
                 "jackalope/jackalope-doctrine-dbal": "^1.0",
-                "jms/serializer-bundle": "~0.11 || ^1.0",
-                "matthiasnoback/symfony-config-test": "~0.4 || ^1.0",
-                "matthiasnoback/symfony-dependency-injection-test": "~0.7",
+                "jms/serializer-bundle": "0.11 - 0.13 || ^1.0",
+                "matthiasnoback/symfony-config-test": "^0.4 || ^1.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7",
+                "nelmio/api-doc-bundle": "^2.11",
                 "sensio/framework-extra-bundle": "^2.3 || ^3.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
                 "sonata-project/exporter": "^1.3",
@@ -4940,7 +4944,7 @@
             "keywords": [
                 "sonata"
             ],
-            "time": "2016-05-06 10:59:25"
+            "time": "2016-06-06 18:04:42"
         },
         {
             "name": "sonata-project/datagrid-bundle",
@@ -5050,16 +5054,16 @@
         },
         {
             "name": "sonata-project/doctrine-orm-admin-bundle",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataDoctrineORMAdminBundle.git",
-                "reference": "0249566cf8a4028ecb45191b0d6bc61dea48d70b"
+                "reference": "6798afdaa64523fa031b514fd1c45a68875c23e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/0249566cf8a4028ecb45191b0d6bc61dea48d70b",
-                "reference": "0249566cf8a4028ecb45191b0d6bc61dea48d70b",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/6798afdaa64523fa031b514fd1c45a68875c23e2",
+                "reference": "6798afdaa64523fa031b514fd1c45a68875c23e2",
                 "shasum": ""
             },
             "require": {
@@ -5080,7 +5084,8 @@
             },
             "require-dev": {
                 "knplabs/knp-menu-bundle": "^2.1.1",
-                "simplethings/entity-audit-bundle": "~0.1",
+                "simplethings/entity-audit-bundle": "0.1 - 0.9",
+                "sllh/php-cs-fixer-styleci-bridge": "^2.0",
                 "symfony/phpunit-bridge": "^2.7 || ^3.0"
             },
             "suggest": {
@@ -5121,7 +5126,7 @@
                 "generator",
                 "sonata"
             ],
-            "time": "2016-05-22 09:41:06"
+            "time": "2016-06-03 07:58:48"
         },
         {
             "name": "sonata-project/easy-extends-bundle",
@@ -6246,16 +6251,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.8.6",
+            "version": "v2.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "8408816780215fae055599d100b5385d9a247151"
+                "reference": "663b2d6202c3149515b39cfe50a174a130acb8e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/8408816780215fae055599d100b5385d9a247151",
-                "reference": "8408816780215fae055599d100b5385d9a247151",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/663b2d6202c3149515b39cfe50a174a130acb8e2",
+                "reference": "663b2d6202c3149515b39cfe50a174a130acb8e2",
                 "shasum": ""
             },
             "require": {
@@ -6376,7 +6381,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-05-09 21:45:54"
+            "time": "2016-06-06 16:05:37"
         },
         {
             "name": "twbs/bootstrap",

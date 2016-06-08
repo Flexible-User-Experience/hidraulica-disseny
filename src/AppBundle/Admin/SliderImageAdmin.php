@@ -40,6 +40,15 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'url',
+                null,
+                array(
+                    'label'    => 'Enllaç',
+                    'required' => false,
+                    'help'     => 'http://www.{URL}',
+                )
+            )
+            ->add(
                 'alt',
                 null,
                 array(
@@ -75,6 +84,13 @@ class SliderImageAdmin extends AbstractBaseAdmin
     {
         $datagridMapper
             ->add(
+                'url',
+                null,
+                array(
+                    'label'    => 'Enllaç',
+                )
+            )
+            ->add(
                 'position',
                 null,
                 array(
@@ -104,6 +120,14 @@ class SliderImageAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.image',
                     'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                )
+            )
+            ->add(
+                'url',
+                null,
+                array(
+                    'label'    => 'Enllaç',
+                    'editable' => true,
                 )
             )
             ->add(

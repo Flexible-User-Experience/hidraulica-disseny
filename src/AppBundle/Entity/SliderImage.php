@@ -34,4 +34,44 @@ class SliderImage extends AbstractBase
      * @Assert\Image(minWidth = 1200)
      */
     private $imageFile;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(checkDNS=true)
+     */
+    private $url;
+
+    /**
+     *
+     *
+     * Methods
+     *
+     *
+     */
+
+    /**
+     * Get Url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set Url
+     *
+     * @param string $url
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
 }
