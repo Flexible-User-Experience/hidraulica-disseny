@@ -206,6 +206,13 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'categories',
+                null,
+                array(
+                    'label'    => 'Etiquetes',
+                )
+            )
+            ->add(
                 'price',
                 null,
                 array(
@@ -265,6 +272,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label'    => 'backend.admin.title',
                     'editable' => true,
+                )
+            )
+            ->add(
+                'categories',
+                null,
+                array(
+                    'label'    => 'Etiquetes',
+                    'editable' => false,
                 )
             )
             ->add(
