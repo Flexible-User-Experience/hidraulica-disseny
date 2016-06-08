@@ -8,16 +8,16 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 /**
- * Class WorkCategoryAdmin
+ * Class ProductCategoryAdmin
  *
  * @category Admin
  * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
-class WorkCategoryAdmin extends AbstractBaseAdmin
+class ProductCategoryAdmin extends AbstractBaseAdmin
 {
     protected $classnameLabel = 'Category';
-    protected $baseRoutePattern = 'works/category';
+    protected $baseRoutePattern = 'products/category';
     protected $datagridValues = array(
         '_sort_by'    => 'title',
         '_sort_order' => 'desc',
