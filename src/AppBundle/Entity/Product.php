@@ -43,6 +43,7 @@ class Product extends AbstractBase
 
     /**
      * @var string
+     * 
      * @ORM\Column(type="string", length=255, unique=true)
      * @Gedmo\Translatable
      */
@@ -50,6 +51,7 @@ class Product extends AbstractBase
 
     /**
      * @var string
+     * 
      * @ORM\Column(type="text", length=4000, nullable=true)
      * @Gedmo\Translatable
      */
@@ -57,6 +59,7 @@ class Product extends AbstractBase
 
     /**
      * @var float
+     * 
      * @ORM\Column(type="float", name="price")
      */
     private $price;
@@ -70,6 +73,7 @@ class Product extends AbstractBase
 
     /**
      * @var File
+     * 
      * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
      * @Assert\File(
      *     maxSize = "10M",
@@ -81,19 +85,32 @@ class Product extends AbstractBase
 
     /**
      * @var ArrayCollection
+     * 
      * @ORM\OneToMany(targetEntity="ProductImage", mappedBy="product", cascade={"persist", "remove"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     private $images;
 
     /**
+     * @var ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="ProductCategory", mappedBy="products")
+     * @ORM\JoinTable(name="product_has_category",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+     *      )
+     */
+    private $categories;
+
+    /**
+     * @var ArrayCollection
+     * 
      * @ORM\OneToMany(
      *     targetEntity="AppBundle\Entity\Translation\ProductTranslation",
      *     mappedBy="object",
      *     cascade={"persist", "remove"}
      * )
      * @Assert\Valid(deep = true)
-     * @var ArrayCollection
      */
     protected $translations;
 
@@ -108,6 +125,7 @@ class Product extends AbstractBase
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->categories = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
@@ -213,6 +231,54 @@ class Product extends AbstractBase
     public function removeImage(ProductImage $productImage)
     {
         $this->images->removeElement($productImage);
+
+        return $this;
+    }
+
+    /**
+     * Get Categories
+     *
+     * @return ArrayCollection
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set Categories
+     *
+     * @param ArrayCollection $categories
+     *
+     * @return $this
+     */
+    public function setCategories(ArrayCollection $categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    /**
+     * @param ProductCategory $category
+     *
+     * @return $this
+     */
+    public function addCategory(ProductCategory $category)
+    {
+        $this->categories->add($category);
+
+        return $this;
+    }
+
+    /**
+     * @param ProductCategory $category
+     *
+     * @return $this
+     */
+    public function removeCategory(ProductCategory $category)
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }
