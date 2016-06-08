@@ -35,11 +35,13 @@
         </div>
         {% if work.images | length > 0 %}
             {% for image in work.images %}
-                <div class="row extra-m-bottom">
-                    <div class="col-xs-12">
-                        <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}">
+                {% if image.imageName %}
+                    <div class="row extra-m-bottom">
+                        <div class="col-xs-12">
+                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ work.title }}">
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
         {% endif %}
         <div class="row">
