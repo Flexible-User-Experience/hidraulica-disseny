@@ -53,7 +53,9 @@
             <div data-u="slides" style="cursor:default;position:relative;top:0;left:0;width:1300px;height:700px;overflow:hidden;">
                 {% for slide in slides %}
                     <div data-p="225.00" style="display:none;">
-                        <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" />
+                        <a href="http://www.flux.cat">
+                            <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" />
+                        </a>
                     </div>
                 {% endfor %}
                 <a data-u="ad" href="http://www.jssor.com" style="display:none">jQuery Slider</a>
