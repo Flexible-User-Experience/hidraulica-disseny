@@ -38,7 +38,7 @@ class ProductCategory extends AbstractBase
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Product", mappedBy="categories")
      */
     private $products;
 
@@ -88,6 +88,30 @@ class ProductCategory extends AbstractBase
     public function setProducts(ArrayCollection $products)
     {
         $this->products = $products;
+
+        return $this;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return $this
+     */
+    public function addProduct(Product $product)
+    {
+        $this->products->add($product);
+
+        return $this;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return $this
+     */
+    public function removeProduct(Product $product)
+    {
+        $this->products->removeElement($product);
 
         return $this;
     }

@@ -94,11 +94,7 @@ class Product extends AbstractBase
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="ProductCategory", mappedBy="products")
-     * @ORM\JoinTable(name="product_has_category",
-     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
-     *      )
+     * @ORM\ManyToMany(targetEntity="ProductCategory", inversedBy="products")
      */
     private $categories;
 
@@ -266,6 +262,7 @@ class Product extends AbstractBase
      */
     public function addCategory(ProductCategory $category)
     {
+        $category->addProduct($this);
         $this->categories->add($category);
 
         return $this;
