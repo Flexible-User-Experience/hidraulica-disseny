@@ -62,6 +62,13 @@ class Product extends AbstractBase
     private $price;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(type="boolean", options={"default" = true})
+     */
+    private $showPrice = true;
+
+    /**
      * @var File
      * @Vich\UploadableField(mapping="product", fileNameProperty="imageName")
      * @Assert\File(
@@ -133,6 +140,30 @@ class Product extends AbstractBase
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get ShowPrice
+     *
+     * @return boolean
+     */
+    public function getShowPrice()
+    {
+        return $this->showPrice;
+    }
+
+    /**
+     * Set ShowPrice
+     *
+     * @param boolean $showPrice
+     *
+     * @return $this
+     */
+    public function setShowPrice($showPrice)
+    {
+        $this->showPrice = $showPrice;
 
         return $this;
     }
