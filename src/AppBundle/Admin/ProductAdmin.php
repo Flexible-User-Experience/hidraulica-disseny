@@ -92,6 +92,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'askPrice',
+                'checkbox',
+                array(
+                    'label'    => 'Consultar preu',
+                    'required' => false,
+                )
+            )
+            ->add(
                 'showInHomepage',
                 'checkbox',
                 array(
@@ -194,6 +202,13 @@ class ProductAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'askPrice',
+                null,
+                array(
+                    'label'    => 'Consultar preu',
+                )
+            )
+            ->add(
                 'showInHomepage',
                 null,
                 array(
@@ -246,6 +261,14 @@ class ProductAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.price',
+                )
+            )
+            ->add(
+                'askPrice',
+                null,
+                array(
+                    'label'    => 'Consultar preu',
+                    'editable' => true,
                 )
             )
             ->add(

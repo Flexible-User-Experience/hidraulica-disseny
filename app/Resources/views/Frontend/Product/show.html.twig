@@ -88,22 +88,26 @@
             </div>
             <div class="col-sm-4 col-xs-12">
                 <h1 class="no-m-top">{{ product.title }}</h1>
-                <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
-                <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
-                    <div class="form-group">
-                        <label for="quantity" style="margin: 0 5px 0 0">
-                            <select class="form-control input-lg" name="quantity">
-                                <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
-                                <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
-                                <option{% if quantity == 3 %} selected="selected"{% endif %}>3</option>
-                                <option{% if quantity == 4 %} selected="selected"{% endif %}>4</option>
-                                <option{% if quantity == 5 %} selected="selected"{% endif %}>5</option>
-                            </select>
-                        </label>
-                    </div>
-                    <input type="hidden" name="product" value="{{ product.id }}">
-                    <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
-                </form>
+                {% if not product.askPrice %}
+                    <h2 class="no-m-top"><small>{{ product.price }} <i class="fa fa-eur"></i></small></h2>
+                    <form class="form-inline" action="{{ path('app_cart_include_new_item') }}" method="post">
+                        <div class="form-group">
+                            <label for="quantity" style="margin: 0 5px 0 0">
+                                <select class="form-control input-lg" name="quantity">
+                                    <option{% if quantity == 1 %} selected="selected"{% endif %}>1</option>
+                                    <option{% if quantity == 2 %} selected="selected"{% endif %}>2</option>
+                                    <option{% if quantity == 3 %} selected="selected"{% endif %}>3</option>
+                                    <option{% if quantity == 4 %} selected="selected"{% endif %}>4</option>
+                                    <option{% if quantity == 5 %} selected="selected"{% endif %}>5</option>
+                                </select>
+                            </label>
+                        </div>
+                        <input type="hidden" name="product" value="{{ product.id }}">
+                        <button type="submit" class="btn btn-lg btn-success">{{ 'front.cart.add' | trans }}</button>
+                    </form>
+                {% else %}
+                    <h2 class="no-m-top"><small>Consultar</small></h2>
+                {% endif %}
                 <div class="normal-font-size extra-m-top">{{ product.description | raw }}</div>
             </div>
         </div>
