@@ -63,7 +63,7 @@
                             {% for image in product.images %}
                                 {% if image.imageName %}
                                     <div class="item{% if loop.index == 1 %} active{% endif %}">
-                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="{{ image.alt }}"/>
                                     </div>
                                 {% endif %}
                             {% endfor %}
