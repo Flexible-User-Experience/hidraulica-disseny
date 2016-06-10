@@ -1,5 +1,7 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
+{% block metadescription %}{{ product.categories | join(',') }}{% endblock %}
+
 {% block title %}{{ product.title | title }} · {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
