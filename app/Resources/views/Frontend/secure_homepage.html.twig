@@ -55,10 +55,10 @@
                     <div data-p="225.00" style="display:none;">
                         {% if slide.url is not null %}
                             <a href="{{ slide.url }}">
-                                <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" />
+                                <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" alt="{{ slide.alt }}"/>
                             </a>
                         {% else %}
-                            <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" />
+                            <img data-u="image" src="{{ vich_uploader_asset(slide, 'imageFile') }}" alt="{{ slide.alt }}"/>
                         {% endif %}
                     </div>
                 {% endfor %}

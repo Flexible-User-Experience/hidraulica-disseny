@@ -1,5 +1,7 @@
 {% extends ':Frontend:layout_secure.html.twig' %}
 
+{% block metadescription %}{{ product.categories | join(',') }}{% endblock %}
+
 {% block title %}{{ product.title | title }} · {{ parent() }}{% endblock %}
 
 {% block stylesheets %}
@@ -63,7 +65,7 @@
                             {% for image in product.images %}
                                 {% if image.imageName %}
                                     <div class="item{% if loop.index == 1 %} active{% endif %}">
-                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="alt img {{ loop.index }}"/>
+                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="{{ image.alt }}"/>
                                     </div>
                                 {% endif %}
                             {% endfor %}

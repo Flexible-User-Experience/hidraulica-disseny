@@ -49,6 +49,15 @@ class ProductImageAdmin extends AbstractBaseAdmin
                 )
             )
             ->add(
+                'alt',
+                null,
+                array(
+                    'label'       => 'Alt',
+                    'help'        => 'Text alternatiu (SEO)',
+                    'sonata_help' => 'Text alternatiu (SEO)',
+                )
+            )
+            ->add(
                 'position',
                 null,
                 array(
