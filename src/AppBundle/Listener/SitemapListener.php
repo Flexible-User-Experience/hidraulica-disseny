@@ -60,7 +60,7 @@ class SitemapListener implements SitemapListenerInterface
             foreach ($this->locales as $locale) {
                 // Homepage
                 $event
-                    ->getGenerator()
+                    ->getUrlContainer()
                     ->addUrl(
                         new UrlConcrete(
                             $this->router->generate('app_homepage', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -72,7 +72,7 @@ class SitemapListener implements SitemapListenerInterface
                     );
                 // Products
                 $event
-                    ->getGenerator()
+                    ->getUrlContainer()
                     ->addUrl(
                         new UrlConcrete(
                             $this->router->generate('app_product_list', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -85,7 +85,7 @@ class SitemapListener implements SitemapListenerInterface
                 /** @var Product $product */
                 foreach ($this->pr->findAllEnabledSortedByDate() as $product) {
                     $event
-                        ->getGenerator()
+                        ->getUrlContainer()
                         ->addUrl(
                             new UrlConcrete(
                                 $this->router->generate('app_product_detail', array('_locale' => $locale, 'slug' => $product->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -98,7 +98,7 @@ class SitemapListener implements SitemapListenerInterface
                 }
                 // Works
                 $event
-                    ->getGenerator()
+                    ->getUrlContainer()
                     ->addUrl(
                         new UrlConcrete(
                             $this->router->generate('app_work_list', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -111,7 +111,7 @@ class SitemapListener implements SitemapListenerInterface
                 /** @var Work $work */
                 foreach ($this->wr->findAllEnabledSortedByDate() as $work) {
                     $event
-                        ->getGenerator()
+                        ->getUrlContainer()
                         ->addUrl(
                             new UrlConcrete(
                                 $this->router->generate('app_work_detail', array('_locale' => $locale, 'slug' => $work->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -124,7 +124,7 @@ class SitemapListener implements SitemapListenerInterface
                 }
                 // About
                 $event
-                    ->getGenerator()
+                    ->getUrlContainer()
                     ->addUrl(
                         new UrlConcrete(
                             $this->router->generate('app_about', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
@@ -136,7 +136,7 @@ class SitemapListener implements SitemapListenerInterface
                     );
                 // Contact
                 $event
-                    ->getGenerator()
+                    ->getUrlContainer()
                     ->addUrl(
                         new UrlConcrete(
                             $this->router->generate('app_contact', array('_locale' => $locale), UrlGeneratorInterface::ABSOLUTE_URL),
