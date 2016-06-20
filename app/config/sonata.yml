@@ -43,7 +43,7 @@ sonata_admin:
                 class: col-md-12
                 settings:
                     content: >
-                        <h1 style="margin-top:0">Content Management System</h1>
+                        <h1 style="margin-top:0">Hidràulica web CMS</h1>
             -
                 position: left
                 type: sonata.admin.block.admin_list

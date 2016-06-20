@@ -156,8 +156,8 @@ backend:
   admin:
     block:
       title: Notifications
-      text: pending messages
-      notext: you don't have pending messages
+      text: missatges pendents
+      notext: no tens missatges pendents
     admin: Administrador
     actions: Accions
     alt: Text alternatiu
