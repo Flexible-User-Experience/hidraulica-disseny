@@ -24,17 +24,17 @@ sonata_admin:
         show:   "::Admin/show.html.twig"
     dashboard:
         groups:
-            Works:
+            Treballs:
                 icon: "<i class='fa fa-briefcase'></i>"
-            Products:
+            Productes:
                 icon: "<i class='fa fa-table'></i>"
             Sliders:
                 icon: "<i class='fa fa-picture-o'></i>"
-            Contacts:
+            Contactes:
                 icon: "<i class='fa fa-envelope'></i>"
-            Carts:
+            Botiga:
                 icon: "<i class='fa fa-shopping-cart'></i>"
-            Users:
+            Usuaris:
                 icon: "<i class='fa fa-user'></i>"
         blocks:
             -
@@ -48,7 +48,7 @@ sonata_admin:
                 position: left
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [ Works, Products, Sliders ]
+                    groups: [ Treballs, Productes, Sliders ]
             -
                 position: right
                 type: admin.block.messages
@@ -56,7 +56,7 @@ sonata_admin:
                 position: right
                 type: sonata.admin.block.admin_list
                 settings:
-                    groups: [ Contacts, Carts, Users ]
+                    groups: [ Contactes, Botiga, Usuaris ]
             -
                 position: bottom
                 type: sonata.block.service.text

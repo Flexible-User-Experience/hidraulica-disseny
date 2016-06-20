@@ -4,57 +4,57 @@ services:
         class: AppBundle\Admin\WorkAdmin
         arguments: [ ~, AppBundle\Entity\Work, AppBundle:Admin\WorkAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Work", group: "Works" }
+            - { name: sonata.admin, manager_type: orm, label: "Treball", group: "Treballs" }
     admin.workcategory:
         class: AppBundle\Admin\WorkCategoryAdmin
         arguments: [ ~, AppBundle\Entity\WorkCategory, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Category", group: "Works" }
+            - { name: sonata.admin, manager_type: orm, label: "Categoria", group: "Treballs" }
     admin.workimage:
         class: AppBundle\Admin\WorkImageAdmin
         arguments: [ ~, AppBundle\Entity\WorkImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Works", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Imatge", group: "Treballs", show_in_dashboard: false }
     admin.sliderimage:
         class: AppBundle\Admin\SliderImageAdmin
         arguments: [ ~, AppBundle\Entity\SliderImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Sliders", show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, label: "Imatge", group: "Sliders", show_in_dashboard: true }
     admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [ ~, AppBundle\Entity\Product, AppBundle:Admin\ProductAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Product", group: "Products" }
+            - { name: sonata.admin, manager_type: orm, label: "Producte", group: "Productes" }
     admin.productimage:
         class: AppBundle\Admin\ProductImageAdmin
         arguments: [ ~, AppBundle\Entity\ProductImage, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Image", group: "Products", show_in_dashboard: false }
+            - { name: sonata.admin, manager_type: orm, label: "Imatge", group: "Productes", show_in_dashboard: false }
     admin.productcategory:
         class: AppBundle\Admin\ProductCategoryAdmin
         arguments: [ ~, AppBundle\Entity\ProductCategory, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Etiqueta", group: "Products", show_in_dashboard: true }
+            - { name: sonata.admin, manager_type: orm, label: "Etiqueta", group: "Productes", show_in_dashboard: true }
     admin.contactmessage:
         class: AppBundle\Admin\ContactMessageAdmin
         arguments: [ ~, AppBundle\Entity\ContactMessage, AppBundle:Admin\ContactMessageAdmin, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Contact Message", group: "Contacts" }
+            - { name: sonata.admin, manager_type: orm, label: "Missatge contacte", group: "Contactes" }
     admin.user:
         class: AppBundle\Admin\UserAdmin
         arguments: [ ~, AppBundle\Entity\User, ~, "@fos_user.user_manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "User", group: "Users" }
+            - { name: sonata.admin, manager_type: orm, label: "Usuari", group: "Usuaris" }
     admin.cart:
         class: AppBundle\Admin\CartAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Cart, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Cart", group: "Carts" }
+            - { name: sonata.admin, manager_type: orm, label: "Carret compra", group: "Botiga" }
     admin.customer:
         class: AppBundle\Admin\CustomerAdmin
         arguments: [ ~, AppBundle\Entity\Cart\Customer, ~, "@vich_uploader.templating.helper.uploader_helper", "@liip_imagine.cache.manager" ]
         tags:
-            - { name: sonata.admin, manager_type: orm, label: "Customer", group: "Carts" }
+            - { name: sonata.admin, manager_type: orm, label: "Client", group: "Botiga" }
 # Sonata Blocks
     admin.block.messages:
         class: AppBundle\Admin\Block\PendingMessagesBlock
