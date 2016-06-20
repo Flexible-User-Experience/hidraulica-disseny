@@ -66,16 +66,6 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                     ),
                 )
             )
-            ->end()
-            ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
-            ->add(
-                'enabled',
-                'checkbox',
-                array(
-                    'label'    => 'backend.admin.enabled',
-                    'required' => false,
-                )
-            )
             ->end();
     }
 
@@ -90,14 +80,6 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'backend.admin.title',
-                )
-            )
-            ->add(
-                'enabled',
-                null,
-                array(
-                    'label'    => 'backend.admin.enabled',
-                    'editable' => true,
                 )
             );
     }
@@ -114,14 +96,6 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label'    => 'backend.admin.title',
-                    'editable' => true,
-                )
-            )
-            ->add(
-                'enabled',
-                null,
-                array(
-                    'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
