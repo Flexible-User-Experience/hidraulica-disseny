@@ -50,7 +50,7 @@ class KernelRequestEvent
         if ($token && $token instanceof UsernamePasswordToken && $token->getProviderKey() == 'admin') {
             $request = $event->getRequest();
             // try to see if the locale has been set as a _locale routing parameter
-            if ($request->attributes->get('_locale') != $this->dl) {
+            if ($request->attributes->get('_locale') != $this->dl && strpos($request->attributes->get('_route'), 'admin') !== false ) {
                 $request->setLocale($this->dl);
             }
         }
