@@ -14,7 +14,11 @@
 /web/bundles/
 /web/assetic/*
 /web/css/*
+!/web/css/.gitkeep
 /web/js/*
+!/web/js/.gitkeep
+/web/images/*
+!/web/images/.gitkeep
 /web/media/*
 !/web/media/.gitkeep
 /web/uploads/*

@@ -87,4 +87,32 @@ class FrontendControllerTest extends AbstractBaseTest
             array('/en/broken-page'),
         );
     }
+
+    /**
+     * Test HTTP request is redirected
+     *
+     * @dataProvider provideRedirectedUrls
+     *
+     * @param string $url
+     */
+    public function testFrontendPagesAreRedirected($url)
+    {
+        $client = $this->createClient();           // anonymous user
+        $client->request('GET', $url);
+
+        $this->assertStatusCode(301, $client);
+    }
+
+    /**
+     * Urls provider.
+     *
+     * @return array
+     */
+    public function provideRedirectedUrls()
+    {
+        return array(
+            array('/ca/treballs/'),
+            array('/en/broken-page/'),
+        );
+    }
 }

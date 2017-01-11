@@ -55,7 +55,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/new/item/{itemId}/", name="app_cart_new_item")
+     * @Route("/cart/new/item/{itemId}", name="app_cart_new_item")
      * @param Request $request
      * @param int     $itemId
      *
@@ -69,7 +69,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/remove/item/{itemId}/", name="app_cart_remove_item")
+     * @Route("/cart/remove/item/{itemId}", name="app_cart_remove_item")
      * @param Request $request
      * @param int     $itemId
      *
@@ -95,7 +95,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/checkout/", name="app_cart_checkout_step_2")
+     * @Route("/cart/checkout", name="app_cart_checkout_step_2")
      * @param Request $request
      *
      * @return Response
@@ -133,7 +133,7 @@ class CartController extends Controller
     }
 
     /**
-     * @Route("/cart/payment/", name="app_cart_payment_step_3")
+     * @Route("/cart/payment", name="app_cart_payment_step_3")
      * @return Response
      */
     public function step3Action()
