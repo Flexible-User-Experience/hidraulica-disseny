@@ -12,7 +12,7 @@ payum_capture:
 payum_notify:
     resource: "@PayumBundle/Resources/config/routing/notify.xml"
 
-sonata:
+admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
     prefix:   /admin
     options:  { i18n: false }
@@ -24,12 +24,17 @@ _sonata_admin:
     options:  { i18n: false }
 
 sonata_user_admin_security:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_security.xml'
+    resource: "@SonataUserBundle/Resources/config/routing/admin_security.xml"
     prefix:   /admin
     options:  { i18n: false }
 
 sonata_user_admin_resetting:
-    resource: '@SonataUserBundle/Resources/config/routing/admin_resetting.xml'
+    resource: "@SonataUserBundle/Resources/config/routing/admin_resetting.xml"
+    prefix:   /admin/resetting
+    options:  { i18n: false }
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix:   /admin/resetting
     options:  { i18n: false }
 
