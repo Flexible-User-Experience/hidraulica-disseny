@@ -43,7 +43,7 @@ sonata_admin:
                 class: col-md-12
                 settings:
                     content: >
-                        <h1 style="margin-top:0">Hidràulica web CMS</h1>
+                        <h1 style="margin-top:0">CMS web Hidràulica</h1>
             -
                 position: left
                 type: sonata.admin.block.admin_list
@@ -63,7 +63,7 @@ sonata_admin:
                 class: col-md-12
                 settings:
                     content: >
-                        <div><hr style="margin-top:40px;border-top:solid 1px #d2d6de"><p><i class="fa fa-info-circle"></i> Technical support at <a href="mailto:suport@flux.cat?subject=Hidraulica CMS help" style="color:#000">suport@flux.cat</a></p></div>
+                        <div><hr style="margin-top:40px;border-top:solid 1px #d2d6de"><p><i class="fa fa-info-circle"></i> Suport tècnic aquí: <a href="mailto:suport@flux.cat?subject=Hidraulica CMS help" style="color:#000">suport@flux.cat</a></p></div>
 
 # User
 sonata_user:
