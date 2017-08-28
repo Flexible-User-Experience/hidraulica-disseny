@@ -1,3 +1,21 @@
+"Work_list": Treballs
+"Work_delete": Esborrar
+"Category_list": Categories
+"Category_delete": Esborrar
+"Product_list": Productes
+"Product_delete": Esborrar
+"Tag_list": Etiquetes
+"Tag_delete": Esborrar
+"Slider_list": Sliders
+"Slider_delete": Esborrar
+"Contact Message_list": Missatges
+"Contact Message_delete": Esborrar
+"Cart_list": Carrets compra
+"Cart_delete": Esborrar
+"Customer_list": Clients
+"Customer_delete": Esborrar
+"User_list": Usuaris
+"User_delete": Esborrar
 front:
   menu:
     admin: "[ cms ]"
