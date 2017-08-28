@@ -11,7 +11,7 @@
         perms: yes
         times: yes
         src: "{{ vhost_path }}/shared/web/uploads"
-        dest: "{{ playbook_dir }}/../../web/uploads"
+        dest: "{{ playbook_dir }}/../../web"
     - name: fix ownership in downloaded files locally
       delegate_to: mother
       file:
