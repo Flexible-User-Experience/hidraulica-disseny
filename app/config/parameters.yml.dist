@@ -44,3 +44,6 @@ parameters:
     paypal_password:  YYY
     paypal_signature: ZZZ
     paypal_sandbox:   false
+
+    recaptcha_site_key: "xxxxxxxxxxxxx"
+    recaptcha_secret:   "xxxxxxxxxxxxx"

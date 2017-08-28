@@ -101,13 +101,13 @@ vich_uploader:
     mappings:
         work:
             uri_prefix:         /uploads/images/work
-            upload_destination: %kernel.root_dir%/../web/uploads/images/work
+            upload_destination: "%kernel.root_dir%/../web/uploads/images/work"
             namer:              vich_uploader.namer_uniqid
         product:
             uri_prefix:         /uploads/images/product
-            upload_destination: %kernel.root_dir%/../web/uploads/images/product
+            upload_destination: "%kernel.root_dir%/../web/uploads/images/product"
             namer:              vich_uploader.namer_uniqid
         slide:
             uri_prefix:         /uploads/images/slide
-            upload_destination: %kernel.root_dir%/../web/uploads/images/slide
+            upload_destination: "%kernel.root_dir%/../web/uploads/images/slide"
             namer:              vich_uploader.namer_uniqid

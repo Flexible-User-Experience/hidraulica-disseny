@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Route\RouteCollection;
  */
 class ProductCategoryAdmin extends AbstractBaseAdmin
 {
-    protected $classnameLabel = 'Category';
+    protected $classnameLabel = 'Tag';
     protected $baseRoutePattern = 'products/category';
     protected $datagridValues = array(
         '_sort_by'    => 'title',
