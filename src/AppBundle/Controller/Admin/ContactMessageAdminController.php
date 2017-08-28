@@ -92,6 +92,7 @@ class ContactMessageAdminController extends BaseAdminController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             // persist new contact message form record
+            $object->setChecked(true);
             $object->setAnswered(true);
             $em = $this->getDoctrine()->getManager();
             $em->persist($object);
@@ -100,7 +101,7 @@ class ContactMessageAdminController extends BaseAdminController
             $messenger = $this->get('app.notification');
             $messenger->senddUserBackendNotification($object);
             // build flash message
-            $this->addFlash('success', 'Your answer has been sent.');
+            $this->addFlash('success', 'La teva resposta s\'ha enviat correctament.');
 
             return $this->redirectToRoute('admin_app_contactmessage_list');
         }
