@@ -148,6 +148,14 @@ stfalcon_tinymce:
             toolbar1: "bold italic underline | bullist numlist outdent indent | link"
             image_advtab: true
 
+# Google reCaptcha
+ewz_recaptcha:
+    public_key:  "%recaptcha_site_key%"
+    private_key: "%recaptcha_secret%"
+    locale_key:  "%locale%"
+    enabled:     true
+    ajax:        false
+
 # Payum
 payum:
     security:

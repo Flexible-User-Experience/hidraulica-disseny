@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             // Vendors
             new Astina\Bundle\SocialLinksBundle\AstinaSocialLinksBundle(),
+            new EWZ\Bundle\RecaptchaBundle\EWZRecaptchaBundle(),
             new JMS\I18nRoutingBundle\JMSI18nRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
