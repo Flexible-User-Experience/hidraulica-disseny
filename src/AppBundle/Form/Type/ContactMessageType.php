@@ -74,6 +74,16 @@ class ContactMessageType extends AbstractType
                 )
             )
             ->add(
+                'send',
+                SubmitType::class,
+                array(
+                    'label' => 'front.contact.form.ok',
+                    'attr'  => array(
+                        'class' => 'btn-default',
+                    ),
+                )
+            )
+            ->add(
                 'captcha',
                 EWZRecaptchaType::class,
                 array(
@@ -88,16 +98,6 @@ class ContactMessageType extends AbstractType
                     'mapped' => false,
                     'constraints' => array(
                         new RecaptchaTrue(),
-                    ),
-                )
-            )
-            ->add(
-                'send',
-                SubmitType::class,
-                array(
-                    'label' => 'front.contact.form.ok',
-                    'attr'  => array(
-                        'class' => 'btn-default',
                     ),
                 )
             )
