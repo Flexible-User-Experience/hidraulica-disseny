@@ -2,8 +2,10 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Enum\UserRolesEnum;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Work;
+use AppBundle\Entity\User;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
@@ -50,6 +52,7 @@ class AppExtension extends \Twig_Extension
         return array(
             new \Twig_SimpleFilter('class_short_name', array($this, 'getClass')),
             new \Twig_SimpleFilter('is_product', array($this, 'isProductInstace')),
+            new \Twig_SimpleFilter('draw_role_span', array($this, 'drawRoleSpan')),
         );
     }
 
@@ -71,6 +74,34 @@ class AppExtension extends \Twig_Extension
     public function isProductInstace($object)
     {
         return $object instanceof Product;
+    }
+
+    /**
+     * @param User $object
+     *
+     * @return string
+     */
+    public function drawRoleSpan($object)
+    {
+        $span = '';
+        if ($object instanceof User && count($object->getRoles()) > 0) {
+            /** @var string $role */
+            foreach ($object->getRoles() as $role) {
+//                if ($role == UserRolesEnum::ROLE_USER) {
+//                    $span .= '<span class="label label-info" style="margin-right:10px">usuari</span>';
+                if ($role == UserRolesEnum::ROLE_CMS) {
+                    $span .= '<span class="label label-warning" style="margin-right:10px">editor</span>';
+                } else if ($role == UserRolesEnum::ROLE_ADMIN) {
+                    $span .= '<span class="label label-primary" style="margin-right:10px">administrador</span>';
+                } else if ($role == UserRolesEnum::ROLE_SUPER_ADMIN) {
+                    $span .= '<span class="label label-danger" style="margin-right:10px">superadministrador</span>';
+                }
+            }
+        } else {
+            $span = '<span class="label label-success" style="margin-right:10px">---</span>';
+        }
+
+        return $span;
     }
 
     /**
