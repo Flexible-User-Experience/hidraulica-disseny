@@ -3252,17 +3252,17 @@
         },
         {
             "name": "payum/core",
-            "version": "1.4.1",
+            "version": "1.4.3",
             "target-dir": "Payum/Core",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Core.git",
-                "reference": "4f3ddd922186b5d6230f3c67f7922d9dbf519f66"
+                "reference": "9483535dc912d2b248aa01dfc6254d938586550a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Core/zipball/4f3ddd922186b5d6230f3c67f7922d9dbf519f66",
-                "reference": "4f3ddd922186b5d6230f3c67f7922d9dbf519f66",
+                "url": "https://api.github.com/repos/Payum/Core/zipball/9483535dc912d2b248aa01dfc6254d938586550a",
+                "reference": "9483535dc912d2b248aa01dfc6254d938586550a",
                 "shasum": ""
             },
             "require": {
@@ -3357,7 +3357,7 @@
                 "subscription",
                 "withdrawal"
             ],
-            "time": "2017-06-09T06:51:55+00:00"
+            "time": "2017-09-01T08:19:41+00:00"
         },
         {
             "name": "payum/iso4217",
@@ -4314,16 +4314,16 @@
         },
         {
             "name": "sonata-project/admin-bundle",
-            "version": "3.22.0",
+            "version": "3.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "77a5c250803fd1171eff88972f43529daa603ca5"
+                "reference": "edbc6b755df5abae8b562eba2fdae6e7855cfdcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/77a5c250803fd1171eff88972f43529daa603ca5",
-                "reference": "77a5c250803fd1171eff88972f43529daa603ca5",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/edbc6b755df5abae8b562eba2fdae6e7855cfdcc",
+                "reference": "edbc6b755df5abae8b562eba2fdae6e7855cfdcc",
                 "shasum": ""
             },
             "require": {
@@ -4359,7 +4359,7 @@
             "require-dev": {
                 "jms/di-extra-bundle": "^1.7",
                 "jms/translation-bundle": "^1.2",
-                "matthiasnoback/symfony-dependency-injection-test": "^0.1 || ^1.0",
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7.6 || ^1.1",
                 "sensio/generator-bundle": "^2.3 || ^3.0",
                 "sllh/php-cs-fixer-styleci-bridge": "^2.0",
                 "sonata-project/intl-bundle": "^2.2.4",
@@ -4409,7 +4409,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2017-08-19T14:18:22+00:00"
+            "time": "2017-09-01T14:15:32+00:00"
         },
         {
             "name": "sonata-project/block-bundle",
