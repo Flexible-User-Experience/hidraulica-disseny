@@ -30,7 +30,7 @@ class ProductController extends Controller
         $products = $paginator->paginate(
             $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate(),
             $page,
-            9
+            WebController::DEFAULT_PAGINATION
         );
 
         return $this->render(
