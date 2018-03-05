@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class WebController extends Controller
 {
-    const DEFAULT_PAGINATION = 9;
+    const DEFAULT_PAGINATION = 60;
 
     /**
      * @Route("/", name="app_homepage")
