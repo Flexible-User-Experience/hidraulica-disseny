@@ -20,14 +20,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class WebController extends Controller
 {
+    const DEFAULT_PAGINATION = 60;
+
     /**
      * @Route("/", name="app_homepage")
      */
     public function indexAction()
     {
         $slides = $this->getDoctrine()->getRepository('AppBundle:SliderImage')->findAllEnabledSortedByPosition();
-        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(9);
-        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(9);
+        $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findShowInHomepageEnabledSortedByDate(self::DEFAULT_PAGINATION);
+        $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findShowInHomepageEnabledSortedByDate(self::DEFAULT_PAGINATION);
         $thumbs = array_merge($works, $products);
         usort(
             $thumbs,

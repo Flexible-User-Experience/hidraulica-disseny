@@ -31,7 +31,7 @@ class WorkController extends Controller
         $works = $paginator->paginate(
             $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate(),
             $page,
-            9
+            WebController::DEFAULT_PAGINATION
         );
 
         return $this->render(
