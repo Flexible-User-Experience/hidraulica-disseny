@@ -2,6 +2,7 @@
 
 namespace AppBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\GedmoTranslationsType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -11,7 +12,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
  * Class ProductCategoryAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class ProductCategoryAdmin extends AbstractBaseAdmin
@@ -24,6 +24,10 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
     );
 
     /**
+     * Methods
+     */
+
+    /**
      * Configure route collection
      *
      * @param RouteCollection $collection
@@ -32,7 +36,8 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
     {
         $collection
             ->remove('batch')
-            ->remove('show');
+            ->remove('show')
+        ;
     }
 
     /**
@@ -53,7 +58,7 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
             ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'translations',
-                'a2lix_translations_gedmo',
+                GedmoTranslationsType::class,
                 array(
                     'required'           => false,
                     'label'              => ' ',
@@ -66,7 +71,8 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                     ),
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -81,7 +87,8 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.title',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -109,6 +116,7 @@ class ProductCategoryAdmin extends AbstractBaseAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

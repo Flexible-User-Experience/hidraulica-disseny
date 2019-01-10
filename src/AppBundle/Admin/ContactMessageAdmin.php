@@ -6,12 +6,12 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\Form\Type\DatePickerType;
 
 /**
  * Class ContactMessageAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class ContactMessageAdmin extends AbstractBaseAdmin
@@ -24,8 +24,10 @@ class ContactMessageAdmin extends AbstractBaseAdmin
     );
 
     /**
-     * Configure route collection
-     *
+     * Methods
+     */
+
+    /**
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -34,7 +36,8 @@ class ContactMessageAdmin extends AbstractBaseAdmin
             ->remove('create')
             ->remove('edit')
             ->remove('batch')
-            ->add('answer', $this->getRouterIdParameter() . '/answer');
+            ->add('answer', $this->getRouterIdParameter() . '/answer')
+        ;
     }
 
     /**
@@ -55,7 +58,7 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label'      => 'backend.admin.date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                 )
             )
             ->add(
@@ -99,7 +102,8 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.description',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -157,7 +161,8 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.answered',
                 )
-            );
+            )
+        ;
         if ($this->getSubject()->getAnswered()) {
             $showMapper
                 ->add(
@@ -166,7 +171,8 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                     array(
                         'label' => 'backend.admin.answer',
                     )
-                );
+                )
+            ;
         }
     }
 
@@ -237,6 +243,7 @@ class ContactMessageAdmin extends AbstractBaseAdmin
                         ),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

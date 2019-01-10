@@ -5,12 +5,14 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class ProductImageAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class ProductImageAdmin extends AbstractBaseAdmin
@@ -21,6 +23,10 @@ class ProductImageAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'position',
         '_sort_order' => 'asc',
     );
+
+    /**
+     * Methods
+     */
 
     /**
      * @param FormMapper $formMapper
@@ -40,7 +46,7 @@ class ProductImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'       => 'backend.admin.image',
                     'required'    => false,
@@ -68,13 +74,14 @@ class ProductImageAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -95,7 +102,7 @@ class ProductImageAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label'      => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                     'format'     => 'd-m-Y',
                 )
             )
@@ -121,7 +128,8 @@ class ProductImageAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -181,7 +189,8 @@ class ProductImageAdmin extends AbstractBaseAdmin
                         'delete' => array(),
                     ),
                 )
-            );
+            )
+        ;
     }
 }
 

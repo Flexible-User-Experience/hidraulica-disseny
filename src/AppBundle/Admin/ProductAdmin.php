@@ -2,16 +2,22 @@
 
 namespace AppBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\GedmoTranslationsType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\Form\Type\CollectionType;
+use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
  * Class ProductAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class ProductAdmin extends AbstractBaseAdmin
@@ -22,6 +28,10 @@ class ProductAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
+
+    /**
+     * Methods
+     */
 
     /**
      * @param RouteCollection $collection
@@ -41,7 +51,7 @@ class ProductAdmin extends AbstractBaseAdmin
             ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(8))
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'    => 'backend.admin.image',
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
@@ -57,7 +67,7 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                'textarea',
+                TextareaType::class,
                 array(
                     'attr'  => array(
                         'rows'  => 8,
@@ -78,7 +88,7 @@ class ProductAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(4))
             ->add(
                 'categories',
-                'sonata_type_model',
+                ModelType::class,
                 array(
                     'label'      => 'Etiquetes',
                     'btn_add'    => true,
@@ -89,7 +99,7 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'createdAt',
-                'sonata_type_date_picker',
+                DatePickerType::class,
                 array(
                     'label'  => 'backend.admin.created_date',
                     'format' => 'd/M/y',
@@ -104,7 +114,7 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'askPrice',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'Consultar preu',
                     'required' => false,
@@ -112,7 +122,7 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'showInHomepage',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.homepage',
                     'required' => false,
@@ -120,7 +130,7 @@ class ProductAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
@@ -130,7 +140,7 @@ class ProductAdmin extends AbstractBaseAdmin
             ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(12))
             ->add(
                 'translations',
-                'a2lix_translations_gedmo',
+                GedmoTranslationsType::class,
                 array(
                     'required'           => false,
                     'label'              => ' ',
@@ -151,13 +161,14 @@ class ProductAdmin extends AbstractBaseAdmin
                     ),
                 )
             )
-            ->end();
+            ->end()
+        ;
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
             $formMapper
                 ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
                 ->add(
                     'images',
-                    'sonata_type_collection',
+                    CollectionType::class,
                     array(
                         'label'              => ' ',
                         'required'           => false,
@@ -172,7 +183,8 @@ class ProductAdmin extends AbstractBaseAdmin
                 ->end()
                 ->setHelps(
                     array('productImages' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
-                );
+                )
+            ;
         }
     }
 
@@ -187,7 +199,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label'      => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                     'format'     => 'd-m-Y',
                 )
             )
@@ -239,7 +251,8 @@ class ProductAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -324,6 +337,7 @@ class ProductAdmin extends AbstractBaseAdmin
                         'delete'  => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

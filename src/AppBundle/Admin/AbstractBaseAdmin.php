@@ -11,16 +11,23 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  * Class BaseAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
 abstract class AbstractBaseAdmin extends Admin
 {
-    /** @var UploaderHelper */
+    /**
+     * @var UploaderHelper
+     */
     private $vus;
 
-    /** @var CacheManager */
+    /**
+     * @var CacheManager
+     */
     private $lis;
+
+    /**
+     * Methods
+     */
 
     /**
      * @param string         $code
@@ -47,8 +54,6 @@ abstract class AbstractBaseAdmin extends Admin
     protected $maxPerPage = 25;
 
     /**
-     * Configure route collection
-     *
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -59,8 +64,6 @@ abstract class AbstractBaseAdmin extends Admin
     }
 
     /**
-     * Remove batch action list view first column
-     *
      * @return array
      */
     public function getBatchActions()
@@ -72,8 +75,6 @@ abstract class AbstractBaseAdmin extends Admin
     }
 
     /**
-     * Get export formats
-     *
      * @return array
      */
     public function getExportFormats()
@@ -110,8 +111,6 @@ abstract class AbstractBaseAdmin extends Admin
     }
 
     /**
-     * Get image helper form mapper with thumbnail
-     *
      * @return string
      */
     protected function getImageHelperFormMapperWithThumbnail()

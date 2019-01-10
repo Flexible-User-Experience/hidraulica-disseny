@@ -2,16 +2,21 @@
 
 namespace AppBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\GedmoTranslationsType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Sonata\Form\Type\CollectionType;
+use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
  * Class WorkAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class WorkAdmin extends AbstractBaseAdmin
@@ -22,6 +27,10 @@ class WorkAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'createdAt',
         '_sort_order' => 'desc',
     );
+
+    /**
+     * Methods
+     */
 
     /**
      * @param RouteCollection $collection
@@ -41,7 +50,7 @@ class WorkAdmin extends AbstractBaseAdmin
             ->with('backend.admin.general', $this->getFormMdSuccessBoxArray(9))
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
                     'label'    => 'backend.admin.image',
                     'help'     => $this->getImageHelperFormMapperWithThumbnail(),
@@ -57,7 +66,7 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'description',
-                'textarea',
+                TextareaType::class,
                 array(
                     'attr'  => array(
                         'rows'  => 8,
@@ -78,7 +87,7 @@ class WorkAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'createdAt',
-                'sonata_type_date_picker',
+                DatePickerType::class,
                 array(
                     'label'  => 'backend.admin.created_date',
                     'format' => 'd/M/y',
@@ -93,7 +102,7 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'showInHomepage',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.homepage',
                     'required' => false,
@@ -101,7 +110,7 @@ class WorkAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
@@ -111,7 +120,7 @@ class WorkAdmin extends AbstractBaseAdmin
             ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(9))
             ->add(
                 'translations',
-                'a2lix_translations_gedmo',
+                GedmoTranslationsType::class,
                 array(
                     'required'           => false,
                     'label'              => ' ',
@@ -132,13 +141,14 @@ class WorkAdmin extends AbstractBaseAdmin
                     ),
                 )
             )
-            ->end();
+            ->end()
+        ;
         if ($this->id($this->getSubject())) { // is edit mode, disable on new subjects
             $formMapper
                 ->with('backend.admin.images', $this->getFormMdSuccessBoxArray(12))
                 ->add(
                     'images',
-                    'sonata_type_collection',
+                    CollectionType::class,
                     array(
                         'label'              => ' ',
                         'required'           => false,
@@ -153,7 +163,8 @@ class WorkAdmin extends AbstractBaseAdmin
                 ->end()
                 ->setHelps(
                     array('images' => 'up to 10MB with format PNG, JPG or GIF. min. width 1200px.')
-                );
+                )
+            ;
         }
     }
 
@@ -168,7 +179,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label'      => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                     'format'     => 'd-m-Y',
                 )
             )
@@ -207,7 +218,8 @@ class WorkAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -276,7 +288,7 @@ class WorkAdmin extends AbstractBaseAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }
-

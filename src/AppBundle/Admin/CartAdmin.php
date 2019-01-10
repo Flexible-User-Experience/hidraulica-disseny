@@ -9,12 +9,13 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use AppBundle\Enum\CartStatusEnum;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\Form\Type\DatePickerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * Class CartAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class CartAdmin extends AbstractBaseAdmin
@@ -27,8 +28,10 @@ class CartAdmin extends AbstractBaseAdmin
     );
 
     /**
-     * Configure route collection
-     *
+     * Methods
+     */
+
+    /**
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -41,8 +44,6 @@ class CartAdmin extends AbstractBaseAdmin
     }
 
     /**
-     * Override query list to reduce queries amount on list view (apply join strategy)
-     *
      * @param string $context context
      *
      * @return QueryBuilder
@@ -53,11 +54,15 @@ class CartAdmin extends AbstractBaseAdmin
         $query = parent::createQuery($context);
         $query
             ->select($query->getRootAliases()[0] . ', i')
-            ->leftJoin($query->getRootAliases()[0] . '.items', 'i');
+            ->leftJoin($query->getRootAliases()[0] . '.items', 'i')
+        ;
 
         return $query;
     }
 
+    /**
+     * @param ShowMapper $showMapper
+     */
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
@@ -210,7 +215,8 @@ class CartAdmin extends AbstractBaseAdmin
                     'label' => 'Total',
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -231,7 +237,7 @@ class CartAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(3))
             ->add(
                 'createdAt',
-                'sonata_type_date_picker',
+                DatePickerType::class,
                 array(
                     'label'  => 'backend.admin.created_date',
                     'format' => 'd/M/y',
@@ -239,13 +245,14 @@ class CartAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -259,7 +266,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label'      => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                     'format'     => 'd-m-Y',
                 )
             )
@@ -340,7 +347,8 @@ class CartAdmin extends AbstractBaseAdmin
 
                     ),
                 )
-            );
+            )
+        ;
     }
 }
 

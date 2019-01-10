@@ -11,7 +11,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
  * Class CustomerAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class CustomerAdmin extends AbstractBaseAdmin
@@ -24,8 +23,10 @@ class CustomerAdmin extends AbstractBaseAdmin
     );
 
     /**
-     * Configure route collection
-     *
+     * Methods
+     */
+
+    /**
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
@@ -34,7 +35,8 @@ class CustomerAdmin extends AbstractBaseAdmin
             ->remove('create')
             ->remove('edit')
             ->remove('delete')
-            ->remove('batch');
+            ->remove('batch')
+        ;
     }
 
     /**
@@ -98,7 +100,8 @@ class CustomerAdmin extends AbstractBaseAdmin
                 array(
                     'label' => 'backend.admin.cart.customer.email',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -173,9 +176,13 @@ class CustomerAdmin extends AbstractBaseAdmin
                         'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 
+    /**
+     * @param ShowMapper $show
+     */
     protected function configureShowFields(ShowMapper $show)
     {
         $show
@@ -246,6 +253,7 @@ class CustomerAdmin extends AbstractBaseAdmin
                     'template' => '::Admin/Shows/show__field_customer_carts.html.twig'
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 }
