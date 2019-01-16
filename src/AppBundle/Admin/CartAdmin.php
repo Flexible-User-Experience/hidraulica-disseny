@@ -9,13 +9,14 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use AppBundle\Enum\CartStatusEnum;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Sonata\Form\Type\DatePickerType;
+use Sonata\CoreBundle\Form\Type\DatePickerType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
- * Class CartAdmin
+ * Class CartAdmin.
  *
  * @category Admin
+ *
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class CartAdmin extends AbstractBaseAdmin
@@ -23,12 +24,12 @@ class CartAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Cart';
     protected $baseRoutePattern = 'carts/cart';
     protected $datagridValues = array(
-        '_sort_by'    => 'createdAt',
+        '_sort_by' => 'createdAt',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Methods
+     * Methods.
      */
 
     /**
@@ -53,8 +54,8 @@ class CartAdmin extends AbstractBaseAdmin
         /** @var QueryBuilder $query */
         $query = parent::createQuery($context);
         $query
-            ->select($query->getRootAliases()[0] . ', i')
-            ->leftJoin($query->getRootAliases()[0] . '.items', 'i')
+            ->select($query->getRootAliases()[0].', i')
+            ->leftJoin($query->getRootAliases()[0].'.items', 'i')
         ;
 
         return $query;
@@ -129,7 +130,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'createdAt',
                 null,
                 array(
-                    'label'  => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'format' => 'd/m/Y',
                 )
             )
@@ -137,7 +138,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'status',
                 null,
                 array(
-                    'label'   => 'backend.admin.cart.status.status',
+                    'label' => 'backend.admin.cart.status.status',
                     'template' => '::Admin/Shows/show__field_cart_status_enum.html.twig',
                 )
             )
@@ -147,35 +148,35 @@ class CartAdmin extends AbstractBaseAdmin
                 'payment.number',
                 null,
                 array(
-                    'label'  => 'Referència',
+                    'label' => 'Referència',
                 )
             )
             ->add(
                 'payment.description',
                 null,
                 array(
-                    'label'  => 'Descripció',
+                    'label' => 'Descripció',
                 )
             )
             ->add(
                 'payment.clientEmail',
                 null,
                 array(
-                    'label'  => 'Email',
+                    'label' => 'Email',
                 )
             )
             ->add(
                 'payment.currencyCode',
                 null,
                 array(
-                    'label'  => 'Moneda',
+                    'label' => 'Moneda',
                 )
             )
             ->add(
                 'payment.totalAmount',
                 null,
                 array(
-                    'label'  => 'Import',
+                    'label' => 'Import',
                 )
             )
             ->end()
@@ -239,7 +240,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'createdAt',
                 DatePickerType::class,
                 array(
-                    'label'  => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'format' => 'd/M/y',
                 )
             )
@@ -247,7 +248,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -265,9 +266,9 @@ class CartAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.created_date',
-                    'field_type' => DatePickerType::class,
-                    'format'     => 'd-m-Y',
+                    'label' => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -285,7 +286,7 @@ class CartAdmin extends AbstractBaseAdmin
                 array(
                     'expanded' => false,
                     'multiple' => false,
-                    'choices'  => CartStatusEnum::getEnumArray(),
+                    'choices' => CartStatusEnum::getEnumArray(),
                 )
             );
     }
@@ -301,8 +302,8 @@ class CartAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'date',
                 array(
-                    'label'    => 'backend.admin.created_date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.created_date',
+                    'format' => 'd/m/Y',
                     'editable' => false,
                 )
             )
@@ -317,7 +318,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'nitems',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.nitems',
+                    'label' => 'backend.admin.cart.nitems',
                     'template' => '::Admin/Cells/list__cell_cart_nitems.html.twig',
                 )
             )
@@ -325,7 +326,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'baseAmount',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.total_amount',
+                    'label' => 'backend.admin.cart.total_amount',
                     'template' => '::Admin/Cells/list__cell_cart_total_amount.html.twig',
                 )
             )
@@ -333,7 +334,7 @@ class CartAdmin extends AbstractBaseAdmin
                 'status',
                 null,
                 array(
-                    'label'    => 'backend.admin.cart.status.status',
+                    'label' => 'backend.admin.cart.status.status',
                     'template' => '::Admin/Cells/list__cell_cart_status.html.twig',
                 )
             )
@@ -341,14 +342,12 @@ class CartAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'show' => array('template' => '::Admin/Buttons/list__action_show_button.html.twig'),
-
                     ),
                 )
             )
         ;
     }
 }
-

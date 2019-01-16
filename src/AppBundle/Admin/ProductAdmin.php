@@ -8,16 +8,17 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Form\Type\ModelType;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\Form\Type\CollectionType;
-use Sonata\Form\Type\DatePickerType;
+use Sonata\CoreBundle\Form\Type\DatePickerType;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
- * Class ProductAdmin
+ * Class ProductAdmin.
  *
  * @category Admin
+ *
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class ProductAdmin extends AbstractBaseAdmin
@@ -25,12 +26,12 @@ class ProductAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Product';
     protected $baseRoutePattern = 'products/product';
     protected $datagridValues = array(
-        '_sort_by'    => 'createdAt',
+        '_sort_by' => 'createdAt',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Methods
+     * Methods.
      */
 
     /**
@@ -39,7 +40,7 @@ class ProductAdmin extends AbstractBaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         parent::configureRoutes($collection);
-        $collection->add('preview', $this->getRouterIdParameter() . '/preview');
+        $collection->add('preview', $this->getRouterIdParameter().'/preview');
     }
 
     /**
@@ -53,8 +54,8 @@ class ProductAdmin extends AbstractBaseAdmin
                 'imageFile',
                 FileType::class,
                 array(
-                    'label'    => 'backend.admin.image',
-                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'backend.admin.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 )
             )
@@ -69,8 +70,8 @@ class ProductAdmin extends AbstractBaseAdmin
                 'description',
                 TextareaType::class,
                 array(
-                    'attr'  => array(
-                        'rows'  => 8,
+                    'attr' => array(
+                        'rows' => 8,
                         'class' => 'tinymce',
                     ),
                     'label' => 'backend.admin.description',
@@ -81,7 +82,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Vimeo',
-                    'help'  => 'https://vimeo.com/NNNNNN',
+                    'help' => 'https://vimeo.com/NNNNNN',
                 )
             )
             ->end()
@@ -90,18 +91,18 @@ class ProductAdmin extends AbstractBaseAdmin
                 'categories',
                 ModelType::class,
                 array(
-                    'label'      => 'Etiquetes',
-                    'btn_add'    => true,
+                    'label' => 'Etiquetes',
+                    'btn_add' => true,
                     'btn_delete' => false,
-                    'required'   => false,
-                    'multiple'   => true,
+                    'required' => false,
+                    'multiple' => true,
                 )
             )
             ->add(
                 'createdAt',
                 DatePickerType::class,
                 array(
-                    'label'  => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'format' => 'd/M/y',
                 )
             )
@@ -116,7 +117,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'askPrice',
                 CheckboxType::class,
                 array(
-                    'label'    => 'Consultar preu',
+                    'label' => 'Consultar preu',
                     'required' => false,
                 )
             )
@@ -124,7 +125,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'showInHomepage',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.homepage',
+                    'label' => 'backend.admin.homepage',
                     'required' => false,
                 )
             )
@@ -132,7 +133,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -142,18 +143,18 @@ class ProductAdmin extends AbstractBaseAdmin
                 'translations',
                 GedmoTranslationsType::class,
                 array(
-                    'required'           => false,
-                    'label'              => ' ',
+                    'required' => false,
+                    'label' => ' ',
                     'translatable_class' => 'AppBundle\Entity\Translation\ProductTranslation',
-                    'fields'             => array(
-                        'title'       => array(
-                            'label'    => 'backend.admin.title',
-                            'required' => false
+                    'fields' => array(
+                        'title' => array(
+                            'label' => 'backend.admin.title',
+                            'required' => false,
                         ),
                         'description' => array(
-                            'label'    => 'backend.admin.description',
-                            'attr'     => array(
-                                'rows'  => 8,
+                            'label' => 'backend.admin.description',
+                            'attr' => array(
+                                'rows' => 8,
                                 'class' => 'tinymce',
                             ),
                             'required' => false,
@@ -170,13 +171,13 @@ class ProductAdmin extends AbstractBaseAdmin
                     'images',
                     CollectionType::class,
                     array(
-                        'label'              => ' ',
-                        'required'           => false,
+                        'label' => ' ',
+                        'required' => false,
                         'cascade_validation' => true,
                     ),
                     array(
-                        'edit'     => 'inline',
-                        'inline'   => 'table',
+                        'edit' => 'inline',
+                        'inline' => 'table',
                         'sortable' => 'position',
                     )
                 )
@@ -198,9 +199,9 @@ class ProductAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'field_type' => DatePickerType::class,
-                    'format'     => 'd-m-Y',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -221,7 +222,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'categories',
                 null,
                 array(
-                    'label'    => 'Etiquetes',
+                    'label' => 'Etiquetes',
                 )
             )
             ->add(
@@ -235,7 +236,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'askPrice',
                 null,
                 array(
-                    'label'    => 'Consultar preu',
+                    'label' => 'Consultar preu',
                 )
             )
             ->add(
@@ -266,16 +267,16 @@ class ProductAdmin extends AbstractBaseAdmin
                 'imageFile',
                 null,
                 array(
-                    'label'    => 'backend.admin.image',
-                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                    'label' => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig',
                 )
             )
             ->add(
                 'createdAt',
                 'date',
                 array(
-                    'label'    => 'backend.admin.created_date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.created_date',
+                    'format' => 'd/m/Y',
                     'editable' => true,
                 )
             )
@@ -283,7 +284,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                     'editable' => true,
                 )
             )
@@ -291,7 +292,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'categories',
                 null,
                 array(
-                    'label'    => 'Etiquetes',
+                    'label' => 'Etiquetes',
                     'editable' => false,
                 )
             )
@@ -306,7 +307,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'askPrice',
                 null,
                 array(
-                    'label'    => 'Consultar preu',
+                    'label' => 'Consultar preu',
                     'editable' => true,
                 )
             )
@@ -314,7 +315,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'showInHomepage',
                 null,
                 array(
-                    'label'    => 'backend.admin.homepage',
+                    'label' => 'backend.admin.homepage',
                     'editable' => true,
                 )
             )
@@ -322,7 +323,7 @@ class ProductAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -330,11 +331,11 @@ class ProductAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
-                        'edit'    => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
-                        'delete'  => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
             )

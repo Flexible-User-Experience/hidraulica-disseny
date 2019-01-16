@@ -7,16 +7,17 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\Form\Type\CollectionType;
-use Sonata\Form\Type\DatePickerType;
+use Sonata\CoreBundle\Form\Type\DatePickerType;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
- * Class WorkAdmin
+ * Class WorkAdmin.
  *
  * @category Admin
+ *
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class WorkAdmin extends AbstractBaseAdmin
@@ -24,12 +25,12 @@ class WorkAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Work';
     protected $baseRoutePattern = 'works/work';
     protected $datagridValues = array(
-        '_sort_by'    => 'createdAt',
+        '_sort_by' => 'createdAt',
         '_sort_order' => 'desc',
     );
 
     /**
-     * Methods
+     * Methods.
      */
 
     /**
@@ -38,7 +39,7 @@ class WorkAdmin extends AbstractBaseAdmin
     public function configureRoutes(RouteCollection $collection)
     {
         parent::configureRoutes($collection);
-        $collection->add('preview', $this->getRouterIdParameter() . '/preview');
+        $collection->add('preview', $this->getRouterIdParameter().'/preview');
     }
 
     /**
@@ -52,8 +53,8 @@ class WorkAdmin extends AbstractBaseAdmin
                 'imageFile',
                 FileType::class,
                 array(
-                    'label'    => 'backend.admin.image',
-                    'help'     => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'backend.admin.image',
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'required' => false,
                 )
             )
@@ -68,8 +69,8 @@ class WorkAdmin extends AbstractBaseAdmin
                 'description',
                 TextareaType::class,
                 array(
-                    'attr'  => array(
-                        'rows'  => 8,
+                    'attr' => array(
+                        'rows' => 8,
                         'class' => 'tinymce',
                     ),
                     'label' => 'backend.admin.description',
@@ -80,7 +81,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 null,
                 array(
                     'label' => 'Vimeo',
-                    'help'  => 'https://vimeo.com/NNNNNN',
+                    'help' => 'https://vimeo.com/NNNNNN',
                 )
             )
             ->end()
@@ -89,7 +90,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'createdAt',
                 DatePickerType::class,
                 array(
-                    'label'  => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'format' => 'd/M/y',
                 )
             )
@@ -104,7 +105,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'showInHomepage',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.homepage',
+                    'label' => 'backend.admin.homepage',
                     'required' => false,
                 )
             )
@@ -112,7 +113,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'enabled',
                 CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
@@ -122,18 +123,18 @@ class WorkAdmin extends AbstractBaseAdmin
                 'translations',
                 GedmoTranslationsType::class,
                 array(
-                    'required'           => false,
-                    'label'              => ' ',
+                    'required' => false,
+                    'label' => ' ',
                     'translatable_class' => 'AppBundle\Entity\Translation\WorkTranslation',
-                    'fields'             => array(
-                        'title'       => array(
-                            'label'    => 'backend.admin.title',
-                            'required' => false
+                    'fields' => array(
+                        'title' => array(
+                            'label' => 'backend.admin.title',
+                            'required' => false,
                         ),
                         'description' => array(
-                            'label'    => 'backend.admin.description',
-                            'attr'     => array(
-                                'rows'  => 8,
+                            'label' => 'backend.admin.description',
+                            'attr' => array(
+                                'rows' => 8,
                                 'class' => 'tinymce',
                             ),
                             'required' => false,
@@ -150,13 +151,13 @@ class WorkAdmin extends AbstractBaseAdmin
                     'images',
                     CollectionType::class,
                     array(
-                        'label'              => ' ',
-                        'required'           => false,
+                        'label' => ' ',
+                        'required' => false,
                         'cascade_validation' => true,
                     ),
                     array(
-                        'edit'     => 'inline',
-                        'inline'   => 'table',
+                        'edit' => 'inline',
+                        'inline' => 'table',
                         'sortable' => 'position',
                     )
                 )
@@ -178,9 +179,9 @@ class WorkAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.created_date',
-                    'field_type' => DatePickerType::class,
-                    'format'     => 'd-m-Y',
+                    'label' => 'backend.admin.created_date',
+                    'field_type' => 'sonata_type_date_picker',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -215,7 +216,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -233,16 +234,16 @@ class WorkAdmin extends AbstractBaseAdmin
                 'imageFile',
                 null,
                 array(
-                    'label'    => 'backend.admin.image',
-                    'template' => '::Admin/Cells/list__cell_image_field.html.twig'
+                    'label' => 'backend.admin.image',
+                    'template' => '::Admin/Cells/list__cell_image_field.html.twig',
                 )
             )
             ->add(
                 'createdAt',
                 'date',
                 array(
-                    'label'    => 'backend.admin.created_date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.created_date',
+                    'format' => 'd/m/Y',
                     'editable' => true,
                 )
             )
@@ -250,7 +251,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'title',
                 null,
                 array(
-                    'label'    => 'backend.admin.title',
+                    'label' => 'backend.admin.title',
                     'editable' => true,
                 )
             )
@@ -265,7 +266,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'showInHomepage',
                 null,
                 array(
-                    'label'    => 'backend.admin.homepage',
+                    'label' => 'backend.admin.homepage',
                     'editable' => true,
                 )
             )
@@ -273,7 +274,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -281,10 +282,10 @@ class WorkAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
                         'preview' => array('template' => '::Admin/Buttons/list__action_preview_button.html.twig'),
-                        'edit'   => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
+                        'edit' => array('template' => '::Admin/Buttons/list__action_edit_button.html.twig'),
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
