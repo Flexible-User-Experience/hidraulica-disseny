@@ -9,12 +9,14 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class UserAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   David Romaní <david@flux.cat>
  */
 class UserAdmin extends ParentUserAdmin
@@ -31,6 +33,16 @@ class UserAdmin extends ParentUserAdmin
         '_sort_order' => 'asc',
     );
 
+    /**
+     * Methods
+     */
+
+    /**
+     * @param $code
+     * @param $class
+     * @param $baseControllerName
+     * @param $userManager
+     */
     public function __construct($code, $class, $baseControllerName, $userManager)
     {
         parent::__construct($code, $class, $baseControllerName);
@@ -38,20 +50,18 @@ class UserAdmin extends ParentUserAdmin
     }
 
     /**
-     * Available routes
-     *
      * @param RouteCollection $collection
      */
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->remove('batch');
-        $collection->remove('export');
-        $collection->remove('show');
+        $collection
+            ->remove('batch')
+            ->remove('export')
+            ->remove('show')
+        ;
     }
 
     /**
-     * Remove batch action list view first column
-     *
      * @return array
      */
     public function getBatchActions()
@@ -94,7 +104,7 @@ class UserAdmin extends ParentUserAdmin
             )
             ->add(
                 'plainPassword',
-                'text',
+                TextType::class,
                 array(
                     'label'    => 'backend.admin.plain_password',
                     'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
@@ -104,7 +114,7 @@ class UserAdmin extends ParentUserAdmin
             ->with('backend.admin.controls', array('class' => 'col-md-6'))
             ->add(
                 'roles',
-                'choice',
+                ChoiceType::class,
                 array(
                     'label'    => 'backend.admin.roles',
                     'choices'  => UserRolesEnum::getEnumArray(),
@@ -114,13 +124,14 @@ class UserAdmin extends ParentUserAdmin
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -157,7 +168,8 @@ class UserAdmin extends ParentUserAdmin
                 array(
                     'label' => 'backend.admin.enabled',
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -209,6 +221,7 @@ class UserAdmin extends ParentUserAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

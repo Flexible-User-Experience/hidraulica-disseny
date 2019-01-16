@@ -17,10 +17,10 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * Class Work
+ * Class Work.
  *
  * @category Entity
- * @package  AppBundle\Entity
+ *
  * @author   Anton Serra <aserratorta@gmail.com>
  *
  * @ORM\Table()
@@ -88,25 +88,26 @@ class Work extends AbstractBase
      *     cascade={"persist", "remove"}
      * )
      * @Assert\Valid(deep = true)
+     *
      * @var ArrayCollection
      */
     protected $translations;
 
     /**
-     *
-     *
-     * Methods
-     *
-     *
+     * Methods.
      */
 
-    public function __construct() {
+    /**
+     * Work constructor.
+     */
+    public function __construct()
+    {
         $this->images = new ArrayCollection();
         $this->translations = new ArrayCollection();
     }
 
     /**
-     * Get Category
+     * Get Category.
      *
      * @return WorkCategory
      */
@@ -128,7 +129,7 @@ class Work extends AbstractBase
     }
 
     /**
-     * Get Images
+     * Get Images.
      *
      * @return ArrayCollection
      */
@@ -151,6 +152,7 @@ class Work extends AbstractBase
 
     /**
      * @param WorkImage $workImage
+     *
      * @return $this
      */
     public function addImage(WorkImage $workImage)
@@ -163,6 +165,7 @@ class Work extends AbstractBase
 
     /**
      * @param WorkImage $workImage
+     *
      * @return $this
      */
     public function removeImage(WorkImage $workImage)
@@ -173,12 +176,12 @@ class Work extends AbstractBase
     }
 
     /**
-     * To string
+     * To string.
      *
      * @return string
      */
-    public function __toString() {
-
-        return $this->id ? '#' . $this->getId() . ' · ' . $this->getTitle() :  '---';
+    public function __toString()
+    {
+        return $this->id ? '#'.$this->getId().' · '.$this->getTitle() : '---';
     }
 }

@@ -5,13 +5,13 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * Class SliderImageAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class SliderImageAdmin extends AbstractBaseAdmin
@@ -22,6 +22,10 @@ class SliderImageAdmin extends AbstractBaseAdmin
         '_sort_by'    => 'position',
         '_sort_order' => 'asc',
     );
+
+    /**
+     * Methods
+     */
 
     /**
      * @param FormMapper $formMapper
@@ -68,13 +72,14 @@ class SliderImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -104,7 +109,8 @@ class SliderImageAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -156,7 +162,8 @@ class SliderImageAdmin extends AbstractBaseAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }
 

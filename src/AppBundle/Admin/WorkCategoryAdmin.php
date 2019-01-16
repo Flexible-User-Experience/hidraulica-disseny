@@ -2,16 +2,17 @@
 
 namespace AppBundle\Admin;
 
+use A2lix\TranslationFormBundle\Form\Type\GedmoTranslationsType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 /**
  * Class WorkCategoryAdmin
  *
  * @category Admin
- * @package  AppBundle\Admin
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class WorkCategoryAdmin extends AbstractBaseAdmin
@@ -24,6 +25,10 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     );
 
     /**
+     * Methods
+     */
+
+    /**
      * Configure route collection
      *
      * @param RouteCollection $collection
@@ -32,7 +37,8 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
     {
         $collection
             ->remove('batch')
-            ->remove('show');
+            ->remove('show')
+        ;
     }
 
     /**
@@ -53,7 +59,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
             ->with('backend.admin.translations', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'translations',
-                'a2lix_translations_gedmo',
+                GedmoTranslationsType::class,
                 array(
                     'required'           => false,
                     'label'              => ' ',
@@ -70,13 +76,14 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
                     'label'    => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -99,7 +106,8 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                     'label'    => 'backend.admin.enabled',
                     'editable' => true,
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -135,6 +143,7 @@ class WorkCategoryAdmin extends AbstractBaseAdmin
                         'delete' => array('template' => '::Admin/Buttons/list__action_delete_button.html.twig'),
                     ),
                 )
-            );
+            )
+        ;
     }
 }

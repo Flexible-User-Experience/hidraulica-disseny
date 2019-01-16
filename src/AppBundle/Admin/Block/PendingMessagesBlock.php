@@ -3,7 +3,7 @@
 namespace AppBundle\Admin\Block;
 
 use Doctrine\ORM\EntityManager;
-use Sonata\BlockBundle\Block\BaseBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,17 +13,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * Class PendingMessagesBlock
  *
  * @category Block
- * @package  AppBundle\Admin\Block
  * @author   David Romaní <david@flux.cat>
  */
-class PendingMessagesBlock extends BaseBlockService
+class PendingMessagesBlock extends AbstractBlockService
 {
-    /** @var EntityManager */
+    /**
+     * @var EntityManager
+     */
     private $em;
 
     /**
-     * Constructor
-     *
+     * Methods
+     */
+
+    /**
      * @param string          $name
      * @param EngineInterface $templating
      * @param EntityManager   $em
@@ -35,8 +38,6 @@ class PendingMessagesBlock extends BaseBlockService
     }
 
     /**
-     * Execute
-     *
      * @param BlockContextInterface $blockContext
      * @param Response              $response
      *
@@ -57,8 +58,6 @@ class PendingMessagesBlock extends BaseBlockService
     }
 
     /**
-     * Get name
-     *
      * @return string
      */
     public function getName()
@@ -67,8 +66,6 @@ class PendingMessagesBlock extends BaseBlockService
     }
 
     /**
-     * Define the default options for the block.
-     *
      * @param OptionsResolver $resolver
      */
     public function configureSettings(OptionsResolver $resolver)

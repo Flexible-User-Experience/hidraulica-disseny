@@ -5,12 +5,14 @@ namespace AppBundle\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
- * Class WorkImageAdmin
+ * Class WorkImageAdmin.
  *
  * @category Admin
- * @package  AppBundle\Admin
+ *
  * @author   Anton Serra <aserratorta@gmail.com>
  */
 class WorkImageAdmin extends AbstractBaseAdmin
@@ -18,9 +20,13 @@ class WorkImageAdmin extends AbstractBaseAdmin
     protected $classnameLabel = 'Image';
     protected $baseRoutePattern = 'works/image';
     protected $datagridValues = array(
-        '_sort_by'    => 'position',
+        '_sort_by' => 'position',
         '_sort_order' => 'asc',
     );
+
+    /**
+     * Methods.
+     */
 
     /**
      * @param FormMapper $formMapper
@@ -40,11 +46,11 @@ class WorkImageAdmin extends AbstractBaseAdmin
             )
             ->add(
                 'imageFile',
-                'file',
+                FileType::class,
                 array(
-                    'label'       => 'backend.admin.image_name',
-                    'required'    => false,
-                    'help'        => $this->getImageHelperFormMapperWithThumbnail(),
+                    'label' => 'backend.admin.image_name',
+                    'required' => false,
+                    'help' => $this->getImageHelperFormMapperWithThumbnail(),
                     'sonata_help' => $this->getImageHelperFormMapperWithThumbnail(),
                 )
             )
@@ -52,8 +58,8 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'alt',
                 null,
                 array(
-                    'label'       => 'Alt',
-                    'help'        => 'Text alternatiu (SEO)',
+                    'label' => 'Alt',
+                    'help' => 'Text alternatiu (SEO)',
                     'sonata_help' => 'Text alternatiu (SEO)',
                 )
             )
@@ -68,13 +74,14 @@ class WorkImageAdmin extends AbstractBaseAdmin
             ->with('backend.admin.controls', $this->getFormMdSuccessBoxArray(6))
             ->add(
                 'enabled',
-                'checkbox',
+                CheckboxType::class,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'required' => false,
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     /**
@@ -94,9 +101,9 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'doctrine_orm_date',
                 array(
-                    'label'      => 'backend.admin.created_date',
+                    'label' => 'backend.admin.created_date',
                     'field_type' => 'sonata_type_date_picker',
-                    'format'     => 'd-m-Y',
+                    'format' => 'd-m-Y',
                 )
             )
             ->add(
@@ -110,7 +117,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'alt',
                 null,
                 array(
-                    'label'    => 'backend.admin.alt',
+                    'label' => 'backend.admin.alt',
                     'editable' => true,
                 )
             )
@@ -118,10 +125,11 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
-            );
+            )
+        ;
     }
 
     /**
@@ -142,8 +150,8 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'createdAt',
                 'date',
                 array(
-                    'label'    => 'backend.admin.created_date',
-                    'format'   => 'd/m/Y',
+                    'label' => 'backend.admin.created_date',
+                    'format' => 'd/m/Y',
                     'editable' => true,
                 )
             )
@@ -158,7 +166,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'alt',
                 null,
                 array(
-                    'label'    => 'backend.admin.alt',
+                    'label' => 'backend.admin.alt',
                     'editable' => true,
                 )
             )
@@ -166,7 +174,7 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 'enabled',
                 null,
                 array(
-                    'label'    => 'backend.admin.enabled',
+                    'label' => 'backend.admin.enabled',
                     'editable' => true,
                 )
             )
@@ -174,14 +182,14 @@ class WorkImageAdmin extends AbstractBaseAdmin
                 '_action',
                 'actions',
                 array(
-                    'label'   => 'backend.admin.actions',
+                    'label' => 'backend.admin.actions',
                     'actions' => array(
-                        'show'   => array(),
-                        'edit'   => array(),
+                        'show' => array(),
+                        'edit' => array(),
                         'delete' => array(),
                     ),
                 )
-            );
+            )
+        ;
     }
 }
-
