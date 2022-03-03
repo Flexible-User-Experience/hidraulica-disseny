@@ -7,6 +7,8 @@
 !/app/database/.gitkeep
 /app/logs/*
 !app/logs/.gitkeep
+/app/ansible/vars/*
+!/app/ansible/vars/.gitkeep
 /app/phpunit.xml
 /bin/
 /composer.phar
