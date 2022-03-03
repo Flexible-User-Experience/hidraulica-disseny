@@ -31,10 +31,8 @@ class ProductAdminController extends BaseAdminController
     {
         $request = $this->resolveRequest($request);
         $id = $request->get($this->admin->getIdParameter());
-
         /** @var Product $object */
         $object = $this->admin->getObject($id);
-
         if (!$object) {
             throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
         }

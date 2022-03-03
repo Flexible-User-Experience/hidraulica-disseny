@@ -50,8 +50,10 @@ class WorkController extends Controller
     public function workDetailAction($slug)
     {
         $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(['slug' => $slug]);
-
-        if ($work->getEnabled() == false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$work) {
+            throw $this->createAccessDeniedException();
+        }
+        if ($work->getEnabled() === false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
 
@@ -72,9 +74,12 @@ class WorkController extends Controller
     {
         $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
         $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(['slug' => $slug]);
+        if (!$work) {
+            throw $this->createAccessDeniedException();
+        }
         /** @var Work $item */
         foreach ($works as $i => $item) {
-            if ($item->getSlug() == $work->getSlug()) {
+            if ($item->getSlug() === $work->getSlug()) {
                 if ($i === 0) {
                     $work = $works[(count($works) - 1)];
                 } else {
@@ -98,9 +103,12 @@ class WorkController extends Controller
     {
         $works = $this->getDoctrine()->getRepository('AppBundle:Work')->findAllEnabledSortedByDate();
         $work = $this->getDoctrine()->getRepository('AppBundle:Work')->findOneBy(['slug' => $slug]);
+        if (!$work) {
+            throw $this->createAccessDeniedException();
+        }
         /** @var Work $item */
         foreach ($works as $i => $item) {
-            if ($item->getSlug() == $work->getSlug()) {
+            if ($item->getSlug() === $work->getSlug()) {
                 if (($i + 1) === count($works)) {
                     $work = $works[0];
                 } else {
