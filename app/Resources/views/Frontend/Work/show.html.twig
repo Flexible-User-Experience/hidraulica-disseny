@@ -38,7 +38,11 @@
                 {% if image.imageName %}
                     <div class="row extra-m-bottom">
                         <div class="col-xs-12">
-                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ image.alt }}">
+                            {% if '.gif' in image.imageName or '.GIF' in image.imageName %}
+                                <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}">
+                            {% else %}
+                                <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('1200xY') }}" alt="{{ image.alt }}">
+                            {% endif %}
                         </div>
                     </div>
                 {% endif %}
