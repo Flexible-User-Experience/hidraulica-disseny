@@ -21,7 +21,7 @@ class WorkAdminController extends BaseAdminController
      * Preview action
      *
      * @param int|string|null $id
-     * @param Request $request
+     * @param Request|null    $request
      *
      * @return Response
      * @throws NotFoundHttpException If the object does not exist
@@ -31,10 +31,8 @@ class WorkAdminController extends BaseAdminController
     {
         $request = $this->resolveRequest($request);
         $id = $request->get($this->admin->getIdParameter());
-
         /** @var Work $object */
         $object = $this->admin->getObject($id);
-
         if (!$object) {
             throw $this->createNotFoundException(sprintf('unable to find the object with id : %s', $id));
         }

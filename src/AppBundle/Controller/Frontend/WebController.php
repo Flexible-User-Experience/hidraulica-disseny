@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class WebController extends Controller
 {
-    const DEFAULT_PAGINATION = 60;
+    public const DEFAULT_PAGINATION = 60;
 
     /**
      * @Route("/", name="app_homepage")
@@ -33,7 +33,7 @@ class WebController extends Controller
         $thumbs = array_merge($works, $products);
         usort(
             $thumbs,
-            function ($a, $b) {
+            static function ($a, $b) {
                 /** @var Work|Product $a */
                 /** @var Work|Product $b */
                 if ($a->getCreatedAt() == $b->getCreatedAt()) {
