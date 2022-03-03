@@ -53,11 +53,12 @@ class ProductController extends Controller
                 'slug' => $slug,
             )
         );
-
-        if ($product->getEnabled() == false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+        if (!$product) {
             throw $this->createAccessDeniedException();
         }
-
+        if ($product->getEnabled() === false && !$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
         $quantity = 0;
         $cart = $this->get('app.cart_service')->getCart();
         if ($cart) {
@@ -87,9 +88,12 @@ class ProductController extends Controller
     {
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
         $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(['slug' => $slug]);
+        if (!$product) {
+            throw $this->createAccessDeniedException();
+        }
         /** @var Product $item */
         foreach ($products as $i => $item) {
-            if ($item->getSlug() == $product->getSlug()) {
+            if ($item->getSlug() === $product->getSlug()) {
                 if ($i === 0) {
                     $product = $products[(count($products) - 1)];
                 } else {
@@ -113,9 +117,12 @@ class ProductController extends Controller
     {
         $products = $this->getDoctrine()->getRepository('AppBundle:Product')->findAllEnabledSortedByDate();
         $product = $this->getDoctrine()->getRepository('AppBundle:Product')->findOneBy(['slug' => $slug]);
+        if (!$product) {
+            throw $this->createAccessDeniedException();
+        }
         /** @var Product $item */
         foreach ($products as $i => $item) {
-            if ($item->getSlug() == $product->getSlug()) {
+            if ($item->getSlug() === $product->getSlug()) {
                 if (($i + 1) === count($products)) {
                     $product = $products[0];
                 } else {
