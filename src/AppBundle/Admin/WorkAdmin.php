@@ -180,7 +180,7 @@ class WorkAdmin extends AbstractBaseAdmin
                 'doctrine_orm_date',
                 array(
                     'label' => 'backend.admin.created_date',
-                    'field_type' => 'sonata_type_date_picker',
+                    'field_type' => DatePickerType::class,
                     'format' => 'd-m-Y',
                 )
             )
