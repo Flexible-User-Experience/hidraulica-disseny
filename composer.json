@@ -24,7 +24,6 @@
         "doctrine/orm": "^2.4.8",
         "egulias/email-validator": "^1.2",
         "excelwebzone/recaptcha-bundle": "^1.4",
-        "hautelook/alice-bundle": "^1.0",
         "jms/i18n-routing-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "~2.0",
         "ircmaxell/password-compat": "~1.0",
@@ -55,6 +54,7 @@
     },
     "require-dev": {
         "cypresslab/gitelephant-bundle": "^0.0.6",
+        "hautelook/alice-bundle": "^1.0",
         "phpunit/phpunit": "^5.0",
         "sensio/generator-bundle": "~3.0"
     },

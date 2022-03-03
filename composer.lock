@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ff23fddadfcfed8fb9fce005470a118",
+    "content-hash": "fc8a3120fd3bc74f702b8877ed87890a",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -166,12 +166,12 @@
             "version": "v1.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/clue/php-stream-filter.git",
+                "url": "https://github.com/clue/stream-filter.git",
                 "reference": "d80fdee9b3a7e0d16fc330a22f41f3ad0eeb09d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-stream-filter/zipball/d80fdee9b3a7e0d16fc330a22f41f3ad0eeb09d0",
+                "url": "https://api.github.com/repos/clue/stream-filter/zipball/d80fdee9b3a7e0d16fc330a22f41f3ad0eeb09d0",
                 "reference": "d80fdee9b3a7e0d16fc330a22f41f3ad0eeb09d0",
                 "shasum": ""
             },
@@ -994,6 +994,7 @@
                 "cache",
                 "caching"
             ],
+            "abandoned": true,
             "time": "2017-10-12T17:23:29+00:00"
         },
         {
@@ -1368,12 +1369,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -1605,56 +1606,6 @@
                 "User management"
             ],
             "time": "2016-08-12T09:53:32+00:00"
-        },
-        {
-            "name": "fzaninotto/faker",
-            "version": "v1.7.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
-                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0"
-            },
-            "require-dev": {
-                "ext-intl": "*",
-                "phpunit/phpunit": "^4.0 || ^5.0",
-                "squizlabs/php_codesniffer": "^1.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.8-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Faker\\": "src/Faker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "François Zaninotto"
-                }
-            ],
-            "description": "Faker is a PHP library that generates fake data for you.",
-            "keywords": [
-                "data",
-                "faker",
-                "fixtures"
-            ],
-            "time": "2017-08-15T16:48:10+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1916,95 +1867,16 @@
             "time": "2017-03-20T17:10:46+00:00"
         },
         {
-            "name": "hautelook/alice-bundle",
-            "version": "v1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hautelook/AliceBundle.git",
-                "reference": "058925945bccbc8776725fec9e8557aca9666d9c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hautelook/AliceBundle/zipball/058925945bccbc8776725fec9e8557aca9666d9c",
-                "reference": "058925945bccbc8776725fec9e8557aca9666d9c",
-                "shasum": ""
-            },
-            "require": {
-                "nelmio/alice": "^2.1 < 2.2.0 || ^2.2.1",
-                "php": "^5.6||^7.0",
-                "symfony/finder": "^2.7||^3.0"
-            },
-            "require-dev": {
-                "doctrine/data-fixtures": "1.0.1",
-                "doctrine/doctrine-bundle": "^1.6.4",
-                "doctrine/doctrine-fixtures-bundle": "^2.2",
-                "doctrine/mongodb-odm": "^1.0",
-                "doctrine/mongodb-odm-bundle": "^3.0",
-                "doctrine/orm": "^2.4",
-                "phpunit/phpunit": "^5.6",
-                "sllh/php-cs-fixer-styleci-bridge": "^1.0",
-                "symfony/console": "^2.3||~3.0",
-                "symfony/framework-bundle": "^2.3||^3.0",
-                "symfony/phpunit-bridge": "^3.1",
-                "symfony/validator": "^2.3|^3.0",
-                "symfony/yaml": "^2.3||^3.0"
-            },
-            "suggest": {
-                "doctrine/data-fixtures": "To use Doctrine fixtures loader",
-                "doctrine/doctrine-bundle": "To use Doctrine with Symfony",
-                "doctrine/mongodb-odm": "To use Doctrine MongoDB",
-                "doctrine/mongodb-odm-bundle": "To use Doctrine MongoDB with Symfony",
-                "doctrine/orm": "To use Doctrine ORM",
-                "theofidry/alice-bundle-extension": "Behat extension for HautelookAliceBundle"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                },
-                "sort-packages": true
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hautelook\\AliceBundle\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Baldur Rensch",
-                    "email": "brensch@gmail.com"
-                },
-                {
-                    "name": "Théo FIDRY",
-                    "email": "theo.fidry@gmail.com",
-                    "homepage": "https://github.com/theofidry"
-                }
-            ],
-            "description": "Symfony2 Bundle to manage fixtures with Alice and Faker.",
-            "keywords": [
-                "Fixture",
-                "alice",
-                "faker",
-                "orm",
-                "symfony"
-            ],
-            "time": "2016-11-04T08:48:00+00:00"
-        },
-        {
             "name": "imagine/imagine",
             "version": "v0.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/avalanche123/Imagine.git",
+                "url": "https://github.com/php-imagine/Imagine.git",
                 "reference": "a9a702a946073cbca166718f1b02a1e72d742daa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avalanche123/Imagine/zipball/a9a702a946073cbca166718f1b02a1e72d742daa",
+                "url": "https://api.github.com/repos/php-imagine/Imagine/zipball/a9a702a946073cbca166718f1b02a1e72d742daa",
                 "reference": "a9a702a946073cbca166718f1b02a1e72d742daa",
                 "shasum": ""
             },
@@ -2611,12 +2483,12 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Assetic": "src/"
-                },
                 "files": [
                     "src/functions.php"
-                ]
+                ],
+                "psr-0": {
+                    "Assetic": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2842,6 +2714,7 @@
                 "domain parsing",
                 "icann"
             ],
+            "abandoned": true,
             "time": "2018-02-16T07:29:26+00:00"
         },
         {
@@ -2966,6 +2839,7 @@
                 "uri",
                 "url"
             ],
+            "abandoned": true,
             "time": "2018-02-06T11:37:57+00:00"
         },
         {
@@ -3100,6 +2974,7 @@
                 "ws",
                 "wss"
             ],
+            "abandoned": true,
             "time": "2017-12-01T12:05:37+00:00"
         },
         {
@@ -3358,65 +3233,6 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
-        },
-        {
-            "name": "nelmio/alice",
-            "version": "v2.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nelmio/alice.git",
-                "reference": "41fc89e2dfbb9d6d13a0f350393e5a91e9064d69"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/alice/zipball/41fc89e2dfbb9d6d13a0f350393e5a91e9064d69",
-                "reference": "41fc89e2dfbb9d6d13a0f350393e5a91e9064d69",
-                "shasum": ""
-            },
-            "require": {
-                "fzaninotto/faker": "^1.5",
-                "php": "^5.6||^7.0",
-                "symfony/yaml": "^2.0||^3.0"
-            },
-            "require-dev": {
-                "doctrine/common": "^2.3",
-                "phpspec/prophecy": "^1.5.0",
-                "phpunit/phpunit": "^5.6||^6.0",
-                "symfony/phpunit-bridge": "^3.0",
-                "symfony/property-access": "^2.2||^3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Nelmio\\Alice\\": "src/Nelmio/Alice"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be"
-                },
-                {
-                    "name": "Tim Shelburne",
-                    "email": "shelburt02@gmail.com"
-                },
-                {
-                    "name": "Théo FIDRY",
-                    "email": "theo.fidry@gmail.com"
-                }
-            ],
-            "description": "Expressive fixtures generator",
-            "keywords": [
-                "Fixture",
-                "data",
-                "orm",
-                "test"
-            ],
-            "time": "2017-10-31T11:42:39+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4530,6 +4346,7 @@
                 "configuration",
                 "distribution"
             ],
+            "abandoned": true,
             "time": "2017-08-25T16:55:44+00:00"
         },
         {
@@ -4645,6 +4462,7 @@
                 }
             ],
             "description": "A security checker for your composer.lock",
+            "abandoned": "https://github.com/fabpot/local-php-security-checker",
             "time": "2018-02-28T22:10:01+00:00"
         },
         {
@@ -5017,6 +4835,7 @@
             "keywords": [
                 "sonata"
             ],
+            "abandoned": true,
             "time": "2018-02-23T16:42:24+00:00"
         },
         {
@@ -5074,6 +4893,7 @@
                 "datagrid",
                 "sonata"
             ],
+            "abandoned": true,
             "time": "2017-12-12T17:04:29+00:00"
         },
         {
@@ -5263,6 +5083,7 @@
                 "Easy Extends",
                 "sonata"
             ],
+            "abandoned": true,
             "time": "2018-02-11T12:21:41+00:00"
         },
         {
@@ -5389,6 +5210,7 @@
             "keywords": [
                 "google authenticator"
             ],
+            "abandoned": true,
             "time": "2017-06-05T08:44:54+00:00"
         },
         {
@@ -5653,6 +5475,7 @@
                 "mail",
                 "mailer"
             ],
+            "abandoned": "symfony/mailer",
             "time": "2018-01-23T07:37:21+00:00"
         },
         {
@@ -5723,6 +5546,7 @@
                 "compression",
                 "minification"
             ],
+            "abandoned": "symfony/webpack-encore-pack",
             "time": "2017-07-14T07:26:46+00:00"
         },
         {
@@ -6357,6 +6181,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
+            "abandoned": "symfony/mailer",
             "time": "2017-10-19T01:06:41+00:00"
         },
         {
@@ -6603,6 +6428,7 @@
                 "i18n",
                 "text"
             ],
+            "abandoned": true,
             "time": "2017-06-08T18:19:53+00:00"
         },
         {
@@ -6809,6 +6635,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2017-10-20T15:21:32+00:00"
         },
         {
@@ -6863,6 +6690,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2017-07-11T19:17:22+00:00"
         }
     ],
@@ -6964,6 +6792,135 @@
             "time": "2015-10-12T20:25:28+00:00"
         },
         {
+            "name": "fzaninotto/faker",
+            "version": "v1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fzaninotto/Faker.git",
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
+                "reference": "d3ed4cc37051c1ca52d22d76b437d14809fc7e0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "ext-intl": "*",
+                "phpunit/phpunit": "^4.0 || ^5.0",
+                "squizlabs/php_codesniffer": "^1.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Faker\\": "src/Faker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "François Zaninotto"
+                }
+            ],
+            "description": "Faker is a PHP library that generates fake data for you.",
+            "keywords": [
+                "data",
+                "faker",
+                "fixtures"
+            ],
+            "time": "2017-08-15T16:48:10+00:00"
+        },
+        {
+            "name": "hautelook/alice-bundle",
+            "version": "v1.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theofidry/AliceBundle.git",
+                "reference": "058925945bccbc8776725fec9e8557aca9666d9c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theofidry/AliceBundle/zipball/058925945bccbc8776725fec9e8557aca9666d9c",
+                "reference": "058925945bccbc8776725fec9e8557aca9666d9c",
+                "shasum": ""
+            },
+            "require": {
+                "nelmio/alice": "^2.1 < 2.2.0 || ^2.2.1",
+                "php": "^5.6||^7.0",
+                "symfony/finder": "^2.7||^3.0"
+            },
+            "require-dev": {
+                "doctrine/data-fixtures": "1.0.1",
+                "doctrine/doctrine-bundle": "^1.6.4",
+                "doctrine/doctrine-fixtures-bundle": "^2.2",
+                "doctrine/mongodb-odm": "^1.0",
+                "doctrine/mongodb-odm-bundle": "^3.0",
+                "doctrine/orm": "^2.4",
+                "phpunit/phpunit": "^5.6",
+                "sllh/php-cs-fixer-styleci-bridge": "^1.0",
+                "symfony/console": "^2.3||~3.0",
+                "symfony/framework-bundle": "^2.3||^3.0",
+                "symfony/phpunit-bridge": "^3.1",
+                "symfony/validator": "^2.3|^3.0",
+                "symfony/yaml": "^2.3||^3.0"
+            },
+            "suggest": {
+                "doctrine/data-fixtures": "To use Doctrine fixtures loader",
+                "doctrine/doctrine-bundle": "To use Doctrine with Symfony",
+                "doctrine/mongodb-odm": "To use Doctrine MongoDB",
+                "doctrine/mongodb-odm-bundle": "To use Doctrine MongoDB with Symfony",
+                "doctrine/orm": "To use Doctrine ORM",
+                "theofidry/alice-bundle-extension": "Behat extension for HautelookAliceBundle"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                },
+                "sort-packages": true
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hautelook\\AliceBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baldur Rensch",
+                    "email": "brensch@gmail.com"
+                },
+                {
+                    "name": "Théo FIDRY",
+                    "email": "theo.fidry@gmail.com",
+                    "homepage": "https://github.com/theofidry"
+                }
+            ],
+            "description": "Symfony2 Bundle to manage fixtures with Alice and Faker.",
+            "keywords": [
+                "Fixture",
+                "alice",
+                "faker",
+                "orm",
+                "symfony"
+            ],
+            "time": "2016-11-04T08:48:00+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.7.0",
             "source": {
@@ -7007,6 +6964,65 @@
                 "object graph"
             ],
             "time": "2017-10-19T19:58:43+00:00"
+        },
+        {
+            "name": "nelmio/alice",
+            "version": "v2.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nelmio/alice.git",
+                "reference": "41fc89e2dfbb9d6d13a0f350393e5a91e9064d69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nelmio/alice/zipball/41fc89e2dfbb9d6d13a0f350393e5a91e9064d69",
+                "reference": "41fc89e2dfbb9d6d13a0f350393e5a91e9064d69",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "^1.5",
+                "php": "^5.6||^7.0",
+                "symfony/yaml": "^2.0||^3.0"
+            },
+            "require-dev": {
+                "doctrine/common": "^2.3",
+                "phpspec/prophecy": "^1.5.0",
+                "phpunit/phpunit": "^5.6||^6.0",
+                "symfony/phpunit-bridge": "^3.0",
+                "symfony/property-access": "^2.2||^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nelmio\\Alice\\": "src/Nelmio/Alice"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                },
+                {
+                    "name": "Tim Shelburne",
+                    "email": "shelburt02@gmail.com"
+                },
+                {
+                    "name": "Théo FIDRY",
+                    "email": "theo.fidry@gmail.com"
+                }
+            ],
+            "description": "Expressive fixtures generator",
+            "keywords": [
+                "Fixture",
+                "data",
+                "orm",
+                "test"
+            ],
+            "time": "2017-10-31T11:42:39+00:00"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -7568,6 +7584,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-11-27T05:48:46+00:00"
         },
         {
@@ -7709,6 +7726,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
@@ -8276,6 +8294,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": "symfony/maker-bundle",
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
@@ -8335,7 +8354,8 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.0"
+        "php": ">=7.2.0"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
