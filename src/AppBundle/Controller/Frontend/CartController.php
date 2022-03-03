@@ -145,7 +145,7 @@ class CartController extends Controller
         /** @var Payment $payment */
         $payment = $storage->create();
         $payment->setCart($cart);
-        $payment->setNumber(uniqid());
+        $payment->setNumber(uniqid('', true));
         $payment->setCurrencyCode('EUR');
         $payment->setTotalAmount($cart->getTotalAmount() * 100);
         $payment->setDescription('CART_ID#'. $cart->getId() . ' ' . $cart->getCreatedAt()->format('d/m/Y') . ' ' . $cart->getCustomer()->getName());
@@ -217,8 +217,6 @@ class CartController extends Controller
      */
     private function getCart()
     {
-        $cart = $this->get('app.cart_service')->getCart();
-
-        return $cart;
+        return $this->get('app.cart_service')->getCart();
     }
 }
