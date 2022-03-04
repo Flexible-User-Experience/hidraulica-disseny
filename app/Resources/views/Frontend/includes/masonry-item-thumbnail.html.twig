@@ -1,0 +1,12 @@
+<a href="{{ get_detail_path(item, {slug: item.slug}) }}">
+    <div class="hovereffect">
+        <img class="img-responsive" src="{{ vich_uploader_asset(item, 'imageFile') | imagine_filter('740xY') }}" alt="{{ item.title }}">
+        <div class="overlay">
+            {% if item.category is defined and item.category is not null %}
+                <h2>{{ item.category.title }}</h2>
+            {% endif %}
+            <h3 class="c-white">{{ item.title }}</h3>
+            {#{% if item | is_product %}<h4 class="c-grey">{{ item.price }} €</h4>{% endif %}#}
+        </div>
+    </div>
+</a>

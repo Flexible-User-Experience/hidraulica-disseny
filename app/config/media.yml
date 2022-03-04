@@ -29,6 +29,15 @@ liip_imagine:
             quality: 95
             filters:
                 thumbnail: { size: [ 1200, 700 ], mode: outbound }
+        740x400:
+            quality: 95
+            animated: true
+            filters:
+                thumbnail: { size: [ 740, 400 ], mode: inbound }
+        740xY:
+            quality: 95
+            filters:
+                thumbnail: { size: [ 740, null ], mode: outbound }
         700x200:
             quality: 95
             filters:
