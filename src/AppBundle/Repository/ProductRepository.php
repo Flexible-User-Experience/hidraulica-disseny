@@ -12,7 +12,6 @@ use Doctrine\ORM\QueryBuilder;
  * @category Repository
  * @package  AppBundle\Repository
  * @author   Anton Serra <aserratorta@gmail.com>
-
  */
 class ProductRepository extends EntityRepository
 {
