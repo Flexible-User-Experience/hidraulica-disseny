@@ -26,7 +26,7 @@ class ProductRepository extends EntityRepository
     {
         $query = $this->createQueryBuilder('p')
             ->where('p.enabled = :enabled')
-            ->andWhere('p.price > 0')
+            ->andWhere('p.price >= 0')
             ->setParameter('enabled', true)
             ->orderBy('p.createdAt', $order);
 
