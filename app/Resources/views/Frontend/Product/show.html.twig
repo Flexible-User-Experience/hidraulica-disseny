@@ -63,7 +63,11 @@
                             {% for image in product.images %}
                                 {% if image.imageName %}
                                     <div class="item{% if loop.index == 1 %} active{% endif %}">
-                                        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('700x530') }}" alt="{{ image.alt }}"/>
+                                        {% if '.gif' in image.imageName or '.GIF' in image.imageName %}
+                                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ image.alt }}"/>
+                                        {% else %}
+                                            <img class="img-responsive" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('740xY') }}" alt="{{ image.alt }}"/>
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                             {% endfor %}
